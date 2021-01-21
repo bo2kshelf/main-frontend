@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# output
+.next/
+dist/
+_generated/
+
+# logfiles
+*.log
+
+# test
+coverage/
+junit/
+
+# cache
+.eslintcache
+
+# environments
+.env*
+!.env.example
+
+# Editor
+.vscode/
+!.vscode/extensions.json
+
+# Storybook
+storybook-static/

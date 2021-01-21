@@ -1,0 +1,7 @@
+query PersonalUserPage {
+  currentUser {
+    userName
+    displayName
+    picture
+  }
+}

@@ -1,0 +1,17 @@
+schema:
+  - ${GRAPHQL_API_SCHEMA}
+
+generates:
+  ./schema.graphql:
+    plugins:
+      - 'schema-ast'
+    config:
+      includeDirectives: true
+  ./src/_generated/apollo/index.ts:
+    documents:
+      - 'src/templates/**/*.{tsx,gql}'
+      - 'src/components/**/*.gql'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'

@@ -1,0 +1,19 @@
+# test
+coverage/
+junit/
+
+# output
+.next/
+dist/
+_generated/
+
+# hygen
+!.hygen/
+!.hygen.js
+
+# Storybook
+!.storybook/
+storybook-static/
+
+# root GraphQL schema
+schema.graphql
