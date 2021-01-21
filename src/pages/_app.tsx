@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {AppProps} from 'next/dist/next-server/lib/router/router';
 import React from 'react';
 import 'tailwindcss/tailwind.css';
+import {HeaderNav} from '~/components/HeaderNav';
 import {Configured18nextProvider} from '~/i18n';
 import {ConfiguredApolloProvider} from '~/lib/apollo-provider';
 import '~/styles/index.css';
@@ -16,6 +17,7 @@ export const App: React.FC<AppProps> = ({
       <ConfiguredApolloProvider>
         <Configured18nextProvider>
           <div className={clsx('bg-gray-50', 'min-h-screen')}>
+            <HeaderNav className={clsx('w-full', 'h-24')} />
             <div className={clsx('container', 'mx-auto', 'py-12')}>
               <PageComponent {...pageProps} />
             </div>
