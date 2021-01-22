@@ -25,6 +25,7 @@ export const Component: React.FC<ComponentProps> = ({
       </div>
       <div className={clsx('flex', 'flex-col')}>
         <span className={clsx('text-xl', 'font-bold')}>{displayName}</span>
+        {/* eslint-disable-next-line @shopify/jsx-no-hardcoded-content */}
         <span className={clsx('text-gray-500')}>{`@${userName}`}</span>
       </div>
     </div>
