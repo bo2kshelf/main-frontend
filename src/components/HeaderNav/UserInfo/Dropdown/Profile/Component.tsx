@@ -16,7 +16,7 @@ export const Component: React.FC<ComponentProps> = ({
   displayName,
 }) => (
   <NextLink href="/profile">
-    <a className={clsx(className, 'flex', 'p-0.5', 'hover:bg-blue-50')}>
+    <a className={clsx(className, 'flex', 'py-2', 'px-4', 'hover:bg-blue-50')}>
       <div className={clsx('mr-4', 'relative', 'w-12', 'h-12')}>
         <NextImage
           className={clsx('rounded-full')}
@@ -25,7 +25,7 @@ export const Component: React.FC<ComponentProps> = ({
           height={64}
         />
       </div>
-      <div className={clsx('flex', 'flex-col', 'justify-center', 'w-48')}>
+      <div className={clsx('flex', 'flex-col', 'justify-center', 'w-40')}>
         <span className={clsx('font-bold', 'select-all', 'truncate')}>
           {displayName}
         </span>

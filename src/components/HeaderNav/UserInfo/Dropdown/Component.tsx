@@ -1,5 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
+import {
+  LogoutLink,
+  ReadBooksLink,
+  ReadingBooksLink,
+  SettingsLink,
+} from './Link';
 import {Profile} from './Profile';
 
 export type ComponentProps = {
@@ -19,11 +25,21 @@ export const Component: React.FC<ComponentProps> = ({
       className,
       'rounded',
       'bg-white',
-      'px-4',
-      'py-2',
       'shadow-md',
+      'grid',
+      'grid-cols-none',
+      'overflow-hidden',
     )}
   >
-    <Profile picture={picture} userName={userName} displayName={displayName} />
+    <Profile
+      className={clsx('col-span-2', 'col-start-1')}
+      picture={picture}
+      userName={userName}
+      displayName={displayName}
+    />
+    <ReadBooksLink className={clsx('col-span-1', 'col-start-1')} />
+    <ReadingBooksLink className={clsx('col-span-1', 'col-start-1')} />
+    <SettingsLink className={clsx('col-span-1', 'col-start-1')} />
+    <LogoutLink className={clsx('col-span-1', 'col-start-2')} />
   </div>
 );
