@@ -1,0 +1,357 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+input AddBookToSeriesBooksInput {
+  seriesId: ID!
+  bookId: ID!
+  serial: Float!
+}
+input AddBookToSeriesRelatedBooksInput {
+  seriesId: ID!
+  bookId: ID!
+}
+type Author {
+  name: String!
+  id: ID!
+  books(after: String, first: Int, before: String, last: Int): PaginatedBookConnection!
+  relatedSeries(after: String, first: Int, before: String, last: Int, include: AuthorRelatedSeriesArgsInclude = {books: true, relatedBooks: false}): PaginatedSeriesConnection!
+}
+input AuthorRelatedSeriesArgsInclude {
+  books: Boolean
+  relatedBooks: Boolean
+}
+type Book {
+  title: String!
+  isbn: String
+  id: ID!
+  authors: [BookAuthorsConnection!]!
+  relatedSeries: [Series!]!
+  cover: String
+}
+type BookAuthorsConnection {
+  id: ID!
+  roles: [String!]
+  author: Author!
+}
+type BookEntityAggregate {
+  count: Int!
+}
+type BookEntityEdgeType {
+  node: Book!
+  cursor: String!
+}
+type BookEntityPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+}
+input CreateAuthorInput {
+  name: String!
+}
+input CreateBookAuthorsInput {
+  id: ID!
+  roles: [String!]
+}
+input CreateBookInput {
+  title: String!
+  isbn: String
+  authors: [CreateBookAuthorsInput!]!
+}
+input CreateSeriesBooksInput {
+  id: ID!
+  serial: Float!
+}
+input CreateSeriesInput {
+  title: String!
+  books: [CreateSeriesBooksInput!]
+  relatedBooks: [CreateSeriesRelatedBooksInput!]
+}
+input CreateSeriesRelatedBooksInput {
+  id: ID!
+}
+enum OrderDirection {
+  ASC
+  DESC
+}
+type PaginatedBookConnection {
+  aggregate: BookEntityAggregate!
+  pageInfo: BookEntityPageInfo!
+  edges: [BookEntityEdgeType!]!
+}
+type PaginatedSeriesBooksConnection {
+  aggregate: SeriesBooksConnectionAggregate!
+  pageInfo: SeriesBooksConnectionPageInfo!
+  edges: [SeriesBooksConnectionEdgeType!]!
+}
+type PaginatedSeriesConnection {
+  aggregate: SeriesEntityAggregate!
+  pageInfo: SeriesEntityPageInfo!
+  edges: [SeriesEntityEdgeType!]!
+}
+type PaginatedSeriesRelatedBooksConnection {
+  aggregate: SeriesRelatedBooksConnectionAggregate!
+  pageInfo: SeriesRelatedBooksConnectionPageInfo!
+  edges: [SeriesRelatedBooksConnectionEdgeType!]!
+}
+type Series {
+  title: String!
+  id: ID!
+  books(after: String, first: Int, before: String, last: Int, orderBy: SeriesBooksOrder): PaginatedSeriesBooksConnection!
+  relatedBooks(after: String, first: Int, before: String, last: Int): PaginatedSeriesRelatedBooksConnection!
+  relatedAuthors: [Author!]!
+}
+type SeriesBooksConnection {
+  id: ID!
+  serial: Float!
+  book: Book!
+}
+type SeriesBooksConnectionAggregate {
+  count: Int!
+}
+type SeriesBooksConnectionEdgeType {
+  node: SeriesBooksConnection!
+  cursor: String!
+}
+type SeriesBooksConnectionPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+}
+input SeriesBooksOrder {
+  serial: OrderDirection
+}
+type SeriesEntityAggregate {
+  count: Int!
+}
+type SeriesEntityEdgeType {
+  node: Series!
+  cursor: String!
+}
+type SeriesEntityPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+}
+type SeriesRelatedBooksConnection {
+  id: ID!
+  book: Book!
+}
+type SeriesRelatedBooksConnectionAggregate {
+  count: Int!
+}
+type SeriesRelatedBooksConnectionEdgeType {
+  node: SeriesRelatedBooksConnection!
+  cursor: String!
+}
+type SeriesRelatedBooksConnectionPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+}
+input SearchAuthorsQuery {
+  name: String!
+}
+type SearchAuthorsResult {
+  aggregate: SearchAuthorsResultAggregate!
+  pageInfo: SearchAuthorsResultPageInfo!
+  edges: [SearchAuthorsResultEdgeType!]!
+}
+type SearchAuthorsResultAggregate {
+  count: Int!
+}
+type SearchAuthorsResultEdgeType {
+  node: Author!
+  cursor: String!
+}
+type SearchAuthorsResultPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+  query: SearchAuthorsResultPageInfoQuery!
+}
+type SearchAuthorsResultPageInfoQuery {
+  name: String!
+}
+input SearchBooksQuery {
+  title: String!
+}
+type SearchBooksResult {
+  aggregate: SearchBooksResultAggregate!
+  pageInfo: SearchBooksResultPageInfo!
+  edges: [SearchBooksResultEdgeType!]!
+}
+type SearchBooksResultAggregate {
+  count: Int!
+}
+type SearchBooksResultEdgeType {
+  node: Book!
+  cursor: String!
+}
+type SearchBooksResultPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+  query: SearchBooksResultPageInfoQuery!
+}
+type SearchBooksResultPageInfoQuery {
+  title: String!
+}
+input SearchMixedQuery {
+  query: String
+}
+type SearchMixedResult {
+  aggregate: SearchMixedResultAggregate!
+  pageInfo: SearchMixedResultPageInfo!
+  edges: [SearchMixedResultEdgeType!]!
+}
+type SearchMixedResultAggregate {
+  count: Int!
+}
+type SearchMixedResultEdgeType {
+  node: SearchMixedUnion!
+  cursor: String!
+}
+type SearchMixedResultPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+  query: SearchMixedResultPageInfoQuery!
+}
+type SearchMixedResultPageInfoQuery {
+  query: String
+}
+union SearchMixedUnion = Book | Author | Series
+input SearchSeriesQuery {
+  title: String!
+}
+type SearchSeriesResult {
+  aggregate: SearchSeriesResultAggregate!
+  pageInfo: SearchSeriesResultPageInfo!
+  edges: [SearchSeriesResultEdgeType!]!
+}
+type SearchSeriesResultAggregate {
+  count: Int!
+}
+type SearchSeriesResultEdgeType {
+  node: Series!
+  cursor: String!
+}
+type SearchSeriesResultPageInfo {
+  hasNextPage: Boolean
+  hasPreviousPage: Boolean
+  startCursor: String
+  endCursor: String
+  query: SearchSeriesResultPageInfoQuery!
+}
+type SearchSeriesResultPageInfoQuery {
+  title: String!
+}
+input CreateRecordDataInput {
+  bookId: ID!
+  have: Boolean!
+  read: Boolean!
+  reading: Boolean!
+  user: CreateRecordDataUserInput!
+}
+input CreateRecordDataUserInput {
+  userName: ID!
+}
+input CreateUserDataInput {
+  userName: ID!
+  displayName: String!
+  picture: String!
+}
+"""A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
+scalar DateTime
+input DeleteRecordWhereInput {
+  id: ID!
+}
+input DeleteUserWhereInput {
+  userName: ID!
+}
+type Record {
+  id: ID!
+  have: Boolean!
+  read: Boolean!
+  reading: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  book: Book!
+}
+input UpdateRecordDataInput {
+  bookId: ID
+  have: Boolean
+  read: Boolean
+  reading: Boolean
+}
+input UpdateRecordDataUserInput {
+  id: ID!
+}
+input UpdateUserDataInput {
+  userName: ID
+  displayName: String
+}
+input UpdateUserWhereInput {
+  userName: ID!
+}
+type User {
+  userName: ID!
+  displayName: String!
+  picture: String!
+  records(cursor: UserRecordsArgsCursor, skip: Int, take: Int, orderBy: UserRecordsArgsOrderBy, where: UserRecordsArgsWhere): [Record!]!
+  recordsCount: Int!
+}
+input UserRecordsArgsCursor {
+  id: ID!
+}
+input UserRecordsArgsOrderBy {
+  createdAt: UserRecordsArgsOrderByEnum
+  updatedAt: UserRecordsArgsOrderByEnum
+}
+enum UserRecordsArgsOrderByEnum {
+  ASC
+  DESC
+}
+input UserRecordsArgsWhere {
+  id: ID
+  bookId: ID
+  have: Boolean
+  read: Boolean
+  reading: Boolean
+}
+type Query {
+  author(id: ID!): Author!
+  allAuthors: [Author!]!
+  book(id: ID!): Book!
+  allBooks: [Book!]!
+  series(id: ID!): Series!
+  allSeries: [Series!]!
+  searchBooks(after: String, first: Int, before: String, last: Int, query: SearchBooksQuery!): SearchBooksResult!
+  searchAuthors(after: String, first: Int, before: String, last: Int, query: SearchAuthorsQuery!): SearchAuthorsResult!
+  searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
+  searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
+  user(userName: ID!): User!
+  currentUser: User!
+  record(id: ID!): Record!
+}
+type Mutation {
+  createAuthor(data: CreateAuthorInput!): Author!
+  createBook(data: CreateBookInput!): Book!
+  createSeries(data: CreateSeriesInput!): Series!
+  addBookToSeriesBooks(data: AddBookToSeriesBooksInput!): Series!
+  addBookToSeriesRelatedBooks(data: AddBookToSeriesRelatedBooksInput!): Series!
+  createUser(data: CreateUserDataInput!): User!
+  updateUser(where: UpdateUserWhereInput!, data: UpdateUserDataInput!): User!
+  deleteUser(where: DeleteUserWhereInput!): User!
+  createRecord(data: CreateRecordDataInput!): Record!
+  updateRecord(where: UpdateRecordDataUserInput!, data: UpdateRecordDataInput!): Record!
+  deleteRecord(where: DeleteRecordWhereInput!): Record!
+}
