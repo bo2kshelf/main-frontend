@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import {Login} from './Login';
 import {UserInfo} from './UserInfo';
 
 export type ComponentProps = {
@@ -13,14 +14,14 @@ export const Component: React.FC<ComponentProps> = ({
   userLoading,
   userAuthenticated,
 }) => (
-  <nav className={clsx(className, 'bg-blue-400', 'flex', 'items-center')}>
+  <nav className={clsx(className, 'bg-gray-700', 'flex', 'items-center')}>
     <div
       className={clsx('container', 'mx-auto', 'px-12', 'flex', 'items-center')}
     >
       <div className={clsx('flex-grow')} />
       <div className={clsx()}>
         {userLoading && <div className={clsx()} />}
-        {!userLoading && !userAuthenticated && <div className={clsx()} />}
+        {!userLoading && !userAuthenticated && <Login />}
         {!userLoading && userAuthenticated && <UserInfo />}
       </div>
     </div>
