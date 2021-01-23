@@ -16,7 +16,7 @@ export const ReadBooksLink: React.FC<{
   return (
     <Component
       className={clsx(className)}
-      link="/books/read"
+      link="/user/read"
       text={t('common:read_books')}
       icon={faBookmark}
     />
@@ -30,7 +30,7 @@ export const ReadingBooksLink: React.FC<{
   return (
     <Component
       className={clsx(className)}
-      link="/books/reading"
+      link="/user/reading"
       text={t('common:reading_books')}
       icon={faBookReader}
     />

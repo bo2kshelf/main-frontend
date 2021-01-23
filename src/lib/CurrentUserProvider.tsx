@@ -1,6 +1,17 @@
 import {useUser} from '@auth0/nextjs-auth0';
+import {gql} from 'graphql-request';
 import React, {createContext, useEffect, useState} from 'react';
-import {useHeaderNavUserInfoLazyQuery} from '~/_generated/apollo';
+import {useCurrentUserLazyQuery} from '~/_generated/apollo';
+
+export const CurrentUserQuery = gql`
+  query CurrentUser {
+    currentUser {
+      userName
+      displayName
+      picture
+    }
+  }
+`;
 
 export type CurrentUser = {
   picture: string;
@@ -30,7 +41,7 @@ export const CurrentUserProvider: React.FC = ({children}) => {
   const [
     loadCurrentUser,
     {data, loading: apolloLoading},
-  ] = useHeaderNavUserInfoLazyQuery();
+  ] = useCurrentUserLazyQuery();
 
   /* isLoading */
   useEffect(() => setLoading(auth0Loading), [auth0Loading, apolloLoading]);
@@ -44,8 +55,8 @@ export const CurrentUserProvider: React.FC = ({children}) => {
   }, [data?.currentUser]);
 
   useEffect(() => {
-    if (!authenticated && !currentUser) loadCurrentUser();
-  }, [authenticated, currentUser, loadCurrentUser]);
+    if (!authenticated && !currentUser && Boolean(auth0User)) loadCurrentUser();
+  }, [auth0User, authenticated, currentUser, loadCurrentUser]);
 
   return (
     <CurrentUserContext.Provider

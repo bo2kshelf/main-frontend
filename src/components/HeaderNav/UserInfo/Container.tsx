@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {CurrentUserContext} from '~/lib/current-user-provider';
+import {CurrentUserContext} from '~/lib/CurrentUserProvider';
 import {Component} from './Component';
 
 export type ContainerProps = {className?: string};

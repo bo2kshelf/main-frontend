@@ -6,7 +6,7 @@ import 'tailwindcss/tailwind.css';
 import {HeaderNav} from '~/components/HeaderNav';
 import {Configured18nextProvider} from '~/i18n';
 import {ConfiguredApolloProvider} from '~/lib/apollo-provider';
-import {CurrentUserProvider} from '~/lib/current-user-provider';
+import {CurrentUserProvider} from '~/lib/CurrentUserProvider';
 import '~/styles/index.css';
 
 export const App: React.FC<AppProps> = ({
