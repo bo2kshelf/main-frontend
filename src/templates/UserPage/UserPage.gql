@@ -1,0 +1,23 @@
+query UserPage($userName: ID!) {
+  user(userName: $userName) {
+    userName
+    displayName
+    picture
+    readRecords: records(take: 10, where: {read: true}) {
+      id
+      book {
+        id
+        title
+        cover
+      }
+    }
+    readingRecords: records(take: 10, where: {reading: true}) {
+      id
+      book {
+        id
+        title
+        cover
+      }
+    }
+  }
+}
