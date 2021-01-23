@@ -5,3 +5,4 @@ export type ContainerProps = ComponentProps;
 export const Container: React.FC<ContainerProps> = ({...props}) => {
   return <Component {...props} />;
 };
+Container.displayName = 'Profile';

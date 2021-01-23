@@ -12,3 +12,4 @@ export type ContainerProps = {
 export const Container: React.FC<ContainerProps> = ({data, ...props}) => {
   return <Component {...props} {...data} />;
 };
+Container.displayName = 'Dropdown';

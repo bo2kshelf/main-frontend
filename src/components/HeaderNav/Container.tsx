@@ -14,3 +14,4 @@ export const Container: React.FC<ContainerProps> = ({...props}) => {
     />
   );
 };
+Container.displayName = 'HeaderNav';

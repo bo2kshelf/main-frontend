@@ -8,3 +8,4 @@ export const Container: React.FC<ContainerProps> = ({...props}) => {
 
   return <Component {...props} loading={loading} data={currentUser} />;
 };
+Container.displayName = 'UserInfo';
