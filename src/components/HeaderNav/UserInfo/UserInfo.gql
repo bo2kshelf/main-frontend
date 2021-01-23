@@ -1,0 +1,7 @@
+query HeaderNavUserInfo {
+  currentUser {
+    userName
+    displayName
+    picture
+  }
+}

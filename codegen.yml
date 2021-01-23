@@ -7,8 +7,9 @@ generates:
       - 'schema-ast'
     config:
       includeDirectives: true
-  ./src/_generated/apollo/index.ts:
+  ./src/_generated/apollo.ts:
     documents:
+      - 'src/lib/CurrentUserProvider.tsx'
       - 'src/templates/**/*.{tsx,gql}'
       - 'src/components/**/*.gql'
     plugins:

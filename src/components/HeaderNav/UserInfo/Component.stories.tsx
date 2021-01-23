@@ -1,0 +1,44 @@
+import {Meta, Story} from '@storybook/react/types-6-0';
+import clsx from 'clsx';
+import React from 'react';
+import {icons} from '~~/.storybook/assets';
+import {Component, ComponentProps, PlainComponent} from './Component';
+
+export default {
+  title: 'HeaderNav/UserInfo/Component',
+  component: PlainComponent,
+  argTypes: {
+    className: {table: {disable: true}},
+    loading: {table: {disable: true}},
+    data: {table: {disable: true}},
+  },
+  decorators: [
+    (Story) => {
+      return (
+        <div className={clsx('flex', 'flex-row-reverse')}>
+          <Story />
+        </div>
+      );
+    },
+  ],
+} as Meta;
+
+export const Loading: Story<ComponentProps> = (args) => (
+  <Component {...args} className={clsx()} />
+);
+Loading.args = {
+  loading: true,
+  data: undefined,
+};
+
+export const Loaded: Story<ComponentProps> = (args) => (
+  <Component {...args} className={clsx()} />
+);
+Loaded.args = {
+  loading: false,
+  data: {
+    userName: 'INTERNET_EXPLORER',
+    displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
+    picture: icons[0],
+  },
+};

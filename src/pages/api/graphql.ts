@@ -1,8 +1,8 @@
 import {getAccessToken, withApiAuthRequired} from '@auth0/nextjs-auth0';
 import {GraphQLClient} from 'graphql-request';
-import config from '~/lib/config';
+import env from '~/lib/env';
 
-const client = new GraphQLClient(config.graphqlAPIEndpoint);
+const client = new GraphQLClient(env.graphqlAPIEndpoint);
 
 export default withApiAuthRequired(async (req, res) => {
   try {
