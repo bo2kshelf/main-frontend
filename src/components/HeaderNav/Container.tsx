@@ -1,15 +1,15 @@
-import {useUser} from '@auth0/nextjs-auth0';
-import React from 'react';
+import React, {useContext} from 'react';
+import {CurrentUserContext} from '~/lib/current-user-provider';
 import {Component} from './Component';
 
 export type ContainerProps = {className?: string};
 export const Container: React.FC<ContainerProps> = ({...props}) => {
-  const {user, isLoading} = useUser();
+  const {isLoading, isAuthenticated} = useContext(CurrentUserContext);
 
   return (
     <Component
       {...props}
-      userAuthenticated={Boolean(user)}
+      userAuthenticated={isAuthenticated}
       userLoading={isLoading}
     />
   );

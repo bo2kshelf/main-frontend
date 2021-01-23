@@ -14,6 +14,10 @@ module.exports = {
     AUTH0_SCOPE: process.env.AUTH0_SCOPE,
   },
   images: {
-    domains: ['cover.openbd.jp', 's.gravatar.com'],
+    domains: [
+      'cover.openbd.jp',
+      's.gravatar.com',
+      'avatars.githubusercontent.com',
+    ],
   },
 };

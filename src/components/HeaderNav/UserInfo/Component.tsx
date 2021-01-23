@@ -9,7 +9,7 @@ import {Dropdown, DropdownProps} from './Dropdown';
 export type ComponentProps = {
   className?: string;
   loading: boolean;
-  data?: DropdownProps['data'];
+  data: DropdownProps['data'] | null;
 };
 export const PlainComponent: React.FC<ComponentProps> = ({
   className,
