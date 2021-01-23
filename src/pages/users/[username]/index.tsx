@@ -5,7 +5,7 @@ import {
 } from 'next';
 import React from 'react';
 import {createSdk} from '~/lib/GraphQLRequest';
-import {UserPage} from '~/templates/UserPage';
+import {UserPage} from '~/templates/server-side/UserPage';
 
 export type UrlQuery = {username: string};
 
