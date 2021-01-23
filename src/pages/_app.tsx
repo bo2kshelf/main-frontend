@@ -20,7 +20,7 @@ export const App: React.FC<AppProps> = ({
           <Configured18nextProvider>
             <div className={clsx('bg-gray-50', 'min-h-screen')}>
               <HeaderNav className={clsx('w-full', 'h-24')} />
-              <div className={clsx('container', 'mx-auto', 'py-12')}>
+              <div className={clsx('container', 'mx-auto', 'px-8', 'py-12')}>
                 <PageComponent {...pageProps} />
               </div>
             </div>
