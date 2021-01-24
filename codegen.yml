@@ -9,10 +9,17 @@ generates:
       includeDirectives: true
   ./src/_generated/apollo.ts:
     documents:
-      - 'src/lib/CurrentUserProvider.tsx'
-      - 'src/templates/**/*.{tsx,gql}'
       - 'src/components/**/*.gql'
+      - 'src/templates/browser-side/**/*.gql'
+      - 'src/lib/CurrentUserProvider.tsx'
     plugins:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-apollo'
+  ./src/_generated/graphql-request.ts:
+    documents:
+      - 'src/templates/server-side/**/*.gql'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-graphql-request'
