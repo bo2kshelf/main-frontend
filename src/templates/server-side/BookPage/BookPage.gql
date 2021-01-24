@@ -1,3 +1,9 @@
+query AllBookPages {
+  allBooks {
+    id
+  }
+}
+
 query BookPage($id: ID!) {
   book(id: $id) {
     id
