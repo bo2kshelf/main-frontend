@@ -8,10 +8,10 @@ export type ComponentProps = {
   book: ProfileProps['book'] & {cover: string | null};
 };
 export const Component: React.FC<ComponentProps> = ({className, book}) => (
-  <header className={clsx(className, 'grid', 'grid-cols-4', 'gap-x-4')}>
+  <header className={clsx(className, 'grid', 'grid-cols-3', 'gap-x-4')}>
     <div className={clsx('col-span-1')}>
       <BookCover
-        className={clsx('h-64')}
+        className={clsx('h-72')}
         title={book.title}
         cover={book.cover}
       />

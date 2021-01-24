@@ -6,74 +6,80 @@ import {
   faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {Component} from './Component';
 
 export const ISBNDetail: React.FC<{
   className?: string;
   detail: string;
 }> = ({detail, ...props}) => {
+  const {t} = useTranslation();
   return (
     <Component
       {...props}
-      detail={{key: 'ISBN', value: detail}}
+      detailKey={t('common:isbn')}
+      detailValue={detail}
       icon={faBarcode}
     />
   );
 };
-export type ISBNDetailType = Parameters<typeof ISBNDetail>[0];
 
 export const PagesDetail: React.FC<{
   className?: string;
   detail: number;
 }> = ({detail, ...props}) => {
+  const {t} = useTranslation();
   return (
     <Component
       {...props}
-      detail={{key: 'ページ数', value: `${detail}ページ`}}
+      detailKey={t('common:pages')}
+      detailValue={t('common:page', {page: detail})}
       icon={faBook}
     />
   );
 };
-export type PagesDetailType = Parameters<typeof PagesDetail>[0];
 
 export const PublisherDetail: React.FC<{
   className?: string;
   detail: string;
 }> = ({detail, ...props}) => {
+  const {t} = useTranslation();
   return (
     <Component
       {...props}
-      detail={{key: '出版社', value: detail}}
+      detailKey={t('common:publisher')}
+      detailValue={detail}
       icon={faBuilding}
     />
   );
 };
-export type PublisherDetailType = Parameters<typeof PublisherDetail>[0];
 
 export const DateDetail: React.FC<{
   className?: string;
   detail: string;
 }> = ({detail, ...props}) => {
+  const {t} = useTranslation();
   return (
     <Component
       {...props}
-      detail={{key: '発売日', value: detail}}
+      detailKey={t('common:publish_date')}
+      detailValue={detail}
       icon={faCalendarAlt}
     />
   );
 };
-export type DateDetailType = Parameters<typeof DateDetail>[0];
 
 export const LanguageDetail: React.FC<{
   className?: string;
   detail: string;
 }> = ({detail, ...props}) => {
+  const {t} = useTranslation();
   return (
     <Component
       {...props}
-      detail={{key: '言語', value: detail}}
+      detailKey={t('common:language')}
+      detailValue={detail}
       icon={faGlobe}
     />
   );
 };
-export type LanguageDetailType = Parameters<typeof LanguageDetail>[0];

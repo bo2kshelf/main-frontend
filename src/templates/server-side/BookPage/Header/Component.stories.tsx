@@ -8,20 +8,6 @@ import {Component, ComponentProps} from './Component';
 export default {
   title: 'Bookpage/Header/Component',
   component: Component,
-
-  args: {
-    book: {
-      title: 'Sample',
-      cover: placeholder['210x297'],
-      authors: [
-        {
-          id: '1',
-          name: 'Author',
-          roles: ['原作'],
-        },
-      ],
-    },
-  },
   argTypes: {
     className: {table: {disable: true}},
     book: {table: {disable: true}},
@@ -41,3 +27,21 @@ export default {
 export const Primary: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx('w-full')} />
 );
+Primary.args = {
+  book: {
+    title: 'Sample',
+    cover: placeholder['210x297'],
+    authors: [
+      {
+        id: '1',
+        name: 'Author',
+        roles: ['原作'],
+      },
+    ],
+    isbn: '9784764905870',
+    publisher: '小学館',
+    pages: 192,
+    date: '2020年11月7日',
+    language: '日本語',
+  },
+};

@@ -8,7 +8,7 @@ export default {
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
-    authors: {table: {disable: true}},
+    book: {table: {disable: true}},
   },
 } as Meta;
 
@@ -19,10 +19,10 @@ Primary.args = {
   book: {
     title: 'Sample',
     isbn: '9784774142043',
-    pages: null,
-    date: null,
-    publisher: null,
-    language: null,
+    publisher: '小学館',
+    pages: 192,
+    date: '2020年11月7日',
+    language: '日本語',
     authors: [
       {
         id: '1',

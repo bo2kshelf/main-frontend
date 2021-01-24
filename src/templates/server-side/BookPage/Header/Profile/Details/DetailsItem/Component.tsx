@@ -5,27 +5,27 @@ import React from 'react';
 
 export type ComponentProps = {
   className?: string;
-  detail: {
-    key: string;
-    value: string;
-  };
+  detailKey: string;
+  detailValue: string;
   icon: IconProp;
 };
 
 export const Component: React.FC<ComponentProps> = ({
   className,
-  detail: {key, value},
+  detailKey: key,
+  detailValue: value,
   icon,
 }) => (
   <tr className={clsx(className)}>
-    <td className={clsx('flex', 'items-center', 'px-2')}>
+    <td className={clsx('flex', 'items-center', 'py-2', 'px-4', 'border')}>
       <FontAwesomeIcon
-        className={clsx('text-md', 'text-gray-500', 'mr-2')}
+        className={clsx('text-md', 'text-gray-400', 'mr-2')}
+        fixedWidth
         icon={icon}
       />
       <span className={clsx('text-sm', 'select-none')}>{key}</span>
     </td>
-    <td className={clsx('px-2')}>
+    <td className={clsx('px-4', 'border')}>
       <span className={clsx('select-all')}>{value}</span>
     </td>
   </tr>

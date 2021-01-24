@@ -7,10 +7,3 @@ export {
   PagesDetail,
   PublisherDetail,
 } from './Container';
-export type {
-  DateDetailType,
-  ISBNDetailType,
-  LanguageDetailType,
-  PagesDetailType,
-  PublisherDetailType,
-} from './Container';

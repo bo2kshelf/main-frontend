@@ -1,14 +1,14 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import clsx from 'clsx';
 import React from 'react';
-import {Component, ComponentProps} from './Component';
+import {Container, ContainerProps} from './Container';
 
 export default {
-  title: 'Bookpage/Header/Profile/Details/Component',
-  component: Component,
+  title: 'Bookpage/Header/Profile/Details/Container',
+  component: Container,
   argTypes: {
     className: {table: {disable: true}},
-    details: {table: {disable: true}},
+    book: {table: {disable: true}},
   },
   decorators: [
     (Story) => (
@@ -19,9 +19,9 @@ export default {
   ],
 } as Meta;
 
-export const Primary: Story<ComponentProps> = (args) => <Component {...args} />;
+export const Primary: Story<ContainerProps> = (args) => <Container {...args} />;
 Primary.args = {
-  details: {
+  book: {
     isbn: '9784764905870',
     publisher: '小学館',
     pages: 192,
