@@ -259,23 +259,14 @@ input CreateRecordDataInput {
   have: Boolean!
   read: Boolean!
   reading: Boolean!
-  user: CreateRecordDataUserInput!
 }
-input CreateRecordDataUserInput {
+input CreateRecordUserInput {
   userName: ID!
-}
-input CreateUserDataInput {
-  userName: ID!
-  displayName: String!
-  picture: String!
 }
 """A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
 scalar DateTime
 input DeleteRecordWhereInput {
   id: ID!
-}
-input DeleteUserWhereInput {
-  userName: ID!
 }
 type Record {
   id: ID!
@@ -287,7 +278,6 @@ type Record {
   book: Book!
 }
 input UpdateRecordDataInput {
-  bookId: ID
   have: Boolean
   read: Boolean
   reading: Boolean
@@ -321,8 +311,6 @@ enum UserRecordsArgsOrderByEnum {
   DESC
 }
 input UserRecordsArgsWhere {
-  id: ID
-  bookId: ID
   have: Boolean
   read: Boolean
   reading: Boolean
@@ -338,8 +326,8 @@ type Query {
   searchAuthors(after: String, first: Int, before: String, last: Int, query: SearchAuthorsQuery!): SearchAuthorsResult!
   searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
   searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
-  user(userName: ID!): User!
   currentUser: User!
+  user(userName: ID!): User!
   record(id: ID!): Record!
 }
 type Mutation {
@@ -348,10 +336,8 @@ type Mutation {
   createSeries(data: CreateSeriesInput!): Series!
   addBookToSeriesBooks(data: AddBookToSeriesBooksInput!): Series!
   addBookToSeriesRelatedBooks(data: AddBookToSeriesRelatedBooksInput!): Series!
-  createUser(data: CreateUserDataInput!): User!
   updateUser(where: UpdateUserWhereInput!, data: UpdateUserDataInput!): User!
-  deleteUser(where: DeleteUserWhereInput!): User!
-  createRecord(data: CreateRecordDataInput!): Record!
+  createRecord(user: CreateRecordUserInput!, data: CreateRecordDataInput!): Record!
   updateRecord(where: UpdateRecordDataUserInput!, data: UpdateRecordDataInput!): Record!
   deleteRecord(where: DeleteRecordWhereInput!): Record!
 }
