@@ -3,7 +3,11 @@ query UserPage($userName: ID!) {
     userName
     displayName
     picture
-    readRecords: records(take: 10, where: {read: true}) {
+    readRecords: records(
+      take: 10
+      where: {read: true}
+      orderBy: {updatedAt: DESC}
+    ) {
       id
       book {
         id
@@ -11,7 +15,23 @@ query UserPage($userName: ID!) {
         cover
       }
     }
-    readingRecords: records(take: 10, where: {reading: true}) {
+    readingRecords: records(
+      take: 10
+      where: {reading: true}
+      orderBy: {updatedAt: DESC}
+    ) {
+      id
+      book {
+        id
+        title
+        cover
+      }
+    }
+    haveRecords: records(
+      take: 10
+      where: {have: true}
+      orderBy: {updatedAt: DESC}
+    ) {
       id
       book {
         id
