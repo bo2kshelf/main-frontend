@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import React from 'react';
+import {ProfileSection, ProfileSectionProps} from './ProfileSection';
 import {
   HaveRecordsSection,
   ReadingRecordsSection,
   ReadRecordsSection,
   RecordsSectionProps,
-} from './BooksListSection';
-import {ProfileSection, ProfileSectionProps} from './ProfileSection';
+} from './RecordsSection';
 
 export type ComponentProps = {
   className?: string;
