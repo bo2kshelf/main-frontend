@@ -1,6 +1,7 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import clsx from 'clsx';
 import React from 'react';
+import {PageLayout} from '~/components/layout/PageLayout';
 import {icons, placeholder} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
@@ -45,6 +46,13 @@ export default {
     reading: {table: {disable: true}},
     have: {table: {disable: true}},
   },
+  decorators: [
+    (Story) => (
+      <PageLayout className={clsx('container', 'mx-auto')}>
+        <Story />
+      </PageLayout>
+    ),
+  ],
 } as Meta;
 
 export const Primary: Story<ComponentProps> = (args) => (
