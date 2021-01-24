@@ -29,12 +29,12 @@ export const PlainComponent: React.FC<ComponentProps> = ({
 
 export const Component = styled(PlainComponent)`
   perspective: 400px;
-  & > .cover {
+  > .cover {
     transform-origin: center 5%;
     transition: transform 0.25s cubic-bezier(0.29, 0.12, 0.355, 1);
   }
   &:hover {
-    & > .cover {
+    > .cover {
       transform: translateZ(12px) rotateX(5deg);
     }
   }
