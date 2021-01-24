@@ -11,4 +11,8 @@ export default {
 } as Meta;
 
 export const Primary: Story<ComponentProps> = (args) => <Component {...args} />;
-Primary.args = {};
+Primary.args = {
+  i18n: {
+    title: 'SnO2WMaNが読んだ本',
+  },
+};
