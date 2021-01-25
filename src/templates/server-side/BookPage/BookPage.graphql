@@ -20,7 +20,7 @@ query BookPage($id: ID!) {
     relatedSeries {
       id
       title
-      books {
+      books(first: 10) {
         aggregate {
           count
         }

@@ -20,6 +20,13 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
         publisher: null,
         pages: null,
       }}
+      series={book.relatedSeries.map((series) => ({
+        ...series,
+        books: series.books.edges.map(({node: {book}}) => ({
+          ...book,
+          cover: book.cover || null,
+        })),
+      }))}
     />
   );
 };

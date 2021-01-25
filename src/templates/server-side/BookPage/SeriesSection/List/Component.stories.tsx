@@ -6,12 +6,11 @@ import {placeholder} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'BookPage/Component',
+  title: 'Bookpage/SeriesSection/List/Component',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
-    book: {table: {disable: true}},
-    series: {table: {disable: true}},
+    books: {table: {disable: true}},
   },
   parameters: {
     layout: 'fullscreen',
@@ -29,29 +28,9 @@ export const Primary: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx('w-full')} />
 );
 Primary.args = {
-  book: {
-    title: 'Sample',
+  books: [...new Array(10)].map((_, i) => ({
+    id: `${i + 1}`,
+    title: `SAMPLE (${i + 1})`,
     cover: placeholder['210x297'],
-    authors: [
-      {
-        id: '1',
-        name: 'Author',
-        roles: ['原作'],
-      },
-    ],
-    isbn: '9784764905870',
-    publisher: '小学館',
-    pages: 192,
-    date: '2020年11月7日',
-    language: '日本語',
-  },
-  series: [...new Array(2)].map((_, seriesId) => ({
-    id: `${seriesId}`,
-    title: `Sample (${seriesId})`,
-    books: [...new Array(10)].map((_, bookId) => ({
-      id: `${bookId}`,
-      title: `Sample (${bookId})`,
-      cover: placeholder['210x297'],
-    })),
   })),
 };
