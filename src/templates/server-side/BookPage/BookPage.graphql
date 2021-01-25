@@ -1,0 +1,41 @@
+query AllBookPages {
+  allBooks {
+    id
+  }
+}
+
+query BookPage($id: ID!) {
+  book(id: $id) {
+    id
+    title
+    isbn
+    cover
+    authors {
+      id
+      roles
+      author {
+        id
+        name
+      }
+    }
+    relatedSeries {
+      id
+      title
+      books(first: 10) {
+        aggregate {
+          count
+        }
+        edges {
+          node {
+            id
+            book {
+              id
+              title
+              cover
+            }
+          }
+        }
+      }
+    }
+  }
+}
