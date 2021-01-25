@@ -4,7 +4,8 @@
     "plugin:@shopify/typescript",
     "plugin:@shopify/jest",
     "plugin:@shopify/react",
-    "plugin:@shopify/prettier"
+    "plugin:@shopify/prettier",
+    "plugin:@shopify/graphql"
   ],
   "rules": {
     "@typescript-eslint/consistent-type-definitions": [2, "type"],
