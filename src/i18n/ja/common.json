@@ -9,5 +9,6 @@
   "page": "{{page}}ページ",
   "publish_date": "発売日",
   "publisher": "出版社",
-  "language": "言語"
+  "language": "言語",
+  "title": "タイトル"
 }
