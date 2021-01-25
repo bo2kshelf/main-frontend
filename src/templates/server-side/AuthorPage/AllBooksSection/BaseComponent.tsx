@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React from 'react';
-import {List, ListProps} from './List';
+import {Component, ComponentProps} from '../../BookPage/SeriesSection/List';
 
 export type BaseComponentProps = {
   className?: string;
-  books: ListProps['books'];
+  books: ComponentProps['books'];
   i18n: {
     title: string;
   };
@@ -18,6 +18,6 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
     <div className={clsx('w-full', 'max-w-screen-xl', 'mx-auto', 'mb-4')}>
       <h2 className={clsx('text-2xl')}>{i18n.title}</h2>
     </div>
-    <List books={books} />
+    <Component books={books} />
   </div>
 );
