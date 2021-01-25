@@ -1,7 +1,7 @@
 import clsx from 'clsx';
-import NextImage from 'next/image';
 import NextLink from 'next/link';
 import React from 'react';
+import {Icon} from '~/components/common/Icon';
 
 export type ComponentProps = {
   className?: string;
@@ -19,14 +19,7 @@ export const Component: React.FC<ComponentProps> = ({
 }) => (
   <NextLink href={link}>
     <a className={clsx(className, 'flex', 'py-2', 'px-4', 'hover:bg-blue-50')}>
-      <div className={clsx('mr-4', 'relative', 'w-12', 'h-12')}>
-        <NextImage
-          className={clsx('rounded-full')}
-          src={picture}
-          width={64}
-          height={64}
-        />
-      </div>
+      <Icon className={clsx('mr-4', 'w-12', 'h-12')} picture={picture} />
       <div className={clsx('flex', 'flex-col', 'justify-center', 'w-40')}>
         <span className={clsx('font-bold', 'select-all', 'truncate')}>
           {displayName}

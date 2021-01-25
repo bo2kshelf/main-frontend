@@ -1,9 +1,9 @@
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import NextImage from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
+import {Icon} from '~/components/common/Icon';
 import {Dropdown, DropdownProps} from './Dropdown';
 
 export type ComponentProps = {
@@ -43,9 +43,10 @@ export const PlainComponent: React.FC<ComponentProps> = ({
         </div>
       )}
       {data && (
-        <div className={clsx('relative', 'w-full', 'h-full', 'cursor-pointer')}>
-          <NextImage src={data.picture} width={64} height={64} />
-        </div>
+        <Icon
+          className={clsx('w-full', 'h-full', 'cursor-pointer')}
+          picture={data.picture}
+        />
       )}
     </summary>
     {data && (
