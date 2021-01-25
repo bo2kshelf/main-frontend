@@ -5,17 +5,19 @@ import React from 'react';
 
 export type ComponentProps = {
   className?: string;
+  link: string;
   picture: string;
   userName: string;
   displayName: string;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
+  link,
   picture,
   userName,
   displayName,
 }) => (
-  <NextLink href="/profile">
+  <NextLink href={link}>
     <a className={clsx(className, 'flex', 'py-2', 'px-4', 'hover:bg-blue-50')}>
       <div className={clsx('mr-4', 'relative', 'w-12', 'h-12')}>
         <NextImage
