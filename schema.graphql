@@ -30,7 +30,6 @@ type Book {
   cover: String
 }
 type BookAuthorsConnection {
-  id: ID!
   roles: [String!]
   author: Author!
 }
@@ -103,7 +102,6 @@ type Series {
   relatedAuthors: [Author!]!
 }
 type SeriesBooksConnection {
-  id: ID!
   serial: Float!
   book: Book!
 }
@@ -137,7 +135,6 @@ type SeriesEntityPageInfo {
   endCursor: String
 }
 type SeriesRelatedBooksConnection {
-  id: ID!
   book: Book!
 }
 type SeriesRelatedBooksConnectionAggregate {
