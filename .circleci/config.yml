@@ -35,7 +35,12 @@ jobs:
           pkg-manager: yarn
       - restore_cache:
           key: eslint-{{ .Branch }}-{{ checksum "yarn.lock" }}
-      - run: yarn run lint:eslint --cache --format junit --output-file ./junit/eslint.xml
+      - run:
+          command: |
+            yarn run lint:eslint --cache \
+            --format junit --output-file ./junit/eslint.xml
+          environment:
+            GRAPHQL_API_SCHEMA: ./schema.graphql
       - save_cache:
           key: eslint-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
@@ -67,9 +72,11 @@ jobs:
 
 workflows:
   version: 2
-  main:
+  develop:
     jobs:
       - lint-eslint
       - lint-prettier
       - lint-stylelint
-      - ts-check
+      - ts-check:
+          requires:
+            - lint-eslint
