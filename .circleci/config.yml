@@ -26,7 +26,9 @@ jobs:
           pkg-manager: yarn
       - run: yarn run lint:prettier
 
-  lint-eslint:
+  lint-eslint-local: &lint-eslint
+    environment:
+      GRAPHQL_API_SCHEMA: ./schema.graphql
     docker:
       - image: circleci/node:14.15.3
     steps:
@@ -35,18 +37,22 @@ jobs:
           pkg-manager: yarn
       - restore_cache:
           key: eslint-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - run: yarn run codegen
       - run:
           command: |
             yarn run lint:eslint --cache \
             --format junit --output-file ./junit/eslint.xml
-          environment:
-            GRAPHQL_API_SCHEMA: ./schema.graphql
       - save_cache:
           key: eslint-{{ .Branch }}-{{ checksum "yarn.lock" }}
           paths:
             - .eslintcache
       - store_test_results:
           path: ./junit
+
+  lint-eslint-production:
+    <<: *lint-eslint
+    environment:
+      GRAPHQL_API_SCHEMA: ./schema.graphql
 
   lint-stylelint:
     docker:
@@ -57,26 +63,30 @@ jobs:
           pkg-manager: yarn
       - run: yarn run lint:stylelint
 
-  ts-check:
+  ts-check-local: &ts-check
     docker:
       - image: circleci/node:14.15.3
+    environment:
+      GRAPHQL_API_SCHEMA: ./schema.graphql
     steps:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
-      - run:
-          command: yarn run codegen
-          environment:
-            GRAPHQL_API_SCHEMA: ./schema.graphql
+      - run: yarn run codegen
       - run: yarn run ts-check
+
+  ts-check-production:
+    <<: *ts-check
+    environment:
+      GRAPHQL_API_SCHEMA: ${GRAPHQL_API_ENDPOINT}
 
 workflows:
   version: 2
   develop:
     jobs:
-      - lint-eslint
+      - lint-eslint-local
       - lint-prettier
       - lint-stylelint
-      - ts-check:
+      - ts-check-local:
           requires:
-            - lint-eslint
+            - lint-eslint-local
