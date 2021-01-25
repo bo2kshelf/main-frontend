@@ -1,17 +1,6 @@
 import {useUser} from '@auth0/nextjs-auth0';
-import {gql} from 'graphql-request';
 import React, {createContext, useEffect, useState} from 'react';
 import {useCurrentUserLazyQuery} from '~/_generated/apollo';
-
-export const CurrentUserQuery = gql`
-  query CurrentUser {
-    currentUser {
-      userName
-      displayName
-      picture
-    }
-  }
-`;
 
 export type CurrentUser = {
   picture: string;
