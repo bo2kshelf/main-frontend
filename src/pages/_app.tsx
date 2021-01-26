@@ -1,7 +1,7 @@
-import {UserProvider} from '@auth0/nextjs-auth0';
 import {AppProps} from 'next/dist/next-server/lib/router/router';
 import React from 'react';
 import 'tailwindcss/tailwind.css';
+import {UserProvider} from '~/auth';
 import {AppLayout} from '~/components/layout/AppLayout';
 import {Configured18nextProvider} from '~/i18n';
 import {ConfiguredApolloProvider} from '~/lib/apollo-provider';

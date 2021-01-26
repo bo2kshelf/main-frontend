@@ -1,5 +1,5 @@
-import {getAccessToken, withApiAuthRequired} from '@auth0/nextjs-auth0';
 import {GraphQLClient} from 'graphql-request';
+import {getAccessToken, withApiAuthRequired} from '~/auth';
 import env from '~/lib/env';
 
 const client = new GraphQLClient(env.graphqlAPIEndpoint);
