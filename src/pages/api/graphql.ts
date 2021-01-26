@@ -6,9 +6,8 @@ const client = new GraphQLClient(env.graphqlAPIEndpoint);
 
 export default withApiAuthRequired(async (req, res) => {
   try {
-    const {accessToken} = await getAccessToken(req, res, {
-      scopes: ['read:users', 'create:users', 'update:users', 'delete:users'],
-    });
+    const {accessToken} = await getAccessToken(req, res, {});
+
     await client
       .rawRequest(req.body.query, req.body?.variables, {
         authorization: `Bearer ${accessToken}`,
