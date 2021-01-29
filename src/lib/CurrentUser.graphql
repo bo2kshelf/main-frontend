@@ -1,7 +1,0 @@
-query CurrentUser {
-  currentUser {
-    userName
-    displayName
-    picture
-  }
-}

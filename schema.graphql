@@ -341,7 +341,7 @@ type Query {
   searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
   searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
   loginGitHubUrl: String!
-  currentUser: User
+  currentUser: User!
   profile(id: ID, userName: ID): Profile!
   record(id: ID!): Record!
 }

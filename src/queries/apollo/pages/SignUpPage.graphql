@@ -1,8 +1,10 @@
-query PersonalUserPage {
+query SignUpPage {
   currentUser {
     id
     profile {
       id
+    }
+    github {
       displayName
       userName
       picture
