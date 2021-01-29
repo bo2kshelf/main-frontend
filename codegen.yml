@@ -11,7 +11,6 @@ generates:
     documents:
       - 'src/components/**/*.graphql'
       - 'src/templates/browser-side/**/*.graphql'
-      - 'src/lib/CurrentUser.graphql'
     plugins:
       - 'typescript'
       - 'typescript-operations'
@@ -19,6 +18,7 @@ generates:
   ./src/_generated/graphql-request.ts:
     documents:
       - 'src/templates/server-side/**/*.graphql'
+      - 'src/auth/queries/**/*.graphql'
     plugins:
       - 'typescript'
       - 'typescript-operations'

@@ -5,20 +5,16 @@ import {
   NextPage,
 } from 'next';
 import React from 'react';
-import {createSdk} from '~/lib/GraphQLRequest';
+import {graphqlSdk} from '~/lib/graphql-request';
 import {AuthorPage, AuthorPageProps} from '~/templates/server-side/AuthorPage';
 
 export type UrlQuery = {id: string};
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
-  const gqlsdk = await createSdk();
-  return gqlsdk
+  return graphqlSdk
     .AllAuthorPages()
     .then(({allAuthors}) => allAuthors.map(({id}) => ({params: {id}})))
-    .then((paths) => ({
-      paths,
-      fallback: true,
-    }));
+    .then((paths) => ({paths, fallback: true}));
 };
 
 export const getStaticProps: GetStaticProps<
@@ -26,8 +22,9 @@ export const getStaticProps: GetStaticProps<
   UrlQuery
 > = async ({params}) => {
   if (params) {
-    const gqlsdk = await createSdk();
-    return gqlsdk.AuthorPage({id: params.id}).then((data) => ({props: data}));
+    return graphqlSdk
+      .AuthorPage({id: params.id})
+      .then((data) => ({props: data}));
   } else throw new Error('Invalid parameters.');
 };
 

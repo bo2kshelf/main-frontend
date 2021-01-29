@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import {CurrentUser} from '~/state/CurrentUser';
 import {Login} from './Login';
 import {UserInfo} from './UserInfo';
 
@@ -7,6 +8,7 @@ export type ComponentProps = {
   className?: string;
   userLoading: boolean;
   userAuthenticated: boolean;
+  currentUser: CurrentUser | null | undefined;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,

@@ -4,7 +4,7 @@ import {
   NextPage,
 } from 'next';
 import React from 'react';
-import {createSdk} from '~/lib/GraphQLRequest';
+import {graphqlSdk} from '~/lib/graphql-request';
 import {UserPage} from '~/templates/server-side/UserPage';
 
 export type UrlQuery = {username: string};
@@ -13,9 +13,7 @@ export const getServerSideProps = async ({
   params,
 }: GetServerSidePropsContext<UrlQuery>) => {
   if (params) {
-    const gqlsdk = await createSdk();
-
-    return gqlsdk
+    return graphqlSdk
       .UserPage({userName: params.username})
       .then((data) => ({props: data}));
   }

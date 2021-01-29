@@ -1,11 +1,10 @@
 import {AppProps} from 'next/dist/next-server/lib/router/router';
 import React from 'react';
+import {RecoilRoot} from 'recoil';
 import 'tailwindcss/tailwind.css';
-import {UserProvider} from '~/auth';
 import {AppLayout} from '~/components/layout/AppLayout';
 import {Configured18nextProvider} from '~/i18n';
 import {ConfiguredApolloProvider} from '~/lib/apollo-provider';
-import {CurrentUserProvider} from '~/lib/CurrentUserProvider';
 import '~/styles/index.css';
 
 export const App: React.FC<AppProps> = ({
@@ -13,17 +12,15 @@ export const App: React.FC<AppProps> = ({
   pageProps,
 }) => {
   return (
-    <UserProvider>
-      <ConfiguredApolloProvider>
-        <CurrentUserProvider>
-          <Configured18nextProvider>
-            <AppLayout>
-              <PageComponent {...pageProps} />
-            </AppLayout>
-          </Configured18nextProvider>
-        </CurrentUserProvider>
-      </ConfiguredApolloProvider>
-    </UserProvider>
+    <ConfiguredApolloProvider>
+      <Configured18nextProvider>
+        <RecoilRoot>
+          <AppLayout>
+            <PageComponent {...pageProps} />
+          </AppLayout>
+        </RecoilRoot>
+      </Configured18nextProvider>
+    </ConfiguredApolloProvider>
   );
 };
 

@@ -1,10 +1,9 @@
-query PersonalUserPage {
+query GetCurrentUser {
   currentUser {
     id
     profile {
-      id
-      displayName
       userName
+      displayName
       picture
     }
   }
