@@ -1,30 +1,18 @@
 import clsx from 'clsx';
 import React from 'react';
-import {CurrentUser} from '~/state/CurrentUser';
-import {Login} from './Login';
-import {UserInfo} from './UserInfo';
+import {User} from './User';
 
 export type ComponentProps = {
   className?: string;
-  userLoading: boolean;
-  userAuthenticated: boolean;
-  currentUser: CurrentUser | null | undefined;
 };
-export const Component: React.FC<ComponentProps> = ({
-  className,
-  children,
-  userLoading,
-  userAuthenticated,
-}) => (
+export const Component: React.FC<ComponentProps> = ({className}) => (
   <nav className={clsx(className, 'bg-gray-700', 'flex', 'items-center')}>
     <div
       className={clsx('container', 'mx-auto', 'px-12', 'flex', 'items-center')}
     >
       <div className={clsx('flex-grow')} />
       <div className={clsx()}>
-        {userLoading && <div className={clsx()} />}
-        {!userLoading && !userAuthenticated && <Login />}
-        {!userLoading && userAuthenticated && <UserInfo />}
+        <User />
       </div>
     </div>
   </nav>

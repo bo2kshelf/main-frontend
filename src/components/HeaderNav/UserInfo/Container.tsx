@@ -1,15 +1,8 @@
-import clsx from 'clsx';
 import React from 'react';
-import {useCurrentUser} from '~/auth/useCurrentUser';
-import {Component} from './Component';
+import {Component, ComponentProps} from './Component';
 
-export type ContainerProps = {className?: string};
+export type ContainerProps = ComponentProps;
 export const Container: React.FC<ContainerProps> = ({...props}) => {
-  const {currentUser, isLoading} = useCurrentUser();
-
-  if (!currentUser) return <div className={clsx()} />;
-  return (
-    <Component {...props} loading={isLoading} data={currentUser.profile} />
-  );
+  return <Component {...props} />;
 };
 Container.displayName = 'UserInfo';

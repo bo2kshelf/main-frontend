@@ -11,7 +11,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
   i18n,
 }) => (
   <div className={clsx(className)}>
-    <NextLink href="/api/auth/login">
+    <NextLink href="/login">
       <a>
         <button
           type="button"

@@ -23,20 +23,11 @@ export default {
   ],
 } as Meta;
 
-export const Loading: Story<ComponentProps> = (args) => (
-  <Component {...args} className={clsx()} />
-);
-Loading.args = {
-  loading: true,
-  data: undefined,
-};
-
 export const Loaded: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx()} />
 );
 Loaded.args = {
-  loading: false,
-  data: {
+  currentUser: {
     userName: 'INTERNET_EXPLORER',
     displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
     picture: icons[0],

@@ -1,5 +1,3 @@
-import {faUser} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import React from 'react';
 import styled from 'styled-components';
@@ -8,13 +6,11 @@ import {Dropdown, DropdownProps} from './Dropdown';
 
 export type ComponentProps = {
   className?: string;
-  loading: boolean;
-  data: DropdownProps['data'] | null;
+  currentUser: DropdownProps['data'];
 };
 export const PlainComponent: React.FC<ComponentProps> = ({
   className,
-  loading,
-  data,
+  currentUser: data,
 }) => (
   <details className={clsx(className, 'relative', 'select-none')}>
     <summary
@@ -26,35 +22,15 @@ export const PlainComponent: React.FC<ComponentProps> = ({
         'overflow-hidden',
       )}
     >
-      {loading && (
-        <div
-          className={clsx(
-            'w-full',
-            'h-full',
-            'bg-gray-400',
-            'text-white',
-            'text-lg',
-            'flex',
-            'justify-center',
-            'items-center',
-          )}
-        >
-          <FontAwesomeIcon icon={faUser} />
-        </div>
-      )}
-      {data && (
-        <Icon
-          className={clsx('w-full', 'h-full', 'cursor-pointer')}
-          picture={data.picture}
-        />
-      )}
-    </summary>
-    {data && (
-      <Dropdown
-        data={data}
-        className={clsx('absolute', 'mt-0.5', 'top-full', 'right-0', 'z-50')}
+      <Icon
+        className={clsx('w-full', 'h-full', 'cursor-pointer')}
+        picture={data.picture}
       />
-    )}
+    </summary>
+    <Dropdown
+      data={data}
+      className={clsx('absolute', 'mt-0.5', 'top-full', 'right-0', 'z-50')}
+    />
   </details>
 );
 
