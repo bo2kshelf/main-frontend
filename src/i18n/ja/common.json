@@ -10,5 +10,8 @@
   "publish_date": "発売日",
   "publisher": "出版社",
   "language": "言語",
-  "title": "タイトル"
+  "title": "タイトル",
+  "user_name": "アカウント名",
+  "display_name": "表示される名前",
+  "sign_up": "ユーザー登録"
 }

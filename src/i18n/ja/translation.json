@@ -2,5 +2,10 @@
   "{{name}}が読んだ本": "{{name}}が読んだ本",
   "{{name}}が読んでいる本": "{{name}}が読んでいる本",
   "{{name}}が持っている本": "{{name}}が持っている本",
-  "{{name}}による本": "{{name}}による本"
+  "{{name}}による本": "{{name}}による本",
+  "{{provider}}でログイン": "{{provider}}でログイン",
+  "signup": {
+    "user_name_placeholder": "bo2kshelf",
+    "display_name_placeholder": "アカウント名"
+  }
 }
