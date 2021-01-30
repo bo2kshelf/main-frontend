@@ -343,6 +343,7 @@ type Query {
   loginGitHubUrl: String!
   currentUser: User!
   profile(id: ID, userName: ID): Profile!
+  allProfiles: [Profile!]!
   record(id: ID!): Record!
 }
 type Mutation {
