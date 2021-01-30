@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
-import {useCurrentUser} from '~/auth/useCurrentUser';
+import {useCurrentUser} from '~/lib/useCurrentUser';
 import {UserInfo} from '../UserInfo';
 
 export type ContainerProps = {className?: string};

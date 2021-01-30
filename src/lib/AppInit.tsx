@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
 import {useSetRecoilState} from 'recoil';
-import {graphqlSdk} from '~/lib/graphql-request';
-import {currentUserState} from '~/state/CurrentUser';
+import {graphqlSdk} from '~/lib/GraphQLRequest';
+import {currentUserState} from '~/states/CurrentUser';
 
 export function AppInit() {
   const setCurrentUser = useSetRecoilState(currentUserState);

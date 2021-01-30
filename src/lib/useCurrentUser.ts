@@ -1,5 +1,5 @@
 import {useRecoilValue} from 'recoil';
-import {currentUserState} from '~/state/CurrentUser';
+import {currentUserState} from '~/states/CurrentUser';
 
 export function useCurrentUser() {
   const currentUser = useRecoilValue(currentUserState);

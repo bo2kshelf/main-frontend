@@ -1,10 +1,10 @@
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {useCurrentUser} from './useCurrentUser';
-import {useRequireLogin} from './useRequireLogin';
+import {useLoggedIn} from './useLoggedIn';
 
 export function useSignedUp() {
-  useRequireLogin();
+  useLoggedIn();
 
   const {isLoading, isAuthenticated, isSignedUp} = useCurrentUser();
   const router = useRouter();
@@ -16,4 +16,6 @@ export function useSignedUp() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [isLoading, isAuthenticated, isSignedUp],
   );
+
+  return {isLoading};
 }

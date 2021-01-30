@@ -1,17 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 
 import {serialize} from 'cookie';
-import {GraphQLClient} from 'graphql-request';
 import {NextApiRequest, NextApiResponse} from 'next';
-import env from '~/lib/env';
-import {getSdk} from '~/_generated/graphql-request';
+import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {TOKEN_KEY} from '../../graphql';
-
-const client = new GraphQLClient(env.graphqlAPIEndpoint);
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.query.code && typeof req.query.code === 'string') {
-    const {loginGitHub} = await getSdk(client).LoginGitHub({
+    const {loginGitHub} = await graphqlSdk.LoginGitHub({
       code: req.query.code,
     });
 
