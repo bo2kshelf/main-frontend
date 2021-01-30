@@ -6,10 +6,6 @@ export type LayoutProps = {
 };
 
 export const Layout: React.FC<LayoutProps> = ({className, children}) => {
-  return (
-    <div className={clsx(className, 'container', 'mx-auto', 'px-8', 'py-12')}>
-      {children}
-    </div>
-  );
+  return <div className={clsx(className, 'px-8', 'py-12')}>{children}</div>;
 };
 Layout.displayName = 'PageLayout';

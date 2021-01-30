@@ -9,9 +9,17 @@ export type ComponentProps = {
 
 export const Component: React.FC<ComponentProps> = ({className, children}) => {
   return (
-    <div className={clsx(className, 'bg-gray-50', 'min-h-screen')}>
+    <div
+      className={clsx(
+        className,
+        'bg-gray-50',
+        'min-h-screen',
+        'flex',
+        'flex-col',
+      )}
+    >
       <HeaderNav className={clsx('w-full', 'h-24')} />
-      <PageLayout className={clsx('container', 'mx-auto')}>
+      <PageLayout className={clsx('container', 'mx-auto', 'flex-grow')}>
         {children}
       </PageLayout>
     </div>
