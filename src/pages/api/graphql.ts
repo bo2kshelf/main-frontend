@@ -1,10 +1,11 @@
 import {GraphQLClient} from 'graphql-request';
 import {NextApiHandler} from 'next';
-import env from '~/lib/env';
+import {graphqlConfig} from '~/lib/env';
 
 export const TOKEN_KEY = 'token';
 
-const client = new GraphQLClient(env.graphqlAPIEndpoint);
+export const client = new GraphQLClient(graphqlConfig.externalEndpoint);
+
 const handler: NextApiHandler = async (req, res) => {
   try {
     const authorization = {
