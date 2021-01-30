@@ -15,6 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       'Set-Cookie',
       serialize(TOKEN_KEY, loginGitHub.accessToken, {
         path: '/',
+        httpOnly: true,
         sameSite: 'strict',
         maxAge: 3600,
       }),
