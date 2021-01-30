@@ -8,14 +8,7 @@ export type IconProps = {
 };
 export const Icon: React.FC<IconProps> = ({className, picture}) => (
   <div
-    className={clsx(
-      className,
-      'relative',
-      'overflow-hidden',
-      'rounded-full',
-      'border',
-      'border-white',
-    )}
+    className={clsx(className, 'relative', 'overflow-hidden', 'rounded-full')}
   >
     <NextImage className={clsx()} src={picture} width={256} height={256} />
   </div>
