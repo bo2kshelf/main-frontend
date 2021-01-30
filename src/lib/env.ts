@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-process-env */
 
 export const graphqlConfig = {
