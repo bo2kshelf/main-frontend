@@ -13,10 +13,15 @@ import {UserPage, UserPageProps} from '~/templates/server-side/UserPage';
 export type UrlQuery = {username: string};
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
-  return {
-    paths: [],
-    fallback: true,
-  };
+  return graphqlSdk
+    .AllUserPages()
+    .then(({allProfiles}) =>
+      allProfiles.map(({userName}) => ({params: {username: userName}})),
+    )
+    .then((paths) => ({
+      paths,
+      fallback: true,
+    }));
 };
 
 export const getStaticProps: GetStaticProps<UserPageProps, UrlQuery> = async ({

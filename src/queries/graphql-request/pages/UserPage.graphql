@@ -1,3 +1,9 @@
+query AllUserPages {
+  allProfiles {
+    userName
+  }
+}
+
 query UserPage($userName: ID!) {
   profile(userName: $userName) {
     userName
