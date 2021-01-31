@@ -1,6 +1,6 @@
 /* eslint-disable no-process-env */
 
 export const graphqlConfig = {
-  internalEndpoint: 'http://localhost:3000/api/graphql',
+  tokenKey: process.env.GRAPHQL_COOKIE_TOKEN_KEY!,
   externalEndpoint: process.env.GRAPHQL_API_ENDPOINT!,
 };

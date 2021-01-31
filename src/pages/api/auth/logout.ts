@@ -2,12 +2,12 @@
 
 import {serialize} from 'cookie';
 import {NextApiRequest, NextApiResponse} from 'next';
-import {TOKEN_KEY} from '../graphql';
+import {graphqlConfig} from '~/lib/env';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   res.setHeader(
     'Set-Cookie',
-    serialize(TOKEN_KEY, '', {path: '/', maxAge: -1}),
+    serialize(graphqlConfig.tokenKey, '', {path: '/', maxAge: -1}),
   );
 
   res.redirect('/');
