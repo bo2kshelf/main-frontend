@@ -1,0 +1,20 @@
+mutation SignUp(
+  $userId: ID!
+  $userName: ID!
+  $displayName: String!
+  $picture: String!
+) {
+  createProfile(
+    data: {
+      userId: $userId
+      userName: $userName
+      displayName: $displayName
+      picture: $picture
+    }
+  ) {
+    id
+    userName
+    displayName
+    picture
+  }
+}

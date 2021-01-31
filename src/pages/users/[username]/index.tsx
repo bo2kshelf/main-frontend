@@ -1,28 +1,50 @@
 import {
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
   NextPage,
 } from 'next';
+import {useRouter} from 'next/router';
 import React from 'react';
-import {createSdk} from '~/lib/GraphQLRequest';
-import {UserPage} from '~/templates/server-side/UserPage';
+import {graphqlSdk} from '~/lib/GraphQLRequest';
+import {LoadingPage} from '~/templates/common/LoadingPage';
+import {UserPage, UserPageProps} from '~/templates/server-side/UserPage';
 
 export type UrlQuery = {username: string};
 
-export const getServerSideProps = async ({
-  params,
-}: GetServerSidePropsContext<UrlQuery>) => {
-  if (params) {
-    const gqlsdk = await createSdk();
-
-    return gqlsdk
-      .UserPage({userName: params.username})
-      .then((data) => ({props: data}));
-  }
-  throw new Error('Invalid parameters.');
+export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
+  return graphqlSdk
+    .AllUserPages()
+    .then(({allProfiles}) =>
+      allProfiles.map(({userName}) => ({params: {username: userName}})),
+    )
+    .then((paths) => ({
+      paths,
+      fallback: true,
+    }));
 };
 
-export const Page: NextPage<
-  InferGetServerSidePropsType<typeof getServerSideProps>
-> = (props) => <UserPage {...props} />;
+export const getStaticProps: GetStaticProps<UserPageProps, UrlQuery> = async ({
+  params,
+}) => {
+  if (!params) throw new Error('Invalid parameters.');
+
+  return graphqlSdk
+    .UserPage({userName: params.username})
+    .then((data) => ({
+      props: data,
+      revalidate: 60 * 60,
+    }))
+    .catch(() => ({notFound: true}));
+};
+
+export const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
+  props,
+) => {
+  const router = useRouter();
+
+  if (router.isFallback) return <LoadingPage />;
+
+  return <UserPage {...props} />;
+};
 export default Page;

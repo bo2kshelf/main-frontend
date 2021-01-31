@@ -30,6 +30,7 @@ type Book {
   cover: String
 }
 type BookAuthorsConnection {
+  id: ID!
   roles: [String!]
   author: Author!
 }
@@ -102,6 +103,7 @@ type Series {
   relatedAuthors: [Author!]!
 }
 type SeriesBooksConnection {
+  id: ID!
   serial: Float!
   book: Book!
 }
@@ -135,6 +137,7 @@ type SeriesEntityPageInfo {
   endCursor: String
 }
 type SeriesRelatedBooksConnection {
+  id: ID!
   book: Book!
 }
 type SeriesRelatedBooksConnectionAggregate {
@@ -251,6 +254,12 @@ type SearchSeriesResultPageInfo {
 type SearchSeriesResultPageInfoQuery {
   title: String!
 }
+input CreateProfileDataInput {
+  userName: ID!
+  displayName: String!
+  picture: String!
+  userId: ID!
+}
 input CreateRecordDataInput {
   bookId: ID!
   have: Boolean!
@@ -264,6 +273,39 @@ input CreateRecordUserInput {
 scalar DateTime
 input DeleteRecordWhereInput {
   id: ID!
+}
+type GitHubAuthPayload {
+  user: User!
+  accessToken: String!
+}
+type GitHubUser {
+  githubId: ID!
+  userName: ID!
+  displayName: String!
+  picture: String!
+}
+type Profile {
+  id: ID!
+  userName: ID!
+  displayName: String!
+  picture: String!
+  records(cursor: ProfileRecordsArgsCursor, skip: Int, take: Int, orderBy: ProfileRecordsArgsOrderBy, where: ProfileRecordsArgsWhere): [Record!]!
+}
+input ProfileRecordsArgsCursor {
+  id: ID!
+}
+input ProfileRecordsArgsOrderBy {
+  createdAt: ProfileRecordsArgsOrderByEnum
+  updatedAt: ProfileRecordsArgsOrderByEnum
+}
+enum ProfileRecordsArgsOrderByEnum {
+  ASC
+  DESC
+}
+input ProfileRecordsArgsWhere {
+  have: Boolean
+  read: Boolean
+  reading: Boolean
 }
 type Record {
   id: ID!
@@ -282,35 +324,10 @@ input UpdateRecordDataInput {
 input UpdateRecordDataUserInput {
   id: ID!
 }
-input UpdateUserDataInput {
-  userName: ID
-  displayName: String
-}
-input UpdateUserWhereInput {
-  userName: ID!
-}
 type User {
-  userName: ID!
-  displayName: String!
-  picture: String!
-  records(cursor: UserRecordsArgsCursor, skip: Int, take: Int, orderBy: UserRecordsArgsOrderBy, where: UserRecordsArgsWhere): [Record!]!
-  recordsCount: Int!
-}
-input UserRecordsArgsCursor {
   id: ID!
-}
-input UserRecordsArgsOrderBy {
-  createdAt: UserRecordsArgsOrderByEnum
-  updatedAt: UserRecordsArgsOrderByEnum
-}
-enum UserRecordsArgsOrderByEnum {
-  ASC
-  DESC
-}
-input UserRecordsArgsWhere {
-  have: Boolean
-  read: Boolean
-  reading: Boolean
+  profile: Profile
+  github: GitHubUser
 }
 type Query {
   author(id: ID!): Author!
@@ -323,8 +340,10 @@ type Query {
   searchAuthors(after: String, first: Int, before: String, last: Int, query: SearchAuthorsQuery!): SearchAuthorsResult!
   searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
   searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
+  loginGitHubUrl: String!
   currentUser: User!
-  user(userName: ID!): User!
+  profile(id: ID, userName: ID): Profile!
+  allProfiles: [Profile!]!
   record(id: ID!): Record!
 }
 type Mutation {
@@ -333,7 +352,8 @@ type Mutation {
   createSeries(data: CreateSeriesInput!): Series!
   addBookToSeriesBooks(data: AddBookToSeriesBooksInput!): Series!
   addBookToSeriesRelatedBooks(data: AddBookToSeriesRelatedBooksInput!): Series!
-  updateUser(where: UpdateUserWhereInput!, data: UpdateUserDataInput!): User!
+  loginGitHub(code: String!): GitHubAuthPayload!
+  createProfile(data: CreateProfileDataInput!): Profile!
   createRecord(user: CreateRecordUserInput!, data: CreateRecordDataInput!): Record!
   updateRecord(where: UpdateRecordDataUserInput!, data: UpdateRecordDataInput!): Record!
   deleteRecord(where: DeleteRecordWhereInput!): Record!

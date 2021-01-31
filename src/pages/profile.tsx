@@ -1,7 +1,23 @@
-import {withPageAuthRequired} from '@auth0/nextjs-auth0';
 import {NextPage} from 'next';
+import Error from 'next/error';
 import React from 'react';
 import {PersonalUserPage} from '~/templates/browser-side/PersonalUserPage';
+import {LoadingPage} from '~/templates/common/LoadingPage';
+import {usePersonalUserPageQuery} from '~/_generated/apollo';
+import {withPageSignedUp} from '../lib/withPageSignedUp';
 
-export const Page: NextPage = (props) => <PersonalUserPage {...props} />;
-export default withPageAuthRequired(Page);
+export const Page: NextPage = (props) => {
+  const {loading, data} = usePersonalUserPageQuery();
+
+  if (loading) return <LoadingPage />;
+  else if (!data || !data.currentUser.profile)
+    return <Error statusCode={404} />;
+
+  return (
+    <PersonalUserPage
+      {...props}
+      currentUser={{profile: data.currentUser.profile}}
+    />
+  );
+};
+export default withPageSignedUp(Page);

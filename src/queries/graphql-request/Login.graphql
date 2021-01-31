@@ -1,0 +1,11 @@
+mutation LoginGitHub($code: String!) {
+  loginGitHub(code: $code) {
+    accessToken
+    user {
+      id
+      profile {
+        id
+      }
+    }
+  }
+}

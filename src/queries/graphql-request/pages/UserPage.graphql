@@ -1,5 +1,11 @@
+query AllUserPages {
+  allProfiles {
+    userName
+  }
+}
+
 query UserPage($userName: ID!) {
-  user(userName: $userName) {
+  profile(userName: $userName) {
     userName
     displayName
     picture

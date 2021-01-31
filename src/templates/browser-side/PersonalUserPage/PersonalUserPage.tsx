@@ -1,8 +1,6 @@
 import clsx from 'clsx';
 import NextImage from 'next/image';
 import React from 'react';
-import {useTranslation} from 'react-i18next';
-import {usePersonalUserPageQuery} from '~/_generated/apollo';
 
 export type ComponentProps = {
   className?: string;
@@ -32,16 +30,18 @@ export const Component: React.FC<ComponentProps> = ({
   </main>
 );
 
-export type ContainerProps = Record<string, unknown>;
-export const Container: React.FC<ContainerProps> = ({...props}) => {
-  const {t} = useTranslation();
-
-  const {data, error, loading} = usePersonalUserPageQuery();
-
-  return (
-    <main>
-      {data && <Component {...data.currentUser} />}
-      {error && <p>{JSON.stringify(error)}</p>}
-    </main>
-  );
+export type ContainerProps = {
+  currentUser: {
+    profile: {
+      userName: string;
+      displayName: string;
+      picture: string;
+    };
+  };
+};
+export const Container: React.FC<ContainerProps> = ({
+  currentUser,
+  ...props
+}) => {
+  return <Component {...currentUser.profile} />;
 };

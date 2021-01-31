@@ -14,6 +14,7 @@
     "import/order": [0],
     "jest/valid-title": [0],
     "jest/lowercase-name": [0],
+    "jsx-a11y/label-has-for": [0],
     "jsx-a11y/anchor-is-valid": [
       2,
       {
@@ -21,7 +22,8 @@
         "specialLink": ["hrefLeft", "hrefRight"],
         "aspects": ["invalidHref", "preferButton"]
       }
-    ]
+    ],
+    "graphql/required-fields": [0]
   },
   "overrides": [
     {
