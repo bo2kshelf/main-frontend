@@ -9,17 +9,19 @@ export function AppInit() {
   useEffect(
     () => {
       (async () => {
-        try {
-          const {currentUser} = await graphqlSdk.GetCurrentUser();
-          setCurrentUser(
-            currentUser && {
-              ...currentUser,
-              profile: currentUser.profile || null,
-            },
-          );
-        } catch {
-          setCurrentUser(null);
-        }
+        await graphqlSdk
+          .GetCurrentUser()
+          .then(({currentUser}) =>
+            setCurrentUser(
+              currentUser && {
+                ...currentUser,
+                profile: currentUser.profile || null,
+              },
+            ),
+          )
+          .catch((error) => {
+            setCurrentUser(null);
+          });
       })();
     },
     [], // eslint-disable-line react-hooks/exhaustive-deps

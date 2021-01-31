@@ -2,8 +2,8 @@
 
 import {serialize} from 'cookie';
 import {NextApiRequest, NextApiResponse} from 'next';
+import {graphqlConfig} from '~/lib/env';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
-import {TOKEN_KEY} from '../../graphql';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.query.code && typeof req.query.code === 'string') {
@@ -13,7 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.setHeader(
       'Set-Cookie',
-      serialize(TOKEN_KEY, loginGitHub.accessToken, {
+      serialize(graphqlConfig.tokenKey, loginGitHub.accessToken, {
         path: '/',
         httpOnly: true,
         sameSite: 'strict',
