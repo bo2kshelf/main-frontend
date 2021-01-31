@@ -11,6 +11,7 @@ module.exports = {
       'cover.openbd.jp',
       's.gravatar.com',
       'avatars.githubusercontent.com',
+      'thumbnail.image.rakuten.co.jp',
     ],
   },
 };
