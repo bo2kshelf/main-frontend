@@ -1114,6 +1114,13 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bo2kshelf/prettier-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@bo2kshelf/prettier-config/-/prettier-config-1.0.0.tgz#074246111de8d5c6e87499aa747ad075eb97f315"
+  integrity sha512-qlncN12r1A45mjYMCSLJBe50A4fDXwHZWHk6VSllk6eITuncOpFRcdbOYfEo9i12RyDmX6WmZKQ81FYcwDqpGg==
+  dependencies:
+    "@shopify/prettier-config" "^1.1.2"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -2322,7 +2329,7 @@
     pkg-dir "^4.2.0"
     pluralize "^8.0.0"
 
-"@shopify/prettier-config@1.1.2":
+"@shopify/prettier-config@^1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@shopify/prettier-config/-/prettier-config-1.1.2.tgz#612f87c0cd1196e8b43c85425e587d0fa7f1172d"
   integrity sha512-5ugCL9sPGzmOaZjeRGaWUWhHgAbemrS6z+R7v6gwiD+BiqSeoFhIY+imLpfdFCVpuOGalpHeCv6o3gv++EHs0A==
