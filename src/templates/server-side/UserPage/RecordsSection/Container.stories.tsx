@@ -16,7 +16,7 @@ export default {
     user: {
       displayName: 'SnO2WMaN',
     },
-    records: [...new Array(10)].map((_, i) => ({
+    records: [...Array.from({length: 10})].map((_, i) => ({
       book: {
         id: `${i + 1}`,
         title: `SAMPLE (${i + 1})`,

@@ -28,7 +28,7 @@ export const Primary: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx('w-full')} />
 );
 Primary.args = {
-  books: [...new Array(10)].map((_, i) => ({
+  books: [...Array.from({length: 10})].map((_, i) => ({
     id: `${i + 1}`,
     title: `SAMPLE (${i + 1})`,
     cover: placeholder['210x297'],

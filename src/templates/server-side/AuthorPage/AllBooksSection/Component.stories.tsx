@@ -31,7 +31,7 @@ export const Primary: Story<ComponentProps> = (args) => (
 );
 Primary.args = {
   author: {name: 'Author 1'},
-  books: [...new Array(10)].map((_, bookId) => ({
+  books: [...Array.from({length: 10})].map((_, bookId) => ({
     id: `${bookId}`,
     title: `Sample (${bookId})`,
     cover: placeholder['210x297'],

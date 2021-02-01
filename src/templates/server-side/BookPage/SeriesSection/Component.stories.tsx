@@ -31,7 +31,7 @@ Primary.args = {
   series: {
     id: '1',
     title: 'Sample Series',
-    books: [...new Array(10)].map((_, i) => ({
+    books: [...Array.from({length: 10})].map((_, i) => ({
       id: `${i + 1}`,
       title: `SAMPLE (${i + 1})`,
       cover: placeholder['210x297'],

@@ -17,21 +17,21 @@ export default {
       displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
       picture: icons[0],
     },
-    read: [...new Array(10)].map((_, i) => ({
+    read: [...Array.from({length: 10})].map((_, i) => ({
       book: {
         id: `${i + 1}`,
         title: `SAMPLE (${i + 1})`,
         cover: placeholder['210x297'],
       },
     })),
-    reading: [...new Array(10)].map((_, i) => ({
+    reading: [...Array.from({length: 10})].map((_, i) => ({
       book: {
         id: `${i + 1}`,
         title: `SAMPLE (${i + 1})`,
         cover: placeholder['210x297'],
       },
     })),
-    have: [...new Array(10)].map((_, i) => ({
+    have: [...Array.from({length: 10})].map((_, i) => ({
       book: {
         id: `${i + 1}`,
         title: `SAMPLE (${i + 1})`,
