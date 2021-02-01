@@ -1,9 +1,6 @@
 {
   "root": true,
-  "extends": [
-    "@bo2kshelf/eslint-config/next",
-    "plugin:@bo2kshelf/graphql"
-  ],
+  "extends": ["@bo2kshelf/eslint-config/next", "plugin:@bo2kshelf/graphql"],
   "rules": {
     "graphql/required-fields": [0]
   }
