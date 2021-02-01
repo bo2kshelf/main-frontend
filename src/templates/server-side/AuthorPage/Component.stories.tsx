@@ -33,15 +33,15 @@ Primary.args = {
   author: {
     name: 'Author 1',
   },
-  allBooks: [...new Array(10)].map((_, bookId) => ({
+  allBooks: [...Array.from({length: 10})].map((_, bookId) => ({
     id: `${bookId}`,
     title: `Sample (${bookId})`,
     cover: placeholder['210x297'],
   })),
-  series: [...new Array(2)].map((_, seriesId) => ({
+  series: [...Array.from({length: 2})].map((_, seriesId) => ({
     id: `${seriesId}`,
     title: `Sample (${seriesId})`,
-    books: [...new Array(10)].map((_, bookId) => ({
+    books: [...Array.from({length: 10})].map((_, bookId) => ({
       id: `${bookId}`,
       title: `Sample (${bookId})`,
       cover: placeholder['210x297'],

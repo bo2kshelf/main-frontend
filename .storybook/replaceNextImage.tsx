@@ -9,7 +9,7 @@ Object.defineProperty(nextImage, 'default', {
     const height = props.height;
     const width = props.width;
     const quotient = height / width;
-    const paddingTop = isNaN(quotient) ? '100%' : `${quotient * 100}%`;
+    const paddingTop = Number.isNaN(quotient) ? '100%' : `${quotient * 100}%`;
     let wrapperStyle;
     let sizerStyle;
     let sizerSvg;
