@@ -12,7 +12,13 @@ export const Container: React.FC<ContainerProps> = ({author, ...props}) => {
         ...book,
         cover: book.cover || null,
       }))}
-      series={[]}
+      series={author.relatedSeries.map(({series, relatedBooks}) => ({
+        ...series,
+        books: relatedBooks.map((book) => ({
+          ...book,
+          cover: book.cover || null,
+        })),
+      }))}
     />
   );
 };

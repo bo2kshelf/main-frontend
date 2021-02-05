@@ -16,5 +16,16 @@ query AuthorPage($id: ID!) {
         cover
       }
     }
+    relatedSeries(limit: 10) {
+      series {
+        id
+        title
+      }
+      relatedBooks(limit: 10) {
+        id
+        title
+        cover
+      }
+    }
   }
 }

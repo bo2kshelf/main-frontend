@@ -6,6 +6,12 @@ type Author {
   id: ID!
   name: String!
   writes(skip: Int, limit: Int): [Writing!]!
+  relatedSeries(skip: Int, limit: Int): [AuthorSeriesRelation!]!
+}
+type AuthorSeriesRelation {
+  author: Author!
+  series: Series!
+  relatedBooks(skip: Int, limit: Int): [Book!]!
 }
 type Book {
   id: ID!
@@ -29,6 +35,7 @@ type Series {
   id: ID!
   title: String!
   parts(skip: Int, limit: Int): [SeriesPart!]!
+  relatedAuthors(skip: Int, limit: Int): [AuthorSeriesRelation!]!
 }
 type SeriesPart {
   series: Series!
