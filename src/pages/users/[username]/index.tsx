@@ -8,7 +8,7 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {LoadingPage} from '~/templates/common/LoadingPage';
-import {UserPage, UserPageProps} from '~/templates/server-side/UserPage';
+import {UserPage, UserPageProps} from '~/templates/server/UserPage';
 
 export type UrlQuery = {username: string};
 

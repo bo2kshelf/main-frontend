@@ -8,7 +8,7 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {LoadingPage} from '~/templates/common/LoadingPage';
-import {BookPage, BookPageProps} from '~/templates/server-side/BookPage';
+import {BookPage, BookPageProps} from '~/templates/server/BookPage';
 
 export type UrlQuery = {id: string};
 
