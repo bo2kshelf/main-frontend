@@ -1,7 +1,7 @@
 import {GetServerSideProps, InferGetServerSidePropsType, NextPage} from 'next';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
-import {LoginPage, LoginPageProps} from '~/templates/server-side/LoginPage';
+import {LoginPage, LoginPageProps} from '~/templates/server/LoginPage';
 
 export type UrlQuery = Record<string, never>;
 
