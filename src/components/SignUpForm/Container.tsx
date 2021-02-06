@@ -41,8 +41,8 @@ export const Container: React.FC<ContainerProps> = ({
         if (!(userId && userName && displayName && picture)) return;
         return graphqlSdk
           .SignUp({userId, userName, displayName, picture})
-          .then(({createProfile}) => {
-            setCurrentUser({id: userId, profile: createProfile});
+          .then(({createAccount}) => {
+            setCurrentUser({id: userId, profile: createAccount});
             router.replace('/');
           });
       }}

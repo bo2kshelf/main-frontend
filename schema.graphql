@@ -31,6 +31,23 @@ input CreateBookDataInput {
 input CreateSeriesDataInput {
   title: String!
 }
+type HaveBookRecord {
+  account: Account!
+  book: Book!
+  have: Boolean!
+}
+"""A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
+scalar LocalDate
+type ReadBookRecord {
+  account: Account!
+  book: Book!
+  date: LocalDate!
+}
+type ReadingBookRecord {
+  account: Account!
+  book: Book!
+  reading: Boolean!
+}
 type Series {
   id: ID!
   title: String!
@@ -41,6 +58,15 @@ type SeriesPart {
   series: Series!
   book: Book!
   volume: Float
+}
+type StackedRecord {
+  account: Account!
+  book: Book!
+}
+type WishReadBookRecord {
+  account: Account!
+  book: Book!
+  wish: Boolean!
 }
 type Writing {
   author: Author!
@@ -148,25 +174,22 @@ type SearchSeriesResultPageInfo {
 type SearchSeriesResultPageInfoQuery {
   title: String!
 }
-input CreateProfileDataInput {
+type Account {
+  id: ID!
+  userName: ID!
+  displayName: String!
+  picture: String!
+  readBooks(skip: Int, limit: Int): [ReadBookRecord!]!
+  readingBooks(skip: Int, limit: Int): [ReadingBookRecord!]!
+  wishReadBooks(skip: Int, limit: Int): [WishReadBookRecord!]!
+  haveBooks(skip: Int, limit: Int): [HaveBookRecord!]!
+  stackedBooks(skip: Int, limit: Int): [StackedRecord!]!
+}
+input CreateAccountDataInput {
   userName: ID!
   displayName: String!
   picture: String!
   userId: ID!
-}
-input CreateRecordDataInput {
-  bookId: ID!
-  have: Boolean!
-  read: Boolean!
-  reading: Boolean!
-}
-input CreateRecordUserInput {
-  userName: ID!
-}
-"""A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
-scalar DateTime
-input DeleteRecordWhereInput {
-  id: ID!
 }
 type GitHubAuthPayload {
   user: User!
@@ -178,49 +201,9 @@ type GitHubUser {
   displayName: String!
   picture: String!
 }
-type Profile {
-  id: ID!
-  userName: ID!
-  displayName: String!
-  picture: String!
-  records(cursor: ProfileRecordsArgsCursor, skip: Int, take: Int, orderBy: ProfileRecordsArgsOrderBy, where: ProfileRecordsArgsWhere): [Record!]!
-}
-input ProfileRecordsArgsCursor {
-  id: ID!
-}
-input ProfileRecordsArgsOrderBy {
-  createdAt: ProfileRecordsArgsOrderByEnum
-  updatedAt: ProfileRecordsArgsOrderByEnum
-}
-enum ProfileRecordsArgsOrderByEnum {
-  ASC
-  DESC
-}
-input ProfileRecordsArgsWhere {
-  have: Boolean
-  read: Boolean
-  reading: Boolean
-}
-type Record {
-  id: ID!
-  have: Boolean!
-  read: Boolean!
-  reading: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  book: Book!
-}
-input UpdateRecordDataInput {
-  have: Boolean
-  read: Boolean
-  reading: Boolean
-}
-input UpdateRecordDataUserInput {
-  id: ID!
-}
 type User {
   id: ID!
-  profile: Profile
+  account: Account
   github: GitHubUser
 }
 type Query {
@@ -236,9 +219,8 @@ type Query {
   searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
   loginGitHubUrl: String!
   currentUser: User!
-  profile(id: ID, userName: ID): Profile!
-  allProfiles: [Profile!]!
-  record(id: ID!): Record!
+  account(id: ID, userName: ID): Account!
+  allAccounts: [Account!]!
 }
 type Mutation {
   createBook(data: CreateBookDataInput!): Book!
@@ -246,9 +228,10 @@ type Mutation {
   createSeries(data: CreateSeriesDataInput!): Series!
   connectBookToAuthor(bookId: ID!, authorId: ID!, roles: [String!]): Writing!
   connectBookToSeries(bookId: ID!, seriesId: ID!, volume: Float): SeriesPart!
+  switchReadingRecord(accountId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
+  createReadRecord(accountId: ID!, bookId: ID!, date: LocalDate!): ReadBookRecord!
+  switchHaveRecord(accountId: ID!, bookId: ID!, have: Boolean!): HaveBookRecord!
+  switchWishReadRecord(accountId: ID!, bookId: ID!, wish: Boolean!): WishReadBookRecord!
   loginGitHub(code: String!): GitHubAuthPayload!
-  createProfile(data: CreateProfileDataInput!): Profile!
-  createRecord(user: CreateRecordUserInput!, data: CreateRecordDataInput!): Record!
-  updateRecord(where: UpdateRecordDataUserInput!, data: UpdateRecordDataInput!): Record!
-  deleteRecord(where: DeleteRecordWhereInput!): Record!
+  createAccount(data: CreateAccountDataInput!): Account!
 }

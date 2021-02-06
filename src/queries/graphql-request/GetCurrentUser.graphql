@@ -1,7 +1,7 @@
 query GetCurrentUser {
   currentUser {
     id
-    profile {
+    account {
       userName
       displayName
       picture

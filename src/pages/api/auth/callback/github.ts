@@ -21,7 +21,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }),
     );
 
-    if (loginGitHub.user.profile) res.redirect('/');
+    if (loginGitHub.user.account) res.redirect('/');
     else res.redirect('/signup');
   } else {
     res.redirect('/');

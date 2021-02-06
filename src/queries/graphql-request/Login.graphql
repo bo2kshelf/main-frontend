@@ -3,7 +3,7 @@ mutation LoginGitHub($code: String!) {
     accessToken
     user {
       id
-      profile {
+      account {
         id
       }
     }

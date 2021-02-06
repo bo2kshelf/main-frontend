@@ -3,20 +3,20 @@ import {UserPageQuery} from '~/_generated/graphql-request';
 import {Component} from './Component';
 
 export type ContainerProps = UserPageQuery;
-export const Container: React.FC<ContainerProps> = ({profile, ...props}) => {
+export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
   return (
     <Component
       {...props}
-      user={profile}
-      read={profile.readRecords.map(({book, ...rest}) => ({
+      user={account}
+      read={account.readBooks.map(({book, ...rest}) => ({
         ...rest,
         book: {...book, cover: book.cover || null},
       }))}
-      reading={profile.readingRecords.map(({book, ...rest}) => ({
+      reading={account.readingBooks.map(({book, ...rest}) => ({
         ...rest,
         book: {...book, cover: book.cover || null},
       }))}
-      have={profile.haveRecords.map(({book, ...rest}) => ({
+      have={account.haveBooks.map(({book, ...rest}) => ({
         ...rest,
         book: {...book, cover: book.cover || null},
       }))}

@@ -1,6 +1,6 @@
 query PersonalUserPage {
   currentUser {
-    profile {
+    account {
       displayName
       userName
       picture
