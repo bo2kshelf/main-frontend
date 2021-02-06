@@ -9,20 +9,20 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
       {...props}
       book={{
         ...book,
-        authors: book.authors.map(({roles, author}) => ({
-          ...author,
-          roles: roles || null,
-        })),
         isbn: book.isbn || null,
         cover: book.cover || null,
         date: null,
         language: null,
         publisher: null,
         pages: null,
+        authors: book.writedBy.map(({roles, author}) => ({
+          ...author,
+          roles: roles || null,
+        })),
       }}
-      series={book.relatedSeries.map((series) => ({
+      series={book.seriesOf.map(({series}) => ({
         ...series,
-        books: series.books.edges.map(({node: {book}}) => ({
+        books: series.parts.map(({book}) => ({
           ...book,
           cover: book.cover || null,
         })),

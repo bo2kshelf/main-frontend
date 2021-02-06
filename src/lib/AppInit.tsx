@@ -15,7 +15,7 @@ export function AppInit() {
             setCurrentUser(
               currentUser && {
                 ...currentUser,
-                profile: currentUser.profile || null,
+                profile: currentUser.account || null,
               },
             ),
           )

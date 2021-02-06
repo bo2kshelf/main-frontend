@@ -1,44 +1,29 @@
 query AllUserPages {
-  allProfiles {
+  allAccounts {
     userName
   }
 }
 
 query UserPage($userName: ID!) {
-  profile(userName: $userName) {
+  account(userName: $userName) {
     userName
     displayName
     picture
-    readRecords: records(
-      take: 10
-      where: {read: true}
-      orderBy: {updatedAt: DESC}
-    ) {
-      id
+    readBooks(limit: 10) {
       book {
         id
         title
         cover
       }
     }
-    readingRecords: records(
-      take: 10
-      where: {reading: true}
-      orderBy: {updatedAt: DESC}
-    ) {
-      id
+    readingBooks(limit: 10) {
       book {
         id
         title
         cover
       }
     }
-    haveRecords: records(
-      take: 10
-      where: {have: true}
-      orderBy: {updatedAt: DESC}
-    ) {
-      id
+    haveBooks(limit: 10) {
       book {
         id
         title

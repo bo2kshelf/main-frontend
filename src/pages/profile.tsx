@@ -10,13 +10,13 @@ export const Page: NextPage = (props) => {
   const {loading, data} = usePersonalUserPageQuery();
 
   if (loading) return <LoadingPage />;
-  else if (!data || !data.currentUser.profile)
+  else if (!data || !data.currentUser.account)
     return <Error statusCode={404} />;
 
   return (
     <PersonalUserPage
       {...props}
-      currentUser={{profile: data.currentUser.profile}}
+      currentUser={{profile: data.currentUser.account}}
     />
   );
 };

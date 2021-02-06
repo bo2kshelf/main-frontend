@@ -14,7 +14,7 @@ export const Page: NextPage = (props) => {
   if (loading) return <LoadingPage />;
   else if (!data || !data.currentUser.id) return <Error statusCode={500} />;
 
-  if (data.currentUser.profile) {
+  if (data.currentUser.account) {
     router.replace('/');
     return <LoadingPage />;
   }

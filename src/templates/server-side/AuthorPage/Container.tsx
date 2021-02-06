@@ -8,13 +8,13 @@ export const Container: React.FC<ContainerProps> = ({author, ...props}) => {
     <Component
       {...props}
       author={author}
-      allBooks={author.books.edges.map(({node: book}) => ({
+      allBooks={author.writes.map(({book}) => ({
         ...book,
         cover: book.cover || null,
       }))}
-      series={author.relatedSeries.edges.map(({node: series}) => ({
+      series={author.relatedSeries.map(({series, relatedBooks}) => ({
         ...series,
-        books: series.books.edges.map(({node: {book}}) => ({
+        books: relatedBooks.map((book) => ({
           ...book,
           cover: book.cover || null,
         })),
