@@ -39,6 +39,8 @@ type HaveBookRecord {
 type HaveBooksPayload {
   records: [HaveBookRecord!]!
   count: Int!
+  skip: Int!
+  limit: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
@@ -52,6 +54,8 @@ type ReadBookRecord {
 type ReadBooksPayload {
   records: [ReadBookRecord!]!
   count: Int!
+  skip: Int!
+  limit: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
@@ -63,6 +67,8 @@ type ReadingBookRecord {
 type ReadingBooksPayload {
   records: [ReadingBookRecord!]!
   count: Int!
+  skip: Int!
+  limit: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
@@ -84,6 +90,8 @@ type StackedBookRecord {
 type StackedBooksPayload {
   records: [StackedBookRecord!]!
   count: Int!
+  skip: Int!
+  limit: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
@@ -95,6 +103,8 @@ type WishReadBookRecord {
 type WishReadBooksPayload {
   records: [WishReadBookRecord!]!
   count: Int!
+  skip: Int!
+  limit: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }

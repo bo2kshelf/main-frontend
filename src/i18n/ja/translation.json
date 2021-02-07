@@ -7,5 +7,6 @@
   "signup": {
     "user_name_placeholder": "bo2kshelf",
     "display_name_placeholder": "アカウント名"
-  }
+  },
+  "{{total}}件中{{from}}件から{{to}}件までを表示中": "{{total}}件中{{from}}件から{{to}}件までを表示中"
 }
