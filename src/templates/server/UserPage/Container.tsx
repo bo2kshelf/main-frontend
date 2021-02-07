@@ -8,15 +8,15 @@ export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
     <Component
       {...props}
       user={account}
-      read={account.readBooks.map(({book, ...rest}) => ({
+      read={account.readBooks.records.map(({book, ...rest}) => ({
         ...rest,
         book: {...book, cover: book.cover || null},
       }))}
-      reading={account.readingBooks.map(({book, ...rest}) => ({
+      reading={account.readingBooks.records.map(({book, ...rest}) => ({
         ...rest,
         book: {...book, cover: book.cover || null},
       }))}
-      have={account.haveBooks.map(({book, ...rest}) => ({
+      have={account.haveBooks.records.map(({book, ...rest}) => ({
         ...rest,
         book: {...book, cover: book.cover || null},
       }))}

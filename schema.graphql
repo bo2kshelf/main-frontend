@@ -36,6 +36,12 @@ type HaveBookRecord {
   book: Book!
   have: Boolean!
 }
+type HaveBooksPayload {
+  records: [HaveBookRecord!]!
+  count: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
+}
 """A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
 scalar LocalDate
 type ReadBookRecord {
@@ -43,10 +49,22 @@ type ReadBookRecord {
   book: Book!
   date: LocalDate!
 }
+type ReadBooksPayload {
+  records: [ReadBookRecord!]!
+  count: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
+}
 type ReadingBookRecord {
   account: Account!
   book: Book!
   reading: Boolean!
+}
+type ReadingBooksPayload {
+  records: [ReadingBookRecord!]!
+  count: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
 }
 type Series {
   id: ID!
@@ -59,14 +77,26 @@ type SeriesPart {
   book: Book!
   volume: Float
 }
-type StackedRecord {
+type StackedBookRecord {
   account: Account!
   book: Book!
+}
+type StackedBooksPayload {
+  records: [StackedBookRecord!]!
+  count: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
 }
 type WishReadBookRecord {
   account: Account!
   book: Book!
   wish: Boolean!
+}
+type WishReadBooksPayload {
+  records: [WishReadBookRecord!]!
+  count: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
 }
 type Writing {
   author: Author!
@@ -179,11 +209,11 @@ type Account {
   userName: ID!
   displayName: String!
   picture: String!
-  readBooks(skip: Int, limit: Int): [ReadBookRecord!]!
-  readingBooks(skip: Int, limit: Int): [ReadingBookRecord!]!
-  wishReadBooks(skip: Int, limit: Int): [WishReadBookRecord!]!
-  haveBooks(skip: Int, limit: Int): [HaveBookRecord!]!
-  stackedBooks(skip: Int, limit: Int): [StackedRecord!]!
+  readBooks(skip: Int, limit: Int): ReadBooksPayload!
+  readingBooks(skip: Int, limit: Int): ReadingBooksPayload!
+  wishReadBooks(skip: Int, limit: Int): WishReadBooksPayload!
+  haveBooks(skip: Int, limit: Int): HaveBooksPayload!
+  stackedBooks(skip: Int, limit: Int): StackedBooksPayload!
 }
 input CreateAccountDataInput {
   userName: ID!
@@ -228,9 +258,9 @@ type Mutation {
   createSeries(data: CreateSeriesDataInput!): Series!
   connectBookToAuthor(bookId: ID!, authorId: ID!, roles: [String!]): Writing!
   connectBookToSeries(bookId: ID!, seriesId: ID!, volume: Float): SeriesPart!
-  switchReadingRecord(accountId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
-  createReadRecord(accountId: ID!, bookId: ID!, date: LocalDate!): ReadBookRecord!
   switchHaveRecord(accountId: ID!, bookId: ID!, have: Boolean!): HaveBookRecord!
+  createReadRecord(accountId: ID!, bookId: ID!, date: LocalDate!): ReadBookRecord!
+  switchReadingRecord(accountId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
   switchWishReadRecord(accountId: ID!, bookId: ID!, wish: Boolean!): WishReadBookRecord!
   loginGitHub(code: String!): GitHubAuthPayload!
   createAccount(data: CreateAccountDataInput!): Account!
