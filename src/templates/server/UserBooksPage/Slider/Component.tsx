@@ -2,7 +2,7 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {BaseComponent, BaseComponentProps} from './BaseComponent';
 
-export type ComponentProps = Omit<BaseComponentProps<'stacked'>, 'i18n'> & {
+export type ComponentProps = Omit<BaseComponentProps, 'i18n'> & {
   skip: number;
   limit: number;
   count: number;

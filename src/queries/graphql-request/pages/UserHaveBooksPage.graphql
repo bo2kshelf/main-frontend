@@ -1,0 +1,30 @@
+query AllUserHaveBooksPage {
+  allAccounts {
+    userName
+    haveBooks {
+      count
+    }
+  }
+}
+
+query UserHaveBooksPage($userName: ID!, $skip: Int!, $limit: Int!) {
+  account(userName: $userName) {
+    userName
+    displayName
+    picture
+    haveBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}

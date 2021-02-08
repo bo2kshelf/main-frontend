@@ -20,31 +20,13 @@ export const Component: React.FC<ComponentProps> = ({
   children,
   user,
   records,
-  previousLink,
-  nextLink,
-  skip,
-  limit,
-  count,
+  ...props
 }) => (
   <main className={clsx(className)}>
     {children}
     <ProfileSection className={clsx('w-full')} user={user} />
-    <ListSlider
-      className={clsx('w-full')}
-      skip={skip}
-      limit={limit}
-      count={count}
-      previousLink={previousLink}
-      nextLink={nextLink}
-    />
+    <ListSlider className={clsx('w-full')} {...props} />
     <ListSection records={records} />
-    <ListSlider
-      className={clsx('w-full')}
-      skip={skip}
-      limit={limit}
-      count={count}
-      previousLink={previousLink}
-      nextLink={nextLink}
-    />
+    <ListSlider className={clsx('w-full')} {...props} />
   </main>
 );

@@ -1,12 +1,12 @@
 import {useRouter} from 'next/router';
 import React from 'react';
-import {UserStackedBooksPageQuery} from '~/_generated/graphql-request';
+import {UserWishReadBooksPageQuery} from '~/_generated/graphql-request';
 import {getNextLink, getPreviousLink} from '../UserBooksPage';
 import {Component} from '../UserBooksPage/Component';
 
-export type ContainerProps = UserStackedBooksPageQuery;
+export type ContainerProps = UserWishReadBooksPageQuery;
 export const Container: React.FC<ContainerProps> = ({
-  account: {stackedBooks, ...rest},
+  account: {wishReadBooks, ...rest},
   ...props
 }) => {
   const {query} = useRouter();
@@ -15,23 +15,23 @@ export const Container: React.FC<ContainerProps> = ({
     <Component
       {...props}
       user={{...rest}}
-      records={stackedBooks.records.map(({book}) => ({
+      records={wishReadBooks.records.map(({book}) => ({
         book: {...book, cover: book.cover || null},
       }))}
       previousLink={getPreviousLink(
-        'stacked',
+        'wish',
         query as {username: string; number?: string},
-        stackedBooks.hasPrevious,
+        wishReadBooks.hasPrevious,
       )}
       nextLink={getNextLink(
-        'stacked',
+        'wish',
         query as {username: string; number?: string},
-        stackedBooks.hasNext,
+        wishReadBooks.hasNext,
       )}
-      count={stackedBooks.count}
-      skip={stackedBooks.skip}
-      limit={stackedBooks.limit}
+      count={wishReadBooks.count}
+      skip={wishReadBooks.skip}
+      limit={wishReadBooks.limit}
     />
   );
 };
-Container.displayName = 'UserStackedBooksPage';
+Container.displayName = 'UserWishReadBooksPage';

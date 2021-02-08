@@ -3,28 +3,16 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
+import {NextPageLink, PreviousPageLink} from '../Container';
 
-export type PagePath<
-  PageType extends 'stacked'
-> = `/users/[username]/${PageType}`;
-
-export type NumberedPagePath<
-  PageType extends 'stacked'
-> = `${PagePath<PageType>}/[number]`;
-
-export type BaseComponentProps<T extends 'stacked'> = {
+export type BaseComponentProps = {
   className?: string;
   i18n: Record<'message', string>;
-  previousLink?: {
-    pathname: PagePath<T> | NumberedPagePath<T>;
-    query: {username: string; number?: number};
-  };
-  nextLink?: {
-    pathname: NumberedPagePath<T>;
-    query: {username: string; number: number};
-  };
+  previousLink?: PreviousPageLink;
+  nextLink?: NextPageLink;
 };
-export const BaseComponent: React.FC<BaseComponentProps<'stacked'>> = ({
+
+export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
   previousLink,
   nextLink,
