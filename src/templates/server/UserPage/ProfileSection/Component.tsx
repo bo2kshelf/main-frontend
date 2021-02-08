@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import NextLink from 'next/link';
 import React from 'react';
 import {Icon} from '~/components/common/Icon';
 
@@ -15,7 +16,11 @@ export const PlainComponent: React.FC<ComponentProps> = ({
   displayName,
 }) => (
   <section className={clsx(className, 'flex', 'items-center')}>
-    <Icon picture={picture} className={clsx('w-24', 'h-24')} />
+    <NextLink href={`/users/${userName}`}>
+      <a>
+        <Icon picture={picture} className={clsx('w-24', 'h-24')} />
+      </a>
+    </NextLink>
     <div className={clsx('flex', 'flex-col', 'ml-4')}>
       <span className={clsx('text-2xl', 'font-bold', 'select-all')}>
         {displayName}

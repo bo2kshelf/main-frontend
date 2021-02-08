@@ -1,7 +1,7 @@
 query AllUserReadBooksPage {
   allAccounts {
     userName
-    readBooks {
+    books: readBooks {
       count
     }
   }
@@ -12,7 +12,7 @@ query UserReadBooksPage($userName: ID!, $skip: Int!, $limit: Int!) {
     userName
     displayName
     picture
-    readBooks(limit: $limit, skip: $skip) {
+    books: readBooks(limit: $limit, skip: $skip) {
       count
       skip
       limit

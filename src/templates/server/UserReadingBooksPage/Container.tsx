@@ -6,7 +6,7 @@ import {Component} from '../UserBooksPage/Component';
 
 export type ContainerProps = UserReadingBooksPageQuery;
 export const Container: React.FC<ContainerProps> = ({
-  account: {readingBooks, ...rest},
+  account: {books, ...rest},
   ...props
 }) => {
   const {query} = useRouter();
@@ -15,22 +15,22 @@ export const Container: React.FC<ContainerProps> = ({
     <Component
       {...props}
       user={{...rest}}
-      records={readingBooks.records.map(({book}) => ({
+      records={books.records.map(({book}) => ({
         book: {...book, cover: book.cover || null},
       }))}
       previousLink={getPreviousLink(
         'reading',
         query as {username: string; number?: string},
-        readingBooks.hasPrevious,
+        books.hasPrevious,
       )}
       nextLink={getNextLink(
         'reading',
         query as {username: string; number?: string},
-        readingBooks.hasNext,
+        books.hasNext,
       )}
-      count={readingBooks.count}
-      skip={readingBooks.skip}
-      limit={readingBooks.limit}
+      count={books.count}
+      skip={books.skip}
+      limit={books.limit}
     />
   );
 };
