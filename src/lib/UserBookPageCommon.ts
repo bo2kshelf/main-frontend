@@ -6,7 +6,7 @@ import {
   UserWishReadBooksPageQuery,
 } from '~/_generated/graphql-request';
 
-export const RECORDS_PER_PAGE = 12 * 4;
+export const RECORDS_PER_PAGE = 12 * 3;
 
 export type UrlQuery = {
   username: string;
