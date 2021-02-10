@@ -34,7 +34,7 @@ export const Primary: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx('w-full')} />
 );
 Primary.args = {
-  user: {
+  account: {
     userName: 'INTERNET_EXPLORER',
     displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
     picture: icons[0],
