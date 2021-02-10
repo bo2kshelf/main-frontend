@@ -32,8 +32,12 @@ export const Component: React.FC<ComponentProps> = ({
       account={account}
       records={{count}}
     />
-    <ListSlider className={clsx('w-full')} {...props} count={count} />
-    <ListSection records={records} />
-    <ListSlider className={clsx('w-full')} {...props} count={count} />
+    {records.length > 0 && (
+      <>
+        <ListSlider className={clsx('w-full')} {...props} count={count} />
+        <ListSection records={records} />
+        <ListSlider className={clsx('w-full')} {...props} count={count} />
+      </>
+    )}
   </main>
 );

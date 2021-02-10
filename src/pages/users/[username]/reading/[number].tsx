@@ -9,7 +9,7 @@ import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {
   getParams,
-  getPaths,
+  getPathsForNumbered,
   transformData,
   UrlQuery,
 } from '~/lib/UserBookPageCommon';
@@ -22,7 +22,7 @@ import {
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
     .AllUserReadingBooksPage()
-    .then(({allAccounts}) => getPaths(allAccounts));
+    .then(({allAccounts}) => getPathsForNumbered(allAccounts));
 };
 
 export const getStaticProps: GetStaticProps<

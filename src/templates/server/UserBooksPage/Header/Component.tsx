@@ -16,9 +16,15 @@ export const HaveBooksHeader: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
+      isNone={count === 0}
       i18n={{
         count: t('計{{count}}冊', {count}),
-        message: t('{{name}}が持っている本', {name: displayName}),
+        message: t(
+          count > 0
+            ? '{{name}}が持っている本'
+            : '{{name}}はまだ持っている本を登録していません',
+          {name: displayName},
+        ),
       }}
     />
   );
@@ -33,9 +39,15 @@ export const ReadBooksHeader: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
+      isNone={count === 0}
       i18n={{
         count: t('計{{count}}冊', {count}),
-        message: t('{{name}}が読んだ本', {name: displayName}),
+        message: t(
+          count > 0
+            ? '{{name}}が読んだ本'
+            : '{{name}}はまだ読んだ本を登録していません',
+          {name: displayName},
+        ),
       }}
     />
   );
@@ -50,9 +62,15 @@ export const ReadingBooksHeader: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
+      isNone={count === 0}
       i18n={{
         count: t('計{{count}}冊', {count}),
-        message: t('{{name}}が読んでいる本', {name: displayName}),
+        message: t(
+          count > 0
+            ? '{{name}}が読んでいる本'
+            : '{{name}}が読んでいる本は今ありません',
+          {name: displayName},
+        ),
       }}
     />
   );
@@ -67,9 +85,15 @@ export const StackedBooksHeader: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
+      isNone={count === 0}
       i18n={{
         count: t('計{{count}}冊', {count}),
-        message: t('{{name}}が積んでいる本', {name: displayName}),
+        message: t(
+          count > 0
+            ? '{{name}}が積んでいる本'
+            : '{{name}}が積んでいる本は今ありません',
+          {name: displayName},
+        ),
       }}
     />
   );
@@ -84,9 +108,15 @@ export const WishReadBooksHeader: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
+      isNone={count === 0}
       i18n={{
         count: t('計{{count}}冊', {count}),
-        message: t('{{name}}が読みたい本', {name: displayName}),
+        message: t(
+          count > 0
+            ? '{{name}}が読みたい本'
+            : '{{name}}が読みたい本は今ありません',
+          {name: displayName},
+        ),
       }}
     />
   );

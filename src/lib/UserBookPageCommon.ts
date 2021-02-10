@@ -13,7 +13,12 @@ export type UrlQuery = {
   number: string;
 };
 
-export const getPaths = (
+export const getPathsForIndex = (result: {userName: string}[]) => ({
+  paths: result.map(({userName}) => ({params: {username: userName}})),
+  fallback: false,
+});
+
+export const getPathsForNumbered = (
   result: {userName: string; books: {count: number}}[],
 ) => ({
   paths: result
@@ -21,7 +26,10 @@ export const getPaths = (
       Array.from({
         length: Math.ceil(books.count / RECORDS_PER_PAGE),
       }).map((_, i) => ({
-        params: {username: userName, number: `${i + 1}`},
+        params: {
+          username: userName,
+          number: `${i + 1}`,
+        },
       })),
     )
     .flat(),
