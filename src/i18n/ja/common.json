@@ -13,5 +13,7 @@
   "title": "タイトル",
   "user_name": "アカウント名",
   "display_name": "表示される名前",
-  "sign_up": "ユーザー登録"
+  "sign_up": "ユーザー登録",
+  "previous": "前へ",
+  "next": "次へ"
 }

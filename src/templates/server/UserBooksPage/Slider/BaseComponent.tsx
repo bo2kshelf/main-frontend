@@ -1,9 +1,7 @@
-import {faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import NextLink from 'next/link';
 import React from 'react';
 import {NextPageLink, PreviousPageLink} from '../link';
+import {NextButton, PreviousButton} from './SliderButton';
 
 export type BaseComponentProps = {
   className?: string;
@@ -21,51 +19,27 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
   <div className={clsx(className, 'flex')}>
     <div className={clsx('grid', 'mx-auto', 'grid-cols-4', 'gap-x-2')}>
       {previousLink && (
-        <NextLink href={previousLink}>
-          <a
-            className={clsx(
-              'col-start-1',
-              'col-span-1',
-              'flex',
-              'justify-center',
-              'items-center',
-              'py-1',
-              'px-2',
-            )}
-          >
-            <FontAwesomeIcon icon={faArrowLeft} />
-            <span className={clsx('ml-2')}>Previous</span>
-          </a>
-        </NextLink>
+        <PreviousButton
+          className={clsx('w-32', 'col-start-1', 'col-span-1')}
+          link={previousLink}
+        />
       )}
       <div
         className={clsx(
           'col-start-2',
           'col-span-2',
           'flex',
+          'justify-center',
           'items-center',
-          'px-4',
         )}
       >
         <span>{i18n.message}</span>
       </div>
       {nextLink && (
-        <NextLink href={nextLink}>
-          <a
-            className={clsx(
-              'col-start-4',
-              'col-span-1',
-              'flex',
-              'justify-center',
-              'items-center',
-              'py-1',
-              'px-2',
-            )}
-          >
-            <span className={clsx('mr-2')}>Next</span>
-            <FontAwesomeIcon icon={faArrowRight} />
-          </a>
-        </NextLink>
+        <NextButton
+          className={clsx('w-32', 'col-start-4', 'col-span-1')}
+          link={nextLink}
+        />
       )}
     </div>
   </div>
