@@ -7,4 +7,4 @@ export {
   StackedBooksHeader,
   WishReadBooksHeader,
 } from './Component';
-export type {ComponentProps} from './Component';
+export type {ComponentProps as HeaderProps} from './Component';

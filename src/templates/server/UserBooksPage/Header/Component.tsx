@@ -1,8 +1,9 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {BaseComponent, BaseComponentProps} from './BaseComponent';
+import {BaseComponent} from './BaseComponent';
 
-export type ComponentProps = Omit<BaseComponentProps, 'i18n'> & {
+export type ComponentProps = {
+  className?: string;
   account: {displayName: string};
   records: {count: number};
 };

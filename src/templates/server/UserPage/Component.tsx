@@ -12,10 +12,10 @@ import {
 export type ComponentProps = {
   className?: string;
   user: ProfileSectionProps['user'] & RecordsSectionProps['user'];
-  read: {records: RecordsSectionProps['records']; hasMore: boolean};
-  reading: {records: RecordsSectionProps['records']; hasMore: boolean};
-  have: {records: RecordsSectionProps['records']; hasMore: boolean};
-  stacked: {records: RecordsSectionProps['records']; hasMore: boolean};
+  read: {records: RecordsSectionProps['records']; hasNext: boolean};
+  reading: {records: RecordsSectionProps['records']; hasNext: boolean};
+  have: {records: RecordsSectionProps['records']; hasNext: boolean};
+  stacked: {records: RecordsSectionProps['records']; hasNext: boolean};
 };
 export const Component: React.FC<ComponentProps> = ({
   className,

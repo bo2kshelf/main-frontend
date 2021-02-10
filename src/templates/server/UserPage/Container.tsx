@@ -9,32 +9,32 @@ export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
       {...props}
       user={account}
       read={{
+        ...account.readBooks,
         records: account.readBooks.records.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || null},
         })),
-        hasMore: account.readBooks.hasNext,
       }}
       reading={{
+        ...account.readingBooks,
         records: account.readingBooks.records.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || null},
         })),
-        hasMore: account.readingBooks.hasNext,
       }}
       have={{
+        ...account.haveBooks,
         records: account.haveBooks.records.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || null},
         })),
-        hasMore: account.haveBooks.hasNext,
       }}
       stacked={{
+        ...account.stackedBooks,
         records: account.stackedBooks.records.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || null},
         })),
-        hasMore: account.stackedBooks.hasNext,
       }}
     />
   );

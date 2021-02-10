@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import {ProfileSection, ProfileSectionProps} from '../UserPage/ProfileSection';
 import {RecordsSectionProps} from '../UserPage/RecordsSection';
-import {HaveBooksHeader} from './Header';
+import {HeaderProps} from './Header';
 import {ListSection} from './Section';
 import {ListSlider, ListSliderProps} from './Slider';
 
@@ -15,7 +15,7 @@ export type ComponentProps = {
   count: number;
   previousLink: ListSliderProps['previousLink'];
   nextLink: ListSliderProps['nextLink'];
-  Header: typeof HaveBooksHeader;
+  Header: React.FC<HeaderProps>;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
