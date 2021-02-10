@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
-import {NextPageLink, PreviousPageLink} from '../Container';
+import {NextPageLink, PreviousPageLink} from '../link';
 
 export type BaseComponentProps = {
   className?: string;

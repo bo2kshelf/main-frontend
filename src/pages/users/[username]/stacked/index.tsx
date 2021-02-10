@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next';
-import {UserStackedBooksPageProps} from '~/templates/server/UserStackedBooksPage';
+import {UserStackedBooksPageProps} from '~/templates/server/UserBooksPage';
 import * as General from './[number]';
 
 export type UrlQuery = {

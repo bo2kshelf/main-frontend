@@ -1,11 +1,11 @@
 import {useRouter} from 'next/router';
 import React from 'react';
-import {UserReadingBooksPageQuery} from '~/_generated/graphql-request';
-import {getNextLink, getPreviousLink} from '../UserBooksPage';
-import {Component} from '../UserBooksPage/Component';
+import {UserReadBooksPageQuery} from '~/_generated/graphql-request';
+import {Component} from './Component';
+import {getNextLink, getPreviousLink} from './link';
 
-export type ContainerProps = UserReadingBooksPageQuery;
-export const Container: React.FC<ContainerProps> = ({
+export type UserReadBooksPageProps = UserReadBooksPageQuery;
+export const UserReadBooksPage: React.FC<UserReadBooksPageProps> = ({
   account: {books, ...rest},
   ...props
 }) => {
@@ -19,12 +19,12 @@ export const Container: React.FC<ContainerProps> = ({
         book: {...book, cover: book.cover || null},
       }))}
       previousLink={getPreviousLink(
-        'reading',
+        'read',
         query as {username: string; number?: string},
         books.hasPrevious,
       )}
       nextLink={getNextLink(
-        'reading',
+        'read',
         query as {username: string; number?: string},
         books.hasNext,
       )}
@@ -34,4 +34,3 @@ export const Container: React.FC<ContainerProps> = ({
     />
   );
 };
-Container.displayName = 'UserReadingBooksPage';

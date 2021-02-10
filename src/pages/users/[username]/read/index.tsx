@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next';
-import {UserReadBooksPageQuery} from '~/_generated/graphql-request';
+import {UserReadBooksPageProps} from '~/templates/server/UserBooksPage';
 import * as General from './[number]';
 
 export type UrlQuery = {
@@ -9,7 +9,7 @@ export type UrlQuery = {
 export const getStaticPaths = General.getStaticPaths;
 
 export const getStaticProps: GetStaticProps<
-  UserReadBooksPageQuery,
+  UserReadBooksPageProps,
   UrlQuery
 > = async ({params, ...rest}) =>
   General.getStaticProps({params: params && {...params, number: '1'}, ...rest});

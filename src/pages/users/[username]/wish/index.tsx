@@ -1,5 +1,5 @@
 import {GetStaticProps} from 'next';
-import {UserWishReadBooksPageProps} from '~/templates/server/UserWishReadBooksPage';
+import {UserWishReadBooksPageProps} from '~/templates/server/UserBooksPage';
 import * as General from './[number]';
 
 export type UrlQuery = {

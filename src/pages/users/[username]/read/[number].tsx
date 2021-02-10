@@ -17,7 +17,7 @@ import {LoadingPage} from '~/templates/common/LoadingPage';
 import {
   UserReadBooksPage,
   UserReadBooksPageProps,
-} from '~/templates/server/UserReadBooksPage';
+} from '~/templates/server/UserBooksPage';
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
