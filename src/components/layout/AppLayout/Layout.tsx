@@ -18,7 +18,9 @@ export const Component: React.FC<ComponentProps> = ({className, children}) => {
         'flex-col',
       )}
     >
-      <HeaderNav className={clsx('w-full', 'h-24')} />
+      <HeaderNav
+        className={clsx('sticky', 'top-0', 'z-50', 'w-full', 'h-24')}
+      />
       <PageLayout className={clsx('container', 'mx-auto', 'flex-grow')}>
         {children}
       </PageLayout>
