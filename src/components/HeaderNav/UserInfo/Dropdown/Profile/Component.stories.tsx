@@ -21,6 +21,7 @@ export default {
 
 export const Primary: Story<ComponentProps> = (args) => <Component {...args} />;
 Primary.args = {
+  link: '/users/INTERNET_EXPLORER',
   userName: 'INTERNET_EXPLORER',
   displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
   picture: icons[0],

@@ -6,7 +6,15 @@ export type ComponentProps = {
   className?: string;
 };
 export const Component: React.FC<ComponentProps> = ({className}) => (
-  <nav className={clsx(className, 'bg-gray-700', 'flex', 'items-center')}>
+  <nav
+    className={clsx(
+      className,
+      'bg-gray-700',
+      'flex',
+      'items-center',
+      'shadow-xl',
+    )}
+  >
     <div
       className={clsx('container', 'mx-auto', 'px-12', 'flex', 'items-center')}
     >

@@ -21,11 +21,13 @@ export default {
 
 export const Primary: Story<ComponentProps> = (args) => (
   <div className={clsx('flex')}>
-    <Component {...args} className={clsx()} />
+    <Component {...args} className={clsx('w-80')} />
   </div>
 );
 Primary.args = {
-  userName: 'INTERNET_EXPLORER',
-  displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
-  picture: icons[0],
+  account: {
+    userName: 'INTERNET_EXPLORER',
+    displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
+    picture: icons[0],
+  },
 };
