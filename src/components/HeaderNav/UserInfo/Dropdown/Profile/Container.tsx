@@ -1,8 +1,17 @@
 import React from 'react';
-import {Component, ComponentProps} from './Component';
+import {Component} from './Component';
 
-export type ContainerProps = Omit<ComponentProps, 'link'>;
-export const Container: React.FC<ContainerProps> = ({...props}) => {
-  return <Component {...props} link={`/users/${props.userName}`} />;
+export type ContainerProps = {
+  className?: string;
+  account: {
+    picture: string;
+    userName: string;
+    displayName: string;
+  };
+};
+export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
+  return (
+    <Component {...props} {...account} link={`/users/${account.userName}`} />
+  );
 };
 Container.displayName = 'Profile';

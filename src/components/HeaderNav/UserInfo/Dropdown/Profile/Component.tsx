@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
+import NextLink, {LinkProps} from 'next/link';
 import React from 'react';
 import {Icon} from '~/components/common/Icon';
 
 export type ComponentProps = {
   className?: string;
-  link: string;
+  link: LinkProps['href'];
   picture: string;
   userName: string;
   displayName: string;
@@ -24,8 +24,9 @@ export const Component: React.FC<ComponentProps> = ({
         <span className={clsx('font-bold', 'select-all', 'truncate')}>
           {displayName}
         </span>
-        <span className={clsx('text-sm', 'select-all', 'text-gray-400')}>
-          {userName}
+        <span className={clsx('text-sm', 'text-gray-400')}>
+          <span>@</span>
+          <span className={clsx('select-all')}>{userName}</span>
         </span>
       </div>
     </a>

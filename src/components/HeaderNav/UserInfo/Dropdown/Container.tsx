@@ -3,13 +3,13 @@ import {Component} from './Component';
 
 export type ContainerProps = {
   className?: string;
-  data: {
+  account: {
     picture: string;
     userName: string;
     displayName: string;
   };
 };
-export const Container: React.FC<ContainerProps> = ({data, ...props}) => {
-  return <Component {...props} {...data} />;
+export const Container: React.FC<ContainerProps> = ({...props}) => {
+  return <Component {...props} />;
 };
 Container.displayName = 'Dropdown';

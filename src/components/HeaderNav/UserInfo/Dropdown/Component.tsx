@@ -1,44 +1,59 @@
 import clsx from 'clsx';
 import React from 'react';
+import {LogoutLink, SettingsLink} from './CommonLink';
+import {Profile} from './Profile';
 import {
-  LogoutLink,
+  HaveBooksList,
   ReadBooksLink,
   ReadingBooksLink,
-  SettingsLink,
-} from './Link';
-import {Profile} from './Profile';
+  StackedBooksLink,
+  WishReadBooksLink,
+} from './UserPageLink';
 
 export type ComponentProps = {
   className?: string;
-  picture: string;
-  userName: string;
-  displayName: string;
+  account: {
+    picture: string;
+    userName: string;
+    displayName: string;
+  };
 };
-export const Component: React.FC<ComponentProps> = ({
-  className,
-  picture,
-  userName,
-  displayName,
-}) => (
+export const Component: React.FC<ComponentProps> = ({className, account}) => (
   <div
     className={clsx(
       className,
       'rounded',
       'bg-white',
-      'shadow-md',
+      'shadow-lg',
       'grid',
-      'grid-cols-none',
+      'grid-cols-2',
       'overflow-hidden',
     )}
   >
-    <Profile
-      className={clsx('col-span-2', 'col-start-1')}
-      picture={picture}
-      userName={userName}
-      displayName={displayName}
+    <Profile className={clsx('col-span-2', 'col-start-1')} account={account} />
+    <ReadingBooksLink
+      className={clsx('col-span-1', 'col-start-1')}
+      account={account}
     />
-    <ReadBooksLink className={clsx('col-span-1', 'col-start-1')} />
-    <ReadingBooksLink className={clsx('col-span-1', 'col-start-1')} />
+    <ReadBooksLink
+      className={clsx('col-span-1', 'col-start-2')}
+      account={account}
+    />
+
+    <StackedBooksLink
+      className={clsx('col-span-1', 'col-start-1')}
+      account={account}
+    />
+    <HaveBooksList
+      className={clsx('col-span-1', 'col-start-2')}
+      account={account}
+    />
+
+    <WishReadBooksLink
+      className={clsx('col-span-1', 'col-start-2')}
+      account={account}
+    />
+
     <SettingsLink className={clsx('col-span-1', 'col-start-1')} />
     <LogoutLink className={clsx('col-span-1', 'col-start-2')} />
   </div>

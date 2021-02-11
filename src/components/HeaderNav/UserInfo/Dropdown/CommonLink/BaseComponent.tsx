@@ -1,20 +1,20 @@
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
-import NextLink from 'next/link';
+import NextLink, {LinkProps} from 'next/link';
 import React from 'react';
 
-export type ComponentProps = {
+export type BaseComponentProps = {
   className?: string;
-  link: string;
+  link: LinkProps['href'];
   icon: IconProp;
-  text: string;
+  i18n: Record<'text', string>;
 };
-export const Component: React.FC<ComponentProps> = ({
+export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
   link,
   icon,
-  text,
+  i18n,
 }) => (
   <NextLink href={link}>
     <a
@@ -28,11 +28,13 @@ export const Component: React.FC<ComponentProps> = ({
       )}
     >
       <FontAwesomeIcon
-        className={clsx('text-sm', 'mr-2', 'text-gray-400')}
+        className={clsx('text-xs', 'mr-2', 'text-gray-400')}
         icon={icon}
         fixedWidth
       />
-      <span className={clsx('text-sm')}>{text}</span>
+      <span className={clsx('flex-grow', 'text-sm', 'whitespace-nowrap')}>
+        {i18n.text}
+      </span>
     </a>
   </NextLink>
 );
