@@ -8,18 +8,34 @@ export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
     <Component
       {...props}
       user={account}
-      read={account.readBooks.map(({book, ...rest}) => ({
-        ...rest,
-        book: {...book, cover: book.cover || null},
-      }))}
-      reading={account.readingBooks.map(({book, ...rest}) => ({
-        ...rest,
-        book: {...book, cover: book.cover || null},
-      }))}
-      have={account.haveBooks.map(({book, ...rest}) => ({
-        ...rest,
-        book: {...book, cover: book.cover || null},
-      }))}
+      read={{
+        ...account.readBooks,
+        records: account.readBooks.records.map(({book, ...rest}) => ({
+          ...rest,
+          book: {...book, cover: book.cover || null},
+        })),
+      }}
+      reading={{
+        ...account.readingBooks,
+        records: account.readingBooks.records.map(({book, ...rest}) => ({
+          ...rest,
+          book: {...book, cover: book.cover || null},
+        })),
+      }}
+      have={{
+        ...account.haveBooks,
+        records: account.haveBooks.records.map(({book, ...rest}) => ({
+          ...rest,
+          book: {...book, cover: book.cover || null},
+        })),
+      }}
+      stacked={{
+        ...account.stackedBooks,
+        records: account.stackedBooks.records.map(({book, ...rest}) => ({
+          ...rest,
+          book: {...book, cover: book.cover || null},
+        })),
+      }}
     />
   );
 };

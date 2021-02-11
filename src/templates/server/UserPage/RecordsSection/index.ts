@@ -1,8 +1,9 @@
-export {Component} from './Component';
-export type {ComponentProps} from './Component';
+export {BaseComponent} from './BaseComponent';
+export type {BaseComponentProps} from './BaseComponent';
 export {
   HaveRecordsSection,
   ReadingRecordsSection,
   ReadRecordsSection,
-} from './Container';
-export type {ContainerProps as RecordsSectionProps} from './Container';
+  StackedRecordsSection,
+} from './Component';
+export type {ComponentProps as RecordsSectionProps} from './Component';

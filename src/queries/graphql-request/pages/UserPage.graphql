@@ -10,24 +10,43 @@ query UserPage($userName: ID!) {
     displayName
     picture
     readBooks(limit: 10) {
-      book {
-        id
-        title
-        cover
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
       }
     }
     readingBooks(limit: 10) {
-      book {
-        id
-        title
-        cover
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
       }
     }
     haveBooks(limit: 10) {
-      book {
-        id
-        title
-        cover
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    stackedBooks(limit: 10) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
       }
     }
   }

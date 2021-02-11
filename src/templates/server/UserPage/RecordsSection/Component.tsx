@@ -1,38 +1,95 @@
-import clsx from 'clsx';
 import React from 'react';
-import {BookLink} from '~/components/common/BookLink';
+import {useTranslation} from 'react-i18next';
+import {BaseComponent} from './BaseComponent';
+import {
+  HaveHeader,
+  HeaderProps,
+  ReadHeader,
+  ReadingHeader,
+  StackedHeader,
+} from './Header';
 
 export type ComponentProps = {
   className?: string;
+  user: HeaderProps['user'];
   records: {
-    book: {
-      id: string;
-      title: string;
-      cover: string | null;
-    };
+    book: {id: string; title: string; cover: string | null};
   }[];
+  hasNext: boolean;
 };
-export const Component: React.FC<ComponentProps> = ({
-  className,
-  children,
-  records,
-}) => (
-  <section className={clsx(className)}>
-    {children}
-    <div
-      className={clsx(
-        'mt-4',
-        'grid',
-        'grid-cols-5',
-        'lg:grid-cols-10',
-        'gap-4',
-        'lg:gap-x-2',
-        'lg:gap-y-0',
-      )}
-    >
-      {records.map(({book}) => (
-        <BookLink key={book.id} book={book} className={clsx('h-48')} />
-      ))}
-    </div>
-  </section>
-);
+
+export const ReadRecordsSection: React.FC<ComponentProps> = ({
+  user,
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      user={user}
+      Header={ReadHeader}
+      i18n={{
+        noRecord: t('{{name}}はまだ読んだ本を登録していません', {
+          name: user.displayName,
+        }),
+      }}
+    />
+  );
+};
+
+export const ReadingRecordsSection: React.FC<ComponentProps> = ({
+  user,
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      Header={ReadingHeader}
+      user={user}
+      i18n={{
+        noRecord: t('{{name}}が読んでいる本は今ありません', {
+          name: user.displayName,
+        }),
+      }}
+    />
+  );
+};
+
+export const HaveRecordsSection: React.FC<ComponentProps> = ({
+  user,
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      Header={HaveHeader}
+      user={user}
+      i18n={{
+        noRecord: t('{{name}}はまだ持っている本を登録していません', {
+          name: user.displayName,
+        }),
+      }}
+    />
+  );
+};
+
+export const StackedRecordsSection: React.FC<ComponentProps> = ({
+  user,
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      Header={StackedHeader}
+      user={user}
+      i18n={{
+        noRecord: t('{{name}}が積んでいる本は今ありません', {
+          name: user.displayName,
+        }),
+      }}
+    />
+  );
+};

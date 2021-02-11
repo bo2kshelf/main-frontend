@@ -6,14 +6,16 @@ import {
   ReadingRecordsSection,
   ReadRecordsSection,
   RecordsSectionProps,
+  StackedRecordsSection,
 } from './RecordsSection';
 
 export type ComponentProps = {
   className?: string;
   user: ProfileSectionProps['user'] & RecordsSectionProps['user'];
-  read: RecordsSectionProps['records'];
-  reading: RecordsSectionProps['records'];
-  have: RecordsSectionProps['records'];
+  read: {records: RecordsSectionProps['records']; hasNext: boolean};
+  reading: {records: RecordsSectionProps['records']; hasNext: boolean};
+  have: {records: RecordsSectionProps['records']; hasNext: boolean};
+  stacked: {records: RecordsSectionProps['records']; hasNext: boolean};
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
@@ -21,6 +23,7 @@ export const Component: React.FC<ComponentProps> = ({
   user,
   read,
   reading,
+  stacked,
   have,
 }) => (
   <main className={clsx(className)}>
@@ -29,17 +32,22 @@ export const Component: React.FC<ComponentProps> = ({
     <ReadingRecordsSection
       className={clsx('w-full', 'mt-8')}
       user={user}
-      records={reading}
+      {...reading}
     />
     <ReadRecordsSection
       className={clsx('w-full', 'mt-8')}
       user={user}
-      records={read}
+      {...read}
     />
     <HaveRecordsSection
       className={clsx('w-full', 'mt-8')}
       user={user}
-      records={have}
+      {...have}
+    />
+    <StackedRecordsSection
+      className={clsx('w-full', 'mt-8')}
+      user={user}
+      {...stacked}
     />
   </main>
 );
