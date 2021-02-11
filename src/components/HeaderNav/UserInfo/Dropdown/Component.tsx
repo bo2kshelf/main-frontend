@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
+import styled from 'styled-components';
 import {LogoutLink, SettingsLink} from './CommonLink';
 import {Profile} from './Profile';
 import {
@@ -18,16 +19,19 @@ export type ComponentProps = {
     displayName: string;
   };
 };
-export const Component: React.FC<ComponentProps> = ({className, account}) => (
+export const UnstyledComponent: React.FC<ComponentProps> = ({
+  className,
+  account,
+}) => (
   <div
     className={clsx(
       className,
       'rounded',
-      'bg-white',
       'shadow-lg',
       'grid',
       'grid-cols-2',
       'overflow-hidden',
+      'select-none',
     )}
   >
     <Profile className={clsx('col-span-2', 'col-start-1')} account={account} />
@@ -49,6 +53,9 @@ export const Component: React.FC<ComponentProps> = ({className, account}) => (
       account={account}
     />
 
+    <div
+      className={clsx('col-span-1', 'col-start-1', 'bg-white', 'bg-opacity-90')}
+    />
     <WishReadBooksLink
       className={clsx('col-span-1', 'col-start-2')}
       account={account}
@@ -58,3 +65,7 @@ export const Component: React.FC<ComponentProps> = ({className, account}) => (
     <LogoutLink className={clsx('col-span-1', 'col-start-2')} />
   </div>
 );
+
+export const Component = styled(UnstyledComponent)`
+  backdrop-filter: blur(2px);
+`;

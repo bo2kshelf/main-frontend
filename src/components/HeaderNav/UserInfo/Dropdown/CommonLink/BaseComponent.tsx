@@ -20,7 +20,11 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
     <a
       className={clsx(
         className,
-        'hover:bg-blue-50',
+        'group',
+        'bg-white',
+        'hover:bg-blue-500',
+        'bg-opacity-90',
+        'hover:bg-opacity-80',
         'px-4',
         'py-3',
         'flex',
@@ -28,11 +32,24 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
       )}
     >
       <FontAwesomeIcon
-        className={clsx('text-xs', 'mr-2', 'text-gray-400')}
+        className={clsx(
+          'text-xs',
+          'mr-2',
+          'text-gray-400',
+          'group-hover:text-white',
+        )}
         icon={icon}
         fixedWidth
       />
-      <span className={clsx('flex-grow', 'text-sm', 'whitespace-nowrap')}>
+      <span
+        className={clsx(
+          'flex-grow',
+          'text-sm',
+          'whitespace-nowrap',
+          'text-black',
+          'group-hover:text-white',
+        )}
+      >
         {i18n.text}
       </span>
     </a>
