@@ -10,14 +10,14 @@ export type ComponentProps = {
   title: string;
   cover?: string;
 };
-export const PlainComponent: React.FC<ComponentProps> = ({
+const PlainComponent: React.FC<ComponentProps> = ({
   className,
   link,
   cover,
   title,
 }) => (
   <NextLink href={link}>
-    <a className={clsx(className, 'relative')}>
+    <a className={clsx(className, 'relative', 'bg-gray-200')}>
       <BookCover
         className={clsx('cover', 'h-full')}
         title={title}
