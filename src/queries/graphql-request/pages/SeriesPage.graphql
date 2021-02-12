@@ -1,0 +1,27 @@
+query AllSeriesPages {
+  allSeries {
+    id
+  }
+}
+
+query SeriesPage($id: ID!) {
+  series(id: $id) {
+    id
+    title
+    booksOf(limit: 24, orderBy: {title: ASC, volume: ASC}) {
+      parts {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    relatedAuthors(limit: 10) {
+      author {
+        id
+        name
+      }
+    }
+  }
+}

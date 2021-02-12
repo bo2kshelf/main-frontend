@@ -20,9 +20,9 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
           roles: roles || null,
         })),
       }}
-      series={book.seriesOf.map(({series}) => ({
+      series={book.seriesOf.parts.map(({series}) => ({
         ...series,
-        books: series.parts.map(({book}) => ({
+        books: series.booksOf.parts.map(({book}) => ({
           ...book,
           cover: book.cover || null,
         })),

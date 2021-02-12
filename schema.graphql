@@ -18,7 +18,7 @@ type Book {
   title: String!
   isbn(dehyphenize: Boolean = true): String
   writedBy(skip: Int, limit: Int): [Writing!]!
-  seriesOf(skip: Int, limit: Int): [SeriesPart!]!
+  seriesOf(skip: Int, limit: Int): SeriesPartsPayload!
   cover: String
 }
 input CreateAuthorDataInput {
@@ -46,6 +46,10 @@ type HaveBooksPayload {
 }
 """A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
 scalar LocalDate
+enum OrderBy {
+  ASC
+  DESC
+}
 type ReadBookRecord {
   account: Account!
   book: Book!
@@ -75,13 +79,25 @@ type ReadingBooksPayload {
 type Series {
   id: ID!
   title: String!
-  parts(skip: Int, limit: Int): [SeriesPart!]!
+  booksOf(skip: Int, limit: Int, orderBy: SeriesPartsArgsOrderBy): SeriesPartsPayload!
   relatedAuthors(skip: Int, limit: Int): [AuthorSeriesRelation!]!
 }
 type SeriesPart {
   series: Series!
   book: Book!
   volume: Float
+}
+input SeriesPartsArgsOrderBy {
+  title: OrderBy
+  volume: OrderBy
+}
+type SeriesPartsPayload {
+  parts: [SeriesPart!]!
+  count: Int!
+  skip: Int!
+  limit: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
 }
 type StackedBookRecord {
   account: Account!
