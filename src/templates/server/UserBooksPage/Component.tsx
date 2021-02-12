@@ -35,7 +35,7 @@ export const Component: React.FC<ComponentProps> = ({
     {records.length > 0 && (
       <>
         <ListSlider className={clsx('w-full')} {...props} count={count} />
-        <ListSection records={records} />
+        <ListSection className={clsx('my-4')} records={records} />
         <ListSlider className={clsx('w-full')} {...props} count={count} />
       </>
     )}

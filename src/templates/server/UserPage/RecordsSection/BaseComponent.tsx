@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {BookLink} from '~/components/common/BookLink';
+import {BooksList} from '~/components/common/BooksList';
 import {HeaderProps} from './Header';
 
 export type BaseComponentProps = {
@@ -22,20 +23,18 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
   <section className={clsx(className)}>
     <Header className={clsx('mb-4')} user={user} hasMore={hasNext} />
     {records.length > 0 && (
-      <div
+      <BooksList
         className={clsx(
+          'p-4',
+          'bg-gray-100',
           'grid',
-          'grid-cols-5',
-          'lg:grid-cols-10',
-          'gap-4',
-          'lg:gap-x-2',
-          'lg:gap-y-0',
+          'grid-cols-6',
+          'lg:grid-cols-12',
+          'gap-2',
         )}
-      >
-        {records.map(({book}) => (
-          <BookLink key={book.id} book={book} className={clsx('h-48')} />
-        ))}
-      </div>
+        books={records.map(({book}) => book)}
+        BookLink={(props) => <BookLink className={clsx('h-32')} {...props} />}
+      />
     )}
     {records.length === 0 && (
       <div
