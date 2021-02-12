@@ -8,7 +8,7 @@ export const Container: React.FC<ContainerProps> = ({series, ...props}) => {
     <Component
       {...props}
       {...series}
-      parts={series.parts.map(({book}) => ({
+      parts={series.booksOf.parts.map(({book}) => ({
         book: {
           ...book,
           cover: book.cover || null,

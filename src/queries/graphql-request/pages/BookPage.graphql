@@ -3,6 +3,7 @@ query AllBookPages {
     id
   }
 }
+
 query BookPage($id: ID!) {
   book(id: $id) {
     id
@@ -22,14 +23,18 @@ query BookPage($id: ID!) {
       roles
     }
     seriesOf(limit: 10) {
-      series {
-        id
-        title
-        parts(limit: 10) {
-          book {
-            id
-            title
-            cover
+      parts {
+        series {
+          id
+          title
+          booksOf(limit: 10, orderBy: {title: ASC, volume: ASC}) {
+            parts {
+              book {
+                id
+                title
+                cover
+              }
+            }
           }
         }
       }

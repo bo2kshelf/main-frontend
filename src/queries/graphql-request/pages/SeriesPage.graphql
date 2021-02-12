@@ -8,11 +8,13 @@ query SeriesPage($id: ID!) {
   series(id: $id) {
     id
     title
-    parts(limit: 24) {
-      book {
-        id
-        title
-        cover
+    booksOf(limit: 24, orderBy: {title: ASC, volume: ASC}) {
+      parts {
+        book {
+          id
+          title
+          cover
+        }
       }
     }
     relatedAuthors(limit: 10) {
