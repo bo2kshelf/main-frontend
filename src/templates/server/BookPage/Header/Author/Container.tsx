@@ -6,7 +6,7 @@ export type ContainerProps = {
   author: {
     id: string;
     name: string;
-    roles: string[] | null;
+    roles?: string[];
   };
 };
 export const Container: React.FC<ContainerProps> = ({author, ...props}) => {
@@ -14,8 +14,8 @@ export const Container: React.FC<ContainerProps> = ({author, ...props}) => {
     <Component
       {...props}
       {...author}
-      roles={author.roles?.join(',') || null}
-      link={`/authors/${author.id}`}
+      roles={author.roles?.join(',')}
+      link={{pathname: `/authors/[id]`, query: {id: author.id}}}
     />
   );
 };

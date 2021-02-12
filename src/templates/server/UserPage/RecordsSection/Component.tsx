@@ -13,7 +13,7 @@ export type ComponentProps = {
   className?: string;
   user: HeaderProps['user'];
   records: {
-    book: {id: string; title: string; cover: string | null};
+    book: {id: string; title: string; cover?: string};
   }[];
   hasNext: boolean;
 };

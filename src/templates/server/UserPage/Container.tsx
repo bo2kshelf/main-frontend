@@ -12,28 +12,28 @@ export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
         ...account.readBooks,
         records: account.readBooks.records.map(({book, ...rest}) => ({
           ...rest,
-          book: {...book, cover: book.cover || null},
+          book: {...book, cover: book.cover || undefined},
         })),
       }}
       reading={{
         ...account.readingBooks,
         records: account.readingBooks.records.map(({book, ...rest}) => ({
           ...rest,
-          book: {...book, cover: book.cover || null},
+          book: {...book, cover: book.cover || undefined},
         })),
       }}
       have={{
         ...account.haveBooks,
         records: account.haveBooks.records.map(({book, ...rest}) => ({
           ...rest,
-          book: {...book, cover: book.cover || null},
+          book: {...book, cover: book.cover || undefined},
         })),
       }}
       stacked={{
         ...account.stackedBooks,
         records: account.stackedBooks.records.map(({book, ...rest}) => ({
           ...rest,
-          book: {...book, cover: book.cover || null},
+          book: {...book, cover: book.cover || undefined},
         })),
       }}
     />

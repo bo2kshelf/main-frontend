@@ -8,7 +8,7 @@ export type ComponentProps = {
     book: {
       id: string;
       title: string;
-      cover: string | null;
+      cover?: string;
     };
   }[];
 };
@@ -31,3 +31,4 @@ export const Component: React.FC<ComponentProps> = ({className, records}) => (
     </div>
   </section>
 );
+Component.displayName = 'ListSection';

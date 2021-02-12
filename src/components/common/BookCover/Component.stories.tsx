@@ -34,7 +34,5 @@ HaveCover.storyName = '画像がある';
 export const NoCover: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx('h-full')} />
 );
-NoCover.args = {
-  cover: null,
-};
+NoCover.args = {};
 NoCover.storyName = '画像がない';

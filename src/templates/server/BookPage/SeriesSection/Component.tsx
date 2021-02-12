@@ -16,3 +16,4 @@ export const Component: React.FC<ComponentProps> = ({className, series}) => (
     <List className={clsx('w-full')} series={series} />
   </div>
 );
+Component.displayName = 'SeriesSection';

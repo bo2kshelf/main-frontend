@@ -2,13 +2,13 @@ import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
-import {BookCover, BookCoverProps} from '~/components/common/BookCover';
+import {BookCover} from '~/components/common/BookCover';
 
 export type ComponentProps = {
   className?: string;
   link: string;
-  title: BookCoverProps['title'];
-  cover: BookCoverProps['cover'];
+  title: string;
+  cover?: string;
 };
 export const PlainComponent: React.FC<ComponentProps> = ({
   className,

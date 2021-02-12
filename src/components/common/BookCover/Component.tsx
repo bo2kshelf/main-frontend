@@ -5,7 +5,7 @@ import React from 'react';
 export type ComponentProps = {
   className?: string;
   title: string;
-  cover: string | null;
+  cover?: string;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,

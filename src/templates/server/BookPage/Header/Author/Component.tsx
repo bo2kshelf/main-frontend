@@ -1,12 +1,12 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
+import NextLink, {LinkProps} from 'next/link';
 import React from 'react';
 
 export type ComponentProps = {
   className?: string;
   name: string;
-  roles: string | null;
-  link: string;
+  roles?: string;
+  link: LinkProps['href'];
 };
 export const Component: React.FC<ComponentProps> = ({
   className,

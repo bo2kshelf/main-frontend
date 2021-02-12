@@ -21,3 +21,4 @@ export const Component: React.FC<ComponentProps> = ({author, ...props}) => {
     />
   );
 };
+Component.displayName = 'AllBooksSection';

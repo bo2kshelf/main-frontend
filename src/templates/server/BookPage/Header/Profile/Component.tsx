@@ -21,3 +21,4 @@ export const Component: React.FC<ComponentProps> = ({className, book}) => (
     <Details className={clsx('mt-4')} book={book} />
   </div>
 );
+Component.displayName = 'Profile';

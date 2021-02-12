@@ -1,4 +1,2 @@
-export {Component} from './Component';
-export type {ComponentProps} from './Component';
-export {Container as ListSection} from './Container';
-export type {ContainerProps as ListSectionProps} from './Container';
+export {Component as ListSection} from './Component';
+export type {ComponentProps as ListSectionProps} from './Component';

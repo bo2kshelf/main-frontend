@@ -10,13 +10,13 @@ export const Container: React.FC<ContainerProps> = ({author, ...props}) => {
       author={author}
       allBooks={author.writes.map(({book}) => ({
         ...book,
-        cover: book.cover || null,
+        cover: book.cover || undefined,
       }))}
       series={author.relatedSeries.map(({series, relatedBooks}) => ({
         ...series,
         books: relatedBooks.map((book) => ({
           ...book,
-          cover: book.cover || null,
+          cover: book.cover || undefined,
         })),
       }))}
     />

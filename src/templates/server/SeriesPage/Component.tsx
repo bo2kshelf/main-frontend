@@ -7,7 +7,7 @@ export type ComponentProps = {
   className?: string;
   title: string;
   relatedAuthors: {author: {id: string; name: string}}[];
-  parts: {book: {id: string; title: string; cover: string | null}}[];
+  parts: {book: {id: string; title: string; cover?: string}}[];
 };
 export const Component: React.FC<ComponentProps> = ({
   className,

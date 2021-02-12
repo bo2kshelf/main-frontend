@@ -6,7 +6,7 @@ import {HeaderProps} from './Header';
 export type BaseComponentProps = {
   className?: string;
   user: HeaderProps['user'];
-  records: {book: {id: string; title: string; cover: string | null}}[];
+  records: {book: {id: string; title: string; cover?: string}}[];
   hasNext: boolean;
   i18n: Record<'noRecord', string>;
   Header: React.FC<HeaderProps>;
