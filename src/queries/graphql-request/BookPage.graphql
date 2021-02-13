@@ -27,7 +27,7 @@ query BookPage($id: ID!) {
         series {
           id
           title
-          booksOf(limit: 10, orderBy: {title: ASC, volume: ASC}) {
+          booksOf(limit: 24, orderBy: {title: ASC, volume: ASC}) {
             parts {
               book {
                 id

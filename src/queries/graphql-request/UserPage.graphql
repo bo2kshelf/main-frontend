@@ -9,7 +9,7 @@ query UserPage($userName: ID!) {
     userName
     displayName
     picture
-    readBooks(limit: 10) {
+    readBooks(limit: 12) {
       hasNext
       records {
         book {
@@ -19,7 +19,7 @@ query UserPage($userName: ID!) {
         }
       }
     }
-    readingBooks(limit: 10) {
+    readingBooks(limit: 12) {
       hasNext
       records {
         book {
@@ -29,7 +29,7 @@ query UserPage($userName: ID!) {
         }
       }
     }
-    haveBooks(limit: 10) {
+    haveBooks(limit: 12) {
       hasNext
       records {
         book {
@@ -39,7 +39,7 @@ query UserPage($userName: ID!) {
         }
       }
     }
-    stackedBooks(limit: 10) {
+    stackedBooks(limit: 12) {
       hasNext
       records {
         book {
