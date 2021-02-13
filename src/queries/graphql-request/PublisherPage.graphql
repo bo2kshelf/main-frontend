@@ -1,0 +1,19 @@
+query AllAPublisherPages {
+  allPublishers {
+    id
+  }
+}
+
+query PublisherPage($id: ID!) {
+  publisher(id: $id) {
+    id
+    name
+    publications(limit: 96) {
+      book {
+        id
+        title
+        cover
+      }
+    }
+  }
+}
