@@ -2,11 +2,11 @@ import {Meta, Story} from '@storybook/react/types-6-0';
 import clsx from 'clsx';
 import React from 'react';
 import {placeholder} from '~~/.storybook/assets';
-import {Component, ComponentProps, PlainComponent} from './Component';
+import {Component, ComponentProps} from './Component';
 
 export default {
   title: 'common/BookLink/Component',
-  component: PlainComponent,
+  component: Component,
   args: {
     link: '/books/1',
     title: 'sample',
