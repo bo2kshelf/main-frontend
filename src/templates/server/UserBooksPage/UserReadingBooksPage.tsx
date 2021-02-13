@@ -17,7 +17,7 @@ export const UserReadingBooksPage: React.FC<UserReadingBooksPageProps> = ({
       {...props}
       account={{...rest}}
       records={books.records.map(({book}) => ({
-        book: {...book, cover: book.cover || null},
+        book: {...book, cover: book.cover || undefined},
       }))}
       previousLink={getPreviousLink(
         'reading',

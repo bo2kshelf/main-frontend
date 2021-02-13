@@ -16,7 +16,7 @@ export const Component: React.FC<ComponentProps> = ({
   allBooks,
   series,
 }) => (
-  <main className={clsx(className)}>
+  <main className={clsx(className, 'space-y-8')}>
     {children}
     <AllBooksSection
       author={author}
@@ -24,11 +24,7 @@ export const Component: React.FC<ComponentProps> = ({
       books={allBooks}
     />
     {series.map((node) => (
-      <SeriesSection
-        className={clsx('w-full', 'mt-8')}
-        key={node.id}
-        series={node}
-      />
+      <SeriesSection className={clsx('w-full')} key={node.id} series={node} />
     ))}
   </main>
 );

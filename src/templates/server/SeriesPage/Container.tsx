@@ -11,7 +11,7 @@ export const Container: React.FC<ContainerProps> = ({series, ...props}) => {
       parts={series.booksOf.parts.map(({book}) => ({
         book: {
           ...book,
-          cover: book.cover || null,
+          cover: book.cover || undefined,
         },
       }))}
     />

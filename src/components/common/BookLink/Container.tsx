@@ -1,12 +1,12 @@
 import React from 'react';
-import {Component, ComponentProps} from './Component';
+import {Component} from './Component';
 
 export type ContainerProps = {
   className?: string;
   book: {
     id: string;
-    title: ComponentProps['title'];
-    cover: ComponentProps['cover'];
+    title: string;
+    cover?: string;
   };
 };
 export const Container: React.FC<ContainerProps> = ({book, ...props}) => {

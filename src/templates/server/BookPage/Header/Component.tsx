@@ -5,7 +5,7 @@ import {Profile, ProfileProps} from './Profile';
 
 export type ComponentProps = {
   className?: string;
-  book: ProfileProps['book'] & {cover: string | null};
+  book: ProfileProps['book'] & {cover: string | undefined};
 };
 export const Component: React.FC<ComponentProps> = ({className, book}) => (
   <header className={clsx(className, 'grid', 'grid-cols-3', 'gap-x-4')}>
@@ -19,3 +19,4 @@ export const Component: React.FC<ComponentProps> = ({className, book}) => (
     <Profile className={clsx('col-start-2', 'col-span-full')} book={book} />
   </header>
 );
+Component.displayName = 'Header';

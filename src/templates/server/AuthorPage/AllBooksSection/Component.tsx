@@ -15,9 +15,8 @@ export const Component: React.FC<ComponentProps> = ({author, ...props}) => {
   return (
     <BaseComponent
       {...props}
-      i18n={{
-        title: t('{{name}}による本', {name: author.name}),
-      }}
+      i18n={{title: t('{{name}}による本', {name: author.name})}}
     />
   );
 };
+Component.displayName = 'AllBooksSection';

@@ -1,18 +1,31 @@
 import clsx from 'clsx';
 import React from 'react';
-import {Head, HeadProps} from './Head';
-import {List, ListProps} from './List';
+import {BooksSection} from '~/components/common/BooksSection';
+import {Head} from './Head';
 
 export type ComponentProps = {
   className?: string;
-  series: HeadProps['series'] & ListProps['series'];
+  series: {
+    id: string;
+    title: string;
+    books: {id: string; cover?: string; title: string}[];
+  };
 };
-export const Component: React.FC<ComponentProps> = ({className, series}) => (
-  <div className={clsx(className)}>
-    <Head
-      className={clsx('w-full', 'max-w-screen-xl', 'mx-auto', 'mb-4')}
-      series={series}
-    />
-    <List className={clsx('w-full')} series={series} />
-  </div>
+export const Component: React.FC<ComponentProps> = ({
+  series,
+  className,
+  ...props
+}) => (
+  <BooksSection
+    className={clsx(className)}
+    Header={() => (
+      <Head
+        className={clsx('w-full', 'max-w-screen-xl', 'mx-auto', 'mb-4')}
+        series={series}
+      />
+    )}
+    books={series.books}
+    {...props}
+  />
 );
+Component.displayName = 'SeriesSection';
