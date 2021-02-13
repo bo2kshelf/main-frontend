@@ -17,7 +17,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         path: '/',
         httpOnly: true,
         sameSite: 'strict',
-        maxAge: 3600,
       }),
     );
 

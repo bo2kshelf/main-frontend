@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BooksSection} from './BooksSection';
+import {BooksSection} from '~/components/common/BooksSection';
 import {Header} from './Header';
 
 export type ComponentProps = {
@@ -23,6 +23,9 @@ export const Component: React.FC<ComponentProps> = ({
       title={title}
       relatedAuthors={relatedAuthors}
     />
-    <BooksSection className={clsx('mt-2', 'w-full')} parts={parts} />
+    <BooksSection
+      className={clsx('mt-2', 'w-full')}
+      books={parts.map(({book}) => book)}
+    />
   </main>
 );
