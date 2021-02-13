@@ -1,6 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
-import {SeriesSection, SeriesSectionProps} from '../BookPage/SeriesSection';
+import {
+  SeriesSection,
+  SeriesSectionProps,
+} from '../BookPage/Section/SeriesSection';
 import {AllBooksSection, AllBooksSectionProps} from './AllBooksSection';
 
 export type ComponentProps = {

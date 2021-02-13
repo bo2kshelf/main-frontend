@@ -10,6 +10,19 @@ query BookPage($id: ID!) {
     title
     isbn(dehyphenize: true)
     cover
+    publishedBy(limit: 10) {
+      publisher {
+        id
+        name
+        publications(limit: 12) {
+          book {
+            id
+            title
+            cover
+          }
+        }
+      }
+    }
     writedBy(limit: 10) {
       author {
         id

@@ -27,6 +27,13 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
           cover: book.cover || undefined,
         })),
       }))}
+      publishers={book.publishedBy.map(({publisher}) => ({
+        ...publisher,
+        books: publisher.publications.map(({book}) => ({
+          ...book,
+          cover: book.cover || undefined,
+        })),
+      }))}
     />
   );
 };

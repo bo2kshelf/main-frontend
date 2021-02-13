@@ -1,31 +1,31 @@
 import clsx from 'clsx';
 import React from 'react';
 import {BooksSection} from '~/components/common/BooksSection';
-import {Head} from './Head';
+import {PublisherHead} from '../Head';
 
 export type ComponentProps = {
   className?: string;
-  series: {
+  publisher: {
     id: string;
-    title: string;
+    name: string;
     books: {id: string; cover?: string; title: string}[];
   };
 };
 export const Component: React.FC<ComponentProps> = ({
-  series,
+  publisher,
   className,
   ...props
 }) => (
   <BooksSection
     className={clsx(className)}
     Header={() => (
-      <Head
+      <PublisherHead
         className={clsx('w-full', 'max-w-screen-xl', 'mx-auto', 'mb-4')}
-        series={series}
+        publisher={publisher}
       />
     )}
-    books={series.books}
+    books={publisher.books}
     {...props}
   />
 );
-Component.displayName = 'SeriesSection';
+Component.displayName = 'PublisherSection';
