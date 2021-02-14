@@ -44,7 +44,12 @@ export const Publisher: Story<Parameters<typeof PublisherDetail>[0]> = (
   args,
 ) => <PublisherDetail {...args} />;
 Publisher.args = {
-  publishers: '小学館',
+  publishers: [
+    {
+      id: 'A',
+      name: '小学館',
+    },
+  ],
 };
 Publisher.storyName = '出版';
 
