@@ -8,7 +8,7 @@ query AuthorPage($id: ID!) {
   author(id: $id) {
     id
     name
-    writes(limit: 20) {
+    writes(limit: 36) {
       book {
         id
         title
@@ -21,7 +21,7 @@ query AuthorPage($id: ID!) {
         id
         title
       }
-      relatedBooks(limit: 10) {
+      relatedBooks(limit: 12) {
         id
         title
         cover
