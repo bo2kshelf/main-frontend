@@ -19,6 +19,7 @@ type Book {
   isbn(dehyphenize: Boolean = true): String
   writedBy(skip: Int, limit: Int): [Writing!]!
   seriesOf(skip: Int, limit: Int): SeriesPartsPayload!
+  publishedBy(skip: Int, limit: Int): [Publication!]!
   cover: String
 }
 input CreateAuthorDataInput {
@@ -27,6 +28,9 @@ input CreateAuthorDataInput {
 input CreateBookDataInput {
   title: String!
   isbn: String
+}
+input CreatePublisherDataInput {
+  name: String!
 }
 input CreateSeriesDataInput {
   title: String!
@@ -49,6 +53,15 @@ scalar LocalDate
 enum OrderBy {
   ASC
   DESC
+}
+type Publication {
+  publisher: Publisher!
+  book: Book!
+}
+type Publisher {
+  id: ID!
+  name: String!
+  publications(skip: Int, limit: Int): [Publication!]!
 }
 type ReadBookRecord {
   account: Account!
@@ -269,6 +282,8 @@ type Query {
   allAuthors: [Author!]!
   series(id: ID!): Series!
   allSeries: [Series!]!
+  publisher(id: ID!): Publisher!
+  allPublishers: [Publisher!]!
   searchBooks(after: String, first: Int, before: String, last: Int, query: SearchBooksQuery!): SearchBooksResult!
   searchAuthors(after: String, first: Int, before: String, last: Int, query: SearchAuthorsQuery!): SearchAuthorsResult!
   searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
@@ -288,6 +303,8 @@ type Mutation {
   createReadRecord(accountId: ID!, bookId: ID!, date: LocalDate!): ReadBookRecord!
   switchReadingRecord(accountId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
   switchWishReadRecord(accountId: ID!, bookId: ID!, wish: Boolean!): WishReadBookRecord!
+  createPublisher(data: CreatePublisherDataInput!): Publisher!
+  connectBookToPublisher(bookId: ID!, publisherId: ID!): Publication!
   loginGitHub(code: String!): GitHubAuthPayload!
   createAccount(data: CreateAccountDataInput!): Account!
 }
