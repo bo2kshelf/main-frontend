@@ -3,17 +3,16 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import React from 'react';
 
-export type ComponentProps = {
+export type BaseComponentProps = {
   className?: string;
-  detailKey: string;
-  detailValue: string;
+  i18n: Record<'key', string>;
   icon: IconProp;
 };
 
-export const Component: React.FC<ComponentProps> = ({
+export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
-  detailKey: key,
-  detailValue: value,
+  children,
+  i18n,
   icon,
 }) => (
   <tr className={clsx(className)}>
@@ -23,10 +22,8 @@ export const Component: React.FC<ComponentProps> = ({
         fixedWidth
         icon={icon}
       />
-      <span className={clsx('text-sm', 'select-none')}>{key}</span>
+      <span className={clsx('text-sm', 'select-none')}>{i18n.key}</span>
     </td>
-    <td className={clsx('px-4', 'border')}>
-      <span className={clsx('select-all')}>{value}</span>
-    </td>
+    <td className={clsx('px-4', 'border')}>{children}</td>
   </tr>
 );

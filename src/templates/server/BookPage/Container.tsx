@@ -9,12 +9,9 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
       {...props}
       book={{
         ...book,
-        isbn: book.isbn || null,
+        isbn: book.isbn || undefined,
         cover: book.cover || undefined,
-        date: null,
-        language: null,
-        publisher: null,
-        pages: null,
+        publishers: book.publishedBy.map(({publisher}) => publisher),
         authors: book.writedBy.map(({roles, author}) => ({
           ...author,
           roles: roles || undefined,
@@ -23,6 +20,13 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
       series={book.seriesOf.parts.map(({series}) => ({
         ...series,
         books: series.booksOf.parts.map(({book}) => ({
+          ...book,
+          cover: book.cover || undefined,
+        })),
+      }))}
+      publishers={book.publishedBy.map(({publisher}) => ({
+        ...publisher,
+        books: publisher.publications.map(({book}) => ({
           ...book,
           cover: book.cover || undefined,
         })),

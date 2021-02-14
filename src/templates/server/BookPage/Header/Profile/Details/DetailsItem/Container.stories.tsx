@@ -28,7 +28,7 @@ export const ISBN: Story<Parameters<typeof ISBNDetail>[0]> = (args) => (
   <ISBNDetail {...args} />
 );
 ISBN.args = {
-  detail: '9784764905870',
+  isbn: '9784764905870',
 };
 ISBN.storyName = 'ISBN';
 
@@ -36,7 +36,7 @@ export const Pages: Story<Parameters<typeof PagesDetail>[0]> = (args) => (
   <PagesDetail {...args} />
 );
 Pages.args = {
-  detail: 192,
+  pages: 192,
 };
 Pages.storyName = 'ページ数';
 
@@ -44,7 +44,12 @@ export const Publisher: Story<Parameters<typeof PublisherDetail>[0]> = (
   args,
 ) => <PublisherDetail {...args} />;
 Publisher.args = {
-  detail: '小学館',
+  publishers: [
+    {
+      id: 'A',
+      name: '小学館',
+    },
+  ],
 };
 Publisher.storyName = '出版';
 
@@ -52,7 +57,7 @@ export const Date: Story<Parameters<typeof DateDetail>[0]> = (args) => (
   <DateDetail {...args} />
 );
 Date.args = {
-  detail: '2020/11/7',
+  publishDate: '2020/11/7',
 };
 Date.storyName = '発売日';
 
@@ -60,6 +65,6 @@ export const Lang: Story<Parameters<typeof LanguageDetail>[0]> = (args) => (
   <LanguageDetail {...args} />
 );
 Lang.args = {
-  detail: '日本語',
+  language: '日本語',
 };
 Lang.storyName = '言語';

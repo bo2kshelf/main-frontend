@@ -5,81 +5,81 @@ import {
   faCalendarAlt,
   faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {Component} from './Component';
+import {BaseComponent} from './BaseComponent';
 
-export const ISBNDetail: React.FC<{
-  className?: string;
-  detail: string;
-}> = ({detail, ...props}) => {
+export const ISBNDetail: React.FC<{className?: string; isbn: string}> = ({
+  isbn,
+  ...props
+}) => {
   const {t} = useTranslation();
   return (
-    <Component
-      {...props}
-      detailKey={t('common:isbn')}
-      detailValue={detail}
-      icon={faBarcode}
-    />
+    <BaseComponent {...props} i18n={{key: t('common:isbn')}} icon={faBarcode}>
+      <span>{isbn}</span>
+    </BaseComponent>
   );
 };
 
 export const PagesDetail: React.FC<{
   className?: string;
-  detail: number;
-}> = ({detail, ...props}) => {
+  pages: number;
+}> = ({pages, ...props}) => {
   const {t} = useTranslation();
   return (
-    <Component
-      {...props}
-      detailKey={t('common:pages')}
-      detailValue={t('common:page', {page: detail})}
-      icon={faBook}
-    />
+    <BaseComponent {...props} i18n={{key: t('common:pages')}} icon={faBook}>
+      <span>{pages}</span>
+    </BaseComponent>
   );
 };
 
 export const PublisherDetail: React.FC<{
   className?: string;
-  detail: string;
-}> = ({detail, ...props}) => {
+  publishers: {id: string; name: string}[];
+}> = ({publishers, ...props}) => {
   const {t} = useTranslation();
   return (
-    <Component
+    <BaseComponent
       {...props}
-      detailKey={t('common:publisher')}
-      detailValue={detail}
+      i18n={{
+        key: t('common:publisher'),
+      }}
       icon={faBuilding}
-    />
+    >
+      {publishers.map(({name, id}) => (
+        <Link key={id} href={{pathname: '/publishers/[id]', query: {id}}}>
+          <a>{name}</a>
+        </Link>
+      ))}
+    </BaseComponent>
   );
 };
 
 export const DateDetail: React.FC<{
   className?: string;
-  detail: string;
-}> = ({detail, ...props}) => {
+  publishDate: string;
+}> = ({publishDate: detail, ...props}) => {
   const {t} = useTranslation();
   return (
-    <Component
+    <BaseComponent
       {...props}
-      detailKey={t('common:publish_date')}
-      detailValue={detail}
+      i18n={{key: t('common:publish_date')}}
       icon={faCalendarAlt}
-    />
+    >
+      <span>{detail}</span>
+    </BaseComponent>
   );
 };
 
 export const LanguageDetail: React.FC<{
   className?: string;
-  detail: string;
-}> = ({detail, ...props}) => {
+  language: string;
+}> = ({language, ...props}) => {
   const {t} = useTranslation();
   return (
-    <Component
-      {...props}
-      detailKey={t('common:language')}
-      detailValue={detail}
-      icon={faGlobe}
-    />
+    <BaseComponent {...props} i18n={{key: t('common:language')}} icon={faGlobe}>
+      <span>{language}</span>
+    </BaseComponent>
   );
 };

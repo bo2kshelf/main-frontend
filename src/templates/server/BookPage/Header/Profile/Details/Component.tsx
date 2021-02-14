@@ -1,25 +1,17 @@
 import clsx from 'clsx';
 import React from 'react';
-import {
-  DateDetail,
-  ISBNDetail,
-  LanguageDetail,
-  PagesDetail,
-  PublisherDetail,
-} from './DetailsItem';
-
-const map = {
-  isbn: ISBNDetail,
-  pages: PagesDetail,
-  date: DateDetail,
-  publisher: PublisherDetail,
-  language: LanguageDetail,
-};
+import {ISBNDetail, PublisherDetail} from './DetailsItem';
 
 export type ComponentProps = {
   className?: string;
+  isbn?: string;
+  publishers?: {id: string; name: string}[];
 };
-export const Component: React.FC<ComponentProps> = ({className, children}) => (
+export const Component: React.FC<ComponentProps> = ({
+  className,
+  isbn,
+  publishers,
+}) => (
   <table
     className={clsx(
       className,
@@ -29,6 +21,11 @@ export const Component: React.FC<ComponentProps> = ({className, children}) => (
       'border-separate',
     )}
   >
-    <tbody>{children}</tbody>
+    <tbody>
+      {isbn && <ISBNDetail isbn={isbn} />}
+      {publishers && publishers.length > 0 && (
+        <PublisherDetail publishers={publishers} />
+      )}
+    </tbody>
   </table>
 );
