@@ -1,9 +1,3 @@
-export {Component} from './Component';
-export type {ComponentProps} from './Component';
-export {
-  DateDetail,
-  ISBNDetail,
-  LanguageDetail,
-  PagesDetail,
-  PublisherDetail,
-} from './Container';
+export {BaseComponent} from './BaseComponent';
+export type {BaseComponentProps} from './BaseComponent';
+export * from './Container';

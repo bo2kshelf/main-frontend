@@ -16,7 +16,7 @@ export const PublisherComponent: React.FC<{
     <BaseComponent
       {...props}
       i18n={{
-        title: t('{{name}}による他の本', {name: publisher.name}),
+        title: t('{{name}}から出版されている他の本', {name: publisher.name}),
       }}
     />
   );

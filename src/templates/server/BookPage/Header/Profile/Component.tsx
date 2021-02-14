@@ -1,14 +1,16 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Author, AuthorProps} from '../Author';
-import {Details, DetailsProps} from './Details';
+import {Details} from './Details';
 
 export type ComponentProps = {
   className?: string;
   book: {
     title: string;
     authors: AuthorProps['author'][];
-  } & DetailsProps['book'];
+    isbn?: string;
+    publishers?: {id: string; name: string}[];
+  };
 };
 export const Component: React.FC<ComponentProps> = ({className, book}) => (
   <div className={clsx(className)}>
