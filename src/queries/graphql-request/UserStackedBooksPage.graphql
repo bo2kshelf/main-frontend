@@ -1,15 +1,15 @@
 query AllUserStackedBooksPage {
-  allAccounts {
-    userName
+  allUsers {
+    uniqueName
     books: stackedBooks {
       count
     }
   }
 }
 
-query UserStackedBooksPage($userName: ID!, $skip: Int!, $limit: Int!) {
-  account(userName: $userName) {
-    userName
+query UserStackedBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
+  user(uniqueName: $userName) {
+    uniqueName
     displayName
     picture
     books: stackedBooks(limit: $limit, skip: $skip) {

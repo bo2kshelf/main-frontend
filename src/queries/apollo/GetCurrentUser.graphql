@@ -1,4 +1,4 @@
-query PersonalUserPage {
+query GetCurrentUser {
   currentUser {
     id
     uniqueName

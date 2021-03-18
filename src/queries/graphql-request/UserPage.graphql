@@ -1,12 +1,12 @@
 query AllUserPages {
-  allAccounts {
-    userName
+  allUsers {
+    uniqueName
   }
 }
 
-query UserPage($userName: ID!) {
-  account(userName: $userName) {
-    userName
+query UserPage($userName: String!) {
+  user(uniqueName: $userName) {
+    uniqueName
     displayName
     picture
     readBooks(limit: 12) {
