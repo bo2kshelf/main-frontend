@@ -36,7 +36,7 @@ input CreateSeriesDataInput {
   title: String!
 }
 type HaveBookRecord {
-  account: Account!
+  user: User!
   book: Book!
   have: Boolean!
 }
@@ -64,7 +64,7 @@ type Publisher {
   publications(skip: Int, limit: Int): [Publication!]!
 }
 type ReadBookRecord {
-  account: Account!
+  user: User!
   book: Book!
   date: LocalDate!
 }
@@ -77,7 +77,7 @@ type ReadBooksPayload {
   hasNext: Boolean!
 }
 type ReadingBookRecord {
-  account: Account!
+  user: User!
   book: Book!
   reading: Boolean!
 }
@@ -113,7 +113,7 @@ type SeriesPartsPayload {
   hasNext: Boolean!
 }
 type StackedBookRecord {
-  account: Account!
+  user: User!
   book: Book!
 }
 type StackedBooksPayload {
@@ -125,7 +125,7 @@ type StackedBooksPayload {
   hasNext: Boolean!
 }
 type WishReadBookRecord {
-  account: Account!
+  user: User!
   book: Book!
   wish: Boolean!
 }
@@ -243,9 +243,9 @@ type SearchSeriesResultPageInfo {
 type SearchSeriesResultPageInfoQuery {
   title: String!
 }
-type Account {
+type User {
   id: ID!
-  userName: ID!
+  uniqueName: String!
   displayName: String!
   picture: String!
   readBooks(skip: Int, limit: Int): ReadBooksPayload!
@@ -253,27 +253,6 @@ type Account {
   wishReadBooks(skip: Int, limit: Int): WishReadBooksPayload!
   haveBooks(skip: Int, limit: Int): HaveBooksPayload!
   stackedBooks(skip: Int, limit: Int): StackedBooksPayload!
-}
-input CreateAccountDataInput {
-  userName: ID!
-  displayName: String!
-  picture: String!
-  userId: ID!
-}
-type GitHubAuthPayload {
-  user: User!
-  accessToken: String!
-}
-type GitHubUser {
-  githubId: ID!
-  userName: ID!
-  displayName: String!
-  picture: String!
-}
-type User {
-  id: ID!
-  account: Account
-  github: GitHubUser
 }
 type Query {
   book(id: ID!): Book!
@@ -288,10 +267,9 @@ type Query {
   searchAuthors(after: String, first: Int, before: String, last: Int, query: SearchAuthorsQuery!): SearchAuthorsResult!
   searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
   searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
-  loginGitHubUrl: String!
+  user(id: String, uniqueName: String): User!
+  allUsers: [User!]!
   currentUser: User!
-  account(id: ID, userName: ID): Account!
-  allAccounts: [Account!]!
 }
 type Mutation {
   createBook(data: CreateBookDataInput!): Book!
@@ -299,12 +277,11 @@ type Mutation {
   createSeries(data: CreateSeriesDataInput!): Series!
   connectBookToAuthor(bookId: ID!, authorId: ID!, roles: [String!]): Writing!
   connectBookToSeries(bookId: ID!, seriesId: ID!, volume: Float): SeriesPart!
-  switchHaveRecord(accountId: ID!, bookId: ID!, have: Boolean!): HaveBookRecord!
-  createReadRecord(accountId: ID!, bookId: ID!, date: LocalDate!): ReadBookRecord!
-  switchReadingRecord(accountId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
-  switchWishReadRecord(accountId: ID!, bookId: ID!, wish: Boolean!): WishReadBookRecord!
+  switchHaveRecord(userId: ID!, bookId: ID!, have: Boolean!): HaveBookRecord!
+  createReadRecord(userId: ID!, bookId: ID!, date: LocalDate!): ReadBookRecord!
+  switchReadingRecord(userId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
+  switchWishReadRecord(userId: ID!, bookId: ID!, wish: Boolean!): WishReadBookRecord!
   createPublisher(data: CreatePublisherDataInput!): Publisher!
   connectBookToPublisher(bookId: ID!, publisherId: ID!): Publication!
-  loginGitHub(code: String!): GitHubAuthPayload!
-  createAccount(data: CreateAccountDataInput!): Account!
+  createUser(uniqueName: String!, displayName: String!, picture: String!): User!
 }

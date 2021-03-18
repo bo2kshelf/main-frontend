@@ -11,7 +11,7 @@ export type UrlQuery = {
 export const getStaticPaths = async () => {
   return graphqlSdk
     .AllUserHaveBooksPage()
-    .then(({allAccounts}) => getPathsForIndex(allAccounts));
+    .then(({allUsers: allAccounts}) => getPathsForIndex(allAccounts));
 };
 
 export const getStaticProps: GetStaticProps<

@@ -1,12 +1,12 @@
 query AllUserPages {
   allUsers {
-    uniqueName
+    userName: uniqueName
   }
 }
 
 query UserPage($userName: String!) {
   user(uniqueName: $userName) {
-    uniqueName
+    userName: uniqueName
     displayName
     picture
     readBooks(limit: 12) {

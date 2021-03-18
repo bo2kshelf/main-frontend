@@ -7,7 +7,7 @@ import {getNextLink, getPreviousLink} from './link';
 
 export type UserReadBooksPageProps = UserReadBooksPageQuery;
 export const UserReadBooksPage: React.FC<UserReadBooksPageProps> = ({
-  account: {books, ...rest},
+  user: {books, ...rest},
   ...props
 }) => {
   const {query} = useRouter();
@@ -15,7 +15,7 @@ export const UserReadBooksPage: React.FC<UserReadBooksPageProps> = ({
   return (
     <Component
       {...props}
-      account={{...rest}}
+      user={{...rest}}
       records={books.records.map(({book}) => ({
         book: {...book, cover: book.cover || undefined},
       }))}

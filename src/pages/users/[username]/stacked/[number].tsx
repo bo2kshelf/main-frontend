@@ -22,7 +22,7 @@ import {
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
     .AllUserStackedBooksPage()
-    .then(({allAccounts}) => getPathsForNumbered(allAccounts));
+    .then(({allUsers: allAccounts}) => getPathsForNumbered(allAccounts));
 };
 
 export const getStaticProps: GetStaticProps<
