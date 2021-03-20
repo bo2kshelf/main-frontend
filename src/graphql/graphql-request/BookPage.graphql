@@ -8,6 +8,7 @@ query BookPage($id: ID!) {
   book(id: $id) {
     id
     title
+    subtitle
     isbn(dehyphenize: true)
     cover
     publishedBy(limit: 10) {

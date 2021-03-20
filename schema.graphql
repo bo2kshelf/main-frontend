@@ -16,6 +16,7 @@ type AuthorSeriesRelation {
 type Book {
   id: ID!
   title: String!
+  subtitle: String
   isbn(dehyphenize: Boolean = true): String
   writedBy(skip: Int, limit: Int): [Writing!]!
   seriesOf(skip: Int, limit: Int): SeriesPartsPayload!
@@ -27,6 +28,7 @@ input CreateAuthorDataInput {
 }
 input CreateBookDataInput {
   title: String!
+  subtitle: String
   isbn: String
 }
 input CreatePublisherDataInput {

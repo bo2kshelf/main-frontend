@@ -9,6 +9,7 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
       {...props}
       book={{
         ...book,
+        subtitle: book.subtitle || undefined,
         isbn: book.isbn || undefined,
         cover: book.cover || undefined,
         publishers: book.publishedBy.map(({publisher}) => publisher),
