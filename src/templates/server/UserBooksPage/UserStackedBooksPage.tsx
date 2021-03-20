@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router';
 import React from 'react';
-import {UserStackedBooksPageQuery} from '~/_generated/graphql-request';
+import {UserStackedBooksPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
 import {StackedBooksHeader} from './Header';
 import {getNextLink, getPreviousLink} from './link';

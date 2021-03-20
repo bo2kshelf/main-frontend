@@ -1,5 +1,5 @@
 import React from 'react';
-import {BookPageQuery} from '~/_generated/graphql-request';
+import {BookPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
 
 export type ContainerProps = BookPageQuery;

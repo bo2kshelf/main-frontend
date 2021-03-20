@@ -7,16 +7,16 @@ generates:
       - 'schema-ast'
     config:
       includeDirectives: true
-  ./src/_generated/apollo.ts:
+  ./src/graphql/codegen/apollo.ts:
     documents:
-      - 'src/queries/apollo/**/*.graphql'
+      - 'src/graphql/apollo/*.graphql'
     plugins:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-apollo'
-  ./src/_generated/graphql-request.ts:
+  ./src/graphql/codegen/graphql-request.ts:
     documents:
-      - 'src/queries/graphql-request/**/*.graphql'
+      - 'src/graphql/graphql-request/*.graphql'
     plugins:
       - 'typescript'
       - 'typescript-operations'

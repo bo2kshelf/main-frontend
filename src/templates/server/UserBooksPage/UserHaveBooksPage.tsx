@@ -1,6 +1,6 @@
 import {useRouter} from 'next/router';
 import React from 'react';
-import {UserHaveBooksPageQuery} from '~/_generated/graphql-request';
+import {UserHaveBooksPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
 import {HaveBooksHeader} from './Header';
 import {getNextLink, getPreviousLink} from './link';

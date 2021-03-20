@@ -4,7 +4,7 @@ import {
   UserReadingBooksPageQuery,
   UserStackedBooksPageQuery,
   UserWishReadBooksPageQuery,
-} from '~/_generated/graphql-request';
+} from '~/graphql/codegen/graphql-request';
 
 export const RECORDS_PER_PAGE = 12 * 3;
 

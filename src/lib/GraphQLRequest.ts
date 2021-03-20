@@ -1,6 +1,6 @@
 import {GraphQLClient} from 'graphql-request';
+import {getSdk} from '~/graphql/codegen/graphql-request';
 import {graphqlConfig} from '~/lib/env';
-import {getSdk} from '~/_generated/graphql-request';
 
 export const graphqlSdk = getSdk(
   new GraphQLClient(graphqlConfig.externalEndpoint, {

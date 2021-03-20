@@ -1,5 +1,5 @@
 import React from 'react';
-import {PublisherPageQuery} from '~/_generated/graphql-request';
+import {PublisherPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
 
 export type ContainerProps = PublisherPageQuery;
