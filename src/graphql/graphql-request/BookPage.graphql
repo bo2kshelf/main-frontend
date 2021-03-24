@@ -3,19 +3,17 @@ query AllBookPages {
     id
   }
 }
-
 query BookPage($id: ID!) {
   book(id: $id) {
     id
     title
-    subtitle
     isbn(dehyphenize: true)
     cover
     publishedBy(limit: 10) {
       publisher {
         id
         name
-        publications(limit: 12) {
+        publications(limit: 12, except: [$id]) {
           book {
             id
             title
@@ -28,9 +26,11 @@ query BookPage($id: ID!) {
       author {
         id
         name
-        writes {
+        writes(limit: 12, except: [$id]) {
           book {
+            id
             title
+            cover
           }
         }
       }

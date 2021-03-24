@@ -1,5 +1,9 @@
 import React from 'react';
-import {PublisherComponent, SeriesComponent} from './Component';
+import {
+  AuthorsComponent,
+  PublisherComponent,
+  SeriesComponent,
+} from './Component';
 
 export const PublisherHead: React.FC<{
   className?: string;
@@ -34,6 +38,25 @@ export const SeriesHead: React.FC<{
       link={{
         pathname: `/series/[id]`,
         query: {id: series.id},
+      }}
+    />
+  );
+};
+
+export const AuthorsHead: React.FC<{
+  className?: string;
+  author: {
+    id: string;
+    name: string;
+  };
+}> = ({author, ...props}) => {
+  return (
+    <AuthorsComponent
+      {...props}
+      author={author}
+      link={{
+        pathname: `/authors/[id]`,
+        query: {id: author.id},
       }}
     />
   );

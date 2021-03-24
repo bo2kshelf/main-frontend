@@ -5,7 +5,7 @@ schema {
 type Author {
   id: ID!
   name: String!
-  writes(skip: Int, limit: Int): [Writing!]!
+  writes(skip: Int, limit: Int, except: [ID!]): [Writing!]!
   relatedSeries(skip: Int, limit: Int): [AuthorSeriesRelation!]!
 }
 type AuthorSeriesRelation {
@@ -63,7 +63,7 @@ type Publication {
 type Publisher {
   id: ID!
   name: String!
-  publications(skip: Int, limit: Int): [Publication!]!
+  publications(skip: Int, limit: Int, except: [ID!]): [Publication!]!
 }
 type ReadBookRecord {
   user: User!
@@ -91,20 +91,20 @@ type ReadingBooksPayload {
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
+input ResolveBooksOfArgsOrderBy {
+  title: OrderBy
+  volume: OrderBy
+}
 type Series {
   id: ID!
   title: String!
-  booksOf(skip: Int, limit: Int, orderBy: SeriesPartsArgsOrderBy): SeriesPartsPayload!
+  booksOf(skip: Int, limit: Int, orderBy: ResolveBooksOfArgsOrderBy, except: [ID!]): SeriesPartsPayload!
   relatedAuthors(skip: Int, limit: Int): [AuthorSeriesRelation!]!
 }
 type SeriesPart {
   series: Series!
   book: Book!
   volume: Float
-}
-input SeriesPartsArgsOrderBy {
-  title: OrderBy
-  volume: OrderBy
 }
 type SeriesPartsPayload {
   parts: [SeriesPart!]!

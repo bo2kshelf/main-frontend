@@ -18,6 +18,14 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
           roles: roles || undefined,
         })),
       }}
+      authors={book.writedBy.map(({author, roles}) => ({
+        ...author,
+        roles: roles || undefined,
+        books: author.writes.map(({book}) => ({
+          ...book,
+          cover: book.cover || undefined,
+        })),
+      }))}
       series={book.seriesOf.parts.map(({series}) => ({
         ...series,
         books: series.booksOf.parts.map(({book}) => ({
