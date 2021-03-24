@@ -126,6 +126,9 @@ type StackedBooksPayload {
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
+input UserReadBooksArgsOrderBy {
+  date: OrderBy
+}
 type WishReadBookRecord {
   user: User!
   book: Book!
@@ -250,7 +253,7 @@ type User {
   uniqueName: String!
   displayName: String!
   picture: String!
-  readBooks(skip: Int, limit: Int): ReadBooksPayload!
+  readBooks(skip: Int, limit: Int, orderBy: UserReadBooksArgsOrderBy): ReadBooksPayload!
   readingBooks(skip: Int, limit: Int): ReadingBooksPayload!
   wishReadBooks(skip: Int, limit: Int): WishReadBooksPayload!
   haveBooks(skip: Int, limit: Int): HaveBooksPayload!
