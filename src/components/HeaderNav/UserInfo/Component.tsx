@@ -15,6 +15,7 @@ export const PlainComponent: React.FC<ComponentProps> = ({
   <details className={clsx(className, 'relative', 'select-none')}>
     <summary
       className={clsx(
+        'block',
         'outline-none',
         'w-12',
         'h-12',
@@ -43,10 +44,6 @@ export const PlainComponent: React.FC<ComponentProps> = ({
 
 export const Component = styled(PlainComponent)`
   > summary {
-    &::-webkit-details-marker {
-      display: none;
-    }
-
     &::before {
       content: '';
       position: fixed;
