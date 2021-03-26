@@ -1,7 +1,15 @@
+import clsx from 'clsx';
 import React from 'react';
+import {LoginInputForm} from '~/components/LoginInputForm';
 
 export type ContainerProps = Record<string, never>;
 export const Container: React.FC<ContainerProps> = ({...props}) => {
-  return <div />;
+  return (
+    <main className={clsx('flex', 'justify-center', 'items-center')}>
+      <div className={clsx('grid')}>
+        <LoginInputForm />
+      </div>
+    </main>
+  );
 };
 Container.displayName = 'LoginPage';

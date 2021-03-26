@@ -6,7 +6,7 @@ import {Dropdown, DropdownProps} from './Dropdown';
 
 export type ComponentProps = {
   className?: string;
-  currentUser: DropdownProps['account'];
+  currentUser: DropdownProps['user'];
 };
 export const PlainComponent: React.FC<ComponentProps> = ({
   className,
@@ -29,7 +29,7 @@ export const PlainComponent: React.FC<ComponentProps> = ({
       />
     </summary>
     <Dropdown
-      account={data}
+      user={data}
       className={clsx(
         'absolute',
         'w-80',

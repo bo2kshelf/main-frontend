@@ -1,7 +1,7 @@
 query GetCurrentUser {
   currentUser {
     id
-    uniqueName
+    userName: uniqueName
     displayName
     picture
   }

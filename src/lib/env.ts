@@ -16,3 +16,5 @@ export const AUTH_SERVER_LOGIN_ENDPOINT = new URL(
 
 export const SESSION_STORAGE_API_TOKEN_KEY = process.env
   .SESSION_STORAGE_API_TOKEN_KEY!;
+
+export const SESSION_NAME = process.env.SESSION_NAME!;

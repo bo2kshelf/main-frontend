@@ -9,11 +9,11 @@ import {
 
 export type ContainerProps = {
   className?: string;
-  account: {userName: string};
+  user: {userName: string};
 };
 
 export const ReadBooksLink: React.FC<ContainerProps> = ({
-  account,
+  user: account,
   ...props
 }) => {
   return (
@@ -28,7 +28,7 @@ export const ReadBooksLink: React.FC<ContainerProps> = ({
 };
 
 export const ReadingBooksLink: React.FC<ContainerProps> = ({
-  account,
+  user: account,
   ...props
 }) => {
   return (
@@ -43,7 +43,7 @@ export const ReadingBooksLink: React.FC<ContainerProps> = ({
 };
 
 export const WishReadBooksLink: React.FC<ContainerProps> = ({
-  account,
+  user: account,
   ...props
 }) => {
   return (
@@ -58,7 +58,7 @@ export const WishReadBooksLink: React.FC<ContainerProps> = ({
 };
 
 export const StackedBooksLink: React.FC<ContainerProps> = ({
-  account,
+  user: account,
   ...props
 }) => {
   return (
@@ -73,7 +73,7 @@ export const StackedBooksLink: React.FC<ContainerProps> = ({
 };
 
 export const HaveBooksList: React.FC<ContainerProps> = ({
-  account,
+  user: account,
   ...props
 }) => {
   return (

@@ -1,41 +1,21 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
 import React from 'react';
 import {useCurrentUser} from '~/lib/useCurrentUser';
+import {Login} from '../Login';
 import {UserInfo} from '../UserInfo';
 
 export type ContainerProps = {className?: string};
 export const Container: React.FC<ContainerProps> = ({...props}) => {
   const {currentUser, isLoading} = useCurrentUser();
 
-  if (isLoading) {
-    return (
-      <div className={clsx()}>
-        <p>Loading</p>
-      </div>
-    );
-  }
+  if (currentUser) return <UserInfo currentUser={currentUser} />;
 
-  if (!currentUser) {
-    return (
-      <div className={clsx()}>
-        <NextLink href="/login">
-          <a>login</a>
-        </NextLink>
-      </div>
-    );
-  }
+  if (isLoading) return <span>Loading</span>;
 
-  if (!currentUser.profile) {
-    return (
-      <div className={clsx()}>
-        <NextLink href="/signup">
-          <a>signup</a>
-        </NextLink>
-      </div>
-    );
-  }
-
-  return <UserInfo currentUser={currentUser.profile} />;
+  return (
+    <div className={clsx()}>
+      <Login />
+    </div>
+  );
 };
 Container.displayName = 'User';
