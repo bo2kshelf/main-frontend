@@ -12,9 +12,9 @@ export function withPageLoggedIn(
     const {currentUser, isLoading} = useCurrentUser();
     const router = useRouter();
 
+    if (!isLoading && !currentUser) router.push('/login');
     if (currentUser) return <PageComponent />;
-    if (isLoading) return <LoadingPageComponent />;
-    router.push('/login');
+    return <LoadingPageComponent />;
   };
 
   return WithPageLoggedIn;
