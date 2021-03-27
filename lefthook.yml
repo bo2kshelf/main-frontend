@@ -1,8 +1,3 @@
-post-checkout:
-  commands:
-    yarn:
-      run: yarn install --frozen-lockfile
-
 commit-msg:
   commands:
     commitlint:
