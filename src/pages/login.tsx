@@ -10,7 +10,7 @@ export const Page: NextPage = (props) => {
   const router = useRouter();
   const {currentUser} = useCurrentUser();
 
-  if (currentUser) router.push('/');
+  if (currentUser) router.push('/me');
   return <LoginPage />;
 };
 export default Page;
