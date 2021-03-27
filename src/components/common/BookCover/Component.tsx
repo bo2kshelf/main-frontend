@@ -5,12 +5,14 @@ import React from 'react';
 export type ComponentProps = {
   className?: string;
   title: string;
+  subtitle?: string;
   cover?: string;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
   cover,
   title,
+  subtitle,
 }) => (
   <div className={clsx(className, 'relative')}>
     {cover && (
@@ -34,7 +36,10 @@ export const Component: React.FC<ComponentProps> = ({
           'items-center',
         )}
       >
-        <p className={clsx('select-all', 'text-xs')}>{title}</p>
+        <p className={clsx('select-all', 'text-xs')}>
+          <span>{title}</span>
+          {subtitle && <span>{subtitle}</span>}
+        </p>
       </div>
     )}
   </div>

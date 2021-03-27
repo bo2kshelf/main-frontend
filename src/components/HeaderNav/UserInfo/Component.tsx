@@ -6,7 +6,7 @@ import {Dropdown, DropdownProps} from './Dropdown';
 
 export type ComponentProps = {
   className?: string;
-  currentUser: DropdownProps['account'];
+  currentUser: DropdownProps['user'];
 };
 export const PlainComponent: React.FC<ComponentProps> = ({
   className,
@@ -15,6 +15,7 @@ export const PlainComponent: React.FC<ComponentProps> = ({
   <details className={clsx(className, 'relative', 'select-none')}>
     <summary
       className={clsx(
+        'block',
         'outline-none',
         'w-12',
         'h-12',
@@ -28,7 +29,7 @@ export const PlainComponent: React.FC<ComponentProps> = ({
       />
     </summary>
     <Dropdown
-      account={data}
+      user={data}
       className={clsx(
         'absolute',
         'w-80',
@@ -43,10 +44,6 @@ export const PlainComponent: React.FC<ComponentProps> = ({
 
 export const Component = styled(PlainComponent)`
   > summary {
-    &::-webkit-details-marker {
-      display: none;
-    }
-
     &::before {
       content: '';
       position: fixed;

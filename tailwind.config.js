@@ -22,6 +22,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      backgroundColor: ['disabled'],
+      cursor: ['disabled'],
+    },
+  },
   plugins: [],
 };

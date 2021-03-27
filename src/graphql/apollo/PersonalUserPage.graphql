@@ -1,0 +1,158 @@
+query PersonalUserPage {
+  currentUser {
+    id
+    userName: uniqueName
+    displayName
+    picture
+    readBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    readingBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    haveBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    stackedBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}
+
+query PersonalUserReadBooksPage($skip: Int!, $limit: Int!) {
+  currentUser {
+    userName: uniqueName
+    displayName
+    picture
+    books: readBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}
+
+query PersonalUserReadingBooksPage($skip: Int!, $limit: Int!) {
+  currentUser {
+    userName: uniqueName
+    displayName
+    picture
+    books: readingBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}
+
+query PersonalUserStackedBooksPage($skip: Int!, $limit: Int!) {
+  currentUser {
+    userName: uniqueName
+    displayName
+    picture
+    books: stackedBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}
+
+query PersonalUserWishReadBooksPage($skip: Int!, $limit: Int!) {
+  currentUser {
+    userName: uniqueName
+    displayName
+    picture
+    books: wishReadBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}
+
+query PersonalUserHaveBooksPage($skip: Int!, $limit: Int!) {
+  currentUser {
+    userName: uniqueName
+    displayName
+    picture
+    books: haveBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}

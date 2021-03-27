@@ -5,7 +5,7 @@ import {BooksList} from '../BooksList';
 
 export type ComponentProps = {
   className?: string;
-  books: {id: string; title: string; cover?: string}[];
+  books: {id: string; title: string; subtitle?: string; cover?: string}[];
   Header?: React.FC;
   noBooks?: boolean;
   NoBooksBox?: React.FC;

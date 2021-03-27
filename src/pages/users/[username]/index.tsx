@@ -15,8 +15,8 @@ export type UrlQuery = {username: string};
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk
     .AllUserPages()
-    .then(({allAccounts}) =>
-      allAccounts.map(({userName}) => ({params: {username: userName}})),
+    .then(({allUsers}) =>
+      allUsers.map(({userName}) => ({params: {username: userName}})),
     )
     .then((paths) => ({
       paths,

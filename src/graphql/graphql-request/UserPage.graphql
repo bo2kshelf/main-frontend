@@ -1,0 +1,53 @@
+query AllUserPages {
+  allUsers {
+    userName: uniqueName
+  }
+}
+
+query UserPage($userName: String!) {
+  user(uniqueName: $userName) {
+    userName: uniqueName
+    displayName
+    picture
+    readBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    readingBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    haveBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+    stackedBooks(limit: 12) {
+      hasNext
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}

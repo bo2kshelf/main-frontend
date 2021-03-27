@@ -1,0 +1,30 @@
+query AllUserStackedBooksPage {
+  allUsers {
+    userName: uniqueName
+    books: stackedBooks {
+      count
+    }
+  }
+}
+
+query UserStackedBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
+  user(uniqueName: $userName) {
+    userName: uniqueName
+    displayName
+    picture
+    books: stackedBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}

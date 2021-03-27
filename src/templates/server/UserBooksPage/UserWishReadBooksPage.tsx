@@ -1,13 +1,13 @@
 import {useRouter} from 'next/router';
 import React from 'react';
-import {UserWishReadBooksPageQuery} from '~/_generated/graphql-request';
+import {UserWishReadBooksPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
 import {WishReadBooksHeader} from './Header';
 import {getNextLink, getPreviousLink} from './link';
 
 export type UserWishReadBooksPageProps = UserWishReadBooksPageQuery;
 export const UserWishReadBooksPage: React.FC<UserWishReadBooksPageProps> = ({
-  account: {books, ...rest},
+  user: {books, ...rest},
   ...props
 }) => {
   const {query} = useRouter();
@@ -15,7 +15,7 @@ export const UserWishReadBooksPage: React.FC<UserWishReadBooksPageProps> = ({
   return (
     <Component
       {...props}
-      account={{...rest}}
+      user={{...rest}}
       records={books.records.map(({book}) => ({
         book: {...book, cover: book.cover || undefined},
       }))}

@@ -1,18 +1,16 @@
-import {GetServerSideProps, InferGetServerSidePropsType, NextPage} from 'next';
+import {NextPage} from 'next';
+import {useRouter} from 'next/router';
 import React from 'react';
-import {graphqlSdk} from '~/lib/GraphQLRequest';
-import {LoginPage, LoginPageProps} from '~/templates/server/LoginPage';
+import {useCurrentUser} from '~/lib/useCurrentUser';
+import {LoginPage} from '~/templates/server/LoginPage';
 
 export type UrlQuery = Record<string, never>;
 
-export const getServerSideProps: GetServerSideProps<
-  LoginPageProps,
-  UrlQuery
-> = async () => graphqlSdk.LoginPage().then((data) => ({props: data}));
+export const Page: NextPage = (props) => {
+  const router = useRouter();
+  const {currentUser} = useCurrentUser();
 
-export const Page: NextPage<
-  InferGetServerSidePropsType<typeof getServerSideProps>
-> = (props) => {
-  return <LoginPage {...props} />;
+  if (currentUser) router.push('/me');
+  return <LoginPage />;
 };
 export default Page;

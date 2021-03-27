@@ -7,9 +7,6 @@ import {Component, ComponentProps} from './Component';
 export default {
   title: 'common/BookCover/Component',
   component: Component,
-  args: {
-    title: 'sample',
-  },
   argTypes: {
     className: {table: {disable: true}},
     cover: {table: {disable: true}},
@@ -31,8 +28,19 @@ HaveCover.args = {
 };
 HaveCover.storyName = '画像がある';
 
-export const NoCover: Story<ComponentProps> = (args) => (
+export const NoCoverWithTitleOnly: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx('h-full')} />
 );
-NoCover.args = {};
-NoCover.storyName = '画像がない';
+NoCoverWithTitleOnly.args = {
+  title: '闇の自己啓発',
+};
+NoCoverWithTitleOnly.storyName = '画像がなく、タイトルのみ';
+
+export const NoCoverWithTitleAndSubtitle: Story<ComponentProps> = (args) => (
+  <Component {...args} className={clsx('h-full')} />
+);
+NoCoverWithTitleAndSubtitle.args = {
+  title: 'ダークウェブ・アンダーグラウンド',
+  subtitle: '社会秩序を逸脱するネット暗部の住人たち',
+};
+NoCoverWithTitleAndSubtitle.storyName = '画像がなく、サブタイトルがある';

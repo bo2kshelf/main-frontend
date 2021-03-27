@@ -1,15 +1,9 @@
-/* eslint-disable import/no-anonymous-default-export */
+import {NextApiHandler} from 'next';
+import {destroyCookie} from 'nookies';
+import {SESSION_NAME} from '~/lib/env';
 
-import {serialize} from 'cookie';
-import {NextApiRequest, NextApiResponse} from 'next';
-import {graphqlConfig} from '~/lib/env';
-
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  res.setHeader(
-    'Set-Cookie',
-    serialize(graphqlConfig.tokenKey, '', {path: '/', maxAge: -1}),
-  );
-
+const ApiHandler: NextApiHandler = async (req, res) => {
+  destroyCookie({res}, SESSION_NAME, {path: '/'});
   res.redirect('/');
-  res.end();
 };
+export default ApiHandler;

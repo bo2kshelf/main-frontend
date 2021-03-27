@@ -25,7 +25,7 @@ export const Primary: Story<ComponentProps> = (args) => (
   </div>
 );
 Primary.args = {
-  account: {
+  user: {
     userName: 'INTERNET_EXPLORER',
     displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
     picture: icons[0],

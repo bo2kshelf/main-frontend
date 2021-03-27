@@ -1,5 +1,5 @@
 import React from 'react';
-import {SeriesPageQuery} from '~/_generated/graphql-request';
+import {SeriesPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
 
 export type ContainerProps = SeriesPageQuery;

@@ -13,7 +13,7 @@ import {
 
 export type ComponentProps = {
   className?: string;
-  account: {
+  user: {
     picture: string;
     userName: string;
     displayName: string;
@@ -21,7 +21,7 @@ export type ComponentProps = {
 };
 export const UnstyledComponent: React.FC<ComponentProps> = ({
   className,
-  account,
+  user,
 }) => (
   <div
     className={clsx(
@@ -34,31 +34,25 @@ export const UnstyledComponent: React.FC<ComponentProps> = ({
       'select-none',
     )}
   >
-    <Profile className={clsx('col-span-2', 'col-start-1')} account={account} />
+    <Profile className={clsx('col-span-2', 'col-start-1')} account={user} />
     <ReadingBooksLink
       className={clsx('col-span-1', 'col-start-1')}
-      account={account}
+      user={user}
     />
-    <ReadBooksLink
-      className={clsx('col-span-1', 'col-start-2')}
-      account={account}
-    />
+    <ReadBooksLink className={clsx('col-span-1', 'col-start-2')} user={user} />
 
     <StackedBooksLink
       className={clsx('col-span-1', 'col-start-1')}
-      account={account}
+      user={user}
     />
-    <HaveBooksList
-      className={clsx('col-span-1', 'col-start-2')}
-      account={account}
-    />
+    <HaveBooksList className={clsx('col-span-1', 'col-start-2')} user={user} />
 
     <div
       className={clsx('col-span-1', 'col-start-1', 'bg-white', 'bg-opacity-90')}
     />
     <WishReadBooksLink
       className={clsx('col-span-1', 'col-start-2')}
-      account={account}
+      user={user}
     />
 
     <SettingsLink className={clsx('col-span-1', 'col-start-1')} />

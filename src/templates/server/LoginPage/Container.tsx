@@ -1,12 +1,15 @@
+import clsx from 'clsx';
 import React from 'react';
-import {LoginPageQuery} from '~/_generated/graphql-request';
-import {Component} from './Component';
+import {LoginInputForm} from '~/components/LoginInputForm';
 
-export type ContainerProps = LoginPageQuery;
-export const Container: React.FC<ContainerProps> = ({
-  loginGitHubUrl,
-  ...props
-}) => {
-  return <Component {...props} loginUrls={{github: loginGitHubUrl}} />;
+export type ContainerProps = Record<string, never>;
+export const Container: React.FC<ContainerProps> = ({...props}) => {
+  return (
+    <main className={clsx('flex', 'justify-center', 'items-center')}>
+      <div className={clsx('w-full', 'max-w-md', 'grid')}>
+        <LoginInputForm />
+      </div>
+    </main>
+  );
 };
 Container.displayName = 'LoginPage';

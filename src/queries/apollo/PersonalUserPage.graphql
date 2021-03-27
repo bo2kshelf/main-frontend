@@ -1,9 +1,0 @@
-query PersonalUserPage {
-  currentUser {
-    account {
-      displayName
-      userName
-      picture
-    }
-  }
-}

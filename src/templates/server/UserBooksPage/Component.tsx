@@ -8,7 +8,7 @@ import {ListSlider, ListSliderProps} from './Slider';
 
 export type ComponentProps = {
   className?: string;
-  account: ProfileSectionProps['user'];
+  user: ProfileSectionProps['user'];
   records: RecordsSectionProps['records'];
   skip: number;
   limit: number;
@@ -20,7 +20,7 @@ export type ComponentProps = {
 export const Component: React.FC<ComponentProps> = ({
   className,
   Header,
-  account,
+  user: account,
   records,
   count,
   ...props

@@ -8,6 +8,7 @@ export type ComponentProps = {
   className?: string;
   link: string;
   title: string;
+  subtitle?: string;
   cover?: string;
 };
 const PlainComponent: React.FC<ComponentProps> = ({
@@ -15,12 +16,14 @@ const PlainComponent: React.FC<ComponentProps> = ({
   link,
   cover,
   title,
+  subtitle,
 }) => (
   <NextLink href={link}>
     <a className={clsx(className, 'relative', 'bg-gray-200')}>
       <BookCover
         className={clsx('cover', 'h-full')}
         title={title}
+        subtitle={subtitle}
         cover={cover}
       />
     </a>

@@ -4,7 +4,9 @@ node_modules/
 # output
 .next/
 dist/
-_generated/
+
+# codegen
+codegen/
 
 # logfiles
 *.log

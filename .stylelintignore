@@ -5,7 +5,9 @@ junit/
 # output
 .next/
 dist/
-_generated/
+
+# codegen
+codegen/
 
 # Storybook
 !.storybook/

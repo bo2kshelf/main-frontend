@@ -8,8 +8,8 @@ export const Container: React.FC<ContainerProps> = ({...props}) => {
 
   return (
     <main>
-      <NextLink href="/profile">
-        <a>/profile</a>
+      <NextLink href="/me">
+        <a>/me</a>
       </NextLink>
     </main>
   );

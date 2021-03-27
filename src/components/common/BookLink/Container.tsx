@@ -6,6 +6,7 @@ export type ContainerProps = {
   book: {
     id: string;
     title: string;
+    subtitle?: string;
     cover?: string;
   };
 };

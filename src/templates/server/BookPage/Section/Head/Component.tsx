@@ -35,7 +35,26 @@ export const SeriesComponent: React.FC<{
     <BaseComponent
       {...props}
       i18n={{
-        title: t('{{title}}の他の本', {title: series.title}),
+        title: t('{{title}}のシリーズ', {title: series.title}),
+      }}
+    />
+  );
+};
+
+export const AuthorsComponent: React.FC<{
+  className?: string;
+  link: LinkProps['href'];
+  author: {
+    id: string;
+    name: string;
+  };
+}> = ({author, ...props}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      i18n={{
+        title: t('{{name}}による他の本', {name: author.name}),
       }}
     />
   );

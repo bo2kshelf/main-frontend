@@ -1,0 +1,30 @@
+query AllUserWishReadBooksPage {
+  allUsers {
+    userName: uniqueName
+    books: wishReadBooks {
+      count
+    }
+  }
+}
+
+query UserWishReadBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
+  user(uniqueName: $userName) {
+    userName: uniqueName
+    displayName
+    picture
+    books: wishReadBooks(limit: $limit, skip: $skip) {
+      count
+      skip
+      limit
+      hasNext
+      hasPrevious
+      records {
+        book {
+          id
+          title
+          cover
+        }
+      }
+    }
+  }
+}
