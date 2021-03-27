@@ -24,7 +24,7 @@ junit/
 !.env.example
 
 # Editor
-.vscode/
+.vscode/*
 !.vscode/extensions.json
 
 # Storybook
