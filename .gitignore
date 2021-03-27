@@ -17,6 +17,7 @@ junit/
 
 # cache
 .eslintcache
+.stylelintcache
 
 # environments
 .env*
