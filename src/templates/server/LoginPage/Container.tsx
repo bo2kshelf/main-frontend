@@ -6,7 +6,7 @@ export type ContainerProps = Record<string, never>;
 export const Container: React.FC<ContainerProps> = ({...props}) => {
   return (
     <main className={clsx('flex', 'justify-center', 'items-center')}>
-      <div className={clsx('grid')}>
+      <div className={clsx('w-full', 'max-w-md', 'grid')}>
         <LoginInputForm />
       </div>
     </main>
