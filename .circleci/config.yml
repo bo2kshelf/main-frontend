@@ -36,14 +36,13 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - restore_cache:
-          key: eslint-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: eslint-{{ .Branch }}
       - run: yarn run codegen
       - run:
           command: |
-            yarn run lint:eslint --cache \
-            --format junit --output-file ./junit/eslint.xml
+            yarn run lint:eslint --format junit --output-file ./junit/eslint.xml
       - save_cache:
-          key: eslint-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          key: eslint-{{ .Branch }}
           paths:
             - .eslintcache
       - store_test_results:
@@ -61,7 +60,13 @@ jobs:
       - checkout
       - node/install-packages:
           pkg-manager: yarn
+      - restore_cache:
+          key: stylelint-{{ .Branch }}
       - run: yarn run lint:stylelint
+      - save_cache:
+          key: stylelint-{{ .Branch }}
+          paths:
+            - .stylelintcache
 
   ts-check-local: &ts-check
     docker:
