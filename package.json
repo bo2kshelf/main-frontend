@@ -12,6 +12,7 @@
     "clean:dist": "rimraf dist",
     "clean:storybook": "rimraf storybook-static",
     "lint": "scripty",
+    "lint:circleci": "scripty",
     "lint:eslint": "scripty",
     "lint:prettier": "scripty",
     "lint:renovate": "scripty",
