@@ -17,13 +17,14 @@ junit/
 
 # cache
 .eslintcache
+.stylelintcache
 
 # environments
 .env*
 !.env.example
 
 # Editor
-.vscode/
+.vscode/*
 !.vscode/extensions.json
 
 # Storybook
