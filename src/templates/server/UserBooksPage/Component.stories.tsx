@@ -39,8 +39,6 @@ Primary.args = {
     displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',
     picture: icons[0],
   },
-  skip: 0,
-  limit: 32,
   count: 64,
   records: [...Array.from({length: 12 * 3})].map((_, i) => ({
     book: {

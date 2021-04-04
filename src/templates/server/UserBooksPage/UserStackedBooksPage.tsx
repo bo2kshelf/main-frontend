@@ -16,7 +16,7 @@ export const UserStackedBooksPage: React.FC<UserStackedBooksPageProps> = ({
     <Component
       {...props}
       user={{...rest}}
-      records={books.records.map(({book}) => ({
+      records={books.nodes.map(({book}) => ({
         book: {...book, cover: book.cover || undefined},
       }))}
       previousLink={getPreviousLink(
@@ -30,8 +30,6 @@ export const UserStackedBooksPage: React.FC<UserStackedBooksPageProps> = ({
         books.hasNext,
       )}
       count={books.count}
-      skip={books.skip}
-      limit={books.limit}
       Header={StackedBooksHeader}
     />
   );

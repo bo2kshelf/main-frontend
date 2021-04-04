@@ -8,23 +8,27 @@ query AuthorPage($id: ID!) {
   author(id: $id) {
     id
     name
-    writes(limit: 36) {
-      book {
-        id
-        title
-        isbn
-        cover
+    writed(limit: 36) {
+      nodes {
+        book {
+          id
+          title
+          isbn
+          cover
+        }
       }
     }
     relatedSeries(limit: 10) {
-      series {
-        id
-        title
-      }
-      relatedBooks(limit: 12) {
-        id
-        title
-        cover
+      nodes {
+        series {
+          id
+          title
+        }
+        relatedBooks(limit: 12) {
+          id
+          title
+          cover
+        }
       }
     }
   }

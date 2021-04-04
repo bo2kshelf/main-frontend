@@ -4,14 +4,12 @@ import {BooksSection} from '~/components/common/BooksSection';
 import {ProfileSection, ProfileSectionProps} from '../UserPage/ProfileSection';
 import {RecordsSectionProps} from '../UserPage/RecordsSection';
 import {HeaderProps} from './Header';
-import {ListSlider, ListSliderProps} from './Slider';
+import {ListSliderProps} from './Slider';
 
 export type ComponentProps = {
   className?: string;
   user: ProfileSectionProps['user'];
   records: RecordsSectionProps['records'];
-  skip: number;
-  limit: number;
   count: number;
   previousLink: ListSliderProps['previousLink'];
   nextLink: ListSliderProps['nextLink'];
@@ -34,12 +32,10 @@ export const Component: React.FC<ComponentProps> = ({
     />
     {records.length > 0 && (
       <>
-        <ListSlider className={clsx('w-full')} {...props} count={count} />
         <BooksSection
           className={clsx('w-full', 'my-8')}
           books={records.map(({book}) => book)}
         />
-        <ListSlider className={clsx('w-full')} {...props} count={count} />
       </>
     )}
   </main>

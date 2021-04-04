@@ -3,6 +3,7 @@ query AllBookPages {
     id
   }
 }
+
 query BookPage($id: ID!) {
   book(id: $id) {
     id
@@ -10,40 +11,44 @@ query BookPage($id: ID!) {
     subtitle
     isbn(dehyphenize: true)
     cover
-    publishedBy(limit: 10) {
+    publishedBy {
       publisher {
         id
         name
         publications(limit: 12, except: [$id]) {
-          book {
-            id
-            title
-            cover
+          nodes {
+            book {
+              id
+              title
+              cover
+            }
           }
         }
       }
     }
-    writedBy(limit: 10) {
+    writedBy {
       author {
         id
         name
-        writes(limit: 12, except: [$id]) {
-          book {
-            id
-            title
-            cover
+        writed(limit: 12, except: [$id]) {
+          nodes {
+            book {
+              id
+              title
+              cover
+            }
           }
         }
       }
       roles
     }
-    seriesOf(limit: 10) {
-      parts {
+    seriesOf {
+      nodes {
         series {
           id
           title
-          booksOf(limit: 24, orderBy: {title: ASC, volume: ASC}) {
-            parts {
+          consistsOf(limit: 24, orderBy: {order: ASC}) {
+            nodes {
               book {
                 id
                 title

@@ -14,11 +14,9 @@ query UserStackedBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
     picture
     books: stackedBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title

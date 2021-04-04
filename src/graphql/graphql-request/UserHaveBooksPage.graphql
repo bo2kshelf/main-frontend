@@ -1,7 +1,7 @@
 query AllUserHaveBooksPage {
   allUsers {
     userName: uniqueName
-    books: haveBooks {
+    books: hasBooks {
       count
     }
   }
@@ -12,13 +12,11 @@ query UserHaveBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
     userName: uniqueName
     displayName
     picture
-    books: haveBooks(limit: $limit, skip: $skip) {
+    books: hasBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title
