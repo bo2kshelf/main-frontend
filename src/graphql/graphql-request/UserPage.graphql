@@ -11,7 +11,7 @@ query UserPage($userName: String!) {
     picture
     readBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -21,7 +21,7 @@ query UserPage($userName: String!) {
     }
     readingBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -29,9 +29,9 @@ query UserPage($userName: String!) {
         }
       }
     }
-    haveBooks(limit: 12) {
+    hasBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -41,7 +41,7 @@ query UserPage($userName: String!) {
     }
     stackedBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title

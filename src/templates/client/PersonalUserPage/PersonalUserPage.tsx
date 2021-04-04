@@ -13,28 +13,28 @@ export const Container: React.FC<ContainerProps> = ({currentUser}) => {
       }}
       read={{
         ...currentUser.readBooks,
-        records: currentUser.readBooks.records.map(({book, ...rest}) => ({
+        records: currentUser.readBooks.nodes.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || undefined},
         })),
       }}
       reading={{
         ...currentUser.readingBooks,
-        records: currentUser.readingBooks.records.map(({book, ...rest}) => ({
+        records: currentUser.readingBooks.nodes.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || undefined},
         })),
       }}
       have={{
-        ...currentUser.haveBooks,
-        records: currentUser.haveBooks.records.map(({book, ...rest}) => ({
+        ...currentUser.hasBooks,
+        records: currentUser.hasBooks.nodes.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || undefined},
         })),
       }}
       stacked={{
         ...currentUser.stackedBooks,
-        records: currentUser.stackedBooks.records.map(({book, ...rest}) => ({
+        records: currentUser.stackedBooks.nodes.map(({book, ...rest}) => ({
           ...rest,
           book: {...book, cover: book.cover || undefined},
         })),

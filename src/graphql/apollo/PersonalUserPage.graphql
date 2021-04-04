@@ -6,7 +6,7 @@ query PersonalUserPage {
     picture
     readBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -16,7 +16,7 @@ query PersonalUserPage {
     }
     readingBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -24,9 +24,9 @@ query PersonalUserPage {
         }
       }
     }
-    haveBooks(limit: 12) {
+    hasBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -36,7 +36,7 @@ query PersonalUserPage {
     }
     stackedBooks(limit: 12) {
       hasNext
-      records {
+      nodes {
         book {
           id
           title
@@ -54,11 +54,9 @@ query PersonalUserReadBooksPage($skip: Int!, $limit: Int!) {
     picture
     books: readBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title
@@ -76,11 +74,9 @@ query PersonalUserReadingBooksPage($skip: Int!, $limit: Int!) {
     picture
     books: readingBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title
@@ -98,11 +94,9 @@ query PersonalUserStackedBooksPage($skip: Int!, $limit: Int!) {
     picture
     books: stackedBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title
@@ -118,13 +112,11 @@ query PersonalUserWishReadBooksPage($skip: Int!, $limit: Int!) {
     userName: uniqueName
     displayName
     picture
-    books: wishReadBooks(limit: $limit, skip: $skip) {
+    books: wishesReadBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title
@@ -135,18 +127,16 @@ query PersonalUserWishReadBooksPage($skip: Int!, $limit: Int!) {
   }
 }
 
-query PersonalUserHaveBooksPage($skip: Int!, $limit: Int!) {
+query PersonalUserhasBooksPage($skip: Int!, $limit: Int!) {
   currentUser {
     userName: uniqueName
     displayName
     picture
-    books: haveBooks(limit: $limit, skip: $skip) {
+    books: hasBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title

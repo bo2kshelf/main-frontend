@@ -7,12 +7,15 @@ export const Container: React.FC<ContainerProps> = ({series, ...props}) => {
   return (
     <Component
       {...props}
-      {...series}
-      parts={series.booksOf.parts.map(({book}) => ({
+      title={series.title}
+      parts={series.consistsOf.nodes.map(({book}) => ({
         book: {
           ...book,
           cover: book.cover || undefined,
         },
+      }))}
+      relatedAuthors={series.relatedAuthors.nodes.map(({author}) => ({
+        author,
       }))}
     />
   );

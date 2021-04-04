@@ -8,7 +8,7 @@ export const Container: React.FC<ContainerProps> = ({publisher, ...props}) => {
     <Component
       {...props}
       publisher={publisher}
-      allBooks={publisher.publications.map(({book}) => ({
+      allBooks={publisher.publications.nodes.map(({book}) => ({
         ...book,
         cover: book.cover || undefined,
       }))}

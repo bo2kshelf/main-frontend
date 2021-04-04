@@ -21,21 +21,21 @@ export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
       authors={book.writedBy.map(({author, roles}) => ({
         ...author,
         roles: roles || undefined,
-        books: author.writes.map(({book}) => ({
+        books: author.writed.nodes.map(({book}) => ({
           ...book,
           cover: book.cover || undefined,
         })),
       }))}
-      series={book.seriesOf.parts.map(({series}) => ({
+      series={book.seriesOf.nodes.map(({series}) => ({
         ...series,
-        books: series.booksOf.parts.map(({book}) => ({
+        books: series.consistsOf.nodes.map(({book}) => ({
           ...book,
           cover: book.cover || undefined,
         })),
       }))}
       publishers={book.publishedBy.map(({publisher}) => ({
         ...publisher,
-        books: publisher.publications.map(({book}) => ({
+        books: publisher.publications.nodes.map(({book}) => ({
           ...book,
           cover: book.cover || undefined,
         })),

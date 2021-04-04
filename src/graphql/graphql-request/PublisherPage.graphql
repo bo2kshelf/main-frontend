@@ -9,10 +9,12 @@ query PublisherPage($id: ID!) {
     id
     name
     publications(limit: 96) {
-      book {
-        id
-        title
-        cover
+      nodes {
+        book {
+          id
+          title
+          cover
+        }
       }
     }
   }

@@ -14,11 +14,9 @@ query UserReadingBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
     picture
     books: readingBooks(limit: $limit, skip: $skip) {
       count
-      skip
-      limit
       hasNext
       hasPrevious
-      records {
+      nodes {
         book {
           id
           title
