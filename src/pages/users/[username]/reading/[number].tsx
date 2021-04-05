@@ -10,13 +10,13 @@ import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {
   getParams,
   getPathsForNumbered,
-  transformData,
   UrlQuery,
 } from '~/lib/UserBookPageCommon';
 import {LoadingPage} from '~/templates/common/LoadingPage';
 import {
-  UserReadingBooksPage,
-  UserReadingBooksPageProps,
+  ReadingContainer,
+  TransformedProps,
+  transformReading,
 } from '~/templates/server/UserBooksPage';
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
@@ -26,16 +26,18 @@ export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
 };
 
 export const getStaticProps: GetStaticProps<
-  UserReadingBooksPageProps,
+  TransformedProps<'reading'>,
   UrlQuery
 > = async ({params}) => {
   if (!params) throw new Error('Invalid parameters.');
 
+  const number = Number.parseInt(params.number, 10);
   return graphqlSdk
-    .UserReadingBooksPage(
-      getParams(params.username, Number.parseInt(params.number, 10)),
-    )
-    .then(transformData)
+    .UserReadingBooksPage(getParams(params.username, number))
+    .then((data) => ({
+      props: transformReading(data, {number}),
+      revalidate: 60,
+    }))
     .catch(() => ({notFound: true}));
 };
 
@@ -44,6 +46,6 @@ export const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
 ) => {
   const router = useRouter();
   if (router.isFallback) return <LoadingPage />;
-  return <UserReadingBooksPage {...props} />;
+  return <ReadingContainer {...props} />;
 };
 export default Page;
