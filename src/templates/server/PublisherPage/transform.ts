@@ -1,4 +1,5 @@
 import {PublisherPageQuery} from '~/graphql/codegen/graphql-request';
+import {avoidUndefined} from '~/lib/utils';
 
 export type TransformedProps = {
   name: string;
@@ -11,10 +12,11 @@ export type TransformedProps = {
 
 export const transform: (result: PublisherPageQuery) => TransformedProps = ({
   publisher,
-}) => ({
-  ...publisher,
-  books: publisher.publications.nodes.map(({book}) => ({
-    ...book,
-    cover: book.cover || undefined,
-  })),
-});
+}) =>
+  avoidUndefined({
+    ...publisher,
+    books: publisher.publications.nodes.map(({book}) => ({
+      ...book,
+      cover: book.cover || undefined,
+    })),
+  });

@@ -5,6 +5,7 @@ import {
   UserStackedBooksPageQuery,
   UserWishReadBooksPageQuery,
 } from '~/graphql/codegen/graphql-request';
+import {avoidUndefined} from '~/lib/utils';
 
 export type PageType = 'have' | 'reading' | 'stacked' | 'wish' | 'read';
 
@@ -33,20 +34,21 @@ export const transformHave: (
     },
   },
   {number},
-): TransformedProps<'have'> => ({
-  displayName,
-  userName,
-  picture,
-  count,
-  hasPrevious,
-  hasNext,
-  books: nodes.map(({book}) => ({
-    ...book,
-    cover: book.cover || undefined,
-  })),
-  pageType: 'have',
-  pageNumber: number || 1,
-});
+): TransformedProps<'have'> =>
+  avoidUndefined({
+    displayName,
+    userName,
+    picture,
+    count,
+    hasPrevious,
+    hasNext,
+    books: nodes.map(({book}) => ({
+      ...book,
+      cover: book.cover || undefined,
+    })),
+    pageType: 'have',
+    pageNumber: number || 1,
+  });
 
 export const transformReading: (
   result: UserReadingBooksPageQuery,
@@ -61,20 +63,21 @@ export const transformReading: (
     },
   },
   {number},
-) => ({
-  displayName,
-  userName,
-  picture,
-  count,
-  hasPrevious,
-  hasNext,
-  books: nodes.map(({book}) => ({
-    ...book,
-    cover: book.cover || undefined,
-  })),
-  pageType: 'reading',
-  pageNumber: number || 1,
-});
+) =>
+  avoidUndefined({
+    displayName,
+    userName,
+    picture,
+    count,
+    hasPrevious,
+    hasNext,
+    books: nodes.map(({book}) => ({
+      ...book,
+      cover: book.cover || undefined,
+    })),
+    pageType: 'reading',
+    pageNumber: number || 1,
+  });
 
 export const transformStacked: (
   result: UserStackedBooksPageQuery,
@@ -89,20 +92,21 @@ export const transformStacked: (
     },
   },
   {number},
-) => ({
-  displayName,
-  userName,
-  picture,
-  count,
-  hasPrevious,
-  hasNext,
-  books: nodes.map(({book}) => ({
-    ...book,
-    cover: book.cover || undefined,
-  })),
-  pageType: 'stacked',
-  pageNumber: number || 1,
-});
+) =>
+  avoidUndefined({
+    displayName,
+    userName,
+    picture,
+    count,
+    hasPrevious,
+    hasNext,
+    books: nodes.map(({book}) => ({
+      ...book,
+      cover: book.cover || undefined,
+    })),
+    pageType: 'stacked',
+    pageNumber: number || 1,
+  });
 
 export const transformWish: (
   result: UserWishReadBooksPageQuery,
@@ -117,20 +121,21 @@ export const transformWish: (
     },
   },
   {number},
-) => ({
-  displayName,
-  userName,
-  picture,
-  count,
-  hasPrevious,
-  hasNext,
-  books: nodes.map(({book}) => ({
-    ...book,
-    cover: book.cover || undefined,
-  })),
-  pageType: 'wish',
-  pageNumber: number || 1,
-});
+) =>
+  avoidUndefined({
+    displayName,
+    userName,
+    picture,
+    count,
+    hasPrevious,
+    hasNext,
+    books: nodes.map(({book}) => ({
+      ...book,
+      cover: book.cover || undefined,
+    })),
+    pageType: 'wish',
+    pageNumber: number || 1,
+  });
 
 export const transformRead: (
   result: UserReadBooksPageQuery,
@@ -145,17 +150,18 @@ export const transformRead: (
     },
   },
   {number},
-) => ({
-  displayName,
-  userName,
-  picture,
-  count,
-  hasPrevious,
-  hasNext,
-  books: nodes.map(({book}) => ({
-    ...book,
-    cover: book.cover || undefined,
-  })),
-  pageType: 'read',
-  pageNumber: number || 1,
-});
+) =>
+  avoidUndefined({
+    displayName,
+    userName,
+    picture,
+    count,
+    hasPrevious,
+    hasNext,
+    books: nodes.map(({book}) => ({
+      ...book,
+      cover: book.cover || undefined,
+    })),
+    pageType: 'read',
+    pageNumber: number || 1,
+  });
