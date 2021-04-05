@@ -35,12 +35,12 @@ export const Component: React.FC<ComponentProps> = ({
     <ReadingRecordsSection
       className={clsx('w-full', 'mt-8')}
       user={{displayName, userName}}
-      {...readBooks}
+      {...readingBooks}
     />
     <ReadRecordsSection
       className={clsx('w-full', 'mt-8')}
       user={{displayName, userName}}
-      {...readingBooks}
+      {...readBooks}
     />
     <HaveRecordsSection
       className={clsx('w-full', 'mt-8')}

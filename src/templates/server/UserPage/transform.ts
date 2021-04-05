@@ -27,15 +27,15 @@ export const transform: (result: UserPageQuery) => TransformedProps = ({
 }) => ({
   ...user,
   readBooks: {
-    hasNext: user.hasBooks.hasNext,
-    books: user.hasBooks.nodes.map(({book}) => ({
+    hasNext: user.readBooks.hasNext,
+    books: user.readBooks.nodes.map(({book}) => ({
       ...book,
       cover: book.cover || undefined,
     })),
   },
   readingBooks: {
-    hasNext: user.hasBooks.hasNext,
-    books: user.hasBooks.nodes.map(({book}) => ({
+    hasNext: user.readingBooks.hasNext,
+    books: user.readingBooks.nodes.map(({book}) => ({
       ...book,
       cover: book.cover || undefined,
     })),
@@ -48,8 +48,8 @@ export const transform: (result: UserPageQuery) => TransformedProps = ({
     })),
   },
   stackedBooks: {
-    hasNext: user.hasBooks.hasNext,
-    books: user.hasBooks.nodes.map(({book}) => ({
+    hasNext: user.stackedBooks.hasNext,
+    books: user.stackedBooks.nodes.map(({book}) => ({
       ...book,
       cover: book.cover || undefined,
     })),
