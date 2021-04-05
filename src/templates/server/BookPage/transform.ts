@@ -1,4 +1,5 @@
 import {BookPageQuery} from '~/graphql/codegen/graphql-request';
+import {avoidUndefined} from '~/lib/utils';
 
 export type TransformedProps = {
   title: string;
@@ -37,30 +38,32 @@ export type TransformedProps = {
 
 export const transform: (result: BookPageQuery) => TransformedProps = ({
   book,
-}) => ({
-  ...book,
-  subtitle: book.subtitle || undefined,
-  isbn: book.isbn || undefined,
-  cover: book.cover || undefined,
-  authors: book.writedBy.map(({author}) => ({
-    ...author,
-    books: author.writed.nodes.map(({book}) => ({
-      ...book,
-      cover: book.cover || undefined,
+}) => {
+  return avoidUndefined({
+    ...book,
+    subtitle: book.subtitle || undefined,
+    isbn: book.isbn || undefined,
+    cover: book.cover || undefined,
+    authors: book.writedBy.map(({author}) => ({
+      ...author,
+      books: author.writed.nodes.map(({book}) => ({
+        ...book,
+        cover: book.cover || undefined,
+      })),
     })),
-  })),
-  publishers: book.publishedBy.map(({publisher}) => ({
-    ...publisher,
-    books: publisher.publications.nodes.map(({book}) => ({
-      ...book,
-      cover: book.cover || undefined,
+    publishers: book.publishedBy.map(({publisher}) => ({
+      ...publisher,
+      books: publisher.publications.nodes.map(({book}) => ({
+        ...book,
+        cover: book.cover || undefined,
+      })),
     })),
-  })),
-  series: book.seriesOf.nodes.map(({series}) => ({
-    ...series,
-    books: series.consistsOf.nodes.map(({book}) => ({
-      ...book,
-      cover: book.cover || undefined,
+    series: book.seriesOf.nodes.map(({series}) => ({
+      ...series,
+      books: series.consistsOf.nodes.map(({book}) => ({
+        ...book,
+        cover: book.cover || undefined,
+      })),
     })),
-  })),
-});
+  });
+};
