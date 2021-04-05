@@ -29,8 +29,8 @@ export const Primary: Story<ComponentProps> = (args) => (
 Primary.args = {
   title: 'とある科学の超電磁砲',
   relatedAuthors: [
-    {author: {id: 'A', name: '冬月基'}},
-    {author: {id: 'B', name: '鎌池和馬'}},
-    {author: {id: 'C', name: 'はいむらきよたか'}},
+    {id: 'A', name: '冬月基'},
+    {id: 'B', name: '鎌池和馬'},
+    {id: 'C', name: 'はいむらきよたか'},
   ],
 };

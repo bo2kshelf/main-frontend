@@ -8,7 +8,7 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {LoadingPage} from '~/templates/common/LoadingPage';
-import {UserPage, UserPageProps} from '~/templates/server/UserPage';
+import {transform, UserPage, UserPageProps} from '~/templates/server/UserPage';
 
 export type UrlQuery = {username: string};
 
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<UserPageProps, UrlQuery> = async ({
   return graphqlSdk
     .UserPage({userName: params.username})
     .then((data) => ({
-      props: data,
+      props: transform(data),
       revalidate: 60 * 60,
     }))
     .catch(() => ({notFound: true}));

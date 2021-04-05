@@ -17,7 +17,7 @@ import {
 export type ComponentProps = {
   className?: string;
   user: HeaderProps['user'];
-  records: {book: {id: string; title: string; cover?: string}}[];
+  books: {id: string; title: string; cover?: string}[];
   hasNext: boolean;
 };
 

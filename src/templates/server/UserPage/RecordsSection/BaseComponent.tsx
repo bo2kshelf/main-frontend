@@ -7,14 +7,14 @@ import {NoRecordsBoxProps} from './NoRecordBox';
 export type BaseComponentProps = {
   className?: string;
   user: HeaderProps['user'];
-  records: {book: {id: string; title: string; cover?: string}}[];
+  books: {id: string; title: string; cover?: string}[];
   hasNext: boolean;
   Header: React.FC<HeaderProps>;
   NoBooksBox: React.FC<NoRecordsBoxProps>;
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
-  records,
+  books,
   Header,
   user,
   hasNext,
@@ -22,7 +22,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
 }) => (
   <BooksSection
     className={clsx(className)}
-    books={records.map(({book}) => book)}
+    books={books}
     Header={(props) => (
       <Header
         {...props}
@@ -31,7 +31,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
         hasMore={hasNext}
       />
     )}
-    noBooks={records.length === 0}
+    noBooks={books.length === 0}
     NoBooksBox={(props) => (
       <NoBooksBox {...props} className={clsx('h-32')} user={user} />
     )}

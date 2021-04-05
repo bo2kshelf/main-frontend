@@ -6,9 +6,7 @@ export type BaseComponentProps = {
   className?: string;
   i18n: Record<'relatedAuthors', string>;
   title: string;
-  relatedAuthors: {
-    author: {id: string; name: string};
-  }[];
+  relatedAuthors: {id: string; name: string}[];
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
@@ -21,7 +19,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
     <div className={clsx('w-full', 'mt-4')}>
       <p className={clsx('text-sm', 'text-gray-500')}>{i18n.relatedAuthors}</p>
       <div className={clsx('mt-1', 'flex', 'space-x-2')}>
-        {relatedAuthors.map(({author: {id, name}}) => (
+        {relatedAuthors.map(({id, name}) => (
           <Link key={id} href={{pathname: '/authors/[id]', query: {id}}}>
             <a className={clsx('font-bold')}>{name}</a>
           </Link>

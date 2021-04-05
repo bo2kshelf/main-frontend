@@ -1,16 +1,17 @@
 import clsx from 'clsx';
 import React from 'react';
 import {NextPageLink, PreviousPageLink} from '../link';
+import {PageType} from '../transform';
 import {NextButton, PreviousButton} from './SliderButton';
 
-export type BaseComponentProps = {
+export type BaseComponentProps<P extends PageType> = {
   className?: string;
   i18n: Record<'message', string>;
-  previousLink?: PreviousPageLink;
-  nextLink?: NextPageLink;
+  previousLink?: PreviousPageLink<P>;
+  nextLink?: NextPageLink<P>;
 };
 
-export const BaseComponent: React.FC<BaseComponentProps> = ({
+export const BaseComponent: React.FC<BaseComponentProps<PageType>> = ({
   className,
   previousLink,
   nextLink,

@@ -1,31 +1,30 @@
 import clsx from 'clsx';
 import React from 'react';
-import {Header, HeaderProps} from './Header';
-import {AuthorsSection, AuthorsSectionProps} from './Section/AuthorsSection';
-import {
-  PublisherSection,
-  PublisherSectionProps,
-} from './Section/PublishersSection';
-import {SeriesSection, SeriesSectionProps} from './Section/SeriesSection';
+import {Merge} from 'type-fest';
+import {Header} from './Header';
+import {AuthorsSection} from './Section/AuthorsSection';
+import {PublisherSection} from './Section/PublishersSection';
+import {SeriesSection} from './Section/SeriesSection';
+import {TransformedProps} from './transform';
 
-export type ComponentProps = {
-  className?: string;
-  book: HeaderProps['book'];
-  authors: AuthorsSectionProps['author'][];
-  series: SeriesSectionProps['series'][];
-  publishers: PublisherSectionProps['publisher'][];
-};
+export type ComponentProps = Merge<TransformedProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = ({
   className,
   children,
-  book,
+  isbn,
+  title,
+  cover,
+  subtitle,
   authors,
   series,
   publishers,
 }) => (
   <main className={clsx(className, 'space-y-8')}>
     {children}
-    <Header book={book} className={clsx('mb-8')} />
+    <Header
+      book={{title, isbn, cover, subtitle, authors}}
+      className={clsx('mb-8')}
+    />
     {series.map((node) => (
       <SeriesSection key={node.id} series={node} />
     ))}

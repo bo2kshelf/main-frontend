@@ -1,48 +1,55 @@
-export type PageType = 'stacked' | 'read' | 'reading' | 'have' | 'wish';
-export type PagePath = `/users/[username]/${PageType}`;
-export type NumberedPagePath = `${PagePath}/[number]`;
+import {PageType} from './transform';
 
-export type PreviousPageLink = {
-  pathname: PagePath | NumberedPagePath;
-  query: {username: string; number?: number};
+export type PreviousPageLink<Type extends PageType> =
+  | {
+      pathname: `/users/[username]/${Type}`;
+      query: {username: string};
+    }
+  | {
+      pathname: `/users/[username]/${Type}/[number]`;
+      query: {username: string; number: number};
+    };
+
+export type NextPageLink<P extends PageType> = {
+  pathname: `/users/[username]/${P}/[number]`;
+  query: {username: string; number: number};
 };
-export type NextPageLink = {
-  pathname: PagePath | NumberedPagePath;
-  query: {username: string; number?: number};
-};
 
-export function getPreviousLink(
-  page: PageType,
-  {username, number}: {username: string; number?: string},
-  hasPrevious: boolean,
-): PreviousPageLink | undefined {
-  if (!(hasPrevious && number)) return;
-
-  const previousNumber =
-    Number.parseInt(number, 10) === 2
-      ? undefined
-      : Number.parseInt(number, 10) - 1;
-  return hasPrevious
+export const getPreviousPageLink = <Type extends PageType>(
+  type: Type,
+  {
+    userName,
+    hasPrevious,
+    number,
+  }: {userName: string; hasPrevious: boolean; number: number},
+): PreviousPageLink<Type> | undefined => {
+  if (!hasPrevious) return;
+  const previousNumber = number - 1;
+  if (previousNumber <= 0) return;
+  return previousNumber === 1
     ? {
-        pathname: previousNumber
-          ? (`/users/[username]/${page}/[number]` as const)
-          : (`/users/[username]/${page}` as const),
-        query: previousNumber ? {username, number: previousNumber} : {username},
+        pathname: `/users/[username]/${type}` as const,
+        query: {username: userName},
       }
-    : undefined;
-}
+    : {
+        pathname: `/users/[username]/${type}/[number]` as const,
+        query: {username: userName, number: previousNumber},
+      };
+};
 
-export function getNextLink(
-  page: PageType,
-  {username, number}: {username: string; number?: string},
-  hasNext: boolean,
-): NextPageLink | undefined {
+export const getNextPageLink = <Type extends PageType>(
+  type: Type,
+  {
+    userName,
+    hasNext,
+    number,
+  }: {userName: string; hasNext: boolean; number: number},
+): NextPageLink<Type> | undefined => {
   if (!hasNext) return;
-
   return hasNext
     ? {
-        pathname: `/users/[username]/${page}/[number]` as const,
-        query: {username, number: number ? Number.parseInt(number, 10) + 1 : 2},
+        pathname: `/users/[username]/${type}/[number]` as const,
+        query: {username: userName, number: number ? number + 1 : 2},
       }
     : undefined;
-}
+};

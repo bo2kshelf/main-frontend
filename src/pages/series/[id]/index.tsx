@@ -8,7 +8,11 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {LoadingPage} from '~/templates/common/LoadingPage';
-import {SeriesPage, SeriesPageProps} from '~/templates/server/SeriesPage';
+import {
+  SeriesPage,
+  SeriesPageProps,
+  transform,
+} from '~/templates/server/SeriesPage';
 
 export type UrlQuery = {id: string};
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
@@ -30,7 +34,7 @@ export const getStaticProps: GetStaticProps<
   return graphqlSdk
     .SeriesPage({id: params.id})
     .then((data) => ({
-      props: data,
+      props: transform(data),
       revalidate: 60 * 60,
     }))
     .catch(() => ({notFound: true}));

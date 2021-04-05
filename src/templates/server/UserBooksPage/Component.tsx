@@ -1,41 +1,37 @@
 import clsx from 'clsx';
 import React from 'react';
+import {Merge} from 'type-fest';
 import {BooksSection} from '~/components/common/BooksSection';
-import {ProfileSection, ProfileSectionProps} from '../UserPage/ProfileSection';
-import {RecordsSectionProps} from '../UserPage/RecordsSection';
+import {ProfileSection} from '../UserPage/ProfileSection';
 import {HeaderProps} from './Header';
-import {ListSliderProps} from './Slider';
+import {PageType, TransformedProps} from './transform';
 
-export type ComponentProps = {
-  className?: string;
-  user: ProfileSectionProps['user'];
-  records: RecordsSectionProps['records'];
-  count: number;
-  previousLink: ListSliderProps['previousLink'];
-  nextLink: ListSliderProps['nextLink'];
-  Header: React.FC<HeaderProps>;
-};
-export const Component: React.FC<ComponentProps> = ({
+export type ComponentProps<P extends PageType> = Merge<
+  TransformedProps<P>,
+  {className?: string; Header: React.FC<HeaderProps>}
+>;
+export const Component: React.FC<ComponentProps<PageType>> = ({
   className,
-  Header,
-  user: account,
-  records,
+  displayName,
+  picture,
+  userName,
+  books,
   count,
-  ...props
+  Header,
 }) => (
   <main className={clsx(className)}>
-    <ProfileSection className={clsx('w-full')} user={account} />
+    <ProfileSection
+      className={clsx('w-full')}
+      user={{displayName, picture, userName}}
+    />
     <Header
       className={clsx('w-full', 'mt-4', 'mb-4')}
-      account={account}
+      account={{displayName}}
       records={{count}}
     />
-    {records.length > 0 && (
+    {books.length > 0 && (
       <>
-        <BooksSection
-          className={clsx('w-full', 'my-8')}
-          books={records.map(({book}) => book)}
-        />
+        <BooksSection className={clsx('w-full', 'my-8')} books={books} />
       </>
     )}
   </main>

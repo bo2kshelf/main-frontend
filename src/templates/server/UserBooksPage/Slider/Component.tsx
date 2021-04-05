@@ -1,13 +1,17 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {PageType} from '../transform';
 import {BaseComponent, BaseComponentProps} from './BaseComponent';
 
-export type ComponentProps = Omit<BaseComponentProps, 'i18n'> & {
+export type ComponentProps<P extends PageType> = Omit<
+  BaseComponentProps<P>,
+  'i18n'
+> & {
   total: number;
   from: number;
   to: number;
 };
-export const Component: React.FC<ComponentProps> = ({
+export const Component: React.FC<ComponentProps<PageType>> = ({
   from,
   to,
   total,

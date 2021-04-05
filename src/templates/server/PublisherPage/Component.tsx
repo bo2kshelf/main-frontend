@@ -1,24 +1,22 @@
 import clsx from 'clsx';
 import React from 'react';
-import {AllBooksSection, AllBooksSectionProps} from './AllBooksSection';
+import {Merge} from 'type-fest';
+import {AllBooksSection} from './AllBooksSection';
+import {TransformedProps} from './transform';
 
-export type ComponentProps = {
-  className?: string;
-  publisher: AllBooksSectionProps['publisher'];
-  allBooks: AllBooksSectionProps['books'];
-};
+export type ComponentProps = Merge<TransformedProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = ({
   className,
   children,
-  publisher,
-  allBooks,
+  name,
+  books,
 }) => (
   <main className={clsx(className)}>
     {children}
     <AllBooksSection
       className={clsx('w-full')}
-      publisher={publisher}
-      books={allBooks}
+      publisher={{name}}
+      books={books}
     />
   </main>
 );

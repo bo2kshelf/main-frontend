@@ -11,6 +11,7 @@ import {LoadingPage} from '~/templates/common/LoadingPage';
 import {
   PublisherPage,
   PublisherPageProps,
+  transform,
 } from '~/templates/server/PublisherPage';
 
 export type UrlQuery = {id: string};
@@ -31,7 +32,7 @@ export const getStaticProps: GetStaticProps<
   return graphqlSdk
     .PublisherPage({id: params.id})
     .then((data) => ({
-      props: data,
+      props: transform(data),
       revalidate: 60 * 60,
     }))
     .catch(() => ({notFound: true}));

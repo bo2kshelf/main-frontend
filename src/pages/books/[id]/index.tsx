@@ -8,7 +8,7 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {LoadingPage} from '~/templates/common/LoadingPage';
-import {BookPage, BookPageProps} from '~/templates/server/BookPage';
+import {BookPage, BookPageProps, transform} from '~/templates/server/BookPage';
 
 export type UrlQuery = {id: string};
 
@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps<BookPageProps, UrlQuery> = async ({
   return graphqlSdk
     .BookPage({id: params.id})
     .then((data) => ({
-      props: data,
+      props: transform(data),
       revalidate: 60 * 60,
     }))
     .catch(() => ({notFound: true}));
