@@ -6,17 +6,6 @@ orbs:
   codecov: codecov/codecov@1.1.3
 
 jobs:
-  build:
-    docker:
-      - image: circleci/node:14.15.3
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run: yarn run build
-      - store_artifacts:
-          path: ./dist
-
   lint-prettier:
     docker:
       - image: circleci/node:14.15.3
@@ -26,11 +15,14 @@ jobs:
           pkg-manager: yarn
       - run: yarn run lint:prettier
 
-  lint-eslint-local: &lint-eslint
-    environment:
-      GRAPHQL_API_SCHEMA: ./schema.graphql
+  lint-eslint:
     docker:
       - image: circleci/node:14.15.3
+    parameters:
+      schema:
+        type: string
+    environment:
+      GRAPHQL_API_SCHEMA: << parameters.schema >>
     steps:
       - checkout
       - node/install-packages:
@@ -48,11 +40,6 @@ jobs:
       - store_test_results:
           path: ./junit
 
-  lint-eslint-production:
-    <<: *lint-eslint
-    environment:
-      GRAPHQL_API_SCHEMA: ./schema.graphql
-
   lint-stylelint:
     docker:
       - image: circleci/node:14.15.3
@@ -68,11 +55,14 @@ jobs:
           paths:
             - .stylelintcache
 
-  ts-check-local: &ts-check
+  ts-check:
     docker:
       - image: circleci/node:14.15.3
+    parameters:
+      schema:
+        type: string
     environment:
-      GRAPHQL_API_SCHEMA: ./schema.graphql
+      GRAPHQL_API_SCHEMA: << parameters.schema >>
     steps:
       - checkout
       - node/install-packages:
@@ -80,18 +70,13 @@ jobs:
       - run: yarn run codegen
       - run: yarn run ts-check
 
-  ts-check-production:
-    <<: *ts-check
-    environment:
-      GRAPHQL_API_SCHEMA: ${GRAPHQL_API_ENDPOINT}
-
 workflows:
   version: 2
   develop:
     jobs:
-      - lint-eslint-local
+      - ts-check:
+          schema: ./schema.graphql
+      - lint-eslint:
+          schema: ./schema.graphql
       - lint-prettier
       - lint-stylelint
-      - ts-check-local:
-          requires:
-            - lint-eslint-local
