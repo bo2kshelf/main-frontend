@@ -1,18 +1,9 @@
 import React from 'react';
-import {PublisherPageQuery} from '~/graphql/codegen/graphql-request';
 import {Component} from './Component';
+import {TransformedProps} from './transform';
 
-export type ContainerProps = PublisherPageQuery;
-export const Container: React.FC<ContainerProps> = ({publisher, ...props}) => {
-  return (
-    <Component
-      {...props}
-      publisher={publisher}
-      allBooks={publisher.publications.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
-      }))}
-    />
-  );
+export type ContainerProps = TransformedProps;
+export const Container: React.FC<ContainerProps> = ({...props}) => {
+  return <Component {...props} />;
 };
 Container.displayName = 'PublisherPage';

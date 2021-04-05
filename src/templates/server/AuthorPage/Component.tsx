@@ -1,31 +1,21 @@
 import clsx from 'clsx';
 import React from 'react';
-import {
-  SeriesSection,
-  SeriesSectionProps,
-} from '../BookPage/Section/SeriesSection';
-import {AllBooksSection, AllBooksSectionProps} from './AllBooksSection';
+import {Merge} from 'type-fest';
+import {SeriesSection} from '../BookPage/Section/SeriesSection';
+import {AllBooksSection} from './AllBooksSection';
+import {TransformedProps} from './transform';
 
-export type ComponentProps = {
-  className?: string;
-  author: AllBooksSectionProps['author'];
-  allBooks: AllBooksSectionProps['books'];
-  series: SeriesSectionProps['series'][];
-};
+export type ComponentProps = Merge<TransformedProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = ({
   className,
   children,
-  author,
-  allBooks,
+  name,
+  books,
   series,
 }) => (
   <main className={clsx(className, 'space-y-8')}>
     {children}
-    <AllBooksSection
-      author={author}
-      className={clsx('w-full')}
-      books={allBooks}
-    />
+    <AllBooksSection author={{name}} className={clsx('w-full')} books={books} />
     {series.map((node) => (
       <SeriesSection className={clsx('w-full')} key={node.id} series={node} />
     ))}

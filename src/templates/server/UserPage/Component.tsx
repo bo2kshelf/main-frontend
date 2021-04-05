@@ -1,53 +1,56 @@
 import clsx from 'clsx';
 import React from 'react';
-import {ProfileSection, ProfileSectionProps} from './ProfileSection';
+import {Merge} from 'type-fest';
+import {ProfileSection} from './ProfileSection';
 import {
   HaveRecordsSection,
   ReadingRecordsSection,
   ReadRecordsSection,
-  RecordsSectionProps,
   StackedRecordsSection,
 } from './RecordsSection';
+import {TransformedProps} from './transform';
 
-export type ComponentProps = {
-  className?: string;
-  user: ProfileSectionProps['user'] & RecordsSectionProps['user'];
-  read: {records: RecordsSectionProps['records']; hasNext: boolean};
-  reading: {records: RecordsSectionProps['records']; hasNext: boolean};
-  have: {records: RecordsSectionProps['records']; hasNext: boolean};
-  stacked: {records: RecordsSectionProps['records']; hasNext: boolean};
-};
+export type ComponentProps = Merge<TransformedProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = ({
   className,
   children,
-  user,
-  read,
-  reading,
-  stacked,
-  have,
+  displayName,
+  picture,
+  userName,
+  readBooks,
+  readingBooks,
+  stackedBooks,
+  haveBooks,
 }) => (
   <main className={clsx(className)}>
     {children}
-    <ProfileSection className={clsx('w-full')} user={user} />
+    <ProfileSection
+      className={clsx('w-full')}
+      user={{
+        displayName,
+        picture,
+        userName,
+      }}
+    />
     <ReadingRecordsSection
       className={clsx('w-full', 'mt-8')}
-      user={user}
-      {...reading}
+      user={{displayName, userName}}
+      {...readBooks}
     />
     <ReadRecordsSection
       className={clsx('w-full', 'mt-8')}
-      user={user}
-      {...read}
+      user={{displayName, userName}}
+      {...readingBooks}
     />
     <HaveRecordsSection
       className={clsx('w-full', 'mt-8')}
-      user={user}
-      {...have}
+      user={{displayName, userName}}
+      {...haveBooks}
     />
     <StackedRecordsSection
       className={clsx('w-full', 'mt-8')}
-      user={user}
-      {...stacked}
+      user={{displayName, userName}}
+      {...stackedBooks}
     />
   </main>
 );

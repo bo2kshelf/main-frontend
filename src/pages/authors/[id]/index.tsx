@@ -8,7 +8,11 @@ import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
 import {LoadingPage} from '~/templates/common/LoadingPage';
-import {AuthorPage, AuthorPageProps} from '~/templates/server/AuthorPage';
+import {
+  AuthorPage,
+  AuthorPageProps,
+  transform,
+} from '~/templates/server/AuthorPage';
 
 export type UrlQuery = {id: string};
 
@@ -28,7 +32,7 @@ export const getStaticProps: GetStaticProps<
   return graphqlSdk
     .AuthorPage({id: params.id})
     .then((data) => ({
-      props: data,
+      props: transform(data),
       revalidate: 60 * 60,
     }))
     .catch(() => ({notFound: true}));

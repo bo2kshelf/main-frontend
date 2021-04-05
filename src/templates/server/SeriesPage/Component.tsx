@@ -1,31 +1,22 @@
 import clsx from 'clsx';
 import React from 'react';
+import {Merge} from 'type-fest';
 import {BooksSection} from '~/components/common/BooksSection';
 import {Header} from './Header';
+import {TransformedProps} from './transform';
 
-export type ComponentProps = {
-  className?: string;
-  title: string;
-  relatedAuthors: {author: {id: string; name: string}}[];
-  parts: {book: {id: string; title: string; cover?: string}}[];
-};
+export type ComponentProps = Merge<TransformedProps, {className?: string}>;
+
 export const Component: React.FC<ComponentProps> = ({
   className,
-  title,
   children,
-  relatedAuthors,
-  parts,
+  title,
+  authors,
+  books,
 }) => (
   <main className={clsx(className)}>
     {children}
-    <Header
-      className={clsx('w-full')}
-      title={title}
-      relatedAuthors={relatedAuthors}
-    />
-    <BooksSection
-      className={clsx('mt-2', 'w-full')}
-      books={parts.map(({book}) => book)}
-    />
+    <Header className={clsx('w-full')} title={title} relatedAuthors={authors} />
+    <BooksSection className={clsx('mt-2', 'w-full')} books={books} />
   </main>
 );
