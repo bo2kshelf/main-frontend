@@ -1,1 +1,14 @@
-{}
+{
+  "index_page": "bo2kshelf",
+  "login_page": "$t(common:login) - bo2kshelf",
+  "user_page": "{{name}}：ユーザー - bo2kshelf",
+  "user_read_books_page": "{{name}}の$t(common:read_books)：ユーザー - bo2kshelf",
+  "user_have_books_page": "{{name}}の$t(common:have_books)：ユーザー - bo2kshelf",
+  "user_stacked_books_page": "{{name}}の$t(common:stacked_books)：ユーザー - bo2kshelf",
+  "user_reading_books_page": "{{name}}の$t(common:reading_books)：ユーザー - bo2kshelf",
+  "user_wish_read_books_page": "{{name}}の$t(common:wish_read_books)：ユーザー - bo2kshelf",
+  "book_page": "{{title}}：本 - bo2kshelf",
+  "series_page": "{{title}}：シリーズ - bo2kshelf",
+  "author_page": "{{name}}：著者 - bo2kshelf",
+  "publisher_page": "{{name}}：出版社 - bo2kshelf"
+}
