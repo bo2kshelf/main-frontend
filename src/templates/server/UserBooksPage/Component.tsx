@@ -12,6 +12,7 @@ export type ComponentProps<P extends PageType> = Merge<
 >;
 export const Component: React.FC<ComponentProps<PageType>> = ({
   className,
+  children,
   displayName,
   picture,
   userName,
@@ -20,6 +21,7 @@ export const Component: React.FC<ComponentProps<PageType>> = ({
   Header,
 }) => (
   <main className={clsx(className)}>
+    {children}
     <ProfileSection
       className={clsx('w-full')}
       user={{displayName, picture, userName}}
