@@ -10,6 +10,7 @@ query AuthorPage($id: ID!) {
     name
     writed(limit: 36) {
       nodes {
+        roles
         book {
           id
           title
