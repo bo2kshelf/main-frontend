@@ -158,9 +158,10 @@ export const transformRead: (
     count,
     hasPrevious,
     hasNext,
-    books: nodes.map(({book}) => ({
-      ...book,
-      cover: book.cover || undefined,
+    books: nodes.map(({id, title, cover}) => ({
+      id,
+      title,
+      cover: cover || undefined,
     })),
     pageType: 'read',
     pageNumber: number || 1,

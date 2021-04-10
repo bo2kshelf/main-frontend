@@ -20,9 +20,10 @@ export const transform = ({
     picture,
     readBooks: {
       hasNext: readBooks.hasNext,
-      books: readBooks.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
+      books: readBooks.nodes.map(({id, title, cover}) => ({
+        id,
+        title,
+        cover: cover || undefined,
       })),
     },
     readingBooks: {

@@ -30,9 +30,10 @@ export const transform: (result: UserPageQuery) => TransformedProps = ({
     ...user,
     readBooks: {
       hasNext: user.readBooks.hasNext,
-      books: user.readBooks.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
+      books: user.readBooks.nodes.map(({id, title, cover}) => ({
+        id,
+        title,
+        cover: cover || undefined,
       })),
     },
     readingBooks: {
