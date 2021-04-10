@@ -19,11 +19,13 @@ export const transform: (result: SeriesPageQuery) => TransformedProps = ({
 }) =>
   avoidUndefined({
     ...series,
-    books: series.consistsOf.nodes.map(({book}) => ({
-      ...book,
+    books: series.parts.nodes.map(({book}) => ({
+      id: book.id,
+      title: book.title,
       cover: book.cover || undefined,
     })),
     authors: series.relatedAuthors.nodes.map(({author}) => ({
-      ...author,
+      id: author.id,
+      name: author.name,
     })),
   });

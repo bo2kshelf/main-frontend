@@ -12,11 +12,9 @@ query UserPage($userName: String!) {
     readBooks(limit: 12) {
       hasNext
       nodes {
-        book {
-          id
-          title
-          cover
-        }
+        id
+        title
+        cover
       }
     }
     readingBooks(limit: 12) {

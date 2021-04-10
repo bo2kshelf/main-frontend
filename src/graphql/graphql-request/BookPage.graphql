@@ -12,16 +12,14 @@ query BookPage($id: ID!) {
     isbn(dehyphenize: true)
     cover
     publishedBy {
-      publisher {
-        id
-        name
-        publications(limit: 12, except: [$id]) {
-          nodes {
-            book {
-              id
-              title
-              cover
-            }
+      id
+      name
+      publications(limit: 12, except: [$id]) {
+        nodes {
+          book {
+            id
+            title
+            cover
           }
         }
       }
@@ -43,17 +41,15 @@ query BookPage($id: ID!) {
       roles
     }
     seriesOf {
-      nodes {
-        series {
-          id
-          title
-          consistsOf(limit: 24, orderBy: {order: ASC}) {
-            nodes {
-              book {
-                id
-                title
-                cover
-              }
+      series {
+        id
+        title
+        parts(limit: 24, orderBy: ASC) {
+          nodes {
+            book {
+              id
+              title
+              cover
             }
           }
         }

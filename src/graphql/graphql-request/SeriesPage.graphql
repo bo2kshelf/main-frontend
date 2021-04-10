@@ -8,7 +8,7 @@ query SeriesPage($id: ID!) {
   series(id: $id) {
     id
     title
-    consistsOf(limit: 24, orderBy: {order: ASC}) {
+    parts(limit: 24, orderBy: ASC) {
       nodes {
         book {
           id
