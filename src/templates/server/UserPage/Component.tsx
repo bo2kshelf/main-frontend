@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {RecordsSection} from './NewRecordsSection';
 import {ProfileMenu} from './ProfileMenu';
 import {ReadingSection} from './ReadingSection';
+import {RecordsSection} from './RecordsSection';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;
