@@ -2,6 +2,7 @@ import {
   faBook,
   faBookmark,
   faBookReader,
+  faEye,
   faLayerGroup,
   faStar,
   IconDefinition,
@@ -18,6 +19,7 @@ export type ContainerProps = {
   userName: string;
   displayName: string;
   picture: string;
+  records: {count: number};
   readBooks: {count: number};
   readingBooks: {count: number};
   stackedBooks: {count: number};
@@ -29,6 +31,7 @@ export const Container: React.FC<ContainerProps> = ({
   displayName,
   userName,
   picture,
+  records,
   readBooks,
   readingBooks,
   stackedBooks,
@@ -73,10 +76,10 @@ export const Container: React.FC<ContainerProps> = ({
         )}
       >
         <MenuButton
-          text={t('common:read_books')}
-          icon={faBookmark}
-          href={`/users/${userName}/read`}
-          count={readBooks.count}
+          text={t('common:read_records')}
+          icon={faEye}
+          href={`/users/${userName}/records`}
+          count={records.count}
         />
         <MenuButton
           icon={faBookReader}
@@ -89,6 +92,12 @@ export const Container: React.FC<ContainerProps> = ({
           text={t('common:have_books')}
           href={`/users/${userName}/have`}
           count={haveBooks.count}
+        />
+        <MenuButton
+          text={t('common:read_books')}
+          icon={faBookmark}
+          href={`/users/${userName}/read`}
+          count={readBooks.count}
         />
         <MenuButton
           icon={faLayerGroup}

@@ -37,6 +37,7 @@ export const Component: React.FC<ComponentProps> = ({
         displayName={displayName}
         userName={userName}
         picture={picture}
+        records={records}
         readBooks={readBooks}
         readingBooks={readingBooks}
         stackedBooks={stackedBooks}
