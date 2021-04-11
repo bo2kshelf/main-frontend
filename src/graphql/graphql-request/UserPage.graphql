@@ -16,10 +16,17 @@ query UserPage($userName: String!, $recordLimit: Int!, $recordSkip: Int!) {
       count
       hasNext
       nodes {
+        id
         readAt
+        user {
+          displayName
+          userName: uniqueName
+          picture
+        }
         book {
           id
           title
+          subtitle
           cover
         }
       }

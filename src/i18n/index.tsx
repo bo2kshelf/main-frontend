@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import i18n from 'i18next';
 import i18nextBrowserLanguageDetector from 'i18next-browser-languagedetector';
 import React from 'react';
@@ -6,11 +7,22 @@ import ja from './ja';
 
 export const resources = {ja};
 
-i18n.use(i18nextBrowserLanguageDetector).use(initReactI18next).init({
-  resources,
-  fallbackLng: 'ja-JP',
-  debug: false,
-});
+i18n
+  .use(i18nextBrowserLanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: 'ja-JP',
+    debug: false,
+    interpolation: {
+      format(value, format, lang) {
+        if (value instanceof Date) {
+          return dayjs(value).format(format);
+        }
+        return value;
+      },
+    },
+  });
 
 export const Configured18nextProvider: React.FC = ({children}) => (
   <I18nextProvider i18n={i18n}>{children}</I18nextProvider>

@@ -15,9 +15,11 @@ export type TransformedProps = {
     hasNext: boolean;
     skip: number;
     limit: number;
-    record: {
+    nodes: {
+      id: string;
       readAt?: string;
-      book: {id: string; title: string; cover?: string};
+      user: {userName: string; picture: string; displayName: string};
+      book: {id: string; title: string; subtitle?: string; cover?: string};
     }[];
   };
   readBooks: {count: number};
@@ -39,10 +41,23 @@ export const transform: (
       hasNext: user.records.hasNext,
       limit: recordLimit,
       skip: recordSkip,
-      record: user.records.nodes.map(({book, readAt}) => ({
-        readAt: readAt || undefined,
-        book: {id: book.id, title: book.title, cover: book.cover || undefined},
-      })),
+      nodes: user.records.nodes.map(
+        ({id, readAt, book: recordBook, user: recordUser}) => ({
+          id,
+          readAt: readAt || undefined,
+          user: {
+            userName: recordUser.userName,
+            displayName: recordUser.displayName,
+            picture: recordUser.picture,
+          },
+          book: {
+            id: recordBook.id,
+            title: recordBook.title,
+            subtitle: recordBook.subtitle || undefined,
+            cover: recordBook.cover || undefined,
+          },
+        }),
+      ),
     },
     readingBooks: {
       count: user.readingBooks.count,

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
+import {RecordsSection} from './NewRecordsSection';
 import {ProfileMenu} from './ProfileMenu';
 import {ReadingSection} from './ReadingSection';
 import {TransformedProps} from './transform';
@@ -12,6 +13,7 @@ export const Component: React.FC<ComponentProps> = ({
   displayName,
   picture,
   userName,
+  records,
   readBooks,
   readingBooks,
   stackedBooks,
@@ -41,23 +43,21 @@ export const Component: React.FC<ComponentProps> = ({
         haveBooks={haveBooks}
         wishReadBooks={wishReadBooks}
       />
-      <div
-        className={clsx(
-          'ml-0',
-          'lg:ml-4',
-          'flex-grow',
-          'flex',
-          'flex-col',
-          'grid',
-          'grid-cols-2',
-          'gap-4',
-        )}
-      >
-        <ReadingSection
-          className={clsx('col-span-full', 'shadow-md')}
-          displayName={displayName}
-          readingBooks={readingBooks}
-        />
+      <div className={clsx('ml-0', 'lg:ml-4', 'flex-grow')}>
+        <div className={clsx('grid', 'grid-cols-2', 'gap-4')}>
+          <ReadingSection
+            className={clsx('col-span-full', 'shadow-md')}
+            displayName={displayName}
+            readingBooks={readingBooks}
+          />
+          <RecordsSection
+            className={clsx('col-span-full', 'shadow-md')}
+            displayName={displayName}
+            userName={userName}
+            picture={picture}
+            records={records}
+          />
+        </div>
       </div>
     </div>
   </main>
