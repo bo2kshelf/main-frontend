@@ -54,7 +54,6 @@ export const Component: React.FC<ComponentProps> = ({
             className={clsx('col-span-full', 'shadow-md')}
             displayName={displayName}
             userName={userName}
-            picture={picture}
             records={records}
           />
         </div>
