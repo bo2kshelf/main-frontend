@@ -5,56 +5,64 @@ export type TransformedProps = {
   picture: string;
   userName: string;
   displayName: string;
-  readBooks: {
-    books: {id: string; title: string; cover?: string}[];
-    hasNext: boolean;
-  };
   readingBooks: {
     books: {id: string; title: string; cover?: string}[];
     hasNext: boolean;
+    count: number;
   };
-  haveBooks: {
-    books: {id: string; title: string; cover?: string}[];
+  records: {
+    count: number;
     hasNext: boolean;
+    skip: number;
+    limit: number;
+    record: {
+      readAt?: string;
+      book: {id: string; title: string; cover?: string};
+    }[];
   };
-  stackedBooks: {
-    books: {id: string; title: string; cover?: string}[];
-    hasNext: boolean;
-  };
+  readBooks: {count: number};
+  haveBooks: {count: number};
+  stackedBooks: {count: number};
+  wishReadBooks: {count: number};
 };
 
-export const transform: (result: UserPageQuery) => TransformedProps = ({
-  user,
-}) =>
+export const transform: (
+  result: UserPageQuery,
+  variables: {recordSkip: number; recordLimit: number},
+) => TransformedProps = ({user}, {recordLimit, recordSkip}) =>
   avoidUndefined({
-    ...user,
-    readBooks: {
-      hasNext: user.readBooks.hasNext,
-      books: user.readBooks.nodes.map(({id, title, cover}) => ({
-        id,
-        title,
-        cover: cover || undefined,
+    userName: user.userName,
+    displayName: user.displayName,
+    picture: user.picture,
+    records: {
+      count: user.records.count,
+      hasNext: user.records.hasNext,
+      limit: recordLimit,
+      skip: recordSkip,
+      record: user.records.nodes.map(({book, readAt}) => ({
+        readAt: readAt || undefined,
+        book: {id: book.id, title: book.title, cover: book.cover || undefined},
       })),
     },
     readingBooks: {
+      count: user.readingBooks.count,
       hasNext: user.readingBooks.hasNext,
       books: user.readingBooks.nodes.map(({book}) => ({
-        ...book,
+        id: book.id,
+        title: book.title,
         cover: book.cover || undefined,
       })),
     },
     haveBooks: {
-      hasNext: user.hasBooks.hasNext,
-      books: user.hasBooks.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
-      })),
+      count: user.hasBooks.count,
     },
     stackedBooks: {
-      hasNext: user.stackedBooks.hasNext,
-      books: user.stackedBooks.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
-      })),
+      count: user.stackedBooks.count,
+    },
+    readBooks: {
+      count: user.readBooks.count,
+    },
+    wishReadBooks: {
+      count: user.wishesReadBooks.count,
     },
   });
