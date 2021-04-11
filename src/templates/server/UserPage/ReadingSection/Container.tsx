@@ -34,7 +34,11 @@ export const Container: React.FC<ContainerProps> = ({
         )}
       >
         {readingBooks.books.map((book) => (
-          <BookLink className={clsx('h-32')} key={book.id} book={book} />
+          <BookLink
+            className={clsx('h-28', 'xl:h-32')}
+            key={book.id}
+            book={book}
+          />
         ))}
       </div>
     </section>

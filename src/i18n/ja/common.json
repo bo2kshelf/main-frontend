@@ -22,5 +22,6 @@
   "next": "次へ",
   "related_authors": "関係のある作者",
   "unique_name": "ユニークネーム",
-  "password": "パスワード"
+  "password": "パスワード",
+  "loading": "ロード中"
 }
