@@ -1,6 +1,7 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
-import {InfinityScrollerDetector} from '~/components/InfiniteScroller/Detector';
+import {useTranslation} from 'react-i18next';
 import {Record} from '~/components/Record';
 
 type ComponentProps = {
@@ -21,31 +22,45 @@ type ComponentProps = {
       cover?: string;
     };
   }[];
-  hasMoreRecords: boolean;
-  fetchMoreRecords(): void;
-  fetchRecordsLoading: boolean;
+  recordPageLink: string;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
   i18n,
-  fetchRecordsLoading: loading,
-  hasMoreRecords: hasNext,
-  fetchMoreRecords: fetchMore,
-  records: nodes,
+  records,
+  recordPageLink,
 }) => (
   <section className={clsx(className, 'bg-white', 'py-6', 'px-12')}>
-    <p className={clsx('text-xl')}>{i18n.title}</p>
-    <div className={clsx('flex', 'flex-col', 'divide-y')}>
-      {nodes.map((node: any) => (
+    <h1 className={clsx('text-xl')}>{i18n.title}</h1>
+    <div className={clsx('mt-2', 'flex', 'flex-col', 'divide-y')}>
+      {records.map((node: any) => (
         <Record className={clsx('w-full')} key={node.id} {...node} />
       ))}
-      {hasNext && (
-        <InfinityScrollerDetector
-          className={clsx('w-full')}
-          loading={loading}
-          onClicked={fetchMore}
-        />
-      )}
     </div>
+    <MoreLink className={clsx('mt-4', 'w-full')} href={recordPageLink} />
   </section>
 );
+
+export const MoreLink: React.FC<{
+  className?: string;
+  href: string;
+}> = ({className, href}) => {
+  const {t} = useTranslation();
+  return (
+    <Link href={href}>
+      <a
+        className={clsx(
+          className,
+          'block',
+          'group',
+          'py-4',
+          'text-center',
+          'bg-blue-400',
+          'hover:bg-blue-500',
+        )}
+      >
+        <span className={clsx('text-white')}>{t('もっと見る')}</span>
+      </a>
+    </Link>
+  );
+};
