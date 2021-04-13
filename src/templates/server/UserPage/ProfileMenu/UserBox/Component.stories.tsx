@@ -1,0 +1,27 @@
+import {Meta, Story} from '@storybook/react/types-6-0';
+import React from 'react';
+import {random} from '~~/.storybook/assets';
+import {Component, ComponentProps} from './Component';
+
+export default {
+  title: 'UserPage/ProfileMenu/UserBox',
+  args: {picture: random.icon(), width: 256},
+  argTypes: {
+    className: {table: {disable: true}},
+    picture: {table: {disable: true}},
+    width: {control: {type: 'range', min: 256, max: 512, step: 8}},
+  },
+  decorators: [
+    (Story, {args}) => (
+      <div style={{width: args.width}}>
+        <Story />
+      </div>
+    ),
+  ],
+} as Meta;
+
+export const Primary: Story<ComponentProps> = (args) => <Component {...args} />;
+Primary.args = {
+  displayName: 'User Name',
+  userName: 'username',
+};
