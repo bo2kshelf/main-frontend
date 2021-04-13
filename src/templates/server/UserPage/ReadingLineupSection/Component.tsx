@@ -1,0 +1,50 @@
+import clsx from 'clsx';
+import React from 'react';
+import {useTranslation} from 'react-i18next';
+import {BooksList} from './BooksList';
+import {MoreReadingBooksLink} from './MoreLink';
+
+export type BaseComponentProps = {
+  className?: string;
+  userName: string;
+  books: {id: string; title: string; cover?: string}[];
+  hasMore: boolean;
+  i18n: Record<'title', string>;
+};
+export const BaseComponent: React.FC<BaseComponentProps> = ({
+  className,
+  i18n,
+  books,
+  userName,
+  hasMore,
+}) => (
+  <section className={clsx(className, 'bg-white', 'py-6', 'px-12')}>
+    <div className={clsx('flex', 'items-center')}>
+      <h2 className={clsx('flex-grow', 'text-xl', 'truncate')}>{i18n.title}</h2>
+      {hasMore && (
+        <MoreReadingBooksLink className={clsx('ml-2')} userName={userName} />
+      )}
+    </div>
+    <BooksList books={books} className={clsx('mt-6')} />
+  </section>
+);
+
+export type ComponentProps = {
+  className?: string;
+  userName: string;
+  displayName: string;
+  books: {id: string; title: string; cover?: string}[];
+  hasMore: boolean;
+};
+export const Component: React.FC<ComponentProps> = ({
+  displayName,
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      i18n={{title: t('{{name}}が読んでいる本', {name: displayName})}}
+    />
+  );
+};

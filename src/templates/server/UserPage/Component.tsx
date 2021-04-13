@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
 import {ProfileMenu} from './ProfileMenu';
-import {ReadingSection} from './ReadingSection';
+import {ReadingLineupSection} from './ReadingLineupSection';
 import {RecordsSection} from './RecordsSection';
 import {TransformedProps} from './transform';
 
@@ -46,9 +46,10 @@ export const Component: React.FC<ComponentProps> = ({
       />
       <div className={clsx('ml-0', 'lg:ml-4', 'flex-grow')}>
         <div className={clsx('grid', 'grid-cols-2', 'gap-4')}>
-          <ReadingSection
+          <ReadingLineupSection
             className={clsx('col-span-full', 'shadow-md')}
             displayName={displayName}
+            userName={userName}
             readingBooks={readingBooks}
           />
           <RecordsSection
