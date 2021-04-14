@@ -18,7 +18,10 @@ export const transform = ({
     userName,
     displayName,
     picture,
+    likedBooks: {count: 0, hasNext: false, books: []},
+    records: {count: 0, hasNext: false, limit: 0, skip: 0, nodes: []},
     readBooks: {
+      count: 0,
       hasNext: readBooks.hasNext,
       books: readBooks.nodes.map(({id, title, cover}) => ({
         id,
@@ -27,6 +30,7 @@ export const transform = ({
       })),
     },
     readingBooks: {
+      count: 0,
       hasNext: readingBooks.hasNext,
       books: readingBooks.nodes.map(({book}) => ({
         ...book,
@@ -34,6 +38,7 @@ export const transform = ({
       })),
     },
     haveBooks: {
+      count: 0,
       hasNext: hasBooks.hasNext,
       books: hasBooks.nodes.map(({book}) => ({
         ...book,
@@ -41,10 +46,14 @@ export const transform = ({
       })),
     },
     stackedBooks: {
+      count: 0,
       hasNext: stackedBooks.hasNext,
       books: stackedBooks.nodes.map(({book}) => ({
         ...book,
         cover: book.cover || undefined,
       })),
+    },
+    wishReadBooks: {
+      count: 0,
     },
   });
