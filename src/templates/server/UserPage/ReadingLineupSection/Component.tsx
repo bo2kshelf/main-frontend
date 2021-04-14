@@ -2,21 +2,26 @@ import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {BooksList} from './BooksList';
-import {MoreReadingBooksLink} from './MoreLink';
+import {Component as MoreLink} from './MoreLink';
 
 export type BaseComponentProps = {
   className?: string;
-  userName: string;
   i18n: Record<'title' | 'titleEmpty', string>;
   books: {id: string; title: string; cover?: string}[];
-  hasMore: boolean;
-};
+} & (
+  | {
+      hasMore: true;
+      moreLink: string;
+    }
+  | {
+      hasMore: false;
+    }
+);
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
   i18n,
   books,
-  userName,
-  hasMore,
+  ...props
 }) => (
   <section className={clsx(className, 'bg-white', 'py-6', 'px-12')}>
     <div className={clsx('flex', 'items-center')}>
@@ -24,8 +29,8 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
         {books.length > 0 && i18n.title}
         {books.length === 0 && i18n.titleEmpty}
       </h2>
-      {hasMore && (
-        <MoreReadingBooksLink className={clsx('ml-2')} userName={userName} />
+      {props.hasMore && (
+        <MoreLink className={clsx('ml-2')} href={props.moreLink} />
       )}
     </div>
     {books.length > 0 && <BooksList books={books} className={clsx('mt-6')} />}
@@ -41,6 +46,7 @@ export type ComponentProps = {
 };
 export const Component: React.FC<ComponentProps> = ({
   displayName,
+  userName,
   ...props
 }) => {
   const {t} = useTranslation();
@@ -53,6 +59,7 @@ export const Component: React.FC<ComponentProps> = ({
           name: displayName,
         }),
       }}
+      moreLink={`/users/${userName}/reading`}
     />
   );
 };

@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
+import {LikedLineupSection} from './LikedLineupSection';
 import {ProfileMenu} from './ProfileMenu';
 import {ReadingLineupSection} from './ReadingLineupSection';
 import {RecordsSection} from './RecordsSection';
@@ -19,6 +20,7 @@ export const Component: React.FC<ComponentProps> = ({
   stackedBooks,
   haveBooks,
   wishReadBooks,
+  likedBooks,
 }) => (
   <main className={clsx(className)}>
     {children}
@@ -51,6 +53,12 @@ export const Component: React.FC<ComponentProps> = ({
             displayName={displayName}
             userName={userName}
             readingBooks={readingBooks}
+          />
+          <LikedLineupSection
+            className={clsx('col-span-full', 'shadow-md')}
+            displayName={displayName}
+            userName={userName}
+            likedBooks={likedBooks}
           />
           <RecordsSection
             className={clsx('col-span-full', 'shadow-md')}

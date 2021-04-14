@@ -14,6 +14,7 @@ export default {
     records: {table: {disable: true}},
     readBooks: {table: {disable: true}},
     readingBooks: {table: {disable: true}},
+    likedBooks: {table: {disable: true}},
     haveBooks: {table: {disable: true}},
     stackedBooks: {table: {disable: true}},
     wishReadBooks: {table: {disable: true}},
@@ -39,6 +40,7 @@ NewUser.args = {
   picture: icons[0],
   records: {count: 0, hasNext: false, skip: 0, limit: 0, nodes: []},
   readingBooks: {count: 0, hasNext: false, books: []},
+  likedBooks: {count: 0, hasNext: false, books: []},
   readBooks: {count: 0},
   haveBooks: {count: 0},
   stackedBooks: {count: 0},
@@ -75,6 +77,15 @@ NormalUser.args = {
     })),
   },
   readingBooks: {
+    count: 10,
+    hasNext: true,
+    books: Array.from({length: 8}).map((_, i) => ({
+      id: `${i}`,
+      title: `Book ${i}`,
+      cover: random.bookcover(i),
+    })),
+  },
+  likedBooks: {
     count: 10,
     hasNext: true,
     books: Array.from({length: 8}).map((_, i) => ({

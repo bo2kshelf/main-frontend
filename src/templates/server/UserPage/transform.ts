@@ -10,6 +10,11 @@ export type TransformedProps = {
     hasNext: boolean;
     count: number;
   };
+  likedBooks: {
+    books: {id: string; title: string; cover?: string}[];
+    hasNext: boolean;
+    count: number;
+  };
   records: {
     count: number;
     hasNext: boolean;
@@ -68,6 +73,7 @@ export const transform: (
         cover: book.cover || undefined,
       })),
     },
+    likedBooks: {count: 0, hasNext: false, books: []},
     haveBooks: {
       count: user.hasBooks.count,
     },
