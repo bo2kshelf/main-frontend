@@ -13,6 +13,7 @@ export default {
     className: {table: {disable: true}},
     books: {table: {disable: true}},
     hasMore: {table: {disable: true}},
+    empty: {table: {disable: true}},
     width: {control: {type: 'range', min: 704, max: 1024, step: 8}},
   },
   decorators: [
@@ -50,11 +51,11 @@ Lack.args = {
 };
 Lack.storyName = '8冊以内';
 
-export const None: Story<ComponentProps> = (args) => <Component {...args} />;
-None.args = {
+export const Empty: Story<ComponentProps> = (args) => <Component {...args} />;
+Empty.args = {
   displayName: 'User Name',
   userName: 'username',
   hasMore: false,
   books: [],
 };
-None.storyName = '1冊も無い';
+Empty.storyName = '1冊も無い';

@@ -7,9 +7,9 @@ import {MoreReadingBooksLink} from './MoreLink';
 export type BaseComponentProps = {
   className?: string;
   userName: string;
+  i18n: Record<'title' | 'titleEmpty', string>;
   books: {id: string; title: string; cover?: string}[];
   hasMore: boolean;
-  i18n: Record<'title', string>;
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
@@ -20,12 +20,15 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
 }) => (
   <section className={clsx(className, 'bg-white', 'py-6', 'px-12')}>
     <div className={clsx('flex', 'items-center')}>
-      <h2 className={clsx('flex-grow', 'text-xl', 'truncate')}>{i18n.title}</h2>
+      <h2 className={clsx('flex-grow', 'text-xl', 'truncate')}>
+        {books.length > 0 && i18n.title}
+        {books.length === 0 && i18n.titleEmpty}
+      </h2>
       {hasMore && (
         <MoreReadingBooksLink className={clsx('ml-2')} userName={userName} />
       )}
     </div>
-    <BooksList books={books} className={clsx('mt-6')} />
+    {books.length > 0 && <BooksList books={books} className={clsx('mt-6')} />}
   </section>
 );
 
@@ -44,7 +47,12 @@ export const Component: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      i18n={{title: t('{{name}}が読んでいる本', {name: displayName})}}
+      i18n={{
+        title: t('{{name}}が読んでいる本', {name: displayName}),
+        titleEmpty: t('{{name}}が読んでいる本はありません', {
+          name: displayName,
+        }),
+      }}
     />
   );
 };
