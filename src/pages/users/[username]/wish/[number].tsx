@@ -12,12 +12,12 @@ import {
   getPathsForNumbered,
   UrlQuery,
 } from '~/lib/UserBookPageCommon';
-import {LoadingPage} from '~/templates/common/LoadingPage';
+import {LoadingPage} from '~/templates/LoadingPage';
 import {
   TransformedProps,
   transformWish,
   WishContainer,
-} from '~/templates/server/UserBooksPage';
+} from '~/templates/UserBooksPage';
 
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
   return graphqlSdk

@@ -7,12 +7,12 @@ import {
 import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
-import {LoadingPage} from '~/templates/common/LoadingPage';
+import {LoadingPage} from '~/templates/LoadingPage';
 import {
   PublisherPage,
   PublisherPageProps,
   transform,
-} from '~/templates/server/PublisherPage';
+} from '~/templates/PublisherPage';
 
 export type UrlQuery = {id: string};
 

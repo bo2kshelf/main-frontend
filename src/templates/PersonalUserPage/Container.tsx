@@ -1,5 +1,5 @@
 import React from 'react';
-import {Component} from '../../server/UserPage';
+import {Component} from '~/templates/UserPage';
 import {TransformedProps} from './transform';
 
 export type ContainerProps = TransformedProps;

@@ -1,6 +1,6 @@
 import {PersonalUserPageQuery} from '~/graphql/codegen/apollo';
 import {avoidUndefined} from '~/lib/utils';
-import {TransformedProps as UserPageTransformedProps} from '~/templates/server/UserPage';
+import {TransformedProps as UserPageTransformedProps} from '~/templates/UserPage';
 
 export type TransformedProps = UserPageTransformedProps;
 export const transform = ({
