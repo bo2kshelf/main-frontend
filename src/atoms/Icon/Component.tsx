@@ -1,11 +1,18 @@
 import {
+  faBarcode,
   faBook,
   faBookmark,
   faBookOpen,
+  faBuilding,
+  faCalendarAlt,
+  faCogs,
   faEye,
   faHeart,
+  faLanguage,
   faLayerGroup,
   faPenNib,
+  faSignInAlt,
+  faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
@@ -33,4 +40,32 @@ export const IconWishReadBooks: ComponentType = ({className}) => (
 );
 export const IconLikedBooks: ComponentType = ({className}) => (
   <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faHeart} />
+);
+export const IconSettings: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faCogs} />
+);
+export const IconLogin: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faSignInAlt} />
+);
+export const IconLogout: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faSignOutAlt} />
+);
+export const IconISBN: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faBarcode} />
+);
+export const IconPublisher: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faBuilding} />
+);
+export const IconPages: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faBook} />
+);
+export const IconPublishedAt: ComponentType = ({className}) => (
+  <FontAwesomeIcon
+    className={clsx(className)}
+    fixedWidth
+    icon={faCalendarAlt}
+  />
+);
+export const IconLanguage: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faLanguage} />
 );
