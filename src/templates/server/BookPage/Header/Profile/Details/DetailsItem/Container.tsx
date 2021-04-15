@@ -5,9 +5,9 @@ import {
   faCalendarAlt,
   faGlobe,
 } from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {LinkPublishersIndexPage} from '~/atoms/Link';
 import {BaseComponent} from './BaseComponent';
 
 export const ISBNDetail: React.FC<{className?: string; isbn: string}> = ({
@@ -48,9 +48,9 @@ export const PublisherDetail: React.FC<{
       icon={faBuilding}
     >
       {publishers.map(({name, id}) => (
-        <Link key={id} href={{pathname: '/publishers/[id]', query: {id}}}>
+        <LinkPublishersIndexPage key={id} id={id}>
           <a>{name}</a>
-        </Link>
+        </LinkPublishersIndexPage>
       ))}
     </BaseComponent>
   );
