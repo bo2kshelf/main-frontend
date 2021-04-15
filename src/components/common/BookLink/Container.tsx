@@ -11,6 +11,6 @@ export type ContainerProps = {
   };
 };
 export const Container: React.FC<ContainerProps> = ({book, ...props}) => {
-  return <Component {...props} {...book} link={`/books/${book.id}`} />;
+  return <Component {...props} {...book} />;
 };
 Container.displayName = 'BookLink';

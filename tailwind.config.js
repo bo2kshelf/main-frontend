@@ -1,3 +1,11 @@
+const fracWidth = (base) =>
+  Object.fromEntries(
+    [...Array.from({length: base - 1})].map((_, i) => [
+      `${i + 1}/${base}`,
+      `${(100 / base) * (i + 1)}%`,
+    ]),
+  );
+
 module.exports = {
   purge: {
     enabled: process.env.NODE_ENV === 'production',
@@ -6,6 +14,10 @@ module.exports = {
 
   theme: {
     extend: {
+      width: {
+        ...fracWidth(7),
+        ...fracWidth(8),
+      },
       colors: {
         github: {
           1: '#24292e',

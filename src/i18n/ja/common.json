@@ -2,11 +2,13 @@
   "login": "ログイン",
   "logout": "ログアウト",
   "settings": "設定",
+  "read_records": "読んだ記録",
   "read_books": "読んだ本",
   "reading_books": "読んでいる本",
   "wish_read_books": "読みたい本",
   "have_books": "持っている本",
   "stacked_books": "積んでいる本",
+  "liked_books": "好きな本",
   "isbn": "ISBN",
   "pages": "ページ数",
   "page": "{{page}}ページ",
@@ -21,5 +23,6 @@
   "next": "次へ",
   "related_authors": "関係のある作者",
   "unique_name": "ユニークネーム",
-  "password": "パスワード"
+  "password": "パスワード",
+  "loading": "ロード中"
 }

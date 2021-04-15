@@ -4,20 +4,35 @@ query AllUserPages {
   }
 }
 
-query UserPage($userName: String!) {
+query UserPage($userName: String!, $recordLimit: Int!, $recordSkip: Int!) {
   user(uniqueName: $userName) {
     userName: uniqueName
     displayName
     picture
-    readBooks(limit: 12) {
+    readBooks {
+      count
+    }
+    records(skip: $recordSkip, limit: $recordLimit, orderBy: {readAt: DESC}) {
+      count
       hasNext
       nodes {
         id
-        title
-        cover
+        readAt
+        user {
+          displayName
+          userName: uniqueName
+          picture
+        }
+        book {
+          id
+          title
+          subtitle
+          cover
+        }
       }
     }
-    readingBooks(limit: 12) {
+    readingBooks(limit: 5) {
+      count
       hasNext
       nodes {
         book {
@@ -27,25 +42,14 @@ query UserPage($userName: String!) {
         }
       }
     }
-    hasBooks(limit: 12) {
-      hasNext
-      nodes {
-        book {
-          id
-          title
-          cover
-        }
-      }
+    wishesReadBooks {
+      count
     }
-    stackedBooks(limit: 12) {
-      hasNext
-      nodes {
-        book {
-          id
-          title
-          cover
-        }
-      }
+    hasBooks {
+      count
+    }
+    stackedBooks {
+      count
     }
   }
 }

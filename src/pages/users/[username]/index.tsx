@@ -29,10 +29,12 @@ export const getStaticProps: GetStaticProps<UserPageProps, UrlQuery> = async ({
 }) => {
   if (!params) throw new Error('Invalid parameters.');
 
+  const variables = {userName: params.username, recordLimit: 5, recordSkip: 0};
+
   return graphqlSdk
-    .UserPage({userName: params.username})
+    .UserPage(variables)
     .then((data) => ({
-      props: transform(data),
+      props: transform(data, variables),
       revalidate: 60 * 60,
     }))
     .catch(() => ({notFound: true}));

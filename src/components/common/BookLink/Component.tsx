@@ -1,33 +1,34 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
+import {LinkBooksIndexPage} from '~/atoms/Link';
 import {BookCover} from '~/components/common/BookCover';
 
 export type ComponentProps = {
   className?: string;
-  link: string;
+  id: string;
   title: string;
   subtitle?: string;
   cover?: string;
 };
 const PlainComponent: React.FC<ComponentProps> = ({
   className,
-  link,
+  id,
   cover,
   title,
   subtitle,
 }) => (
-  <NextLink href={link}>
-    <a className={clsx(className, 'relative', 'bg-gray-200')}>
-      <BookCover
-        className={clsx('cover', 'h-full')}
-        title={title}
-        subtitle={subtitle}
-        cover={cover}
-      />
-    </a>
-  </NextLink>
+  <LinkBooksIndexPage
+    id={id}
+    className={clsx(className, 'relative', 'bg-gray-200')}
+  >
+    <BookCover
+      className={clsx('cover', 'h-full')}
+      title={title}
+      subtitle={subtitle}
+      cover={cover}
+    />
+  </LinkBooksIndexPage>
 );
 
 export const Component = styled(PlainComponent)`

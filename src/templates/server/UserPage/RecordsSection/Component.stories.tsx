@@ -1,58 +1,81 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
-import clsx from 'clsx';
 import React from 'react';
-import {PageLayout} from '~/components/layout/PageLayout';
-import {placeholder} from '~~/.storybook/assets';
-import {
-  ComponentProps,
-  HaveRecordsSection,
-  ReadingRecordsSection,
-  ReadRecordsSection,
-} from './Component';
+import {icons, random} from '~~/.storybook/assets';
+import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'UserPage/RecordsSection/Container',
+  title: 'UserPage/RecordsSection',
+  component: Component,
   args: {
-    user: {
-      displayName: 'SnO2WMaN',
-    },
-    records: [...Array.from({length: 10})].map((_, i) => ({
-      book: {
-        id: `${i + 1}`,
-        title: `SAMPLE (${i + 1})`,
-        cover: placeholder['210x297'],
-      },
-    })),
-    hasNext: true,
+    width: 704,
   },
   argTypes: {
     className: {table: {disable: true}},
-    user: {table: {disable: true}},
-    records: {table: {disable: true}},
-  },
-  parameters: {
-    layout: 'fullscreen',
+    books: {table: {disable: true}},
+    hasMore: {table: {disable: true}},
+    empty: {table: {disable: true}},
+    width: {control: {type: 'range', min: 704, max: 1024, step: 8}},
   },
   decorators: [
-    (Story) => (
-      <PageLayout className={clsx('container', 'mx-auto')}>
+    (Story, {args}) => (
+      <div style={{width: args.width}}>
         <Story />
-      </PageLayout>
+      </div>
     ),
   ],
 } as Meta;
 
-export const Read: Story<ComponentProps> = (args) => (
-  <ReadRecordsSection {...args} />
-);
-Read.storyName = '読んだ本';
+export const Full: Story<ComponentProps> = (args) => <Component {...args} />;
+Full.args = {
+  displayName: 'User Name',
+  userName: 'username',
+  hasMore: true,
+  records: Array.from({length: 5}).map((_, i) => ({
+    id: `${i}`,
+    user: {
+      displayName: 'Normal User',
+      userName: 'normal',
+      picture: icons[1],
+    },
+    book: {
+      id: `${i}`,
+      title: `Title ${i}`,
+      subtitle: `subtitle ${i}`,
+      cover: random.bookcover(i),
+    },
+    readAt: '2012-12-25',
+  })),
+};
+Full.storyName = '5冊以上ある';
 
-export const Reading: Story<ComponentProps> = (args) => (
-  <ReadingRecordsSection {...args} />
-);
-Reading.storyName = '読んでいる本';
+export const Lack: Story<ComponentProps> = (args) => <Component {...args} />;
+Lack.args = {
+  displayName: 'User Name',
+  userName: 'username',
+  hasMore: false,
+  records: Array.from({length: 2}).map((_, i) => ({
+    id: `${i}`,
+    user: {
+      displayName: 'Normal User',
+      userName: 'normal',
+      picture: icons[1],
+    },
+    book: {
+      id: `${i}`,
+      title: `Title ${i}`,
+      subtitle: `subtitle ${i}`,
+      cover: random.bookcover(i),
+    },
+    readAt: '2012-12-25',
+  })),
+};
+Lack.storyName = '5冊以内';
 
-export const Have: Story<ComponentProps> = (args) => (
-  <HaveRecordsSection {...args} />
-);
-Have.storyName = '持っている本';
+export const Empty: Story<ComponentProps> = (args) => <Component {...args} />;
+Empty.args = {
+  displayName: 'User Name',
+  userName: 'username',
+  hasMore: false,
+  records: [],
+};
+Empty.storyName = '1冊も無い';
