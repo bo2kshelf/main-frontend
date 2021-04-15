@@ -2,6 +2,7 @@ export {BaseComponent} from './BaseComponent';
 export type {BaseComponentProps} from './BaseComponent';
 export {
   HaveBooksComponent as HaveBooksItem,
+  LikedBooksComponent as LikedBooksItem,
   ReadBooksComponent as ReadBooksItem,
   ReadingBooksComponent as ReadingBooksItem,
   ReadRecordsComponent as ReadRecordsItem,

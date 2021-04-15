@@ -3,6 +3,7 @@ import React from 'react';
 import {
   ComponentProps,
   HaveBooksComponent,
+  LikedBooksComponent,
   ReadBooksComponent,
   ReadingBooksComponent,
   ReadRecordsComponent,
@@ -47,4 +48,7 @@ export const StackedBooks: Story<ComponentProps> = (args) => (
 
 export const WishReadBooks: Story<ComponentProps> = (args) => (
   <WishReadBooksComponent {...args} />
+);
+export const LikedBooks: Story<ComponentProps> = (args) => (
+  <LikedBooksComponent {...args} />
 );

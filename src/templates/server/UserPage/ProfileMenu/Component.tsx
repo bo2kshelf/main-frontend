@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import {
   HaveBooksItem,
+  LikedBooksItem,
   ReadBooksItem,
   ReadingBooksItem,
   ReadRecordsItem,
@@ -77,6 +78,11 @@ export const Component: React.FC<ComponentProps> = ({
         count={stackedBooksCount}
       />
       <WishReadBooksItem
+        className={clsx('w-full')}
+        userName={userName}
+        count={wishReadBooksCount}
+      />
+      <LikedBooksItem
         className={clsx('w-full')}
         userName={userName}
         count={wishReadBooksCount}

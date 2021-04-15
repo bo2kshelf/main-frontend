@@ -3,6 +3,7 @@ import {
   faBookmark,
   faBookReader,
   faEye,
+  faHeart,
   faLayerGroup,
   faStar,
 } from '@fortawesome/free-solid-svg-icons';
@@ -102,6 +103,21 @@ export const WishReadBooksComponent: React.FC<ComponentProps> = ({
       href={`/users/${userName}/wish`}
       icon={faStar}
       i18n={{text: t('common:wish_read_books'), count: `${count}`}}
+    />
+  );
+};
+export const LikedBooksComponent: React.FC<ComponentProps> = ({
+  userName,
+  count,
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      href={`/users/${userName}/liked`}
+      icon={faHeart}
+      i18n={{text: t('common:liked_books'), count: `${count}`}}
     />
   );
 };

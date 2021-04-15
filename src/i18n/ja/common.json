@@ -8,6 +8,7 @@
   "wish_read_books": "読みたい本",
   "have_books": "持っている本",
   "stacked_books": "積んでいる本",
+  "liked_books": "好きな本",
   "isbn": "ISBN",
   "pages": "ページ数",
   "page": "{{page}}ページ",
