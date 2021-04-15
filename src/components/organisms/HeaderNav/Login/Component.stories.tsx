@@ -4,7 +4,7 @@ import React from 'react';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'HeaderNav/Login/Component',
+  title: 'organisms/HeaderNav/Login',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
