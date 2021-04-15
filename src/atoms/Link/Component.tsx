@@ -11,6 +11,10 @@ const LinkBase: React.FC<{href: string; className?: string}> = ({
   </Link>
 );
 
+export const LinkSettingPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/settings" {...props} />;
+
 export const LinkUsersIndexPage: React.FC<{
   className?: string;
   username: string;
@@ -60,6 +64,31 @@ export const LinkUsersLikedPage: React.FC<{
   <LinkBase href={`/users/${username}/liked`} {...props} />
 );
 
+export const LinkMeIndexPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me" {...props} />;
+export const LinkMeHavePage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/have" {...props} />;
+export const LinkMeReadPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/read" {...props} />;
+export const LinkMeReadingPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/reading" {...props} />;
+export const LinkMeRecordsPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/records" {...props} />;
+export const LinkMeStackedPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/stacked" {...props} />;
+export const LinkMeWishPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/wish" {...props} />;
+export const LinkMeLikedPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/me/liked" {...props} />;
+
 export const LinkRecordsIndexPage: React.FC<{
   className?: string;
   id: string;
@@ -69,3 +98,25 @@ export const LinkBooksIndexPage: React.FC<{
   className?: string;
   id: string;
 }> = ({id, ...props}) => <LinkBase href={`/books/${id}`} {...props} />;
+
+export const LinkAuthorsIndexPage: React.FC<{
+  className?: string;
+  id: string;
+}> = ({id, ...props}) => <LinkBase href={`/authors/${id}`} {...props} />;
+
+export const LinkPublishersIndexPage: React.FC<{
+  className?: string;
+  id: string;
+}> = ({id, ...props}) => <LinkBase href={`/publishers/${id}`} {...props} />;
+
+export const LinkSeriesIndexPage: React.FC<{
+  className?: string;
+  id: string;
+}> = ({id, ...props}) => <LinkBase href={`/series/${id}`} {...props} />;
+
+export const LinkLoginPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/login" {...props} />;
+export const LinkLogoutPage: React.FC<{
+  className?: string;
+}> = ({...props}) => <LinkBase href="/logout" {...props} />;

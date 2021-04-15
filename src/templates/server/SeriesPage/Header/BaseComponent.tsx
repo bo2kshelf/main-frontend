@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 import React from 'react';
+import {LinkAuthorsIndexPage} from '~/atoms/Link';
 
 export type BaseComponentProps = {
   className?: string;
@@ -20,9 +20,9 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
       <p className={clsx('text-sm', 'text-gray-500')}>{i18n.relatedAuthors}</p>
       <div className={clsx('mt-1', 'flex', 'space-x-2')}>
         {relatedAuthors.map(({id, name}) => (
-          <Link key={id} href={{pathname: '/authors/[id]', query: {id}}}>
-            <a className={clsx('font-bold')}>{name}</a>
-          </Link>
+          <LinkAuthorsIndexPage key={id} id={id} className={clsx('font-bold')}>
+            {name}
+          </LinkAuthorsIndexPage>
         ))}
       </div>
     </div>

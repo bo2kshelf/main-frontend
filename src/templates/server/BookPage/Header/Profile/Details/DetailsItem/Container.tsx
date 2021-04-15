@@ -1,13 +1,13 @@
-import {
-  faBarcode,
-  faBook,
-  faBuilding,
-  faCalendarAlt,
-  faGlobe,
-} from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {
+  IconISBN,
+  IconLanguage,
+  IconPages,
+  IconPublishedAt,
+  IconPublisher,
+} from '~/atoms/Icon/Component';
+import {LinkPublishersIndexPage} from '~/atoms/Link';
 import {BaseComponent} from './BaseComponent';
 
 export const ISBNDetail: React.FC<{className?: string; isbn: string}> = ({
@@ -16,7 +16,7 @@ export const ISBNDetail: React.FC<{className?: string; isbn: string}> = ({
 }) => {
   const {t} = useTranslation();
   return (
-    <BaseComponent {...props} i18n={{key: t('common:isbn')}} icon={faBarcode}>
+    <BaseComponent {...props} i18n={{key: t('common:isbn')}} Icon={IconISBN}>
       <span>{isbn}</span>
     </BaseComponent>
   );
@@ -28,7 +28,7 @@ export const PagesDetail: React.FC<{
 }> = ({pages, ...props}) => {
   const {t} = useTranslation();
   return (
-    <BaseComponent {...props} i18n={{key: t('common:pages')}} icon={faBook}>
+    <BaseComponent {...props} i18n={{key: t('common:pages')}} Icon={IconPages}>
       <span>{pages}</span>
     </BaseComponent>
   );
@@ -45,12 +45,12 @@ export const PublisherDetail: React.FC<{
       i18n={{
         key: t('common:publisher'),
       }}
-      icon={faBuilding}
+      Icon={IconPublisher}
     >
       {publishers.map(({name, id}) => (
-        <Link key={id} href={{pathname: '/publishers/[id]', query: {id}}}>
+        <LinkPublishersIndexPage key={id} id={id}>
           <a>{name}</a>
-        </Link>
+        </LinkPublishersIndexPage>
       ))}
     </BaseComponent>
   );
@@ -65,7 +65,7 @@ export const DateDetail: React.FC<{
     <BaseComponent
       {...props}
       i18n={{key: t('common:publish_date')}}
-      icon={faCalendarAlt}
+      Icon={IconPublishedAt}
     >
       <span>{detail}</span>
     </BaseComponent>
@@ -78,7 +78,11 @@ export const LanguageDetail: React.FC<{
 }> = ({language, ...props}) => {
   const {t} = useTranslation();
   return (
-    <BaseComponent {...props} i18n={{key: t('common:language')}} icon={faGlobe}>
+    <BaseComponent
+      {...props}
+      i18n={{key: t('common:language')}}
+      Icon={IconLanguage}
+    >
       <span>{language}</span>
     </BaseComponent>
   );
