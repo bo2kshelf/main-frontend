@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BookCover} from '~/components/common/BookCover';
+import {BookCover} from '~/components/atoms/BookCover';
 import {Profile, ProfileProps} from './Profile';
 
 export type ComponentProps = {

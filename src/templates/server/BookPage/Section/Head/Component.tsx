@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LinkPublishersIndexPage} from '~/atoms/Link';
+import {LinkPublishersIndexPage} from '~/components/atoms/Link';
 import {BaseComponent} from './BaseComponent';
 
 export const PublisherComponent: React.FC<{

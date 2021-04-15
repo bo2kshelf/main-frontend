@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LinkMeIndexPage} from '~/atoms/Link';
+import {LinkMeIndexPage} from '~/components/atoms/Link';
 
 export type ContainerProps = Record<string, unknown>;
 export const Container: React.FC<ContainerProps> = ({...props}) => {

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Head from 'next/head';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LoginInputForm} from '~/components/LoginInputForm';
+import {LoginInputForm} from '~/components/organisms/LoginInputForm';
 
 export type ContainerProps = Record<string, never>;
 export const Container: React.FC<ContainerProps> = ({...props}) => {

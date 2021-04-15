@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BookLink} from '~/components/common/BookLink';
+import {BookLink} from '~/components/molecules/BookLink';
 
 export const Container: React.FC<{
   className?: string;

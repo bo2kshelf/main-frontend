@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {Record} from '~/components/Record';
+import {Record} from '~/components/molecules/Record';
 import {MoreLink} from './MoreLink';
 
 export type BaseComponentProps = {

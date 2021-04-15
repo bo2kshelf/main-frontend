@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LinkUsersRecordsPage} from '~/atoms/Link';
+import {LinkUsersRecordsPage} from '~/components/atoms/Link';
 
 export type ComponentProps = {
   className?: string;

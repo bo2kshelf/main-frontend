@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {LinkAuthorsIndexPage} from '~/atoms/Link';
+import {LinkAuthorsIndexPage} from '~/components/atoms/Link';
 
 export type ComponentProps = {
   className?: string;

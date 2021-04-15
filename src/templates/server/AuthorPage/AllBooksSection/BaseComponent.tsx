@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BooksSection} from '~/components/common/BooksSection';
+import {BooksSection} from '~/components/organisms/BooksSection';
 
 export type BaseComponentProps = {
   className?: string;

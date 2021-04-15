@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {IconComponentType} from '~/atoms/Icon';
+import {IconComponentType} from '~/components/atoms/Icon';
 import {
   LinkUsersHavePage,
   LinkUsersLikedPage,
@@ -8,7 +8,7 @@ import {
   LinkUsersReadPage,
   LinkUsersRecordsPage,
   LinkUserWishPage,
-} from '~/atoms/Link';
+} from '~/components/atoms/Link';
 
 export type BaseComponentProps = {
   className?: string;

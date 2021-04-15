@@ -6,8 +6,8 @@ import {
   IconPages,
   IconPublishedAt,
   IconPublisher,
-} from '~/atoms/Icon/Component';
-import {LinkPublishersIndexPage} from '~/atoms/Link';
+} from '~/components/atoms/Icon/Component';
+import {LinkPublishersIndexPage} from '~/components/atoms/Link';
 import {BaseComponent} from './BaseComponent';
 
 export const ISBNDetail: React.FC<{className?: string; isbn: string}> = ({

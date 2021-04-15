@@ -8,7 +8,7 @@ import {
   IconRecord,
   IconStackedBooks,
   IconWishReadBooks,
-} from '~/atoms/Icon';
+} from '~/components/atoms/Icon';
 import {
   LinkUsersHavePage,
   LinkUsersLikedPage,
@@ -16,7 +16,7 @@ import {
   LinkUsersReadPage,
   LinkUsersRecordsPage,
   LinkUserWishPage,
-} from '~/atoms/Link';
+} from '~/components/atoms/Link';
 import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
-import {UserIconLink} from '~/components/common/UserIconLink';
-import {UserNameLink} from '~/components/common/UserNameLink';
+import {UserIconLink} from '~/components/atoms/UserIconLink';
+import {UserNameLink} from '~/components/atoms/UserNameLink';
 
 export type ComponentProps = {
   className?: string;
