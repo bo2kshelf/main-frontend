@@ -5,7 +5,7 @@ import {placeholder} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'atoms/BookCover',
+  title: 'common/BookCover',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},

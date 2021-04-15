@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BookLink} from '~/components/atoms/BookCoverLink';
+import {BookCoverLink} from '~/components/atoms/BookCoverLink';
 
 export const Container: React.FC<{
   className?: string;
@@ -17,7 +17,11 @@ export const Container: React.FC<{
     )}
   >
     {books.map((book) => (
-      <BookLink className={clsx('h-28', 'xl:h-32')} key={book.id} book={book} />
+      <BookCoverLink
+        className={clsx('h-28', 'xl:h-32')}
+        key={book.id}
+        book={book}
+      />
     ))}
   </div>
 );

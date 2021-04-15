@@ -13,7 +13,7 @@ import {
 } from './Component';
 
 export default {
-  title: 'HeaderNav/UserInfo/DropDown/MenuItem',
+  title: 'organisms/HeaderNav/UserInfo/DropDown/MenuItem',
   argTypes: {
     className: {table: {disable: true}},
   },

@@ -5,7 +5,7 @@ import {icons} from '~~/.storybook/assets';
 import {Component, ComponentProps, PlainComponent} from './Component';
 
 export default {
-  title: 'HeaderNav/UserInfo/Component',
+  title: 'organisms/HeaderNav/UserInfo',
   component: PlainComponent,
   argTypes: {
     className: {table: {disable: true}},
