@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BookLinkProps} from '~/components/molecules/BookLink';
+import {BookCoverLinkProps} from '~/components/atoms/BookCoverLink';
 
 export type ComponentProps = {
   className?: string;
-  books: BookLinkProps['book'][];
-  BookLink: React.FC<Omit<BookLinkProps, 'className'>>;
+  books: BookCoverLinkProps['book'][];
+  BookLink: React.FC<Omit<BookCoverLinkProps, 'className'>>;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,

@@ -1,12 +1,12 @@
 import clsx from 'clsx';
 import React from 'react';
+import {BookCoverLink} from '~/components/atoms/BookCoverLink';
 import {
   LinkRecordsIndexPage,
   LinkUsersIndexPage,
 } from '~/components/atoms/Link';
 import {ReadAt} from '~/components/atoms/ReadAt';
 import {UserIconLink} from '~/components/atoms/UserIconLink';
-import {BookLink} from '~/components/molecules/BookLink';
 
 export type ComponentProps = {
   className?: string;
@@ -23,7 +23,7 @@ export const Component: React.FC<ComponentProps> = ({
   readAt,
 }) => (
   <div className={clsx(className, 'flex', 'py-3')}>
-    <BookLink className={clsx('w-1/8', 'h-28')} book={book} />
+    <BookCoverLink className={clsx('w-1/8', 'h-28')} book={book} />
     <div className={clsx('flex-grow', 'ml-4', 'flex', 'flex-col')}>
       <div className={clsx('flex', 'items-center')}>
         <p className={clsx('text-md')}>

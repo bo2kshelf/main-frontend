@@ -5,7 +5,7 @@ import {placeholder} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'common/BookLink/Component',
+  title: 'atoms/BookCoverLink',
   component: Component,
   args: {
     link: '/books/1',

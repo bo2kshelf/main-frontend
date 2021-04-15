@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {BookLink} from '~/components/molecules/BookLink';
+import {BookCoverLink} from '~/components/atoms/BookCoverLink';
 import {BooksList} from '~/components/molecules/BooksList';
 
 export type ComponentProps = {
@@ -33,7 +33,7 @@ export const Component: React.FC<ComponentProps> = ({
         )}
         books={books}
         BookLink={(props) => (
-          <BookLink
+          <BookCoverLink
             className={clsx('h-48', 'md:h-36', 'lg:h-28', 'xl:h-36')}
             {...props}
           />
