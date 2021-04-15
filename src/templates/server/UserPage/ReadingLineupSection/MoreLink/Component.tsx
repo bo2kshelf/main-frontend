@@ -1,19 +1,22 @@
 import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LinkUsersReadingPage} from '~/atoms/Link';
+import {LinkUsersLikedPage, LinkUsersReadingPage} from '~/atoms/Link';
 
 export type BaseComponentProps = {
   className?: string;
   i18n: Record<'text', string>;
   userName: string;
+  Link: typeof LinkUsersReadingPage | typeof LinkUsersLikedPage;
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
   i18n,
   userName,
+  Link,
 }) => (
-  <LinkUsersReadingPage
+  <Link
+    username={userName}
     className={clsx(
       className,
       'py-1',
@@ -25,17 +28,34 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
       'hover:bg-blue-500',
       'whitespace-nowrap',
     )}
-    username={userName}
   >
     {i18n.text}
-  </LinkUsersReadingPage>
+  </Link>
 );
 
-export type ComponentProps = {
-  className?: string;
-  userName: string;
-};
-export const Component: React.FC<ComponentProps> = ({...props}) => {
+export type ComponentProps = {className?: string; userName: string};
+export const MoreReadingBooksComponent: React.FC<ComponentProps> = ({
+  ...props
+}) => {
   const {t} = useTranslation();
-  return <BaseComponent {...props} i18n={{text: t('もっと見る')}} />;
+  return (
+    <BaseComponent
+      {...props}
+      i18n={{text: t('もっと見る')}}
+      Link={LinkUsersReadingPage}
+    />
+  );
+};
+
+export const MoreLikedBooksComponent: React.FC<ComponentProps> = ({
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      i18n={{text: t('もっと見る')}}
+      Link={LinkUsersLikedPage}
+    />
+  );
 };

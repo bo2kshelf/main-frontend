@@ -57,7 +57,7 @@ export const LinkUsersLikedPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
-  <LinkBase href={`/users/${username}/wish`} {...props} />
+  <LinkBase href={`/users/${username}/liked`} {...props} />
 );
 
 export const LinkRecordsIndexPage: React.FC<{

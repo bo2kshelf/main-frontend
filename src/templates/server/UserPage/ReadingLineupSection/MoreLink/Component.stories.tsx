@@ -1,16 +1,28 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import React from 'react';
-import {Component, ComponentProps} from './Component';
+import {
+  ComponentProps,
+  MoreLikedBooksComponent,
+  MoreReadingBooksComponent,
+} from './Component';
 
 export default {
   title: 'UserPage/ReadingLineupSection/MoreLink',
-  component: Component,
   argTypes: {
     className: {table: {disable: true}},
   },
 } as Meta;
 
-export const Primary: Story<ComponentProps> = (args) => <Component {...args} />;
-Primary.args = {
-  href: '/users/link',
+export const MoreReadingBooks: Story<ComponentProps> = (args) => (
+  <MoreReadingBooksComponent {...args} />
+);
+MoreReadingBooks.args = {
+  userName: 'username',
+};
+
+export const MoreLikedBooks: Story<ComponentProps> = (args) => (
+  <MoreLikedBooksComponent {...args} />
+);
+MoreLikedBooks.args = {
+  userName: 'username',
 };

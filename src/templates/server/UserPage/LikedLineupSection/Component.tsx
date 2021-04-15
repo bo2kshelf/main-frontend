@@ -1,6 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {BaseComponent} from '../ReadingLineupSection';
+import {MoreLikedBooksLink} from '../ReadingLineupSection/MoreLink';
 
 export type ComponentProps = {
   className?: string;
@@ -11,7 +12,6 @@ export type ComponentProps = {
 };
 export const Component: React.FC<ComponentProps> = ({
   displayName,
-  userName,
   ...props
 }) => {
   const {t} = useTranslation();
@@ -24,7 +24,7 @@ export const Component: React.FC<ComponentProps> = ({
           name: displayName,
         }),
       }}
-      moreLink={`/users/${userName}/liked`}
+      MoreLink={MoreLikedBooksLink}
     />
   );
 };
