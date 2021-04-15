@@ -57,7 +57,7 @@ NormalUser.args = {
   picture: icons[1],
   records: {
     count: 30,
-    hasNext: false,
+    hasNext: true,
     skip: 0,
     limit: 0,
     nodes: Array.from({length: 5}).map((_, i) => ({
