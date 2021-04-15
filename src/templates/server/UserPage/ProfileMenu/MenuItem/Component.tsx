@@ -9,6 +9,14 @@ import {
   IconStackedBooks,
   IconWishReadBooks,
 } from '~/atoms/Icon';
+import {
+  LinkUsersHavePage,
+  LinkUsersLikedPage,
+  LinkUsersReadingPage,
+  LinkUsersReadPage,
+  LinkUsersRecordsPage,
+  LinkUserWishPage,
+} from '~/atoms/Link';
 import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {
@@ -17,7 +25,6 @@ export type ComponentProps = {
   count: number;
 };
 export const ReadRecordsComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -25,14 +32,13 @@ export const ReadRecordsComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/records`}
-      icon={IconRecord}
+      Icon={IconRecord}
+      Link={LinkUsersRecordsPage}
       i18n={{text: t('common:read_records'), count: `${count}`}}
     />
   );
 };
 export const ReadingBooksComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -40,14 +46,13 @@ export const ReadingBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/reading`}
-      icon={IconReadingBooks}
+      Icon={IconReadingBooks}
+      Link={LinkUsersReadingPage}
       i18n={{text: t('common:reading_books'), count: `${count}`}}
     />
   );
 };
 export const HaveBooksComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -55,14 +60,13 @@ export const HaveBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/have`}
-      icon={IconHaveBooks}
+      Icon={IconHaveBooks}
+      Link={LinkUsersHavePage}
       i18n={{text: t('common:have_books'), count: `${count}`}}
     />
   );
 };
 export const ReadBooksComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -70,14 +74,13 @@ export const ReadBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/stacked`}
-      icon={IconReadBooks}
+      Icon={IconReadBooks}
+      Link={LinkUsersReadPage}
       i18n={{text: t('common:read_books'), count: `${count}`}}
     />
   );
 };
 export const StackedBooksComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -85,14 +88,13 @@ export const StackedBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/records`}
-      icon={IconStackedBooks}
+      Link={LinkUsersRecordsPage}
+      Icon={IconStackedBooks}
       i18n={{text: t('common:stacked_books'), count: `${count}`}}
     />
   );
 };
 export const WishReadBooksComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -100,14 +102,13 @@ export const WishReadBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/wish`}
-      icon={IconWishReadBooks}
+      Link={LinkUserWishPage}
+      Icon={IconWishReadBooks}
       i18n={{text: t('common:wish_read_books'), count: `${count}`}}
     />
   );
 };
 export const LikedBooksComponent: React.FC<ComponentProps> = ({
-  userName,
   count,
   ...props
 }) => {
@@ -115,8 +116,8 @@ export const LikedBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      href={`/users/${userName}/liked`}
-      icon={IconLikedBooks}
+      Link={LinkUsersLikedPage}
+      Icon={IconLikedBooks}
       i18n={{text: t('common:liked_books'), count: `${count}`}}
     />
   );

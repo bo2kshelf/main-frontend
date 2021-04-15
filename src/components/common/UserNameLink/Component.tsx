@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
 import React from 'react';
+import {LinkUsersIndexPage} from '~/atoms/Link';
 
 export type ComponentProps = {
   className?: string;
@@ -8,8 +8,11 @@ export type ComponentProps = {
 };
 export const Component: React.FC<ComponentProps> = ({className, userName}) => {
   return (
-    <NextLink href={`/users/${userName}`}>
-      <a className={clsx(className, 'select-all')}>@{userName}</a>
-    </NextLink>
+    <LinkUsersIndexPage
+      username={userName}
+      className={clsx(className, 'select-all')}
+    >
+      @{userName}
+    </LinkUsersIndexPage>
   );
 };

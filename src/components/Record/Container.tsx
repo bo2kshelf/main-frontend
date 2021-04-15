@@ -19,11 +19,5 @@ export type ContainerProps = {
 };
 
 export const Container: React.FC<ContainerProps> = ({...props}) => {
-  return (
-    <Component
-      {...props}
-      userLink={`/users/${props.user.userName}`}
-      recordLink={`/records/${props.id}`}
-    />
-  );
+  return <Component {...props} />;
 };

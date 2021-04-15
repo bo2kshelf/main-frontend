@@ -1,12 +1,13 @@
 import clsx from 'clsx';
-import Link from 'next/link';
 import React from 'react';
+import {LinkRecordsIndexPage, LinkUsersIndexPage} from '~/atoms/Link';
 import {BookLink} from '~/components/common/BookLink';
-import {Icon} from '~/components/common/Icon';
+import {UserIconLink} from '../common/UserIconLink';
 import {ReadAt} from './ReadAt';
 
 export type ComponentProps = {
   className?: string;
+  id: string;
   readAt?: string;
   user: {
     userName: string;
@@ -19,16 +20,13 @@ export type ComponentProps = {
     subtitle?: string;
     cover?: string;
   };
-  userLink: string;
-  recordLink: string;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
+  id,
   book,
   user,
   readAt,
-  recordLink,
-  userLink,
 }) => (
   <div className={clsx(className, 'flex', 'py-3')}>
     <BookLink className={clsx('w-1/8', 'h-28')} book={book} />
@@ -46,38 +44,33 @@ export const Component: React.FC<ComponentProps> = ({
         </p>
       </div>
       <div className={clsx('mt-1', 'flex', 'items-center')}>
-        <Link href={userLink}>
-          <a>
-            <Icon
-              className={clsx('w-6', 'h-6', 'rounded-full')}
-              picture={user.picture}
-            />
-          </a>
-        </Link>
-        <Link href={userLink}>
-          <a
-            className={clsx(
-              'ml-1',
-              'text-sm',
-              'text-gray-500',
-              'hover:underline',
-            )}
-          >
-            {user.displayName}
-          </a>
-        </Link>
-        <Link href={recordLink}>
-          <a
-            className={clsx(
-              'ml-2',
-              'text-sm',
-              'text-gray-500',
-              'hover:underline',
-            )}
-          >
-            <ReadAt readAt={readAt} />
-          </a>
-        </Link>
+        <UserIconLink
+          className={clsx('w-6', 'h-6')}
+          picture={user.picture}
+          userName={user.userName}
+        />
+        <LinkUsersIndexPage
+          username={user.userName}
+          className={clsx(
+            'ml-1',
+            'text-sm',
+            'text-gray-500',
+            'hover:underline',
+          )}
+        >
+          {user.displayName}
+        </LinkUsersIndexPage>
+        <LinkRecordsIndexPage
+          id={id}
+          className={clsx(
+            'ml-2',
+            'text-sm',
+            'text-gray-500',
+            'hover:underline',
+          )}
+        >
+          <ReadAt readAt={readAt} />
+        </LinkRecordsIndexPage>
       </div>
       <div className={clsx('flex-grow')} />
     </div>

@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import NextLink from 'next/link';
 import React from 'react';
+import {LinkUsersIndexPage} from '~/atoms/Link';
 import {Icon} from '~/components/common/Icon';
 
 export type ComponentProps = {
@@ -13,9 +13,7 @@ export const Component: React.FC<ComponentProps> = ({
   userName,
   picture,
 }) => (
-  <NextLink href={`/users/${userName}`}>
-    <a className={clsx(className)}>
-      <Icon picture={picture} className={clsx('w-full', 'h-full')} />
-    </a>
-  </NextLink>
+  <LinkUsersIndexPage username={userName} className={clsx(className)}>
+    <Icon picture={picture} className={clsx('w-full', 'h-full')} />
+  </LinkUsersIndexPage>
 );
