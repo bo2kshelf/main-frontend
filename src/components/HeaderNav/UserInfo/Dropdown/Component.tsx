@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import React from 'react';
 import styled from 'styled-components';
-import {LogoutLink, SettingsLink} from './CommonLink';
-import {Profile} from './Profile';
 import {
-  HaveBooksList,
-  ReadBooksLink,
-  ReadingBooksLink,
-  StackedBooksLink,
-  WishReadBooksLink,
-} from './UserPageLink';
+  MenuItemHaveBooks,
+  MenuItemLogout,
+  MenuItemReadBooks,
+  MenuItemReadingBooks,
+  MenuItemSettings,
+  MenuItemStackedBooks,
+  MenuItemWishReadBooks,
+} from './MenuItem';
+import {Profile} from './Profile';
 
 export type ComponentProps = {
   className?: string;
@@ -35,28 +36,19 @@ export const UnstyledComponent: React.FC<ComponentProps> = ({
     )}
   >
     <Profile className={clsx('col-span-2', 'col-start-1')} account={user} />
-    <ReadingBooksLink
-      className={clsx('col-span-1', 'col-start-1')}
-      user={user}
-    />
-    <ReadBooksLink className={clsx('col-span-1', 'col-start-2')} user={user} />
+    <MenuItemReadingBooks className={clsx('col-span-1', 'col-start-1')} />
+    <MenuItemReadBooks className={clsx('col-span-1', 'col-start-2')} />
 
-    <StackedBooksLink
-      className={clsx('col-span-1', 'col-start-1')}
-      user={user}
-    />
-    <HaveBooksList className={clsx('col-span-1', 'col-start-2')} user={user} />
+    <MenuItemStackedBooks className={clsx('col-span-1', 'col-start-1')} />
+    <MenuItemHaveBooks className={clsx('col-span-1', 'col-start-2')} />
 
     <div
       className={clsx('col-span-1', 'col-start-1', 'bg-white', 'bg-opacity-90')}
     />
-    <WishReadBooksLink
-      className={clsx('col-span-1', 'col-start-2')}
-      user={user}
-    />
+    <MenuItemWishReadBooks className={clsx('col-span-1', 'col-start-2')} />
 
-    <SettingsLink className={clsx('col-span-1', 'col-start-1')} />
-    <LogoutLink className={clsx('col-span-1', 'col-start-2')} />
+    <MenuItemSettings className={clsx('col-span-1', 'col-start-1')} />
+    <MenuItemLogout className={clsx('col-span-1', 'col-start-2')} />
   </div>
 );
 

@@ -10,6 +10,6 @@ export type ContainerProps = {
   };
 };
 export const Container: React.FC<ContainerProps> = ({account, ...props}) => {
-  return <Component {...props} {...account} link={{pathname: '/me'}} />;
+  return <Component {...props} {...account} />;
 };
 Container.displayName = 'Profile';
