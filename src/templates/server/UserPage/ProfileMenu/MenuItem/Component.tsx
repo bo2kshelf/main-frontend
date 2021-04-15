@@ -1,14 +1,14 @@
-import {
-  faBook,
-  faBookmark,
-  faBookReader,
-  faEye,
-  faHeart,
-  faLayerGroup,
-  faStar,
-} from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {
+  IconHaveBooks,
+  IconLikedBooks,
+  IconReadBooks,
+  IconReadingBooks,
+  IconRecord,
+  IconStackedBooks,
+  IconWishReadBooks,
+} from '~/atoms/Icon';
 import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {
@@ -26,7 +26,7 @@ export const ReadRecordsComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/records`}
-      icon={faEye}
+      icon={IconRecord}
       i18n={{text: t('common:read_records'), count: `${count}`}}
     />
   );
@@ -41,7 +41,7 @@ export const ReadingBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/reading`}
-      icon={faBookReader}
+      icon={IconReadingBooks}
       i18n={{text: t('common:reading_books'), count: `${count}`}}
     />
   );
@@ -56,7 +56,7 @@ export const HaveBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/have`}
-      icon={faBook}
+      icon={IconHaveBooks}
       i18n={{text: t('common:have_books'), count: `${count}`}}
     />
   );
@@ -71,7 +71,7 @@ export const ReadBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/stacked`}
-      icon={faBookmark}
+      icon={IconReadBooks}
       i18n={{text: t('common:read_books'), count: `${count}`}}
     />
   );
@@ -86,7 +86,7 @@ export const StackedBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/records`}
-      icon={faLayerGroup}
+      icon={IconStackedBooks}
       i18n={{text: t('common:stacked_books'), count: `${count}`}}
     />
   );
@@ -101,7 +101,7 @@ export const WishReadBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/wish`}
-      icon={faStar}
+      icon={IconWishReadBooks}
       i18n={{text: t('common:wish_read_books'), count: `${count}`}}
     />
   );
@@ -116,7 +116,7 @@ export const LikedBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       href={`/users/${userName}/liked`}
-      icon={faHeart}
+      icon={IconLikedBooks}
       i18n={{text: t('common:liked_books'), count: `${count}`}}
     />
   );

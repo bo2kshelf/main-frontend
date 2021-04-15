@@ -1,20 +1,19 @@
-import {IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import React from 'react';
+import {IconComponentType} from '~/atoms/Icon';
 
 export type BaseComponentProps = {
   className?: string;
   href: string;
-  icon: IconDefinition;
+  icon: IconComponentType;
   i18n: Record<'text' | 'count', string>;
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
   href,
   i18n,
-  icon,
+  icon: Icon,
 }) => {
   return (
     <NextLink href={href} passHref>
@@ -31,11 +30,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
           'items-center',
         )}
       >
-        <FontAwesomeIcon
-          className={clsx('text-gray-500', 'group-hover:text-white')}
-          icon={icon}
-          fixedWidth
-        />
+        <Icon className={clsx('text-gray-500', 'group-hover:text-white')} />
         <span
           className={clsx(
             'flex-grow',
