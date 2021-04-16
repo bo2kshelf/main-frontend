@@ -7,12 +7,8 @@ import {
 import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/lib/GraphQLRequest';
-import {LoadingPage} from '~/templates/common/LoadingPage';
-import {
-  SeriesPage,
-  SeriesPageProps,
-  transform,
-} from '~/templates/server/SeriesPage';
+import {LoadingPage} from '~/templates/LoadingPage';
+import {SeriesPage, SeriesPageProps, transform} from '~/templates/SeriesPage';
 
 export type UrlQuery = {id: string};
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {

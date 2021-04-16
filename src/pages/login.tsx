@@ -2,7 +2,7 @@ import {NextPage} from 'next';
 import {useRouter} from 'next/router';
 import React from 'react';
 import {useCurrentUser} from '~/lib/useCurrentUser';
-import {LoginPage} from '~/templates/server/LoginPage';
+import {LoginPage} from '~/templates/LoginPage';
 
 export type UrlQuery = Record<string, never>;
 

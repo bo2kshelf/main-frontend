@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {HeaderNav} from '~/components/HeaderNav';
+import {HeaderNav} from '~/components/organisms/HeaderNav';
 import {PageLayout} from '../PageLayout';
 
 export type ComponentProps = {
