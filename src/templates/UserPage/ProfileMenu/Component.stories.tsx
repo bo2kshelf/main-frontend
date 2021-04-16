@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import React from 'react';
-import {icons} from '~~/.storybook/assets';
+import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
@@ -27,7 +27,7 @@ export const Primary: Story<ComponentProps> = (args) => <Component {...args} />;
 Primary.args = {
   displayName: 'User Name',
   userName: 'username',
-  picture: icons[0],
+  picture: random.icon(),
   recordsCount: 16,
   readingBooksCount: 29,
   readBooksCount: 95,

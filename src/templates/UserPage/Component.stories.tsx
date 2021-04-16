@@ -1,7 +1,7 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import clsx from 'clsx';
 import React from 'react';
-import {icons, random} from '~~/.storybook/assets';
+import {random} from '~~/.storybook/assets';
 import {TemplateDecolator} from '~~/.storybook/TemplateDecolator';
 import {Component, ComponentProps} from './Component';
 
@@ -37,7 +37,7 @@ export const NewUser: Story<ComponentProps> = (args) => (
 NewUser.args = {
   displayName: 'New User',
   userName: 'newbie',
-  picture: icons[0],
+  picture: random.icon(),
   records: {count: 0, hasNext: false, skip: 0, limit: 0, nodes: []},
   readingBooks: {count: 0, hasNext: false, books: []},
   likedBooks: {count: 0, hasNext: false, books: []},
@@ -54,7 +54,7 @@ export const NormalUser: Story<ComponentProps> = (args) => (
 NormalUser.args = {
   displayName: 'Normal User',
   userName: 'normal',
-  picture: icons[1],
+  picture: random.icon(),
   records: {
     count: 30,
     hasNext: true,
@@ -65,7 +65,7 @@ NormalUser.args = {
       user: {
         displayName: 'Normal User',
         userName: 'normal',
-        picture: icons[1],
+        picture: random.icon(),
       },
       book: {
         id: `${i}`,

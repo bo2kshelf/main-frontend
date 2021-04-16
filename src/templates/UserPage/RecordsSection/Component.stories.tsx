@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import React from 'react';
-import {icons, random} from '~~/.storybook/assets';
+import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
@@ -35,7 +35,7 @@ Full.args = {
     user: {
       displayName: 'Normal User',
       userName: 'normal',
-      picture: icons[1],
+      picture: random.icon(),
     },
     book: {
       id: `${i}`,
@@ -58,7 +58,7 @@ Lack.args = {
     user: {
       displayName: 'Normal User',
       userName: 'normal',
-      picture: icons[1],
+      picture: random.icon(),
     },
     book: {
       id: `${i}`,

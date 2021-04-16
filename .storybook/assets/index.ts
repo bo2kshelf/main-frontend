@@ -1,16 +1,12 @@
-export const icons = [
-  require('./icon_1.png'),
-  require('./icon_2.png'),
-  require('./icon_3.png'),
-  require('./icon_4.png'),
-  require('./icon_5.png'),
+const icons = [
+  require('./random/icon_1.png'),
+  require('./random/icon_2.png'),
+  require('./random/icon_3.png'),
+  require('./random/icon_4.png'),
+  require('./random/icon_5.png'),
 ];
 
-export const placeholder = {
-  '210x297': require('~~/.storybook/assets/210x297.png'),
-};
-
-export const bookcovers = [
+const bookcovers = [
   require('./random/bookcover_1.jpg'),
   require('./random/bookcover_2.jpg'),
   require('./random/bookcover_3.jpg'),
@@ -30,4 +26,8 @@ export const random = {
   bookcover(seed = 0) {
     return bookcovers[seed % bookcovers.length];
   },
+};
+
+export const placeholder = {
+  '210x297': require('./placeholders/210x297.png'),
 };
