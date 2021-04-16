@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
-import {PasswordInput, UsernameInput} from './Input';
-import {LoginButton} from './LoginButton';
-import {StatusText} from './StatusText';
+import {PasswordInput, UsernameInput} from './molecules/Input';
+import {LoginButton} from './molecules/LoginButton';
+import {StatusText} from './molecules/StatusText';
 
 export type ComponentProps = {
   className?: string;
@@ -32,6 +32,11 @@ export const Component: React.FC<ComponentProps> = ({
       onClick={handleSubmit}
       disabled={loginDisabled}
     />
-    {status && <StatusText className={clsx('mt-2')} status={status} />}
+    {status && (
+      <StatusText
+        className={clsx('mt-2', 'w-full', 'text-center')}
+        status={status}
+      />
+    )}
   </form>
 );

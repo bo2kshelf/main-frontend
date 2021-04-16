@@ -1,3 +1,6 @@
-export {BaseComponent} from './BaseComponent';
-export type {BaseComponentProps} from './BaseComponent';
-export {NormalButtonBlueComponent as NormalButtonBlue} from './Component';
+export {BaseComponent} from './Base';
+export type {BaseComponentProps} from './Base';
+export {
+  NormalButtonBase,
+  NormalButtonBlueComponent as NormalButtonBlue,
+} from './NormalButton';

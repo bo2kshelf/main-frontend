@@ -6,6 +6,7 @@ import {
   faBuilding,
   faCalendarAlt,
   faCogs,
+  faExclamationTriangle,
   faEye,
   faHeart,
   faLanguage,
@@ -68,4 +69,12 @@ export const IconPublishedAt: ComponentType = ({className}) => (
 );
 export const IconLanguage: ComponentType = ({className}) => (
   <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faLanguage} />
+);
+
+export const IconWarning: ComponentType = ({className}) => (
+  <FontAwesomeIcon
+    className={clsx(className)}
+    fixedWidth
+    icon={faExclamationTriangle}
+  />
 );
