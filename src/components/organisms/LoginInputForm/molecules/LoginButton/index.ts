@@ -1,5 +1,2 @@
-export {BaseComponent, Component as LoginButton} from './Component';
-export type {
-  BaseComponentProps,
-  ComponentProps as LoginButtonProps,
-} from './Component';
+export {Component as LoginButton} from './Component';
+export type {ComponentProps as LoginButtonProps} from './Component';
