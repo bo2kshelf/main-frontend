@@ -4,14 +4,14 @@ import React from 'react';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'organisms/HeaderNav/Login',
+  title: 'organisms/HeaderNav/molecules/PopupSummary',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
   },
 } as Meta;
 
-export const Loading: Story<ComponentProps> = (args) => (
+export const Primary: Story<ComponentProps> = (args) => (
   <Component {...args} className={clsx()} />
 );
-Loading.args = {};
+Primary.args = {};

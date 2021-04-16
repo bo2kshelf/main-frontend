@@ -7,12 +7,18 @@ import {
   IconStackedBooks,
   IconWishReadBooks,
 } from '~/components/atoms/Icon';
-import {IconLogout, IconSettings} from '~/components/atoms/Icon/Component';
+import {
+  IconLikedBooks,
+  IconLogout,
+  IconRecord,
+  IconSettings,
+} from '~/components/atoms/Icon/Component';
 import {
   LinkLogoutPage,
   LinkMeHavePage,
   LinkMeReadingPage,
   LinkMeReadPage,
+  LinkMeRecordsPage,
   LinkMeStackedPage,
   LinkMeWishPage,
   LinkSettingPage,
@@ -113,6 +119,34 @@ export const ItemHaveBooksComponent: React.FC<ComponentProps> = ({
       i18n={{text: t('common:have_books')}}
       Link={LinkMeHavePage}
       Icon={IconHaveBooks}
+    />
+  );
+};
+
+export const ItemLikedBooksComponent: React.FC<ComponentProps> = ({
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      i18n={{text: t('common:liked_books')}}
+      Link={LinkMeHavePage}
+      Icon={IconLikedBooks}
+    />
+  );
+};
+
+export const ItemReadRecordsComponent: React.FC<ComponentProps> = ({
+  ...props
+}) => {
+  const {t} = useTranslation();
+  return (
+    <BaseComponent
+      {...props}
+      i18n={{text: t('common:read_records')}}
+      Link={LinkMeRecordsPage}
+      Icon={IconRecord}
     />
   );
 };

@@ -1,12 +1,11 @@
 import clsx from 'clsx';
 import React from 'react';
 import {IconComponentType} from '~/components/atoms/Icon';
-import {LinkMeHavePage} from '~/components/atoms/Link';
 
 export type BaseComponentProps = {
   className?: string;
   i18n: Record<'text', string>;
-  Link: typeof LinkMeHavePage;
+  Link: React.FC<{className?: string}>;
   Icon: IconComponentType;
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
@@ -39,7 +38,6 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
     />
     <span
       className={clsx(
-        'flex-grow',
         'text-sm',
         'whitespace-nowrap',
         'text-black',
