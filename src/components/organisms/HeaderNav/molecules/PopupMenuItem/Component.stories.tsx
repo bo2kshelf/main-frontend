@@ -18,13 +18,6 @@ export default {
   argTypes: {
     className: {table: {disable: true}},
   },
-  decorators: [
-    (Story) => (
-      <div className={clsx('flex')}>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;
 
 export const ReadRecords: Story<ComponentProps> = (args) => (
