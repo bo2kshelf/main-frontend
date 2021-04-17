@@ -5,6 +5,9 @@ export type TransformedProps = {
   title: string;
   subtitle?: string;
   isbn?: string;
+  pages?: number;
+  publishedAt?: string;
+  languages?: string;
   cover?: string;
   authors: {
     id: string;

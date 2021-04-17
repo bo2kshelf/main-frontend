@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {SeriesSection} from '../BookPage/Section/SeriesSection';
+import {SeriesSection} from '../BookPage/organisms/Section/SeriesSection';
 import {AllBooksSection} from './AllBooksSection';
 import {TransformedProps} from './transform';
 
