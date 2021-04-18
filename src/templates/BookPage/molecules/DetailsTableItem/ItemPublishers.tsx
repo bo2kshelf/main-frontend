@@ -4,14 +4,14 @@ import {IconPublisher} from '~/components/atoms/Icon/Component';
 import {LinkPublishersIndexPage} from '~/components/atoms/Link';
 import {ComponentBase} from './ComponentBase';
 
-export type ComponentPublishersProps = {
+export type ComponentProps = {
   className?: string;
   publishers: {
     id: string;
     name: string;
   }[];
 };
-export const ComponentPublishers: React.FC<ComponentPublishersProps> = ({
+export const Component: React.FC<ComponentProps> = ({
   className,
   publishers,
   ...props

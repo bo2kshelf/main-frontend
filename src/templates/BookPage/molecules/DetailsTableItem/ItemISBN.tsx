@@ -3,11 +3,11 @@ import {useTranslation} from 'react-i18next';
 import {IconISBN} from '~/components/atoms/Icon/Component';
 import {ComponentBase} from './ComponentBase';
 
-export type ComponentISBNProps = {
+export type ComponentProps = {
   className?: string;
   isbn: string;
 };
-export const ComponentISBN: React.FC<ComponentISBNProps> = ({
+export const Component: React.FC<ComponentProps> = ({
   className,
   isbn,
   ...props

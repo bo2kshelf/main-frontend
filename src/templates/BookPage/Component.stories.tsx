@@ -42,35 +42,33 @@ Primary.args = {
     {
       id: '1',
       name: 'サンプル著者',
-      books: [
-        {
-          id: '1',
-          title: 'サンプルタイトル(2)',
-          cover: random.bookcover(1),
-        },
-      ],
+      books: Array.from({length: 8}).map((_, i) => ({
+        id: `${i}`,
+        title: 'サンプルタイトル(2)',
+        cover: random.bookcover(i + 1),
+      })),
     },
   ],
   publishers: [
     {
       id: '1',
       name: 'サンプル出版社',
-      books: [
-        {id: '1', title: 'サンプルタイトル(2)', cover: random.bookcover(1)},
-      ],
+      books: Array.from({length: 8}).map((_, i) => ({
+        id: `${i}`,
+        title: 'サンプルタイトル(2)',
+        cover: random.bookcover(i + 1),
+      })),
     },
   ],
   series: [
     {
       id: '1',
       title: 'サンプルシリーズ',
-      books: [
-        {
-          id: '1',
-          title: 'サンプルタイトル(2)',
-          cover: random.bookcover(1),
-        },
-      ],
+      books: Array.from({length: 8}).map((_, i) => ({
+        id: `${i}`,
+        title: 'サンプルタイトル(2)',
+        cover: random.bookcover(i + 1),
+      })),
     },
   ],
 };

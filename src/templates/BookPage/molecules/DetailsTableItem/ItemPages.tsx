@@ -3,11 +3,11 @@ import {useTranslation} from 'react-i18next';
 import {IconPages} from '~/components/atoms/Icon/Component';
 import {ComponentBase} from './ComponentBase';
 
-export type ComponentPagesProps = {
+export type ComponentProps = {
   className?: string;
   pages: number;
 };
-export const ComponentPages: React.FC<ComponentPagesProps> = ({
+export const Component: React.FC<ComponentProps> = ({
   className,
   pages,
   ...props

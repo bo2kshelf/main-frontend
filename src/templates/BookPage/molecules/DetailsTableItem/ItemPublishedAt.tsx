@@ -3,12 +3,12 @@ import {useTranslation} from 'react-i18next';
 import {IconPublishedAt} from '~/components/atoms/Icon/Component';
 import {ComponentBase} from './ComponentBase';
 
-export type ComponentPublishedAtProps = {
+export type ComponentProps = {
   className?: string;
   publishedAt: string;
 };
 
-export const ComponentPublishedAt: React.FC<ComponentPublishedAtProps> = ({
+export const Component: React.FC<ComponentProps> = ({
   className,
   publishedAt,
   ...props

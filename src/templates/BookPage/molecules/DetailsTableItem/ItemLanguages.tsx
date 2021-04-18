@@ -3,11 +3,11 @@ import {useTranslation} from 'react-i18next';
 import {IconLanguage} from '~/components/atoms/Icon/Component';
 import {ComponentBase} from './ComponentBase';
 
-export type ComponentLanguagesProps = {
+export type ComponentProps = {
   className?: string;
   languages: string;
 };
-export const ComponentLanguages: React.FC<ComponentLanguagesProps> = ({
+export const Component: React.FC<ComponentProps> = ({
   className,
   languages,
   ...props
