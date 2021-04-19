@@ -4,28 +4,21 @@ import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'UserPage/RecordsSection',
+  title: 'UserPage/organisms/RecordsSection',
   component: Component,
-  args: {
-    width: 704,
-  },
   argTypes: {
     className: {table: {disable: true}},
-    books: {table: {disable: true}},
+    records: {table: {disable: true}},
     hasMore: {table: {disable: true}},
     empty: {table: {disable: true}},
-    width: {control: {type: 'range', min: 704, max: 1024, step: 8}},
   },
-  decorators: [
-    (Story, {args}) => (
-      <div style={{width: args.width}}>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;
 
-export const Full: Story<ComponentProps> = (args) => <Component {...args} />;
+export const Full: Story<ComponentProps> = (args) => (
+  <div style={{width: 800}}>
+    <Component {...args} />
+  </div>
+);
 Full.args = {
   displayName: 'User Name',
   userName: 'username',
@@ -48,7 +41,11 @@ Full.args = {
 };
 Full.storyName = '5冊以上ある';
 
-export const Lack: Story<ComponentProps> = (args) => <Component {...args} />;
+export const Lack: Story<ComponentProps> = (args) => (
+  <div style={{width: 800}}>
+    <Component {...args} />
+  </div>
+);
 Lack.args = {
   displayName: 'User Name',
   userName: 'username',
@@ -71,7 +68,11 @@ Lack.args = {
 };
 Lack.storyName = '5冊以内';
 
-export const Empty: Story<ComponentProps> = (args) => <Component {...args} />;
+export const Empty: Story<ComponentProps> = (args) => (
+  <div style={{width: 800}}>
+    <Component {...args} />
+  </div>
+);
 Empty.args = {
   displayName: 'User Name',
   userName: 'username',

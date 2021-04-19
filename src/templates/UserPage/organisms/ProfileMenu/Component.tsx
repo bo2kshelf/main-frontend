@@ -8,8 +8,8 @@ import {
   ReadRecordsItem,
   StackedBooksItem,
   WishReadBooksItem,
-} from './MenuItem';
-import {UserBox} from './UserBox';
+} from '../../molecules/MenuItem';
+import {UserBox} from '../../molecules/UserBox';
 
 export type ComponentProps = {
   className?: string;

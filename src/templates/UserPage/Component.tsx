@@ -1,10 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {LikedLineupSection} from './LikedLineupSection';
-import {ProfileMenu} from './ProfileMenu';
-import {ReadingLineupSection} from './ReadingLineupSection';
-import {RecordsSection} from './RecordsSection';
+import {SectionLiked, SectionReading} from './organisms/LineupSection';
+import {ProfileMenu} from './organisms/ProfileMenu';
+import {RecordsSection} from './organisms/RecordsSection';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;
@@ -48,13 +47,13 @@ export const Component: React.FC<ComponentProps> = ({
       />
       <div className={clsx('ml-0', 'lg:ml-4', 'flex-grow')}>
         <div className={clsx('grid', 'grid-cols-2', 'gap-4')}>
-          <ReadingLineupSection
+          <SectionReading
             className={clsx('col-span-full', 'shadow-md')}
             displayName={displayName}
             userName={userName}
             readingBooks={readingBooks}
           />
-          <LikedLineupSection
+          <SectionLiked
             className={clsx('col-span-full', 'shadow-md')}
             displayName={displayName}
             userName={userName}

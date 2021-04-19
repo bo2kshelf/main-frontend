@@ -4,7 +4,7 @@ import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'UserPage/ProfileMenu',
+  title: 'UserPage/organisms/ProfileMenu',
   component: Component,
   args: {
     width: 256,
