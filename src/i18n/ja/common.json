@@ -11,7 +11,6 @@
   "liked_books": "好きな本",
   "isbn": "ISBN",
   "pages": "ページ数",
-  "page": "{{page}}ページ",
   "publish_date": "発売日",
   "publisher": "出版社",
   "language": "言語",

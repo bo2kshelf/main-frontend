@@ -1,5 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
+import {Date} from '~/components/atoms/Date';
 import {IconPublishedAt} from '~/components/atoms/Icon/Component';
 import {ComponentBase} from './ComponentBase';
 
@@ -20,7 +21,7 @@ export const Component: React.FC<ComponentProps> = ({
       Icon={IconPublishedAt}
       i18n={{key: t('common:publish_date')}}
     >
-      {publishedAt}
+      <Date date={publishedAt} />
     </ComponentBase>
   );
 };

@@ -1,4 +1,6 @@
 {
+  "date": "{{date, YYYY年M月D日}}",
   "record_date": "{{date, YYYY年M月D日}}",
-  "record_date_unknown": "記録日不明"
+  "record_date_unknown": "記録日不明",
+  "pages": "{{pages}}ページ"
 }

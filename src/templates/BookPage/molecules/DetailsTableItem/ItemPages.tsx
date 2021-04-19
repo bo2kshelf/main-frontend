@@ -15,7 +15,7 @@ export const Component: React.FC<ComponentProps> = ({
   const {t} = useTranslation();
   return (
     <ComponentBase {...props} Icon={IconPages} i18n={{key: t('common:pages')}}>
-      {pages}
+      {t('format:pages', {pages})}
     </ComponentBase>
   );
 };
