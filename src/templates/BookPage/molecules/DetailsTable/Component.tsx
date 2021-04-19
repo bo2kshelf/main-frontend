@@ -30,12 +30,14 @@ export const Component: React.VFC<ComponentProps> = ({
   publishers,
 }) => (
   <table className={clsx(className, 'table-auto')}>
-    {isbn && <DetailTableItemISBN isbn={isbn} />}
-    {pages && <DetailTableItemPages pages={pages} />}
-    {publishedAt && <DetailTableItemPublishedAt publishedAt={publishedAt} />}
-    {publishers && publishers.length > 0 && (
-      <DetailTableItemPublishers publishers={publishers} />
-    )}
-    {language && <DetailTableItemLanguages languages={language} />}
+    <tbody>
+      {isbn && <DetailTableItemISBN isbn={isbn} />}
+      {pages && <DetailTableItemPages pages={pages} />}
+      {publishedAt && <DetailTableItemPublishedAt publishedAt={publishedAt} />}
+      {publishers && publishers.length > 0 && (
+        <DetailTableItemPublishers publishers={publishers} />
+      )}
+      {language && <DetailTableItemLanguages languages={language} />}
+    </tbody>
   </table>
 );
