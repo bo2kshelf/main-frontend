@@ -1,0 +1,21 @@
+{
+  "author": "著者",
+  "original_author": "原作者",
+  "supervisor": "監修者",
+  "participant": "参加者",
+  "editor": "編集者",
+  "illustrator": "イラストレーター",
+  "comic_artist": "漫画家",
+  "translator": "訳者",
+  "translate_supervisor": "監訳者",
+
+  "author_short": "著",
+  "original_author_short": "原作",
+  "supervisor_short": "監修",
+  "participant_short": "参加",
+  "editor_short": "編集",
+  "illustrator_short": "イラスト",
+  "comic_artist_short": "漫画",
+  "translator_short": "訳",
+  "translate_supervisor_short": "監訳"
+}

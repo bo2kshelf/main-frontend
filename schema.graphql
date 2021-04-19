@@ -8,6 +8,17 @@ type Author {
   writed(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: AuthorWritesArgsOrderBy = {title: ASC}): AuthorWritesReturn!
   relatedSeries(skip: Int = 0, limit: Int = 0, orderBy: AuthorsRelatedSeriesArgsOrderBy = {title: ASC}): AuthorsRelatedSeriesReturn!
 }
+enum AuthorRole {
+  AUTHOR
+  ORIGINAL_AUTHOR
+  SUPERVISOR
+  PARTICIPANT
+  EDITOR
+  ILLUSTRATOR
+  COMIC_ARTIST
+  TRANSLATOR
+  TRANSLATE_SUPERVISOR
+}
 type AuthorSeriesRelation {
   author: Author!
   series: Series!
@@ -240,7 +251,7 @@ type WishReadBookRecord {
   book: Book!
 }
 type Writing {
-  roles: [String!]!
+  roles: [AuthorRole!]!
   book: Book!
   author: Author!
 }
@@ -380,7 +391,7 @@ type Query {
 type Mutation {
   createBook(title: String!, subtitle: String, isbn: String): Book!
   createAuthor(name: String!): Author!
-  writedBook(bookId: ID!, authorId: ID!, roles: [String!]): Writing!
+  writedBook(bookId: ID!, authorId: ID!, roles: [AuthorRole!]): Writing!
   connectNextBook(previousId: ID!, nextId: ID!): NextBookConnection!
   createSeries(bookId: ID!, title: String!): SeriesPart!
   createPublisher(name: String!): Publisher!
