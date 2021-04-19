@@ -1,7 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 import {BookCover} from '~/components/atoms/BookCover';
-import {AuthorsTable} from '../../molecules/AuthorsTable';
+import {AuthorRole} from '~/lib/AuthorRole';
+import {AuthorsList} from '../../molecules/AuthorsList';
 import {DetailsTable} from '../../molecules/DetailsTable';
 
 export type ComponentProps = {
@@ -11,7 +12,7 @@ export type ComponentProps = {
   cover?: string;
   isbn?: string;
   pages?: number;
-  authors: {id: string; name: string}[];
+  authors: {id: string; name: string; roles: AuthorRole[]}[];
   publishers?: {id: string; name: string}[];
   publishedAt?: string;
   languages?: string;
@@ -61,7 +62,7 @@ export const Component: React.FC<ComponentProps> = ({
         'border-gray-100',
       )}
     >
-      <AuthorsTable authors={authors} />
+      <AuthorsList authors={authors} />
     </div>
     <div
       className={clsx(

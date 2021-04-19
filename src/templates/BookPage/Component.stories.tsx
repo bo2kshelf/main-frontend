@@ -1,6 +1,7 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import clsx from 'clsx';
 import React from 'react';
+import {AuthorRole} from '~/lib/AuthorRole';
 import {random} from '~~/.storybook/assets';
 import {TemplateDecolator} from '~~/.storybook/TemplateDecolator';
 import {Component, ComponentProps} from './Component';
@@ -42,6 +43,7 @@ Primary.args = {
     {
       id: '1',
       name: 'サンプル著者',
+      roles: [AuthorRole.Author],
       books: Array.from({length: 8}).map((_, i) => ({
         id: `${i}`,
         title: 'サンプルタイトル(2)',

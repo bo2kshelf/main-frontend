@@ -1,4 +1,9 @@
 import {BookPageQuery} from '~/graphql/codegen/graphql-request';
+import {
+  AuthorRole,
+  authorsComparerByRoles,
+  rolesPriorityComparer,
+} from '~/lib/AuthorRole';
 import {avoidUndefined} from '~/lib/utils';
 
 export type TransformedProps = {
@@ -12,12 +17,8 @@ export type TransformedProps = {
   authors: {
     id: string;
     name: string;
-    roles?: string[];
-    books: {
-      id: string;
-      title: string;
-      cover?: string;
-    }[];
+    roles: AuthorRole[];
+    books: {id: string; title: string; cover?: string}[];
   }[];
   series: {
     id: string;
@@ -47,13 +48,17 @@ export const transform: (result: BookPageQuery) => TransformedProps = ({
     subtitle: book.subtitle || undefined,
     isbn: book.isbn || undefined,
     cover: book.cover || undefined,
-    authors: book.writedBy.map(({author}) => ({
-      ...author,
-      books: author.writed.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
+    authors: [...book.writedBy]
+      .sort(authorsComparerByRoles)
+      .map(({author, roles}) => ({
+        id: author.id,
+        name: author.name,
+        roles: [...roles].sort(rolesPriorityComparer),
+        books: author.writed.nodes.map(({book}) => ({
+          ...book,
+          cover: book.cover || undefined,
+        })),
       })),
-    })),
     publishers: (book.publishedBy ? [book.publishedBy] : []).map(
       (publisher) => ({
         id: publisher.id,

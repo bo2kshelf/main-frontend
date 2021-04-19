@@ -1,6 +1,7 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 import clsx from 'clsx';
 import React from 'react';
+import {AuthorRole} from '~/lib/AuthorRole';
 import {random} from '~~/.storybook/assets';
 import {Component, ComponentProps} from './Component';
 
@@ -23,7 +24,7 @@ Primary.args = {
   subtitle: 'サンプルサブタイトル',
   cover: random.bookcover(0),
   isbn: '9784832272460',
-  authors: [{id: '1', name: 'サンプル著者'}],
+  authors: [{id: '1', name: 'サンプル著者', roles: [AuthorRole.Author]}],
   publishers: [{id: '1', name: 'サンプル出版社'}],
   pages: 256,
   languages: '日本語',
