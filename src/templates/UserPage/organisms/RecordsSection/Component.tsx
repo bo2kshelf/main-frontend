@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Record} from '~/components/molecules/Record';
-import {MoreLink} from './MoreLink';
+import {MoreLink} from '../../molecules/MoreRecordsLink';
 
 export type BaseComponentProps = {
   className?: string;
