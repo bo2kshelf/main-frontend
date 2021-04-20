@@ -19,4 +19,8 @@ export const Primary: Story<ComponentProps> = (args) => (
 );
 Primary.args = {
   name: 'サンプル著者',
+  series: Array.from({length: 2}).map((_, si) => ({
+    id: `${si}`,
+    title: `サンプルシリーズ(${si + 1})`,
+  })),
 };

@@ -23,7 +23,7 @@ export const Component: React.FC<ComponentProps> = ({
         <SideNav
           {...props}
           className={clsx(className, 'shadow-md')}
-          name={name}
+          {...{name, series}}
         />
       )}
       Main={({className, ...props}) => (
