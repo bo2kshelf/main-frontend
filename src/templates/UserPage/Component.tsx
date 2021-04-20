@@ -44,6 +44,7 @@ export const Component: React.FC<ComponentProps> = ({
         stackedBooks={stackedBooks}
         haveBooks={haveBooks}
         wishReadBooks={wishReadBooks}
+        likedBooks={likedBooks}
       />
       <div className={clsx('ml-0', 'lg:ml-4', 'flex-grow')}>
         <div className={clsx('grid', 'grid-cols-2', 'gap-4')}>
