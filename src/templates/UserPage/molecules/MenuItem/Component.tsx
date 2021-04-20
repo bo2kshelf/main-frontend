@@ -15,6 +15,7 @@ import {
   LinkUsersReadingPage,
   LinkUsersReadPage,
   LinkUsersRecordsPage,
+  LinkUsersStackedPage,
   LinkUserWishPage,
 } from '~/components/atoms/Link';
 import {BaseComponent} from './BaseComponent';
@@ -88,7 +89,7 @@ export const StackedBooksComponent: React.FC<ComponentProps> = ({
   return (
     <BaseComponent
       {...props}
-      Link={LinkUsersRecordsPage}
+      Link={LinkUsersStackedPage}
       Icon={IconStackedBooks}
       i18n={{text: t('common:stacked_books'), count: `${count}`}}
     />

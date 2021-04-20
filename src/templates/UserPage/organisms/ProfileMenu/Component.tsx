@@ -22,6 +22,7 @@ export type ComponentProps = {
   stackedBooksCount: number;
   haveBooksCount: number;
   wishReadBooksCount: number;
+  likedBooksCount: number;
 };
 export const Component: React.FC<ComponentProps> = ({
   className,
@@ -34,6 +35,7 @@ export const Component: React.FC<ComponentProps> = ({
   stackedBooksCount,
   haveBooksCount,
   wishReadBooksCount,
+  likedBooksCount,
 }) => (
   <nav className={clsx(className, 'bg-white', 'flex', 'flex-col')}>
     <UserBox
@@ -85,7 +87,7 @@ export const Component: React.FC<ComponentProps> = ({
       <LikedBooksItem
         className={clsx('w-full')}
         userName={userName}
-        count={wishReadBooksCount}
+        count={likedBooksCount}
       />
     </div>
   </nav>
