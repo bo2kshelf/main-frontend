@@ -2,6 +2,7 @@ import {AuthorPageQuery} from '~/graphql/codegen/graphql-request';
 import {avoidUndefined} from '~/lib/utils';
 
 export type TransformedProps = {
+  id: string;
   name: string;
   books: {id: string; title: string; cover?: string}[];
   series: {
@@ -15,7 +16,8 @@ export const transform: (result: AuthorPageQuery) => TransformedProps = ({
   author,
 }) =>
   avoidUndefined({
-    ...author,
+    id: author.id,
+    name: author.name,
     books: author.writed.nodes.map(({book}) => ({
       ...book,
       cover: book.cover || undefined,
