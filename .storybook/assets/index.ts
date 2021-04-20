@@ -17,6 +17,12 @@ const bookcovers = [
   require('./random/bookcover_8.jpg'),
   require('./random/bookcover_9.jpg'),
   require('./random/bookcover_10.jpg'),
+  require('./random/bookcover_11.jpg'),
+  require('./random/bookcover_12.jpg'),
+  require('./random/bookcover_13.jpg'),
+  require('./random/bookcover_14.jpg'),
+  require('./random/bookcover_15.jpg'),
+  require('./random/bookcover_16.jpg'),
 ];
 
 export const random = {
