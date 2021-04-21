@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
+import {Layout} from '~/components/atoms/Layout';
 import {
   AuthorsSection,
   PublishersSection,
@@ -26,30 +27,29 @@ export const Component: React.FC<ComponentProps> = ({
 }) => (
   <main className={clsx(className)}>
     {children}
-    <div className={clsx('flex', 'flex-col', 'lg:flex-row', 'min-h-full')}>
-      <SideNav
-        className={clsx(
-          'w-full',
-          'lg:w-1/4',
-          'col-span-1',
-          'col-start-1',
-          'shadow-md',
-          'h-full',
-        )}
-        {...{
-          title,
-          cover,
-          subtitle,
-          isbn,
-          authors,
-          publishers,
-          languages,
-          publishedAt,
-          pages,
-        }}
-      />
-      <div className={clsx('ml-0', 'lg:ml-4', 'flex-grow')}>
-        <div className={clsx('grid', 'grid-cols-2', 'gap-4')}>
+    <Layout
+      Side={({className, ...props}) => (
+        <SideNav
+          {...props}
+          className={clsx(className, 'shadow-md')}
+          {...{
+            title,
+            cover,
+            subtitle,
+            isbn,
+            authors,
+            publishers,
+            languages,
+            publishedAt,
+            pages,
+          }}
+        />
+      )}
+      Main={({className, ...props}) => (
+        <div
+          {...props}
+          className={clsx(className, 'grid', 'grid-cols-2', 'gap-4')}
+        >
           {series.map((node) => (
             <SeriesSection
               key={node.id}
@@ -72,7 +72,7 @@ export const Component: React.FC<ComponentProps> = ({
             />
           ))}
         </div>
-      </div>
-    </div>
+      )}
+    />
   </main>
 );
