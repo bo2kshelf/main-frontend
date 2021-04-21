@@ -16,7 +16,7 @@ export const Component: React.FC<ComponentProps> = ({id, name, ...props}) => {
   return (
     <BaseComponent
       {...props}
-      i18n={{title: t('{{name}}による他の本', {name})}}
+      i18n={{title: t('{{name}}から出版された本', {name})}}
       MoreDetailsLink={(props) => (
         <MoreLinkBase
           {...props}
@@ -26,4 +26,3 @@ export const Component: React.FC<ComponentProps> = ({id, name, ...props}) => {
     />
   );
 };
-Component.displayName = 'AllBooksSection';
