@@ -1,7 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {SectionBooks} from './Section';
+import {Layout} from '../AuthorPage/organisms/Layout';
+import {SectionBooks} from './organisms/Section';
+import {SideNav} from './organisms/SideNav';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;
@@ -14,6 +16,27 @@ export const Component: React.FC<ComponentProps> = ({
 }) => (
   <main className={clsx(className)}>
     {children}
-    <SectionBooks className={clsx('w-full')} {...{id, name, books}} />
+    <Layout
+      Side={({className, ...props}) => (
+        <SideNav
+          {...props}
+          className={clsx(className, 'shadow-md')}
+          {...{name}}
+        />
+      )}
+      Main={({className, ...props}) => (
+        <div
+          className={clsx(className, 'grid', 'grid-cols-2', 'gap-4')}
+          {...props}
+        >
+          <SectionBooks
+            className={clsx('col-span-full', 'shadow-md')}
+            id={id}
+            name={name}
+            books={books}
+          />
+        </div>
+      )}
+    />
   </main>
 );
