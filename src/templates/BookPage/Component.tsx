@@ -3,9 +3,9 @@ import React from 'react';
 import {Merge} from 'type-fest';
 import {Layout} from '~/components/atoms/Layout';
 import {
-  AuthorsSection,
-  PublishersSection,
-  SeriesSection,
+  SectionAuthors,
+  SectionPublishers,
+  SectionSeries,
 } from './organisms/Section';
 import {SideNav} from './organisms/SideNav';
 import {TransformedProps} from './transform';
@@ -51,21 +51,21 @@ export const Component: React.FC<ComponentProps> = ({
           className={clsx(className, 'grid', 'grid-cols-2', 'gap-4')}
         >
           {series.map((node) => (
-            <SeriesSection
+            <SectionSeries
               key={node.id}
               {...node}
               className={clsx('col-span-full', 'shadow-md')}
             />
           ))}
           {authors.map((node) => (
-            <AuthorsSection
+            <SectionAuthors
               key={node.id}
               {...node}
               className={clsx('col-span-full', 'shadow-md')}
             />
           ))}
           {publishers.map((node) => (
-            <PublishersSection
+            <SectionPublishers
               key={node.id}
               {...node}
               className={clsx('col-span-full', 'shadow-md')}
