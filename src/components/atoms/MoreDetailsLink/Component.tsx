@@ -2,15 +2,12 @@ import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 
-export type ComponentBaseProps = {
+export type ComponentProps = {
   className?: string;
   Link: React.FC<{className?: string}>;
 };
 
-export const ComponentBase: React.FC<ComponentBaseProps> = ({
-  Link,
-  className,
-}) => {
+export const Component: React.FC<ComponentProps> = ({Link, className}) => {
   const {t} = useTranslation();
   return (
     <Link

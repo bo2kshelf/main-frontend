@@ -1,8 +1,8 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {LinkAuthorsBooksPage} from '~/components/atoms/Link';
+import {MoreDetailsLink} from '~/components/atoms/MoreDetailsLink';
 import {BooksSection} from '~/components/organisms/BooksSection';
-import {MoreLinkBase} from '~/templates/BookPage/molecules/MoreDetailsLink';
 
 export type ComponentProps = {
   className?: string;
@@ -17,7 +17,7 @@ export const Component: React.FC<ComponentProps> = ({id, name, ...props}) => {
       {...props}
       i18n={{title: t('{{name}}による他の本', {name})}}
       MoreDetailsLink={(props) => (
-        <MoreLinkBase
+        <MoreDetailsLink
           {...props}
           Link={(props) => <LinkAuthorsBooksPage id={id} {...props} />}
         />

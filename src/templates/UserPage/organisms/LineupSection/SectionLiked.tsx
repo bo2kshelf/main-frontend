@@ -1,7 +1,7 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {LinkUsersReadingPage} from '~/components/atoms/Link';
-import {MoreLinkBase} from '~/templates/BookPage/molecules/MoreDetailsLink';
+import {MoreDetailsLink} from '~/components/atoms/MoreDetailsLink';
 import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {
@@ -27,7 +27,7 @@ export const Component: React.FC<ComponentProps> = ({
         }),
       }}
       MoreLink={() => (
-        <MoreLinkBase
+        <MoreDetailsLink
           Link={(props) => (
             <LinkUsersReadingPage {...props} {...{username: userName}} />
           )}

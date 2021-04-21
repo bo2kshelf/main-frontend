@@ -11,7 +11,7 @@ import {
   DetailTableItemPublishedAtProps,
   DetailTableItemPublishers,
   DetailTableItemPublishersProps,
-} from '../DetailsTableItem';
+} from '../../atoms/DetailsTableItem';
 
 export type ComponentProps = {
   className?: string;
