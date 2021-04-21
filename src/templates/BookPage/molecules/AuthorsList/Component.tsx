@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {AuthorRole} from '~/lib/AuthorRole';
-import {AuthorsListItem} from '../AuthorsListItem';
+import {AuthorsListItem} from '../../atoms/AuthorsListItem';
 
 export type ComponentProps = {
   className?: string;

@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {SeriesSection} from '../BookPage/organisms/Section';
-import {Layout} from './organisms/Layout';
+import {Layout} from '~/components/atoms/Layout';
+import {SectionSeries} from '../BookPage/organisms/Section';
 import {BooksSection} from './organisms/Section';
 import {SideNav} from './organisms/SideNav';
 import {TransformedProps} from './transform';
@@ -38,7 +38,7 @@ export const Component: React.FC<ComponentProps> = ({
             books={books}
           />
           {series.map((node) => (
-            <SeriesSection
+            <SectionSeries
               key={node.id}
               {...node}
               className={clsx('col-span-full', 'shadow-md')}

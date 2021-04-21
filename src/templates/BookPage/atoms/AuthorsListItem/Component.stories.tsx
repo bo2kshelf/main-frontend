@@ -5,7 +5,7 @@ import {AuthorRole} from '~/lib/AuthorRole';
 import {Component, ComponentProps} from './Component';
 
 export default {
-  title: 'Bookpage/molecules/AuthorsListItem',
+  title: 'Bookpage/atoms/AuthorsListItem',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},

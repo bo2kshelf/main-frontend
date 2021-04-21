@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {BooksSection} from '~/components/organisms/BooksSection';
 import {HeaderProps} from './Header';
 import {PageType, TransformedProps} from './transform';
 
@@ -26,10 +25,5 @@ export const Component: React.FC<ComponentProps<PageType>> = ({
       account={{displayName}}
       records={{count}}
     />
-    {books.length > 0 && (
-      <>
-        <BooksSection className={clsx('w-full', 'my-8')} books={books} />
-      </>
-    )}
   </main>
 );
