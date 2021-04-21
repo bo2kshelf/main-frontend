@@ -123,6 +123,10 @@ export const LinkSeriesIndexPage: React.FC<{
   className?: string;
   id: string;
 }> = ({id, ...props}) => <LinkBase href={`/series/${id}`} {...props} />;
+export const LinkSeriesBooksPage: React.FC<{
+  className?: string;
+  id: string;
+}> = ({id, ...props}) => <LinkBase href={`/series/${id}/books`} {...props} />;
 
 export const LinkLoginPage: React.FC<{
   className?: string;

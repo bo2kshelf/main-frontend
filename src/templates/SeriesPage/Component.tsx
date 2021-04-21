@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {BooksSection} from '~/components/organisms/BooksSection';
-import {Header} from './Header';
+import {Layout} from '../AuthorPage/organisms/Layout';
+import {SectionBooks, SectionRelatedBooks} from './organisms/Section';
+import {SideNav} from './organisms/SideNav';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<TransformedProps, {className?: string}>;
@@ -10,13 +11,41 @@ export type ComponentProps = Merge<TransformedProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = ({
   className,
   children,
+  id,
   title,
   authors,
   books,
+  relatedBooks,
 }) => (
   <main className={clsx(className)}>
     {children}
-    <Header className={clsx('w-full')} title={title} relatedAuthors={authors} />
-    <BooksSection className={clsx('mt-2', 'w-full')} books={books} />
+    <Layout
+      Side={({className, ...props}) => (
+        <SideNav
+          {...props}
+          className={clsx(className, 'shadow-md')}
+          {...{title, authors}}
+        />
+      )}
+      Main={({className, ...props}) => (
+        <div
+          className={clsx(className, 'grid', 'grid-cols-2', 'gap-4')}
+          {...props}
+        >
+          <SectionBooks
+            className={clsx('col-span-full', 'shadow-md')}
+            id={id}
+            title={title}
+            books={books}
+          />
+          <SectionRelatedBooks
+            className={clsx('col-span-full', 'shadow-md')}
+            id={id}
+            title={title}
+            books={relatedBooks}
+          />
+        </div>
+      )}
+    />
   </main>
 );
