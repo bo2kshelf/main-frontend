@@ -1,23 +1,32 @@
-schema:
-  - ${GRAPHQL_API_SCHEMA}
-
 generates:
-  ./schema.graphql:
+  ./api-public.graphql:
+    schema: ${PUBLIC_API_ENDPOINT:api-public.graphql}
     plugins:
       - 'schema-ast'
     config:
       includeDirectives: true
-  ./src/graphql/codegen/apollo.ts:
+
+  ./src/graphql/api-public/codegen/graphql-request.ts:
+    schema: ${PUBLIC_API_ENDPOINT:api-public.graphql}
     documents:
-      - 'src/graphql/apollo/*.graphql'
-    plugins:
-      - 'typescript'
-      - 'typescript-operations'
-      - 'typescript-react-apollo'
-  ./src/graphql/codegen/graphql-request.ts:
-    documents:
-      - 'src/graphql/graphql-request/*.graphql'
+      - 'src/graphql/api-public/graphql-request/*.graphql'
     plugins:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-graphql-request'
+
+  ./api-authenticated.graphql:
+    schema: ${AUTHENTICATED_API_ENDPOINT:api-authenticated.graphql}
+    plugins:
+      - 'schema-ast'
+    config:
+      includeDirectives: true
+
+  ./src/graphql/api-authenticated/codegen/apollo.ts:
+    schema: ${AUTHENTICATED_API_ENDPOINT:api-authenticated.graphql}
+    documents:
+      - 'src/graphql/api-authenticated/apollo/*.graphql'
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-react-apollo'

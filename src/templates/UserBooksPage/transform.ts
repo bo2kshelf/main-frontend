@@ -4,7 +4,7 @@ import {
   UserReadingBooksPageQuery,
   UserStackedBooksPageQuery,
   UserWishReadBooksPageQuery,
-} from '~/graphql/codegen/graphql-request';
+} from '~/graphql/api-public/codegen/graphql-request';
 import {avoidUndefined} from '~/lib/utils';
 
 export type PageType = 'have' | 'reading' | 'stacked' | 'wish' | 'read';
@@ -158,10 +158,10 @@ export const transformRead: (
     count,
     hasPrevious,
     hasNext,
-    books: nodes.map(({id, title, cover}) => ({
-      id,
-      title,
-      cover: cover || undefined,
+    books: nodes.map(({book}) => ({
+      id: book.id,
+      title: book.title,
+      cover: book.cover || undefined,
     })),
     pageType: 'read',
     pageNumber: number || 1,
