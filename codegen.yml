@@ -1,13 +1,13 @@
 generates:
   ./src/graphql/api-public/schema.graphql:
-    schema: ${PUBLIC_API_ENDPOINT:./src/graphql/api-public/schema.ts}
+    schema: ${PUBLIC_API_ENDPOINT:./src/graphql/api-public/schema.graphql}
     plugins:
       - 'schema-ast'
     config:
       includeDirectives: true
 
   ./src/graphql/api-public/codegen/graphql-request.ts:
-    schema: ${PUBLIC_API_ENDPOINT:./src/graphql/api-public/schema.ts}
+    schema: ${PUBLIC_API_ENDPOINT:./src/graphql/api-public/schema.graphql}
     documents:
       - 'src/graphql/api-public/graphql-request/*.graphql'
     plugins:
