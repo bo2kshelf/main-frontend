@@ -18,11 +18,6 @@ jobs:
   lint-eslint:
     docker:
       - image: circleci/node:14.15.3
-    parameters:
-      schema:
-        type: string
-    environment:
-      GRAPHQL_API_SCHEMA: << parameters.schema >>
     steps:
       - checkout
       - node/install-packages:
@@ -58,11 +53,6 @@ jobs:
   ts-check:
     docker:
       - image: circleci/node:14.15.3
-    parameters:
-      schema:
-        type: string
-    environment:
-      GRAPHQL_API_SCHEMA: << parameters.schema >>
     steps:
       - checkout
       - node/install-packages:
@@ -74,9 +64,7 @@ workflows:
   version: 2
   develop:
     jobs:
-      - ts-check:
-          schema: ./schema.graphql
-      - lint-eslint:
-          schema: ./schema.graphql
+      - ts-check
+      - lint-eslint
       - lint-prettier
       - lint-stylelint
