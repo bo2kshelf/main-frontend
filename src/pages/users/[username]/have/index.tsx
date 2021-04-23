@@ -1,15 +1,15 @@
+import {GetStaticPaths} from 'next';
 import {graphqlSdk} from '~/graphql/api-public/graphql-request';
-import {getPathsForIndex} from '~/lib/UserBookPageCommon';
+import {
+  getPathsForIndex,
+  UrlQueryForIndexPage,
+} from '~/templates/UserBooksPage';
 import * as General from './[number]';
 
-export type UrlQuery = {
-  username: string;
-};
+export type UrlQuery = UrlQueryForIndexPage;
 
-export const getStaticPaths = async () => {
-  return graphqlSdk
-    .AllUserHaveBooksPage()
-    .then(({allUsers: allAccounts}) => getPathsForIndex(allAccounts));
+export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
+  return graphqlSdk.AllUserHaveBooksPage().then(getPathsForIndex);
 };
 
 export const getStaticProps: typeof General.getStaticProps = async ({

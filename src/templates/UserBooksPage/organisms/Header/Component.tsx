@@ -4,13 +4,13 @@ import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {
   className?: string;
-  account: {displayName: string};
-  records: {count: number};
+  displayName: string;
+  count: number;
 };
 
 export const HaveBooksHeader: React.FC<ComponentProps> = ({
-  account: {displayName},
-  records: {count},
+  displayName,
+  count,
   ...props
 }) => {
   const {t} = useTranslation();
@@ -32,8 +32,8 @@ export const HaveBooksHeader: React.FC<ComponentProps> = ({
 };
 
 export const ReadBooksHeader: React.FC<ComponentProps> = ({
-  account: {displayName},
-  records: {count},
+  displayName,
+  count,
   ...props
 }) => {
   const {t} = useTranslation();
@@ -55,8 +55,8 @@ export const ReadBooksHeader: React.FC<ComponentProps> = ({
 };
 
 export const ReadingBooksHeader: React.FC<ComponentProps> = ({
-  account: {displayName},
-  records: {count},
+  displayName,
+  count,
   ...props
 }) => {
   const {t} = useTranslation();
@@ -78,8 +78,8 @@ export const ReadingBooksHeader: React.FC<ComponentProps> = ({
 };
 
 export const StackedBooksHeader: React.FC<ComponentProps> = ({
-  account: {displayName},
-  records: {count},
+  displayName,
+  count,
   ...props
 }) => {
   const {t} = useTranslation();
@@ -101,8 +101,8 @@ export const StackedBooksHeader: React.FC<ComponentProps> = ({
 };
 
 export const WishReadBooksHeader: React.FC<ComponentProps> = ({
-  account: {displayName},
-  records: {count},
+  displayName,
+  count,
   ...props
 }) => {
   const {t} = useTranslation();
