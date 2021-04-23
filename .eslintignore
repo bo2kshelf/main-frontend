@@ -18,4 +18,4 @@ codegen/
 storybook-static/
 
 # root GraphQL schema
-api-*.graphql
+schema.graphql

@@ -1,13 +1,13 @@
 generates:
-  ./api-public.graphql:
-    schema: ${PUBLIC_API_ENDPOINT:api-public.graphql}
+  ./src/graphql/api-public/schema.graphql:
+    schema: ${PUBLIC_API_ENDPOINT:./src/graphql/api-public/schema.ts}
     plugins:
       - 'schema-ast'
     config:
       includeDirectives: true
 
   ./src/graphql/api-public/codegen/graphql-request.ts:
-    schema: ${PUBLIC_API_ENDPOINT:api-public.graphql}
+    schema: ${PUBLIC_API_ENDPOINT:./src/graphql/api-public/schema.ts}
     documents:
       - 'src/graphql/api-public/graphql-request/*.graphql'
     plugins:
@@ -15,15 +15,15 @@ generates:
       - 'typescript-operations'
       - 'typescript-graphql-request'
 
-  ./api-authenticated.graphql:
-    schema: ${AUTHENTICATED_API_ENDPOINT:api-authenticated.graphql}
+  ./src/graphql/api-authenticated/schema.graphql:
+    schema: ${AUTHENTICATED_API_ENDPOINT:./src/graphql/api-authenticated/schema.graphql}
     plugins:
       - 'schema-ast'
     config:
       includeDirectives: true
 
   ./src/graphql/api-authenticated/codegen/apollo.ts:
-    schema: ${AUTHENTICATED_API_ENDPOINT:api-authenticated.graphql}
+    schema: ${AUTHENTICATED_API_ENDPOINT:./src/graphql/api-authenticated/schema.graphql}
     documents:
       - 'src/graphql/api-authenticated/apollo/*.graphql'
     plugins:

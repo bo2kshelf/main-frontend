@@ -1,0 +1,21 @@
+{
+  "root": true,
+  "overrides": [
+    {
+      "files": ["./api-authenticated/**/*.graphql"],
+      "parser": "@graphql-eslint/eslint-plugin",
+      "plugins": ["@graphql-eslint"],
+      "parserOptions": {
+        "schema": "./api-authenticated/schema.graphql"
+      }
+    },
+    {
+      "files": ["./api-public/**/*.graphql"],
+      "parser": "@graphql-eslint/eslint-plugin",
+      "plugins": ["@graphql-eslint"],
+      "parserOptions": {
+        "schema": "./api-public/schema.graphql"
+      }
+    }
+  ]
+}
