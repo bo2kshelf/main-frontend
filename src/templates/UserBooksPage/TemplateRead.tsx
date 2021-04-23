@@ -3,14 +3,14 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Merge} from 'type-fest';
 import {BaseComponent} from './BaseComponent';
-import {ReadBooksHeader} from './organisms/Header';
+import {HeaderReadBooks} from './organisms/Header';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<ContainerProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = (props) => (
   <BaseComponent
     {...props}
-    Header={({...props}) => <ReadBooksHeader {...props} />}
+    Header={({...props}) => <HeaderReadBooks {...props} />}
   />
 );
 

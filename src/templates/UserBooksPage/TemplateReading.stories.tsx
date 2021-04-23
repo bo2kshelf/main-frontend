@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import React from 'react';
 import {random} from '~~/.storybook/assets';
 import {TemplateDecolator} from '~~/.storybook/TemplateDecolator';
-import {Component, ComponentProps} from './TemplateHave';
+import {Component, ComponentProps} from './TemplateReading';
 
 export default {
-  title: 'TemplateHaveBooks',
+  title: 'TemplateReadingBooks',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
@@ -49,9 +49,9 @@ NormalUser.args = {
   skip: 0,
   limit: 0,
   records: {count: 10},
-  haveBooks: {count: 64},
+  haveBooks: {count: 10},
   readBooks: {count: 10},
-  readingBooks: {count: 10},
+  readingBooks: {count: 64},
   stackedBooks: {count: 10},
   wishReadBooks: {count: 10},
   likedBooks: {count: 10},

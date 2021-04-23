@@ -1,10 +1,12 @@
 export {BaseComponent} from './BaseComponent';
 export type {BaseComponentProps} from './BaseComponent';
-export {
-  HaveBooksHeader,
-  ReadBooksHeader,
-  ReadingBooksHeader,
-  StackedBooksHeader,
-  WishReadBooksHeader,
-} from './Component';
-export type {ComponentProps as HeaderProps} from './Component';
+export {Component as HeaderHaveBooks} from './HeaderHave';
+export type {ComponentProps as HeaderHaveBooksProps} from './HeaderHave';
+export {Component as HeaderReadBooks} from './HeaderRead';
+export type {ComponentProps as HeaderReadBooksProps} from './HeaderRead';
+export {Component as HeaderReadingBooks} from './HeaderReading';
+export type {ComponentProps as HeaderReadingBooksProps} from './HeaderReading';
+export {Component as HeaderStackedBooks} from './HeaderStacked';
+export type {ComponentProps as HeaderStackedBooksProps} from './HeaderStacked';
+export {Component as HeaderWishReadBooks} from './HeaderWishRead';
+export type {ComponentProps as HeaderWishReadBooksProps} from './HeaderWishRead';
