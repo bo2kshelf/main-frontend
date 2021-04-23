@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import React from 'react';
 import {Merge} from 'type-fest';
-import {BookCoverLink} from '~/components/atoms/BookCoverLink';
 import {Layout} from '~/components/atoms/Layout';
 import {ProfileMenu} from '../UserPage/organisms/ProfileMenu';
+import {Section} from './organisms/Section';
 import {TransformedProps} from './transform';
 
 export type BaseComponentProps = Merge<
@@ -52,32 +52,11 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
         />
       )}
       Main={({className, ...props}) => (
-        <section
-          className={clsx(className, 'bg-white', 'py-6', 'px-12', 'shadow-md')}
+        <Section
           {...props}
-        >
-          <Header {...{displayName, count: booksCount}} />{' '}
-          {books.length > 0 && (
-            <div
-              className={clsx(
-                'mt-6',
-                'grid',
-                'grid-cols-2',
-                'sm:grid-cols-4',
-                'md:grid-cols-8',
-                'gap-4',
-              )}
-            >
-              {books.map((book) => (
-                <BookCoverLink
-                  className={clsx('h-28', 'xl:h-32')}
-                  key={book.id}
-                  book={book}
-                />
-              ))}
-            </div>
-          )}
-        </section>
+          className={clsx('shadow-md')}
+          {...{booksCount, displayName, books, Header}}
+        />
       )}
     />
   </main>
