@@ -2,12 +2,12 @@ import clsx from 'clsx';
 import React from 'react';
 import {IconComponentType} from '~/components/atoms/Icon';
 import {
-  LinkUsersHavePage,
-  LinkUsersLikedPage,
-  LinkUsersReadingPage,
-  LinkUsersReadPage,
-  LinkUsersRecordsPage,
-  LinkUserWishPage,
+  LinkUsersHaveIndexPage,
+  LinkUsersLikedIndexPage,
+  LinkUsersReadIndexPage,
+  LinkUsersReadingIndexPage,
+  LinkUsersRecordsIndexPage,
+  LinkUserWishIndexPage,
 } from '~/components/atoms/Link';
 
 export type BaseComponentProps = {
@@ -16,13 +16,13 @@ export type BaseComponentProps = {
   i18n: Record<'text' | 'count', string>;
   Icon: IconComponentType;
   Link:
-    | typeof LinkUsersRecordsPage
-    | typeof LinkUsersHavePage
-    | typeof LinkUsersLikedPage
-    | typeof LinkUsersReadingPage
-    | typeof LinkUsersReadPage
-    | typeof LinkUsersRecordsPage
-    | typeof LinkUserWishPage;
+    | typeof LinkUsersRecordsIndexPage
+    | typeof LinkUsersHaveIndexPage
+    | typeof LinkUsersLikedIndexPage
+    | typeof LinkUsersReadingIndexPage
+    | typeof LinkUsersReadIndexPage
+    | typeof LinkUsersRecordsIndexPage
+    | typeof LinkUserWishIndexPage;
 };
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,

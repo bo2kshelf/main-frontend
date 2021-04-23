@@ -22,7 +22,7 @@ export const getPathsForNumbered = (result: {
   paths: result.allUsers
     .map(({userName, books}) =>
       Array.from({
-        length: Math.ceil(books.count / RECORDS_PER_PAGE),
+        length: countPages(books.count),
       }).map((_, i) => ({
         params: {username: userName, number: `${i + 1}`},
       })),
@@ -39,4 +39,8 @@ export const getVariables = ({username, number}: UrlQueryForNumberedPage) => {
     limit: RECORDS_PER_PAGE,
     skip: RECORDS_PER_PAGE * (pageNumber - 1),
   };
+};
+
+export const countPages = (bookCount: number): number => {
+  return Math.ceil(bookCount / RECORDS_PER_PAGE);
 };

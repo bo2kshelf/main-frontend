@@ -3,14 +3,14 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Merge} from 'type-fest';
 import {BaseComponent} from './BaseComponent';
-import {HeaderHaveBooks} from './organisms/Header';
+import {SectionHaveBooks} from './organisms/Section';
 import {TransformedProps} from './transform';
 
 export type ComponentProps = Merge<ContainerProps, {className?: string}>;
 export const Component: React.FC<ComponentProps> = ({...props}) => (
   <BaseComponent
     {...props}
-    Header={({...props}) => <HeaderHaveBooks {...props} />}
+    Section={({...props}) => <SectionHaveBooks {...props} />}
   />
 );
 

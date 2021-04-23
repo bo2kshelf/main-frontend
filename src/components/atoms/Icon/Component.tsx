@@ -1,4 +1,8 @@
 import {
+  faAngleDoubleLeft,
+  faAngleDoubleRight,
+  faAngleLeft,
+  faAngleRight,
   faBarcode,
   faBook,
   faBookmark,
@@ -76,5 +80,27 @@ export const IconWarning: ComponentType = ({className}) => (
     className={clsx(className)}
     fixedWidth
     icon={faExclamationTriangle}
+  />
+);
+
+export const IconLeft: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faAngleLeft} />
+);
+export const IconDoubleLeft: ComponentType = ({className}) => (
+  <FontAwesomeIcon
+    className={clsx(className)}
+    fixedWidth
+    icon={faAngleDoubleLeft}
+  />
+);
+
+export const IconRight: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faAngleRight} />
+);
+export const IconDoubleRight: ComponentType = ({className}) => (
+  <FontAwesomeIcon
+    className={clsx(className)}
+    fixedWidth
+    icon={faAngleDoubleRight}
   />
 );

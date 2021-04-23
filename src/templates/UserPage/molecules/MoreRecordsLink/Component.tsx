@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LinkUsersRecordsPage} from '~/components/atoms/Link';
+import {LinkUsersRecordsIndexPage} from '~/components/atoms/Link';
 
 export type ComponentProps = {
   className?: string;
@@ -10,7 +10,7 @@ export type ComponentProps = {
 export const Component: React.FC<ComponentProps> = ({className, userName}) => {
   const {t} = useTranslation();
   return (
-    <LinkUsersRecordsPage
+    <LinkUsersRecordsIndexPage
       username={userName}
       className={clsx(
         className,
@@ -23,6 +23,6 @@ export const Component: React.FC<ComponentProps> = ({className, userName}) => {
       )}
     >
       <span className={clsx('text-white')}>{t('もっと見る')}</span>
-    </LinkUsersRecordsPage>
+    </LinkUsersRecordsIndexPage>
   );
 };

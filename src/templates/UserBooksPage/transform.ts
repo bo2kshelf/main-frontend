@@ -6,6 +6,7 @@ import {
   UserWishReadBooksPageQuery,
 } from '~/graphql/api-public/codegen/graphql-request';
 import {avoidUndefined} from '~/lib/utils';
+import {countPages} from './transform-pages';
 
 export type TransformedProps = {
   userName: string;
@@ -16,6 +17,7 @@ export type TransformedProps = {
   booksCount: number;
   // page
   pageNumber: number;
+  pagesCount: number;
   skip: number;
   limit: number;
   // meta
@@ -58,6 +60,7 @@ export const transformHaveBooks: (
     })),
     booksCount: count,
     pageNumber,
+    pagesCount: countPages(count),
     skip,
     limit,
     records,
@@ -99,6 +102,7 @@ export const transformReadBooks: (
     })),
     booksCount: count,
     pageNumber,
+    pagesCount: countPages(count),
     skip,
     limit,
     records,
@@ -140,6 +144,7 @@ export const transformReadingBooks: (
     })),
     booksCount: count,
     pageNumber,
+    pagesCount: countPages(count),
     skip,
     limit,
     records,
@@ -181,6 +186,7 @@ export const transformStackedBooks: (
     })),
     booksCount: count,
     pageNumber,
+    pagesCount: countPages(count),
     skip,
     limit,
     records,
@@ -222,6 +228,7 @@ export const transformWishReadBooks: (
     })),
     booksCount: count,
     pageNumber,
+    pagesCount: countPages(count),
     skip,
     limit,
     records,

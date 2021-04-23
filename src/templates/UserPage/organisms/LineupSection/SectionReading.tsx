@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {LinkUsersLikedPage} from '~/components/atoms/Link';
+import {LinkUsersLikedIndexPage} from '~/components/atoms/Link';
 import {MoreDetailsLink} from '~/components/atoms/MoreDetailsLink';
 import {BaseComponent} from './BaseComponent';
 
@@ -29,7 +29,7 @@ export const Component: React.FC<ComponentProps> = ({
       MoreLink={() => (
         <MoreDetailsLink
           Link={(props) => (
-            <LinkUsersLikedPage {...props} {...{username: userName}} />
+            <LinkUsersLikedIndexPage {...props} {...{username: userName}} />
           )}
         />
       )}

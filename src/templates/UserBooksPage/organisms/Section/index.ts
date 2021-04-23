@@ -1,2 +1,12 @@
-export {Component as Section} from './Component';
-export type {ComponentProps as SectionProps} from './Component';
+export {BaseComponent} from './BaseComponent';
+export type {BaseComponentProps} from './BaseComponent';
+export {Component as SectionHaveBooks} from './SectionHave';
+export type {ComponentProps as SectionHaveBooksProps} from './SectionHave';
+export {Component as SectionReadBooks} from './SectionRead';
+export type {ComponentProps as SectionReadBooksProps} from './SectionRead';
+export {Component as SectionReadingBooks} from './SectionReading';
+export type {ComponentProps as SectionReadingBooksProps} from './SectionReading';
+export {Component as SectionStackedBooks} from './SectionStacked';
+export type {ComponentProps as SectionStackedBooksProps} from './SectionStacked';
+export {Component as SectionWishReadBooks} from './SectionWishRead';
+export type {ComponentProps as SectionWishReadBooksProps} from './SectionWishRead';

@@ -3,25 +3,34 @@ import React from 'react';
 import {Merge} from 'type-fest';
 import {Layout} from '~/components/atoms/Layout';
 import {ProfileMenu} from '../UserPage/organisms/ProfileMenu';
-import {Section} from './organisms/Section';
 import {TransformedProps} from './transform';
 
 export type BaseComponentProps = Merge<
   TransformedProps,
   {
     className?: string;
-    Header: React.VFC<{className?: string; count: number; displayName: string}>;
+    Section: React.VFC<{
+      className?: string;
+      displayName: string;
+      userName: string;
+      books: {id: string; title: string; cover?: string}[];
+      booksCount: number;
+      pageNumber: number;
+      pagesCount: number;
+    }>;
   }
 >;
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
-  Header,
+  Section,
   children,
   displayName,
   picture,
   userName,
   books,
   booksCount,
+  pageNumber,
+  pagesCount,
   records,
   readBooks,
   readingBooks,
@@ -55,7 +64,14 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
         <Section
           {...props}
           className={clsx('shadow-md')}
-          {...{booksCount, displayName, books, Header}}
+          {...{
+            booksCount,
+            displayName,
+            userName,
+            books,
+            pagesCount,
+            pageNumber,
+          }}
         />
       )}
     />
