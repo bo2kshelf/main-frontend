@@ -1,4 +1,4 @@
-import {graphqlSdk} from '~/lib/GraphQLRequest';
+import {graphqlSdk} from '~/graphql/api-public/graphql-request';
 import {getPathsForIndex} from '~/lib/UserBookPageCommon';
 import * as General from './[number]';
 
