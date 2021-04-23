@@ -1,4 +1,4 @@
-import {BookPageQuery} from '~/graphql/codegen/graphql-request';
+import {BookPageQuery} from '~/graphql/api-public/codegen/graphql-request';
 import {
   AuthorRole,
   authorsComparerByRoles,

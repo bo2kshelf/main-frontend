@@ -7,7 +7,10 @@ import {
 import {setContext} from '@apollo/client/link/context';
 import {ApolloProvider} from '@apollo/react-hooks';
 import React from 'react';
-import {AUTH_SERVER_TOKEN_ENDPOINT, GRAPHQL_API_ENDPOINT} from '~/lib/env';
+import {
+  AUTHENTICATED_API_ENDPOINT,
+  AUTH_SERVER_TOKEN_ENDPOINT,
+} from '~/lib/env';
 
 export const getToken = async (): Promise<string | void> => {
   return fetch(AUTH_SERVER_TOKEN_ENDPOINT, {
@@ -21,7 +24,7 @@ export const getToken = async (): Promise<string | void> => {
 
 export const ConfiguredApolloProvider: React.FC = ({children}) => {
   const httpLink = createHttpLink({
-    uri: GRAPHQL_API_ENDPOINT,
+    uri: AUTHENTICATED_API_ENDPOINT,
   });
 
   const authLink = setContext(async (_, {headers}) => {

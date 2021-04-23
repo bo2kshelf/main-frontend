@@ -71,6 +71,7 @@
     "@graphql-codegen/typescript-graphql-request": "3.0.0",
     "@graphql-codegen/typescript-operations": "1.17.13",
     "@graphql-codegen/typescript-react-apollo": "2.2.1",
+    "@graphql-eslint/eslint-plugin": "^0.9.1",
     "@shopify/stylelint-plugin": "10.0.1",
     "@storybook/addon-actions": "^6.1.14",
     "@storybook/addon-essentials": "^6.1.14",

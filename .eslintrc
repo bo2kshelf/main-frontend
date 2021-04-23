@@ -1,8 +1,7 @@
 {
   "root": true,
-  "extends": ["@bo2kshelf/eslint-config/next", "plugin:@bo2kshelf/graphql"],
+  "extends": ["@bo2kshelf/eslint-config/next"],
   "rules": {
-    "graphql/required-fields": [0],
     "@shopify/jsx-no-hardcoded-content": [1]
   }
 }

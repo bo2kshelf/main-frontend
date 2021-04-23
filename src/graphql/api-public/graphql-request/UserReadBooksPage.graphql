@@ -17,9 +17,11 @@ query UserReadBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
       hasNext
       hasPrevious
       nodes {
-        id
-        title
-        cover
+        book {
+          id
+          title
+          cover
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useEffectOnce} from 'react-use';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import {useGetCurrentUserLazyQuery} from '~/graphql/codegen/apollo';
+import {useGetCurrentUserLazyQuery} from '~/graphql/api-authenticated/codegen/apollo';
 import {currentUserLoadingState, currentUserState} from '~/states/CurrentUser';
 
 export const CurrentUser: React.FC = () => {

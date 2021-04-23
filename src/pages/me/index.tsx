@@ -1,6 +1,6 @@
 import {NextPage} from 'next';
 import React from 'react';
-import {usePersonalUserPageQuery} from '~/graphql/codegen/apollo';
+import {usePersonalUserPageQuery} from '~/graphql/api-authenticated/codegen/apollo';
 import {withPageLoggedIn} from '~/lib/withPageLoggedIn';
 import {LoadingPage} from '~/templates/LoadingPage';
 import {PersonalUserPage, transform} from '~/templates/PersonalUserPage';

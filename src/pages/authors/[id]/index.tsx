@@ -6,7 +6,7 @@ import {
 } from 'next';
 import {useRouter} from 'next/router';
 import React from 'react';
-import {graphqlSdk} from '~/lib/GraphQLRequest';
+import {graphqlSdk} from '~/graphql/api-public/graphql-request';
 import {AuthorPage, AuthorPageProps, transform} from '~/templates/AuthorPage';
 import {LoadingPage} from '~/templates/LoadingPage';
 
