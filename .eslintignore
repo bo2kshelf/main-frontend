@@ -8,6 +8,7 @@ dist/
 
 # codegen
 codegen/
+junit.xml
 
 # hygen
 !.hygen/

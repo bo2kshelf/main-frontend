@@ -1,8 +1,5 @@
 import {graphqlSdk} from '~/graphql/api-public/graphql-request';
-import {
-  getPathsForIndex,
-  UrlQueryForIndexPage,
-} from '~/templates/UserBooksPage';
+import {getPathsForIndex, UrlQueryForIndexPage} from '~/templates/UserBooks';
 import * as General from './[number]';
 
 export type UrlQuery = UrlQueryForIndexPage;

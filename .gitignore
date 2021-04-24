@@ -13,7 +13,7 @@ codegen/
 
 # test
 coverage/
-junit/
+junit.xml
 
 # cache
 .eslintcache

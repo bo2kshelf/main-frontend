@@ -1,7 +1,7 @@
 import {NextPage} from 'next';
 import {useRouter} from 'next/router';
 import React from 'react';
-import {LoadingPage} from '~/templates/LoadingPage';
+import {LoadingPage} from '~/templates/Loading';
 import {useCurrentUser} from './useCurrentUser';
 
 export function withPageLoggedIn(

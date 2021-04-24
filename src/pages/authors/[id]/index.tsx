@@ -7,8 +7,8 @@ import {
 import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/graphql/api-public/graphql-request';
-import {AuthorPage, AuthorPageProps, transform} from '~/templates/AuthorPage';
-import {LoadingPage} from '~/templates/LoadingPage';
+import {AuthorPage, AuthorPageProps, transform} from '~/templates/Author';
+import {LoadingPage} from '~/templates/Loading';
 
 export type UrlQuery = {id: string};
 
