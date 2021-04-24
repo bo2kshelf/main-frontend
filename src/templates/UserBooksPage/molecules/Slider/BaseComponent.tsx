@@ -1,51 +1,51 @@
 import clsx from 'clsx';
 import React from 'react';
-import {Left, Leftest, Right, Rightest} from '../../atoms/SliderButton';
 
 export type BaseComponentProps = {
   className?: string;
 
-  IndexLink: React.FC<{className?: string}>;
-  NumberedLink: React.FC<{className?: string; number: number}>;
+  userName: string;
 
   leftest: boolean;
   left?: number;
   right?: number;
   rightest?: number;
+
+  Leftest: React.VFC<{className?: string; userName: string; active: boolean}>;
+  Left: React.VFC<{className?: string; userName: string; number?: number}>;
+  Right: React.VFC<{className?: string; userName: string; number?: number}>;
+  Rightest: React.VFC<{className?: string; userName: string; number?: number}>;
 };
 
 export const BaseComponent: React.FC<BaseComponentProps> = ({
   className,
+  userName,
   leftest,
   left,
   right,
   rightest,
-  IndexLink,
-  NumberedLink,
+  Right,
+  Rightest,
+  Left,
+  Leftest,
 }) => (
   <div className={clsx(className, 'flex', 'justify-center', 'items-center')}>
     <div className={clsx('grid', 'grid-cols-4', 'gap-x-2')}>
       <Leftest
         className={clsx('col-start-1')}
+        userName={userName}
         active={leftest}
-        Link={({...props}) => <IndexLink {...props} />}
       />
-      <Left
-        className={clsx('col-start-2')}
-        number={left}
-        Link={({...props}) =>
-          left === 1 ? <IndexLink {...props} /> : <NumberedLink {...props} />
-        }
-      />
+      <Left className={clsx('col-start-2')} userName={userName} number={left} />
       <Right
         className={clsx('col-start-3')}
+        userName={userName}
         number={right}
-        Link={({...props}) => <NumberedLink {...props} />}
       />
       <Rightest
         className={clsx('col-start-4')}
+        userName={userName}
         number={rightest}
-        Link={({...props}) => <NumberedLink {...props} />}
       />
     </div>
   </div>

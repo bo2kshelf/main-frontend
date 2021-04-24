@@ -1,8 +1,10 @@
 import React from 'react';
 import {
-  LinkUsersHaveIndexPage,
-  LinkUsersHaveNumberedPage,
-} from '~/components/atoms/Link';
+  LeftestHave,
+  LeftHave,
+  RightestHave,
+  RightHave,
+} from '../../atoms/SliderButton';
 import {BaseComponent} from './BaseComponent';
 import {switcher} from './switcher';
 
@@ -14,16 +16,14 @@ export type ComponentProps = {
   right?: number;
   rightest?: number;
 };
-export const Component: React.FC<ComponentProps> = ({userName, ...props}) => {
+export const Component: React.FC<ComponentProps> = ({...props}) => {
   return (
     <BaseComponent
       {...props}
-      IndexLink={({...props}) => (
-        <LinkUsersHaveIndexPage {...props} username={userName} />
-      )}
-      NumberedLink={({...props}) => (
-        <LinkUsersHaveNumberedPage {...props} username={userName} />
-      )}
+      Leftest={(props) => <LeftestHave {...props} />}
+      Left={(props) => <LeftHave {...props} />}
+      Right={(props) => <RightHave {...props} />}
+      Rightest={(props) => <RightestHave {...props} />}
     />
   );
 };
