@@ -19,7 +19,7 @@ export type ComponentProps = {
   className?: string;
   active: boolean;
 };
-export const Component: React.VFC<ComponentProps> = ({className, ...props}) => {
+export const Component: React.VFC<ComponentProps> = ({...props}) => {
   return (
     <BaseComponent {...props} Icon={({...props}) => <IconLeft {...props} />} />
   );
