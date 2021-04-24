@@ -7,7 +7,7 @@ import {
 import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/graphql/api-public/graphql-request';
-import {LoadingPage} from '~/templates/LoadingPage';
+import {LoadingPage} from '~/templates/Loading';
 import {
   getPathsForNumbered,
   getVariables,
@@ -15,7 +15,7 @@ import {
   TransformedProps,
   transformReadingBooks,
   UrlQueryForNumberedPage,
-} from '~/templates/UserBooksPage';
+} from '~/templates/UserBooks';
 
 export type UrlQuery = UrlQueryForNumberedPage;
 
