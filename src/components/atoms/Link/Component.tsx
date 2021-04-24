@@ -21,47 +21,103 @@ export const LinkUsersIndexPage: React.FC<{
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}`} {...props} />
 );
-export const LinkUsersHavePage: React.FC<{
+
+export const LinkUsersHaveIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/have`} {...props} />
 );
-export const LinkUsersReadPage: React.FC<{
+export const LinkUsersHaveNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/have/${number}`} {...props} />
+);
+
+export const LinkUsersReadIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/read`} {...props} />
 );
-export const LinkUsersReadingPage: React.FC<{
+export const LinkUsersReadNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/read/${number}`} {...props} />
+);
+
+export const LinkUsersReadingIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/reading`} {...props} />
 );
-export const LinkUsersRecordsPage: React.FC<{
+export const LinkUsersReadingNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/reading/${number}`} {...props} />
+);
+
+export const LinkUsersRecordsIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/records`} {...props} />
 );
-export const LinkUsersStackedPage: React.FC<{
+export const LinkUsersRecordsNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/records/${number}`} {...props} />
+);
+
+export const LinkUsersStackedIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/stacked`} {...props} />
 );
-export const LinkUserWishPage: React.FC<{
+export const LinkUsersStackedNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/stacked/${number}`} {...props} />
+);
+
+export const LinkUserWishIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/wish`} {...props} />
 );
-export const LinkUsersLikedPage: React.FC<{
+export const LinkUserWishNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/wish/${number}`} {...props} />
+);
+
+export const LinkUsersLikedIndexPage: React.FC<{
   className?: string;
   username: string;
 }> = ({username, ...props}) => (
   <LinkBase href={`/users/${username}/liked`} {...props} />
+);
+export const LinkUsersLikedNumberedPage: React.FC<{
+  className?: string;
+  username: string;
+  number: number;
+}> = ({username, number, ...props}) => (
+  <LinkBase href={`/users/${username}/liked/${number}`} {...props} />
 );
 
 export const LinkMeIndexPage: React.FC<{

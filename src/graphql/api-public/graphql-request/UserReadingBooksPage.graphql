@@ -12,7 +12,13 @@ query UserReadingBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
     userName: uniqueName
     displayName
     picture
-    books: readingBooks(limit: $limit, skip: $skip) {
+    records {
+      count
+    }
+    readBooks {
+      count
+    }
+    readingBooks(limit: $limit, skip: $skip) {
       count
       hasNext
       hasPrevious
@@ -23,6 +29,15 @@ query UserReadingBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
           cover
         }
       }
+    }
+    wishesReadBooks {
+      count
+    }
+    hasBooks {
+      count
+    }
+    stackedBooks {
+      count
     }
   }
 }

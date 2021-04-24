@@ -7,35 +7,32 @@ import {
 import {useRouter} from 'next/router';
 import React from 'react';
 import {graphqlSdk} from '~/graphql/api-public/graphql-request';
-import {
-  getParams,
-  getPathsForNumbered,
-  UrlQuery,
-} from '~/lib/UserBookPageCommon';
 import {LoadingPage} from '~/templates/LoadingPage';
 import {
-  ReadContainer,
+  getPathsForNumbered,
+  getVariables,
+  TemplateReadBooks,
   TransformedProps,
-  transformRead,
+  transformReadBooks,
+  UrlQueryForNumberedPage,
 } from '~/templates/UserBooksPage';
 
+export type UrlQuery = UrlQueryForNumberedPage;
 export const getStaticPaths: GetStaticPaths<UrlQuery> = async () => {
-  return graphqlSdk
-    .AllUserReadBooksPage()
-    .then(({allUsers: allAccounts}) => getPathsForNumbered(allAccounts));
+  return graphqlSdk.AllUserReadBooksPage().then(getPathsForNumbered);
 };
 
 export const getStaticProps: GetStaticProps<
-  TransformedProps<'read'>,
+  TransformedProps,
   UrlQuery
 > = async ({params}) => {
   if (!params) throw new Error('Invalid parameters.');
 
-  const number = Number.parseInt(params.number, 10);
+  const variables = getVariables(params);
   return graphqlSdk
-    .UserReadBooksPage(getParams(params.username, number))
+    .UserReadBooksPage(variables)
     .then((data) => ({
-      props: transformRead(data, {number}),
+      props: transformReadBooks(data, variables),
       revalidate: 60,
     }))
     .catch(() => ({notFound: true}));
@@ -46,6 +43,6 @@ export const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
 ) => {
   const router = useRouter();
   if (router.isFallback) return <LoadingPage />;
-  return <ReadContainer {...props} />;
+  return <TemplateReadBooks {...props} />;
 };
 export default Page;
