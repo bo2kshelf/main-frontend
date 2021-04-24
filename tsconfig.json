@@ -16,8 +16,9 @@
     "paths": {
       "~/*": ["./src/*"],
       "~~/*": ["./*"]
-    }
+    },
+    "isolatedModules": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "docker"]
+  "exclude": ["node_modules"]
 }
