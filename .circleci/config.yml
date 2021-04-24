@@ -60,6 +60,22 @@ jobs:
       - run: yarn run codegen
       - run: yarn run ts-check
 
+  test:
+    docker:
+      - image: circleci/node:14.15.3
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run: yarn run codegen
+      - run:
+          command: |
+            yarn run test --ci \
+              --reporters=default --reporters=jest-junit \
+              --testResultsProcessor=jest-junit
+      - store_test_results:
+          path: ./junit.xml
+
 workflows:
   version: 2
   develop:
@@ -68,3 +84,6 @@ workflows:
       - lint-eslint
       - lint-prettier
       - lint-stylelint
+      - test:
+          requires:
+            - ts-check
