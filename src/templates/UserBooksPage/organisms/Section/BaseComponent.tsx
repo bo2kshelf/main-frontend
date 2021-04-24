@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {BookCoverLink} from '~/components/atoms/BookCoverLink';
+import {PageCounter} from '../../molecules/PageCounter';
 
 export type BaseComponentProps = {
   className?: string;
@@ -32,10 +33,16 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
 }) => (
   <section className={clsx(className, 'bg-white', 'py-6', 'px-12')}>
     <Header {...{displayName, count: booksCount}} />
-    <Slider
-      className={clsx('w-full')}
-      {...{userName, pageNumber, pagesCount}}
-    />
+    <div className={clsx('w-full', 'grid', 'grid-cols-4')}>
+      <Slider
+        className={clsx('col-start-2', 'col-span-2')}
+        {...{userName, pageNumber, pagesCount}}
+      />
+      <PageCounter
+        className={clsx('col-start-4', 'col-span-1')}
+        {...{pagesCount, pageNumber}}
+      />
+    </div>
     {booksCount > 0 && (
       <div
         className={clsx(
