@@ -18,10 +18,10 @@ export const Component: React.FC<ComponentProps> = ({userName, ...props}) => {
   return (
     <BaseComponent
       {...props}
-      IndexLink={({className, ...props}) => (
+      IndexLink={({...props}) => (
         <LinkUsersStackedIndexPage {...props} username={userName} />
       )}
-      NumberedLink={({className, ...props}) => (
+      NumberedLink={({...props}) => (
         <LinkUsersStackedNumberedPage {...props} username={userName} />
       )}
     />

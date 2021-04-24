@@ -1,11 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {
-  IconDoubleLeft,
-  IconDoubleRight,
-  IconLeft,
-  IconRight,
-} from '~/components/atoms/Icon/Component';
+import {Left, Leftest, Right, Rightest} from '../../atoms/SliderButton';
 
 export type BaseComponentProps = {
   className?: string;
@@ -29,32 +24,29 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
   NumberedLink,
 }) => (
   <div className={clsx(className, 'flex', 'justify-center', 'items-center')}>
-    <div className={clsx('grid', 'grid-cols-4')}>
-      {leftest && (
-        <IndexLink className={clsx('col-start-1')}>
-          <IconDoubleLeft />
-        </IndexLink>
-      )}
-      {left && left === 1 && (
-        <IndexLink className={clsx('col-start-2')}>
-          <IconLeft />
-        </IndexLink>
-      )}
-      {left && left !== 1 && (
-        <NumberedLink className={clsx('col-start-2')} number={left}>
-          <IconLeft />
-        </NumberedLink>
-      )}
-      {right && (
-        <NumberedLink className={clsx('col-start-3')} number={right}>
-          <IconRight />
-        </NumberedLink>
-      )}
-      {rightest && (
-        <NumberedLink className={clsx('col-start-4')} number={rightest}>
-          <IconDoubleRight />
-        </NumberedLink>
-      )}
+    <div className={clsx('grid', 'grid-cols-4', 'gap-x-2')}>
+      <Leftest
+        className={clsx('col-start-1')}
+        active={leftest}
+        Link={({...props}) => <IndexLink {...props} />}
+      />
+      <Left
+        className={clsx('col-start-2')}
+        number={left}
+        Link={({...props}) =>
+          left === 1 ? <IndexLink {...props} /> : <NumberedLink {...props} />
+        }
+      />
+      <Right
+        className={clsx('col-start-3')}
+        number={right}
+        Link={({...props}) => <NumberedLink {...props} />}
+      />
+      <Rightest
+        className={clsx('col-start-4')}
+        number={rightest}
+        Link={({...props}) => <NumberedLink {...props} />}
+      />
     </div>
   </div>
 );
