@@ -53,7 +53,7 @@ export const transform = ({
         cover: book.cover || undefined,
       })),
     },
-    wishReadBooks: {
+    wishBooks: {
       count: 0,
     },
   });

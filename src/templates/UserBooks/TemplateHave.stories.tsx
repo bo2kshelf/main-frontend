@@ -18,7 +18,7 @@ export default {
     likedBooks: {table: {disable: true}},
     haveBooks: {table: {disable: true}},
     stackedBooks: {table: {disable: true}},
-    wishReadBooks: {table: {disable: true}},
+    wishBooks: {table: {disable: true}},
   },
   parameters: {
     layout: 'fullscreen',

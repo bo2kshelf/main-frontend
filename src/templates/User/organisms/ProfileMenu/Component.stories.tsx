@@ -33,5 +33,5 @@ Primary.args = {
   readBooksCount: 95,
   haveBooksCount: 54,
   stackedBooksCount: 12,
-  wishReadBooksCount: 9,
+  wishBooksCount: 9,
 };

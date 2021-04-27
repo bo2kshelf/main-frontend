@@ -17,7 +17,7 @@ export default {
     likedBooks: {table: {disable: true}},
     haveBooks: {table: {disable: true}},
     stackedBooks: {table: {disable: true}},
-    wishReadBooks: {table: {disable: true}},
+    wishBooks: {table: {disable: true}},
   },
   parameters: {
     layout: 'fullscreen',
@@ -44,7 +44,7 @@ NewUser.args = {
   readBooks: {count: 0},
   haveBooks: {count: 0},
   stackedBooks: {count: 0},
-  wishReadBooks: {count: 0},
+  wishBooks: {count: 0},
 };
 NewUser.storyName = '新しいユーザー';
 
@@ -97,6 +97,6 @@ NormalUser.args = {
   readBooks: {count: 30},
   haveBooks: {count: 40},
   stackedBooks: {count: 10},
-  wishReadBooks: {count: 5},
+  wishBooks: {count: 5},
 };
 NormalUser.storyName = '一般的なユーザー';

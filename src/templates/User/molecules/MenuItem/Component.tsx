@@ -7,7 +7,7 @@ import {
   IconReadingBooks,
   IconRecord,
   IconStackedBooks,
-  IconWishReadBooks,
+  IconWishBooks,
 } from '~/components/atoms/Icon';
 import {
   LinkUsersHaveIndexPage,
@@ -95,7 +95,7 @@ export const StackedBooksComponent: React.FC<ComponentProps> = ({
     />
   );
 };
-export const WishReadBooksComponent: React.FC<ComponentProps> = ({
+export const WishBooksComponent: React.FC<ComponentProps> = ({
   count,
   ...props
 }) => {
@@ -104,7 +104,7 @@ export const WishReadBooksComponent: React.FC<ComponentProps> = ({
     <BaseComponent
       {...props}
       Link={LinkUserWishIndexPage}
-      Icon={IconWishReadBooks}
+      Icon={IconWishBooks}
       i18n={{text: t('common:wish_read_books'), count: `${count}`}}
     />
   );

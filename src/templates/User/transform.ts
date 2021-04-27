@@ -30,7 +30,7 @@ export type TransformedProps = {
   readBooks: {count: number};
   haveBooks: {count: number};
   stackedBooks: {count: number};
-  wishReadBooks: {count: number};
+  wishBooks: {count: number};
 };
 
 export const transform: (
@@ -83,7 +83,7 @@ export const transform: (
     readBooks: {
       count: user.readBooks.count,
     },
-    wishReadBooks: {
+    wishBooks: {
       count: user.wishBooks.count,
     },
   });

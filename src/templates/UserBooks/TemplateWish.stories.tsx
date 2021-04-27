@@ -3,10 +3,10 @@ import clsx from 'clsx';
 import React from 'react';
 import {random} from '~~/.storybook/assets';
 import {TemplateDecolator} from '~~/.storybook/TemplateDecolator';
-import {Component, ComponentProps} from './TemplateWishRead';
+import {Component, ComponentProps} from './TemplateWish';
 
 export default {
-  title: 'TemplateWishRead',
+  title: 'TemplateWish',
   component: Component,
   argTypes: {
     className: {table: {disable: true}},
@@ -18,7 +18,7 @@ export default {
     likedBooks: {table: {disable: true}},
     haveBooks: {table: {disable: true}},
     stackedBooks: {table: {disable: true}},
-    wishReadBooks: {table: {disable: true}},
+    wishBooks: {table: {disable: true}},
   },
   parameters: {
     layout: 'fullscreen',

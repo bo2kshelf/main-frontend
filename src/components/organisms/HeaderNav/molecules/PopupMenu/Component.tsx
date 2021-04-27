@@ -10,7 +10,7 @@ import {
   MenuItemReadRecords,
   MenuItemSettings,
   MenuItemStackedBooks,
-  MenuItemWishReadBooks,
+  MenuItemWishBooks,
 } from '../PopupMenuItem';
 import {PopupMenuProfile} from '../PopupMenuProfile';
 
@@ -45,7 +45,7 @@ const UnstyledComponent: React.VFC<ComponentProps> = ({
       <MenuItemHaveBooks className={clsx('col-span-1', 'col-start-2')} />
 
       <MenuItemLikedBooks className={clsx('col-span-1', 'col-start-1')} />
-      <MenuItemWishReadBooks className={clsx('col-span-1', 'col-start-2')} />
+      <MenuItemWishBooks className={clsx('col-span-1', 'col-start-2')} />
 
       <MenuItemSettings className={clsx('col-span-1', 'col-start-1')} />
       <MenuItemLogout className={clsx('col-span-1', 'col-start-2')} />

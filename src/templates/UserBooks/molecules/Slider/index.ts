@@ -33,10 +33,10 @@ export type {
   ContainerProps as SliderStackedBooksProps,
 } from './SliderStacked';
 export {
-  Component as SliderWishReadBooksComponent,
-  Container as SliderWishReadBooks,
-} from './SliderWishRead';
+  Component as SliderWishBooksComponent,
+  Container as SliderWishBooks,
+} from './SliderWish';
 export type {
-  ComponentProps as SliderWishReadBooksComponentProps,
-  ContainerProps as SliderWishReadBooksProps,
-} from './SliderWishRead';
+  ComponentProps as SliderWishBooksComponentProps,
+  ContainerProps as SliderWishBooksProps,
+} from './SliderWish';

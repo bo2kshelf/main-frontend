@@ -8,5 +8,5 @@ export {Component as SectionReadingBooks} from './SectionReading';
 export type {ComponentProps as SectionReadingBooksProps} from './SectionReading';
 export {Component as SectionStackedBooks} from './SectionStacked';
 export type {ComponentProps as SectionStackedBooksProps} from './SectionStacked';
-export {Component as SectionWishReadBooks} from './SectionWishRead';
-export type {ComponentProps as SectionWishReadBooksProps} from './SectionWishRead';
+export {Component as SectionWishBooks} from './SectionWish';
+export type {ComponentProps as SectionWishBooksProps} from './SectionWish';

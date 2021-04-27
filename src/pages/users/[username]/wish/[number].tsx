@@ -11,9 +11,9 @@ import {LoadingPage} from '~/templates/Loading';
 import {
   getPathsForNumbered,
   getVariables,
-  TemplateWishReadBooks,
+  TemplateWishBooks,
   TransformedProps,
-  transformWishReadBooks,
+  transformWishBooks,
   UrlQueryForNumberedPage,
 } from '~/templates/UserBooks';
 
@@ -31,9 +31,9 @@ export const getStaticProps: GetStaticProps<
 
   const variables = getVariables(params);
   return graphqlSdk
-    .UserWishReadBooksPage(variables)
+    .UserWishBooksPage(variables)
     .then((data) => ({
-      props: transformWishReadBooks(data, variables),
+      props: transformWishBooks(data, variables),
       revalidate: 60,
     }))
     .catch(() => ({notFound: true}));
@@ -44,6 +44,6 @@ export const Page: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (
 ) => {
   const router = useRouter();
   if (router.isFallback) return <LoadingPage />;
-  return <TemplateWishReadBooks {...props} />;
+  return <TemplateWishBooks {...props} />;
 };
 export default Page;

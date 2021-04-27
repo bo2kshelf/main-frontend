@@ -7,6 +7,6 @@ export {
   ReadingBooksComponent as ReadingBooksItem,
   ReadRecordsComponent as ReadRecordsItem,
   StackedBooksComponent as StackedBooksItem,
-  WishReadBooksComponent as WishReadBooksItem,
+  WishBooksComponent as WishBooksItem,
 } from './Component';
 export type {ComponentProps as MenuItemProps} from './Component';

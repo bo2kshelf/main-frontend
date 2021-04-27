@@ -1,4 +1,4 @@
-query AllUserWishReadBooksPage {
+query AllUserWishBooksPage {
   allUsers {
     userName: uniqueName
     books: wishBooks {
@@ -7,7 +7,7 @@ query AllUserWishReadBooksPage {
   }
 }
 
-query UserWishReadBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
+query UserWishBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
   user(uniqueName: $userName) {
     userName: uniqueName
     displayName

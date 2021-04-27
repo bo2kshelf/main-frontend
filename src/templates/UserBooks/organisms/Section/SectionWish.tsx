@@ -1,6 +1,6 @@
 import React from 'react';
-import {HeaderWishReadBooks} from '../../molecules/Header';
-import {SliderWishReadBooks} from '../../molecules/Slider';
+import {HeaderWishBooks} from '../../molecules/Header';
+import {SliderWishBooks} from '../../molecules/Slider';
 import {BaseComponent} from './BaseComponent';
 
 export type ComponentProps = {
@@ -15,7 +15,7 @@ export type ComponentProps = {
 export const Component: React.FC<ComponentProps> = ({...props}) => (
   <BaseComponent
     {...props}
-    Header={({...props}) => <HeaderWishReadBooks {...props} />}
-    Slider={({...props}) => <SliderWishReadBooks {...props} />}
+    Header={({...props}) => <HeaderWishBooks {...props} />}
+    Slider={({...props}) => <SliderWishBooks {...props} />}
   />
 );

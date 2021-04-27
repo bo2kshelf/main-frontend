@@ -3,7 +3,7 @@ import {
   UserReadBooksPageQuery,
   UserReadingBooksPageQuery,
   UserStackedBooksPageQuery,
-  UserWishReadBooksPageQuery,
+  UserWishBooksPageQuery,
 } from '~/graphql/api-public/codegen/graphql-request';
 import {avoidUndefined} from '~/lib/utils';
 import {countPages} from './transform-pages';
@@ -198,8 +198,8 @@ export const transformStackedBooks: (
     likedBooks: {count: 0},
   });
 
-export const transformWishReadBooks: (
-  result: UserWishReadBooksPageQuery,
+export const transformWishBooks: (
+  result: UserWishBooksPageQuery,
   query: {pageNumber: number; skip: number; limit: number},
 ) => TransformedProps = (
   {

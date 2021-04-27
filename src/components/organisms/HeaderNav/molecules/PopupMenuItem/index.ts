@@ -9,6 +9,6 @@ export {
   ItemReadRecordsComponent as MenuItemReadRecords,
   ItemSettingsComponent as MenuItemSettings,
   ItemStackedBooksComponent as MenuItemStackedBooks,
-  ItemWishReadBooksComponent as MenuItemWishReadBooks,
+  ItemWishBooksComponent as MenuItemWishBooks,
 } from './Component';
 export type {ComponentProps} from './Component';

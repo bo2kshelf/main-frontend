@@ -40,7 +40,7 @@ export const IconReadBooks: ComponentType = ({className}) => (
 export const IconStackedBooks: ComponentType = ({className}) => (
   <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faLayerGroup} />
 );
-export const IconWishReadBooks: ComponentType = ({className}) => (
+export const IconWishBooks: ComponentType = ({className}) => (
   <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faEye} />
 );
 export const IconLikedBooks: ComponentType = ({className}) => (
