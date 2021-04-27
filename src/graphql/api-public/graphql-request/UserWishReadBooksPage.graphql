@@ -1,7 +1,7 @@
 query AllUserWishReadBooksPage {
   allUsers {
     userName: uniqueName
-    books: wishesReadBooks {
+    books: wishBooks {
       count
     }
   }
@@ -21,7 +21,7 @@ query UserWishReadBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
     readingBooks {
       count
     }
-    wishesReadBooks(limit: $limit, skip: $skip) {
+    wishBooks(limit: $limit, skip: $skip) {
       count
       hasNext
       hasPrevious
@@ -33,7 +33,7 @@ query UserWishReadBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
         }
       }
     }
-    hasBooks {
+    haveBooks {
       count
     }
     stackedBooks {

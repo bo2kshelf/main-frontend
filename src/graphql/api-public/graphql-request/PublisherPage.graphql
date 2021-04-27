@@ -8,7 +8,7 @@ query PublisherPage($id: ID!) {
   publisher(id: $id) {
     id
     name
-    publications(limit: 96) {
+    publishedBooks(limit: 96) {
       nodes {
         book {
           id
