@@ -13,7 +13,7 @@ export const transform: (result: PublisherPageQuery) => TransformedProps = ({
   avoidUndefined({
     id: publisher.id,
     name: publisher.name,
-    books: publisher.publications.nodes.map(({book}) => ({
+    books: publisher.publishedBooks.nodes.map(({book}) => ({
       ...book,
       cover: book.cover || undefined,
     })),

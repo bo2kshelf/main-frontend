@@ -48,13 +48,13 @@ export const transform: (result: BookPageQuery) => TransformedProps = ({
     subtitle: book.subtitle || undefined,
     isbn: book.isbn || undefined,
     cover: book.cover || undefined,
-    authors: [...book.writedBy]
+    authors: [...book.writtenBy]
       .sort(authorsComparerByRoles)
       .map(({author, roles}) => ({
         id: author.id,
         name: author.name,
         roles: [...roles].sort(rolesPriorityComparer),
-        books: author.writed.nodes.map(({book}) => ({
+        books: author.wroteBooks.nodes.map(({book}) => ({
           ...book,
           cover: book.cover || undefined,
         })),
@@ -63,7 +63,7 @@ export const transform: (result: BookPageQuery) => TransformedProps = ({
       (publisher) => ({
         id: publisher.id,
         name: publisher.name,
-        books: publisher.publications.nodes.map(({book}) => ({
+        books: publisher.publishedBooks.nodes.map(({book}) => ({
           id: book.id,
           title: book.title,
           cover: book.cover || undefined,
@@ -73,7 +73,7 @@ export const transform: (result: BookPageQuery) => TransformedProps = ({
     series: book.seriesOf.map(({series}) => ({
       id: series.id,
       title: series.title,
-      books: series.parts.nodes.map(({book}) => ({
+      books: series.seriesBooks.nodes.map(({book}) => ({
         ...book,
         cover: book.cover || undefined,
       })),

@@ -27,7 +27,7 @@ export type TransformedProps = {
   readBooks: {count: number};
   haveBooks: {count: number};
   stackedBooks: {count: number};
-  wishReadBooks: {count: number};
+  wishBooks: {count: number};
 };
 
 export const transformHaveBooks: (
@@ -42,8 +42,8 @@ export const transformHaveBooks: (
       records,
       readBooks,
       readingBooks,
-      wishesReadBooks,
-      hasBooks: {count, nodes},
+      wishBooks,
+      haveBooks: {count, nodes},
       stackedBooks,
     },
   },
@@ -66,7 +66,7 @@ export const transformHaveBooks: (
     records,
     readBooks,
     readingBooks,
-    wishReadBooks: wishesReadBooks,
+    wishBooks,
     haveBooks: {count},
     stackedBooks,
     likedBooks: {count: 0},
@@ -84,8 +84,8 @@ export const transformReadBooks: (
       records,
       readBooks: {count, nodes},
       readingBooks,
-      wishesReadBooks,
-      hasBooks,
+      wishBooks,
+      haveBooks,
       stackedBooks,
     },
   },
@@ -108,8 +108,8 @@ export const transformReadBooks: (
     records,
     readBooks: {count},
     readingBooks,
-    wishReadBooks: wishesReadBooks,
-    haveBooks: hasBooks,
+    wishBooks,
+    haveBooks,
     stackedBooks,
     likedBooks: {count: 0},
   });
@@ -126,8 +126,8 @@ export const transformReadingBooks: (
       records,
       readBooks,
       readingBooks: {count, nodes},
-      wishesReadBooks,
-      hasBooks,
+      wishBooks,
+      haveBooks,
       stackedBooks,
     },
   },
@@ -150,8 +150,8 @@ export const transformReadingBooks: (
     records,
     readBooks,
     readingBooks: {count},
-    wishReadBooks: wishesReadBooks,
-    haveBooks: hasBooks,
+    wishBooks,
+    haveBooks,
     stackedBooks,
     likedBooks: {count: 0},
   });
@@ -168,8 +168,8 @@ export const transformStackedBooks: (
       records,
       readBooks,
       readingBooks,
-      wishesReadBooks,
-      hasBooks,
+      wishBooks,
+      haveBooks,
       stackedBooks: {count, nodes},
     },
   },
@@ -192,8 +192,8 @@ export const transformStackedBooks: (
     records,
     readBooks,
     readingBooks,
-    wishReadBooks: wishesReadBooks,
-    haveBooks: hasBooks,
+    wishBooks,
+    haveBooks,
     stackedBooks: {count},
     likedBooks: {count: 0},
   });
@@ -210,8 +210,8 @@ export const transformWishReadBooks: (
       records,
       readBooks,
       readingBooks,
-      wishesReadBooks: {count, nodes},
-      hasBooks,
+      wishBooks: {count, nodes},
+      haveBooks,
       stackedBooks,
     },
   },
@@ -234,8 +234,8 @@ export const transformWishReadBooks: (
     records,
     readBooks,
     readingBooks,
-    wishReadBooks: {count},
-    haveBooks: hasBooks,
+    wishBooks: {count},
+    haveBooks,
     stackedBooks,
     likedBooks: {count: 0},
   });

@@ -18,7 +18,7 @@ export const transform: (result: AuthorPageQuery) => TransformedProps = ({
   avoidUndefined({
     id: author.id,
     name: author.name,
-    books: author.writed.nodes.map(({book}) => ({
+    books: author.wroteBooks.nodes.map(({book}) => ({
       ...book,
       cover: book.cover || undefined,
     })),

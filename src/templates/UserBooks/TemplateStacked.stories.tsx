@@ -54,7 +54,7 @@ NormalUser.args = {
   readBooks: {count: 10},
   readingBooks: {count: 10},
   stackedBooks: {count: 64},
-  wishReadBooks: {count: 10},
+  wishBooks: {count: 10},
   likedBooks: {count: 10},
 };
 NormalUser.storyName = '一般的なユーザー';

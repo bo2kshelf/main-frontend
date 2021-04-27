@@ -75,7 +75,7 @@ export const transform: (
     },
     likedBooks: {count: 0, hasNext: false, books: []},
     haveBooks: {
-      count: user.hasBooks.count,
+      count: user.haveBooks.count,
     },
     stackedBooks: {
       count: user.stackedBooks.count,
@@ -84,6 +84,6 @@ export const transform: (
       count: user.readBooks.count,
     },
     wishReadBooks: {
-      count: user.wishesReadBooks.count,
+      count: user.wishBooks.count,
     },
   });
