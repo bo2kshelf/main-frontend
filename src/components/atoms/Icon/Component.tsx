@@ -16,6 +16,7 @@ import {
   faLanguage,
   faLayerGroup,
   faPenNib,
+  faRedoAlt,
   faSignInAlt,
   faSignOutAlt,
 } from '@fortawesome/free-solid-svg-icons';
@@ -103,4 +104,12 @@ export const IconDoubleRight: ComponentType = ({className}) => (
     fixedWidth
     icon={faAngleDoubleRight}
   />
+);
+
+export const IconCount: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faRedoAlt} />
+);
+
+export const IconBook: ComponentType = ({className}) => (
+  <FontAwesomeIcon className={clsx(className)} fixedWidth icon={faBook} />
 );

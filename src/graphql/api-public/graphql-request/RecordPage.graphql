@@ -1,0 +1,32 @@
+query AllRecordPages {
+  allRecords {
+    id
+  }
+}
+
+query RecordPage($id: ID!) {
+  record(id: $id) {
+    id
+    readAt
+    book {
+      id
+      title
+      subtitle
+      isbn(dehyphenize: true)
+      cover
+      writtenBy {
+        author {
+          id
+          name
+        }
+        roles
+      }
+    }
+    user {
+      id
+      displayName
+      uniqueName
+      picture
+    }
+  }
+}

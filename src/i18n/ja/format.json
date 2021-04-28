@@ -2,5 +2,6 @@
   "date": "{{date, YYYY年M月D日}}",
   "record_date": "{{date, YYYY年M月D日}}",
   "record_date_unknown": "記録日不明",
-  "pages": "{{pages}}ページ"
+  "pages": "{{pages}}ページ",
+  "count": "{{count}}回目"
 }
