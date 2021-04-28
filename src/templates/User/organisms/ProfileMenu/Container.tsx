@@ -11,7 +11,7 @@ export type ContainerProps = {
   readingBooks: {count: number};
   stackedBooks: {count: number};
   haveBooks: {count: number};
-  wishReadBooks: {count: number};
+  wishBooks: {count: number};
   likedBooks: {count: number};
 };
 export const Container: React.FC<ContainerProps> = ({
@@ -20,7 +20,7 @@ export const Container: React.FC<ContainerProps> = ({
   readingBooks,
   stackedBooks,
   haveBooks,
-  wishReadBooks,
+  wishBooks,
   likedBooks,
   ...props
 }) => {
@@ -32,7 +32,7 @@ export const Container: React.FC<ContainerProps> = ({
       readingBooksCount={readingBooks.count}
       haveBooksCount={haveBooks.count}
       stackedBooksCount={stackedBooks.count}
-      wishReadBooksCount={wishReadBooks.count}
+      wishBooksCount={wishBooks.count}
       likedBooksCount={likedBooks.count}
     />
   );

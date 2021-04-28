@@ -19,7 +19,7 @@ export const Component: React.FC<ComponentProps> = ({
   readingBooks,
   stackedBooks,
   haveBooks,
-  wishReadBooks,
+  wishBooks,
   likedBooks,
 }) => (
   <main className={clsx(className)}>
@@ -38,7 +38,7 @@ export const Component: React.FC<ComponentProps> = ({
             readingBooks,
             stackedBooks,
             haveBooks,
-            wishReadBooks,
+            wishBooks,
             likedBooks,
           }}
         />

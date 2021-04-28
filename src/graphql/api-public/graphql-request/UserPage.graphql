@@ -42,10 +42,10 @@ query UserPage($userName: String!, $recordLimit: Int!, $recordSkip: Int!) {
         }
       }
     }
-    wishesReadBooks {
+    wishBooks {
       count
     }
-    hasBooks {
+    haveBooks {
       count
     }
     stackedBooks {

@@ -7,7 +7,7 @@ import {
   ReadingBooksItem,
   ReadRecordsItem,
   StackedBooksItem,
-  WishReadBooksItem,
+  WishBooksItem,
 } from '../../molecules/MenuItem';
 import {UserBox} from '../../molecules/UserBox';
 
@@ -21,7 +21,7 @@ export type ComponentProps = {
   readingBooksCount: number;
   stackedBooksCount: number;
   haveBooksCount: number;
-  wishReadBooksCount: number;
+  wishBooksCount: number;
   likedBooksCount: number;
 };
 export const Component: React.FC<ComponentProps> = ({
@@ -34,7 +34,7 @@ export const Component: React.FC<ComponentProps> = ({
   readingBooksCount,
   stackedBooksCount,
   haveBooksCount,
-  wishReadBooksCount,
+  wishBooksCount,
   likedBooksCount,
 }) => (
   <nav className={clsx(className, 'bg-white', 'flex', 'flex-col')}>
@@ -79,10 +79,10 @@ export const Component: React.FC<ComponentProps> = ({
         userName={userName}
         count={stackedBooksCount}
       />
-      <WishReadBooksItem
+      <WishBooksItem
         className={clsx('w-full')}
         userName={userName}
-        count={wishReadBooksCount}
+        count={wishBooksCount}
       />
       <LikedBooksItem
         className={clsx('w-full')}

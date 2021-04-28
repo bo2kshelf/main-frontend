@@ -36,7 +36,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
   readingBooks,
   stackedBooks,
   haveBooks,
-  wishReadBooks,
+  wishBooks,
   likedBooks,
 }) => (
   <main className={clsx(className)}>
@@ -55,7 +55,7 @@ export const BaseComponent: React.FC<BaseComponentProps> = ({
             readingBooks,
             stackedBooks,
             haveBooks,
-            wishReadBooks,
+            wishBooks,
             likedBooks,
           }}
         />

@@ -8,7 +8,7 @@ query AuthorPage($id: ID!) {
   author(id: $id) {
     id
     name
-    writed(limit: 36) {
+    wroteBooks(limit: 36) {
       nodes {
         roles
         book {

@@ -9,7 +9,7 @@ import {
   ReadingBooksComponent,
   ReadRecordsComponent,
   StackedBooksComponent,
-  WishReadBooksComponent,
+  WishBooksComponent,
 } from './Component';
 
 export default {
@@ -39,8 +39,8 @@ export const StackedBooks: Story<ComponentProps> = (args) => (
   <StackedBooksComponent {...args} className={clsx('w-80')} />
 );
 
-export const WishReadBooks: Story<ComponentProps> = (args) => (
-  <WishReadBooksComponent {...args} className={clsx('w-80')} />
+export const WishBooks: Story<ComponentProps> = (args) => (
+  <WishBooksComponent {...args} className={clsx('w-80')} />
 );
 export const LikedBooks: Story<ComponentProps> = (args) => (
   <LikedBooksComponent {...args} className={clsx('w-80')} />

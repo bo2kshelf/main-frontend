@@ -10,7 +10,7 @@ import {
   ItemReadRecordsComponent,
   ItemSettingsComponent,
   ItemStackedBooksComponent,
-  ItemWishReadBooksComponent,
+  ItemWishBooksComponent,
 } from './Component';
 
 export default {
@@ -38,10 +38,10 @@ export const ReadingBooks: Story<ComponentProps> = (args) => (
 );
 ReadingBooks.storyName = '読んでいる本';
 
-export const WishReadBooks: Story<ComponentProps> = (args) => (
-  <ItemWishReadBooksComponent {...args} className={clsx('w-40')} />
+export const WishBooks: Story<ComponentProps> = (args) => (
+  <ItemWishBooksComponent {...args} className={clsx('w-40')} />
 );
-WishReadBooks.storyName = '読みたい本';
+WishBooks.storyName = '読みたい本';
 
 export const StackedBooks: Story<ComponentProps> = (args) => (
   <ItemStackedBooksComponent {...args} className={clsx('w-40')} />

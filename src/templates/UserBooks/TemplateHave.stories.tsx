@@ -18,7 +18,7 @@ export default {
     likedBooks: {table: {disable: true}},
     haveBooks: {table: {disable: true}},
     stackedBooks: {table: {disable: true}},
-    wishReadBooks: {table: {disable: true}},
+    wishBooks: {table: {disable: true}},
   },
   parameters: {
     layout: 'fullscreen',
@@ -53,7 +53,7 @@ NormalUser.args = {
   readBooks: {count: 10},
   readingBooks: {count: 10},
   stackedBooks: {count: 10},
-  wishReadBooks: {count: 10},
+  wishBooks: {count: 10},
   likedBooks: {count: 10},
 };
 NormalUser.storyName = '一般的なユーザー';

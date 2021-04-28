@@ -33,19 +33,19 @@ export type {
   ContainerProps as TemplateStackedBooksProps,
 } from './TemplateStacked';
 export {
-  Component as TemplateWishReadBooksComponent,
-  Container as TemplateWishReadBooks,
-} from './TemplateWishRead';
+  Component as TemplateWishBooksComponent,
+  Container as TemplateWishBooks,
+} from './TemplateWish';
 export type {
-  ComponentProps as TemplateWishReadBooksComponentProps,
-  ContainerProps as TemplateWishReadBooksProps,
-} from './TemplateWishRead';
+  ComponentProps as TemplateWishBooksComponentProps,
+  ContainerProps as TemplateWishBooksProps,
+} from './TemplateWish';
 export {
   transformHaveBooks,
   transformReadBooks,
   transformReadingBooks,
   transformStackedBooks,
-  transformWishReadBooks,
+  transformWishBooks,
 } from './transform';
 export type {TransformedProps} from './transform';
 export {

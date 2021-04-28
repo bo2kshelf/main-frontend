@@ -14,7 +14,7 @@ query BookPage($id: ID!) {
     publishedBy {
       id
       name
-      publications(limit: 8, except: [$id]) {
+      publishedBooks(limit: 8, except: [$id]) {
         nodes {
           book {
             id
@@ -24,11 +24,11 @@ query BookPage($id: ID!) {
         }
       }
     }
-    writedBy {
+    writtenBy {
       author {
         id
         name
-        writed(limit: 8, except: [$id]) {
+        wroteBooks(limit: 8, except: [$id]) {
           nodes {
             book {
               id
@@ -44,7 +44,7 @@ query BookPage($id: ID!) {
       series {
         id
         title
-        parts(limit: 16, orderBy: ASC) {
+        seriesBooks(limit: 16, orderBy: ASC) {
           nodes {
             book {
               id

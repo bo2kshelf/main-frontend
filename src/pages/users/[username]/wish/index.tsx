@@ -5,7 +5,7 @@ import * as General from './[number]';
 export type UrlQuery = UrlQueryForIndexPage;
 
 export const getStaticPaths = async () => {
-  return graphqlSdk.AllUserWishReadBooksPage().then(getPathsForIndex);
+  return graphqlSdk.AllUserWishBooksPage().then(getPathsForIndex);
 };
 
 export const getStaticProps: typeof General.getStaticProps = async ({

@@ -8,5 +8,5 @@ export {Component as HeaderReadingBooks} from './HeaderReading';
 export type {ComponentProps as HeaderReadingBooksProps} from './HeaderReading';
 export {Component as HeaderStackedBooks} from './HeaderStacked';
 export type {ComponentProps as HeaderStackedBooksProps} from './HeaderStacked';
-export {Component as HeaderWishReadBooks} from './HeaderWishRead';
-export type {ComponentProps as HeaderWishReadBooksProps} from './HeaderWishRead';
+export {Component as HeaderWishBooks} from './HeaderWish';
+export type {ComponentProps as HeaderWishBooksProps} from './HeaderWish';

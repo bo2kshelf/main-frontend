@@ -5,7 +5,7 @@ import {
   IconReadBooks,
   IconReadingBooks,
   IconStackedBooks,
-  IconWishReadBooks,
+  IconWishBooks,
 } from '~/components/atoms/Icon';
 import {
   IconLikedBooks,
@@ -81,7 +81,7 @@ export const ItemReadingBooksComponent: React.FC<ComponentProps> = ({
   );
 };
 
-export const ItemWishReadBooksComponent: React.FC<ComponentProps> = ({
+export const ItemWishBooksComponent: React.FC<ComponentProps> = ({
   ...props
 }) => {
   const {t} = useTranslation();
@@ -90,7 +90,7 @@ export const ItemWishReadBooksComponent: React.FC<ComponentProps> = ({
       {...props}
       i18n={{text: t('common:wish_read_books')}}
       Link={LinkMeWishPage}
-      Icon={IconWishReadBooks}
+      Icon={IconWishBooks}
     />
   );
 };

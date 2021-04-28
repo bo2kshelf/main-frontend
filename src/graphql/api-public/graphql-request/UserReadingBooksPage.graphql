@@ -30,10 +30,10 @@ query UserReadingBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
         }
       }
     }
-    wishesReadBooks {
+    wishBooks {
       count
     }
-    hasBooks {
+    haveBooks {
       count
     }
     stackedBooks {
