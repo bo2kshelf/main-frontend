@@ -10,5 +10,6 @@
   "book_page": "{{title}}：本 - bo2kshelf",
   "series_page": "{{title}}：シリーズ - bo2kshelf",
   "author_page": "{{name}}：著者 - bo2kshelf",
-  "publisher_page": "{{name}}：出版社 - bo2kshelf"
+  "publisher_page": "{{name}}：出版社 - bo2kshelf",
+  "record_page": "{{user}}による{{book}}の記録 - bo2kshelf"
 }
