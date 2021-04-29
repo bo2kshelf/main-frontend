@@ -31,15 +31,24 @@ export const getPathsForNumbered = (result: {
   fallback: false,
 });
 
-export const getVariables = ({username, number}: UrlQueryForNumberedPage) => {
-  const pageNumber = Number.parseInt(number, 10);
+export const getVariablesForCursor = ({
+  username,
+  number,
+}: UrlQueryForNumberedPage) => {
   return {
     userName: username,
-    pageNumber,
-    limit: RECORDS_PER_PAGE,
-    skip: RECORDS_PER_PAGE * (pageNumber - 1),
+    first: RECORDS_PER_PAGE * (Number.parseInt(number, 10) - 1),
   };
 };
+
+export const transformCursorToPageVariables = (
+  data: {user: {books: {pageInfo: {endCursor?: string | null | undefined}}}},
+  {username}: UrlQueryForNumberedPage,
+) => ({
+  userName: username,
+  first: RECORDS_PER_PAGE,
+  after: data.user.books.pageInfo.endCursor,
+});
 
 export const countPages = (bookCount: number): number => {
   return Math.ceil(bookCount / RECORDS_PER_PAGE);

@@ -47,8 +47,6 @@ NormalUser.args = {
   booksCount: 64,
   pageNumber: 1,
   pagesCount: 2,
-  skip: 0,
-  limit: 0,
   records: {count: 10},
   haveBooks: {count: 10},
   readBooks: {count: 10},

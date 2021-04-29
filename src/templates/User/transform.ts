@@ -43,11 +43,11 @@ export const transform: (
     picture: user.picture,
     records: {
       count: user.records.count,
-      hasNext: user.records.hasNext,
+      hasNext: Boolean(user.records.pageInfo.hasNextPage),
       limit: recordLimit,
       skip: recordSkip,
-      nodes: user.records.nodes.map(
-        ({id, readAt, book: recordBook, user: recordUser}) => ({
+      nodes: user.records.edges.map(
+        ({node: {id, readAt, book: recordBook, user: recordUser}}) => ({
           id,
           readAt: readAt || undefined,
           user: {
@@ -66,8 +66,8 @@ export const transform: (
     },
     readingBooks: {
       count: user.readingBooks.count,
-      hasNext: user.readingBooks.hasNext,
-      books: user.readingBooks.nodes.map(({book}) => ({
+      hasNext: Boolean(user.readingBooks.pageInfo.hasNextPage),
+      books: user.readingBooks.edges.map(({node: {book}}) => ({
         id: book.id,
         title: book.title,
         cover: book.cover || undefined,

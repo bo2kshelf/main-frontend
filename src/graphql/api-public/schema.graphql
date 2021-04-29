@@ -6,12 +6,12 @@ type User {
   uniqueName: String!
   displayName: String!
   picture: String!
-  records(skip: Int = 0, limit: Int = 0, orderBy: UserRecordsArgsOrderBy = {readAt: DESC}): UserRecordsReturnType!
-  haveBooks(skip: Int = 0, limit: Int = 0, orderBy: UserHaveBooksArgsOrderBy = {updatedAt: DESC}): UserHaveBooksReturnType!
-  readBooks(skip: Int = 0, limit: Int = 0, orderBy: UserReadBooksArgsOrderBy = {title: ASC}): UserReadBooksReturnType!
-  readingBooks(skip: Int = 0, limit: Int = 0, orderBy: UserReadingBooksArgsOrderBy = {updatedAt: DESC}): UserReadingBooksReturnType!
-  stackedBooks(skip: Int = 0, limit: Int = 0, orderBy: UserStackedBooksArgsOrderBy = {updatedAt: DESC}): UserStackedBooksReturnType!
-  wishBooks(skip: Int = 0, limit: Int = 0, orderBy: UserWishBooksArgsOrderBy = {updatedAt: DESC}): UserWishBooksReturnType!
+  records(after: String, first: Int, before: String, last: Int, orderBy: UserRecordsArgsOrderBy = {readAt: DESC}): UserRecordConnection!
+  haveBooks(after: String, first: Int, before: String, last: Int, orderBy: UserHaveBooksArgsOrderBy = {updatedAt: DESC}): UserHaveBookConnection!
+  readBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadBooksArgsOrderBy = {title: ASC}): UserReadBookConnection!
+  readingBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadingBooksArgsOrderBy = {updatedAt: DESC}): UserReadingBookConnection!
+  stackedBooks(after: String, first: Int, before: String, last: Int, orderBy: UserStackedBooksArgsOrderBy = {updatedAt: DESC}): UserStackedBookConnection!
+  wishBooks(after: String, first: Int, before: String, last: Int, orderBy: UserWishBooksArgsOrderBy = {updatedAt: DESC}): UserWishBooksConnection!
 }
 type Author {
   id: ID!
@@ -185,93 +185,114 @@ type Writing {
 }
 """A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
 scalar DateTime
-type HaveBook {
-  have: Boolean!
-  updatedAt: DateTime!
-  user: User!
-  book: Book!
-}
 """A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
 scalar LocalDate
-type ReadBook {
-  user: User!
-  book: Book!
+type PageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean
+  hasNextPage: Boolean
 }
-type ReadingBook {
-  reading: Boolean!
+type UserHaveBook {
   updatedAt: DateTime!
   user: User!
   book: Book!
 }
-type Record {
+type UserHaveBookConnection {
+  edges: [UserHaveBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserHaveBookEdge {
+  cursor: String!
+  node: UserHaveBook!
+}
+input UserHaveBooksArgsOrderBy {
+  updatedAt: OrderBy
+}
+type UserReadBook {
+  user: User!
+  book: Book!
+}
+type UserReadBookConnection {
+  edges: [UserReadBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserReadBookEdge {
+  cursor: String!
+  node: UserReadBook!
+}
+input UserReadBooksArgsOrderBy {
+  title: OrderBy
+}
+type UserReadingBook {
+  updatedAt: DateTime!
+  user: User!
+  book: Book!
+}
+type UserReadingBookConnection {
+  edges: [UserReadingBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserReadingBookEdge {
+  cursor: String!
+  node: UserReadingBook!
+}
+input UserReadingBooksArgsOrderBy {
+  updatedAt: OrderBy
+}
+type UserRecord {
   id: ID!
   readAt: LocalDate
   user: User!
   book: Book!
 }
-type StackedBook {
-  user: User!
-  book: Book!
+type UserRecordConnection {
+  edges: [UserRecordEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
 }
-input UserHaveBooksArgsOrderBy {
-  updatedAt: OrderBy
-}
-type UserHaveBooksReturnType {
-  nodes: [HaveBook!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-input UserReadBooksArgsOrderBy {
-  title: OrderBy
-}
-type UserReadBooksReturnType {
-  nodes: [ReadBook!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-input UserReadingBooksArgsOrderBy {
-  updatedAt: OrderBy
-}
-type UserReadingBooksReturnType {
-  nodes: [ReadingBook!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
+type UserRecordEdge {
+  cursor: String!
+  node: UserRecord!
 }
 input UserRecordsArgsOrderBy {
   readAt: OrderBy
 }
-type UserRecordsReturnType {
-  nodes: [Record!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
+type UserStackedBook {
+  user: User!
+  book: Book!
+}
+type UserStackedBookConnection {
+  edges: [UserStackedBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserStackedBookEdge {
+  cursor: String!
+  node: UserStackedBook!
 }
 input UserStackedBooksArgsOrderBy {
   updatedAt: OrderBy
 }
-type UserStackedBooksReturnType {
-  nodes: [StackedBook!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
+type UserWishBook {
+  updatedAt: DateTime!
+  user: User!
+  book: Book!
+}
+type UserWishBookEdge {
+  cursor: String!
+  node: UserWishBook!
 }
 input UserWishBooksArgsOrderBy {
   updatedAt: OrderBy
 }
-type UserWishBooksReturnType {
-  nodes: [WishBook!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-type WishBook {
-  wish: Boolean!
-  updatedAt: DateTime!
-  user: User!
-  book: Book!
+type UserWishBooksConnection {
+  edges: [UserWishBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
 }
 type Query {
   user(uniqueName: String!): User!
@@ -286,6 +307,6 @@ type Query {
   allPublishers: [Publisher!]!
   label(id: ID!): Label!
   allLabels: [Label!]!
-  record(id: ID!): Record!
-  allRecords: [Record!]!
+  record(id: ID!): UserRecord!
+  allRecords: [UserRecord!]!
 }

@@ -18,8 +18,6 @@ export type TransformedProps = {
   // page
   pageNumber: number;
   pagesCount: number;
-  skip: number;
-  limit: number;
   // meta
   readingBooks: {count: number};
   likedBooks: {count: number};
@@ -30,10 +28,16 @@ export type TransformedProps = {
   wishBooks: {count: number};
 };
 
-export const transformHaveBooks: (
-  result: UserHaveBooksPageQuery,
-  query: {pageNumber: number; skip: number; limit: number},
-) => TransformedProps = (
+export type Transformer<
+  T extends
+    | UserHaveBooksPageQuery
+    | UserReadBooksPageQuery
+    | UserReadingBooksPageQuery
+    | UserStackedBooksPageQuery
+    | UserWishBooksPageQuery
+> = (result: T, params: {number: string}) => TransformedProps;
+
+export const transformHaveBooks: Transformer<UserHaveBooksPageQuery> = (
   {
     user: {
       displayName,
@@ -43,26 +47,24 @@ export const transformHaveBooks: (
       readBooks,
       readingBooks,
       wishBooks,
-      haveBooks: {count, nodes},
+      haveBooks: {count, edges},
       stackedBooks,
     },
   },
-  {pageNumber = 1, skip, limit},
-): TransformedProps =>
+  {number: pageNumber},
+) =>
   avoidUndefined({
     userName,
     displayName,
     picture,
-    books: nodes.map(({book}) => ({
+    books: edges.map(({node: {book}}) => ({
       id: book.id,
       title: book.title,
       cover: book.cover || undefined,
     })),
     booksCount: count,
-    pageNumber,
+    pageNumber: Number.parseInt(pageNumber, 10),
     pagesCount: countPages(count),
-    skip,
-    limit,
     records,
     readBooks,
     readingBooks,
@@ -72,39 +74,34 @@ export const transformHaveBooks: (
     likedBooks: {count: 0},
   });
 
-export const transformReadBooks: (
-  result: UserReadBooksPageQuery,
-  query: {pageNumber: number; skip: number; limit: number},
-) => TransformedProps = (
+export const transformReadBooks: Transformer<UserReadBooksPageQuery> = (
   {
     user: {
       displayName,
       picture,
       userName,
       records,
-      readBooks: {count, nodes},
+      readBooks: {count, edges},
       readingBooks,
       wishBooks,
       haveBooks,
       stackedBooks,
     },
   },
-  {pageNumber = 1, skip, limit},
-): TransformedProps =>
+  {number: pageNumber},
+) =>
   avoidUndefined({
     userName,
     displayName,
     picture,
-    books: nodes.map(({book}) => ({
+    books: edges.map(({node: {book}}) => ({
       id: book.id,
       title: book.title,
       cover: book.cover || undefined,
     })),
     booksCount: count,
-    pageNumber,
+    pageNumber: Number.parseInt(pageNumber, 10),
     pagesCount: countPages(count),
-    skip,
-    limit,
     records,
     readBooks: {count},
     readingBooks,
@@ -114,10 +111,7 @@ export const transformReadBooks: (
     likedBooks: {count: 0},
   });
 
-export const transformReadingBooks: (
-  result: UserReadingBooksPageQuery,
-  query: {pageNumber: number; skip: number; limit: number},
-) => TransformedProps = (
+export const transformReadingBooks: Transformer<UserReadingBooksPageQuery> = (
   {
     user: {
       displayName,
@@ -125,28 +119,26 @@ export const transformReadingBooks: (
       userName,
       records,
       readBooks,
-      readingBooks: {count, nodes},
+      readingBooks: {count, edges},
       wishBooks,
       haveBooks,
       stackedBooks,
     },
   },
-  {pageNumber = 1, skip, limit},
-): TransformedProps =>
+  {number: pageNumber},
+) =>
   avoidUndefined({
     userName,
     displayName,
     picture,
-    books: nodes.map(({book}) => ({
+    books: edges.map(({node: {book}}) => ({
       id: book.id,
       title: book.title,
       cover: book.cover || undefined,
     })),
     booksCount: count,
-    pageNumber,
+    pageNumber: Number.parseInt(pageNumber, 10),
     pagesCount: countPages(count),
-    skip,
-    limit,
     records,
     readBooks,
     readingBooks: {count},
@@ -156,10 +148,7 @@ export const transformReadingBooks: (
     likedBooks: {count: 0},
   });
 
-export const transformStackedBooks: (
-  result: UserStackedBooksPageQuery,
-  query: {pageNumber: number; skip: number; limit: number},
-) => TransformedProps = (
+export const transformStackedBooks: Transformer<UserStackedBooksPageQuery> = (
   {
     user: {
       displayName,
@@ -170,25 +159,23 @@ export const transformStackedBooks: (
       readingBooks,
       wishBooks,
       haveBooks,
-      stackedBooks: {count, nodes},
+      stackedBooks: {count, edges},
     },
   },
-  {pageNumber = 1, skip, limit},
-): TransformedProps =>
+  {number: pageNumber},
+) =>
   avoidUndefined({
     userName,
     displayName,
     picture,
-    books: nodes.map(({book}) => ({
+    books: edges.map(({node: {book}}) => ({
       id: book.id,
       title: book.title,
       cover: book.cover || undefined,
     })),
     booksCount: count,
-    pageNumber,
+    pageNumber: Number.parseInt(pageNumber, 10),
     pagesCount: countPages(count),
-    skip,
-    limit,
     records,
     readBooks,
     readingBooks,
@@ -198,10 +185,7 @@ export const transformStackedBooks: (
     likedBooks: {count: 0},
   });
 
-export const transformWishBooks: (
-  result: UserWishBooksPageQuery,
-  query: {pageNumber: number; skip: number; limit: number},
-) => TransformedProps = (
+export const transformWishBooks: Transformer<UserWishBooksPageQuery> = (
   {
     user: {
       displayName,
@@ -210,27 +194,25 @@ export const transformWishBooks: (
       records,
       readBooks,
       readingBooks,
-      wishBooks: {count, nodes},
+      wishBooks: {count, edges},
       haveBooks,
       stackedBooks,
     },
   },
-  {pageNumber = 1, skip, limit},
-): TransformedProps =>
+  {number: pageNumber},
+) =>
   avoidUndefined({
     userName,
     displayName,
     picture,
-    books: nodes.map(({book}) => ({
+    books: edges.map(({node: {book}}) => ({
       id: book.id,
       title: book.title,
       cover: book.cover || undefined,
     })),
     booksCount: count,
-    pageNumber,
+    pageNumber: Number.parseInt(pageNumber, 10),
     pagesCount: countPages(count),
-    skip,
-    limit,
     records,
     readBooks,
     readingBooks,
