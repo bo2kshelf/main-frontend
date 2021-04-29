@@ -51,7 +51,8 @@ export type {TransformedProps} from './transform';
 export {
   getPathsForIndex,
   getPathsForNumbered,
-  getVariables,
+  getVariablesForCursor,
+  transformCursorToPageVariables,
 } from './transform-pages';
 export type {
   UrlQueryForIndexPage,

@@ -2,42 +2,56 @@ query AllUserReadBooksPage {
   allUsers {
     userName: uniqueName
     books: readBooks {
-      count
+      count: totalCount
     }
   }
 }
 
-query UserReadBooksPage($userName: String!, $skip: Int!, $limit: Int!) {
+query UserReadBooksPageEndCursor($userName: String!, $first: Int!) {
+  user(uniqueName: $userName) {
+    books: readBooks(first: $first) {
+      pageInfo {
+        endCursor
+        hasNextPage
+      }
+    }
+  }
+}
+
+query UserReadBooksPage($userName: String!, $first: Int!, $after: String) {
   user(uniqueName: $userName) {
     userName: uniqueName
     displayName
     picture
     records {
-      count
+      count: totalCount
     }
-    readBooks(limit: $limit, skip: $skip) {
-      count
-      hasNext
-      hasPrevious
-      nodes {
-        book {
-          id
-          title
-          cover
+    readBooks(first: $first, after: $after) {
+      count: totalCount
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        node {
+          book {
+            id
+            title
+            cover
+          }
         }
       }
     }
     readingBooks {
-      count
+      count: totalCount
     }
     wishBooks {
-      count
+      count: totalCount
     }
     haveBooks {
-      count
+      count: totalCount
     }
     stackedBooks {
-      count
+      count: totalCount
     }
   }
 }

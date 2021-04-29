@@ -10,8 +10,9 @@ import {graphqlSdk} from '~/graphql/api-public/graphql-request';
 import {LoadingPage} from '~/templates/Loading';
 import {
   getPathsForNumbered,
-  getVariables,
+  getVariablesForCursor,
   TemplateReadBooks,
+  transformCursorToPageVariables,
   TransformedProps,
   transformReadBooks,
   UrlQueryForNumberedPage,
@@ -28,11 +29,12 @@ export const getStaticProps: GetStaticProps<
 > = async ({params}) => {
   if (!params) throw new Error('Invalid parameters.');
 
-  const variables = getVariables(params);
   return graphqlSdk
-    .UserReadBooksPage(variables)
+    .UserReadBooksPageEndCursor(getVariablesForCursor(params))
+    .then((data) => transformCursorToPageVariables(data, params))
+    .then((variables) => graphqlSdk.UserReadBooksPage(variables))
     .then((data) => ({
-      props: transformReadBooks(data, variables),
+      props: transformReadBooks(data, params),
       revalidate: 60,
     }))
     .catch(() => ({notFound: true}));
