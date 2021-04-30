@@ -9,7 +9,7 @@ query AllUserRecordsPage {
 
 query UserRecordsPageEndCursor($userName: String!, $first: Int!) {
   user(uniqueName: $userName) {
-    books: readingBooks(first: $first) {
+    records(first: $first) {
       pageInfo {
         endCursor
         hasNextPage

@@ -39,24 +39,17 @@ export const getStaticProps: GetStaticProps<
   if (!params) throw new Error('Invalid parameters.');
 
   const pageNumber = Number.parseInt(params.number, 10);
-  const variables =
-    pageNumber === 1
-      ? {
-          userName: params.username,
-          first: RECORDS_PER_PAGE,
-        }
-      : await graphqlSdk
-          .UserRecordsPageEndCursor({
-            userName: params.username,
-            first: pageNumber * RECORDS_PER_PAGE,
-          })
-          .then((data) => ({
-            userName: params.username,
-            first: RECORDS_PER_PAGE,
-            after: data.user.books.pageInfo.endCursor,
-          }));
   return graphqlSdk
-    .UserRecordsPage(variables)
+    .UserRecordsPageEndCursor({
+      userName: params.username,
+      first: (pageNumber - 1) * RECORDS_PER_PAGE,
+    })
+    .then((data) => ({
+      userName: params.username,
+      first: RECORDS_PER_PAGE,
+      after: data.user.records.pageInfo.endCursor,
+    }))
+    .then((variables) => graphqlSdk.UserRecordsPage(variables))
     .then((data) => ({
       props: transform(data, {pageNumber}),
       revalidate: 60,
