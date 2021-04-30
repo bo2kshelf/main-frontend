@@ -5,7 +5,6 @@ import 'tailwindcss/tailwind.css';
 import {AppLayout} from '~/components/layout/AppLayout';
 import {Configured18nextProvider} from '~/i18n';
 import {ConfiguredApolloProvider} from '~/lib/ApolloProvider';
-import {CurrentUser} from '~/lib/CurrentUser';
 import '~/styles/index.css';
 
 export const App: React.FC<AppProps> = ({
@@ -16,7 +15,6 @@ export const App: React.FC<AppProps> = ({
     <ConfiguredApolloProvider>
       <Configured18nextProvider>
         <RecoilRoot>
-          <CurrentUser />
           <AppLayout>
             <PageComponent {...pageProps} />
           </AppLayout>

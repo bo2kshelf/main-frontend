@@ -7,6 +7,7 @@
   "user_stacked_books_page": "{{name}}の$t(common:stacked_books)：ユーザー - bo2kshelf",
   "user_reading_books_page": "{{name}}の$t(common:reading_books)：ユーザー - bo2kshelf",
   "user_wish_read_books_page": "{{name}}が$t(common:wish_read_books)：ユーザー - bo2kshelf",
+  "user_records_page": "{{name}}の記録 - bo2kshelf",
   "book_page": "{{title}}：本 - bo2kshelf",
   "series_page": "{{title}}：シリーズ - bo2kshelf",
   "author_page": "{{name}}：著者 - bo2kshelf",
