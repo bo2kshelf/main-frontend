@@ -1,0 +1,57 @@
+query CurrentUserPage {
+  currentUser {
+    userName: uniqueName
+    displayName
+    picture
+    readBooks {
+      count: totalCount
+    }
+    records(first: 5) {
+      count: totalCount
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        node {
+          id
+          readAt
+          user {
+            displayName
+            userName: uniqueName
+            picture
+          }
+          book {
+            id
+            title
+            subtitle
+            cover
+          }
+        }
+      }
+    }
+    readingBooks(first: 5) {
+      count: totalCount
+      pageInfo {
+        hasNextPage
+      }
+      edges {
+        node {
+          book {
+            id
+            title
+            cover
+          }
+        }
+      }
+    }
+    wishBooks {
+      count: totalCount
+    }
+    haveBooks {
+      count: totalCount
+    }
+    stackedBooks {
+      count: totalCount
+    }
+  }
+}

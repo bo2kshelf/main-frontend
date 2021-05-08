@@ -1,12 +1,32 @@
 schema {
   query: Query
-  mutation: Mutation
+}
+type User {
+  id: ID!
+  uniqueName: String!
+  displayName: String!
+  picture: String!
+  records(after: String, first: Int, before: String, last: Int, orderBy: UserRecordsArgsOrderBy = {readAt: DESC}): UserRecordConnection!
+  haveBooks(after: String, first: Int, before: String, last: Int, orderBy: UserHaveBooksArgsOrderBy = {updatedAt: DESC}): UserHaveBookConnection!
+  readBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadBooksArgsOrderBy = {title: ASC}): UserReadBookConnection!
+  readingBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadingBooksArgsOrderBy = {updatedAt: DESC}): UserReadingBookConnection!
+  stackedBooks(after: String, first: Int, before: String, last: Int, orderBy: UserStackedBooksArgsOrderBy = {updatedAt: DESC}): UserStackedBookConnection!
+  wishBooks(after: String, first: Int, before: String, last: Int, orderBy: UserWishBooksArgsOrderBy = {updatedAt: DESC}): UserWishBooksConnection!
 }
 type Author {
   id: ID!
   name: String!
-  writed(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: AuthorWritesArgsOrderBy = {title: ASC}): AuthorWritesReturn!
-  relatedSeries(skip: Int = 0, limit: Int = 0, orderBy: AuthorsRelatedSeriesArgsOrderBy = {title: ASC}): AuthorsRelatedSeriesReturn!
+  wroteBooks(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: AuthorWroteBooksArgsOrderBy = {title: ASC}): AuthorWroteBooksReturnType!
+  relatedSeries(skip: Int = 0, limit: Int = 0, orderBy: AuthorRelatedSeriesArgsOrderBy = {title: ASC}): AuthorRelatedSeriesReturnType!
+}
+input AuthorRelatedSeriesArgsOrderBy {
+  title: OrderBy
+}
+type AuthorRelatedSeriesReturnType {
+  nodes: [AuthorSeriesRelation!]!
+  count: Int!
+  hasPrevious: Boolean!
+  hasNext: Boolean!
 }
 enum AuthorRole {
   AUTHOR
@@ -28,19 +48,10 @@ input AuthorSeriesRelationRelatedBooksArgsOrderBy {
   order: OrderBy
   title: OrderBy
 }
-input AuthorsRelatedSeriesArgsOrderBy {
+input AuthorWroteBooksArgsOrderBy {
   title: OrderBy
 }
-type AuthorsRelatedSeriesReturn {
-  nodes: [AuthorSeriesRelation!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-input AuthorWritesArgsOrderBy {
-  title: OrderBy
-}
-type AuthorWritesReturn {
+type AuthorWroteBooksReturnType {
   nodes: [Writing!]!
   count: Int!
   hasPrevious: Boolean!
@@ -51,58 +62,48 @@ type Book {
   title: String!
   subtitle: String
   isbn(dehyphenize: Boolean = true): String
-  writedBy(orderBy: BookWritedByArgsOrderBy = {name: ASC}): [Writing!]!
+  writtenBy(orderBy: BookWrittenByArgsOrderBy = {name: ASC}): [Writing!]!
   seriesOf: [SeriesPart!]!
-  previousBooks(skip: Int = 0, limit: Int = 1): BooksPreviousReturn!
-  nextBooks(skip: Int = 0, limit: Int = 1): BooksNextReturn!
+  previousBooks(skip: Int = 0, limit: Int = 1): BookPreviousBooksReturnType!
+  nextBooks(skip: Int = 0, limit: Int = 1): BookNextBooksReturnType!
   publishedBy: Publisher
-  label: Label
+  labeledBy: Label
   cover: String
 }
-type BooksNextReturn {
+type BookNextBooksReturnType {
   nodes: [NextBookConnection!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-type BooksPreviousReturn {
+type BookPreviousBooksReturnType {
   nodes: [NextBookConnection!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-input BookWritedByArgsOrderBy {
+input BookWrittenByArgsOrderBy {
   name: OrderBy
-}
-"""A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
-scalar DateTime
-type HaveBookRecord {
-  have: Boolean!
-  updatedAt: DateTime!
-  user: User!
-  book: Book!
 }
 type Label {
   id: ID!
   name: String!
-  books(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: LabelsBooksArgsOrderBy = {title: ASC}): LabelsBooksReturn!
+  labeledBooks(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: LabelLabeledBooksArgsOrderBy = {title: ASC}): LabelLabeledBooksReturnType!
   belongsTo: PublisherLabelRelation!
 }
 type Labeling {
   book: Book!
   label: Label!
 }
-input LabelsBooksArgsOrderBy {
+input LabelLabeledBooksArgsOrderBy {
   title: OrderBy
 }
-type LabelsBooksReturn {
+type LabelLabeledBooksReturnType {
   nodes: [Labeling!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-"""A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
-scalar LocalDate
 type NextBookConnection {
   previous: Book!
   next: Book!
@@ -118,257 +119,184 @@ type Publication {
 type Publisher {
   id: ID!
   name: String!
-  publications(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: PublishersPublicationsArgsOrderBy = {title: ASC}): PublishersPublicationsReturn!
-  labels(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: PublishersLabelsArgsOrderBy = {name: ASC}): PublishersLabelsReturn!
+  publishedBooks(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: PublisherPublishedBooksArgsOrderBy = {title: ASC}): PublisherPublishedBooksReturnType!
+  hasLabels(skip: Int = 0, limit: Int = 0, except: [ID!] = [], orderBy: PublisherHasLabelsArgsOrderBy = {name: ASC}): PublisherHasLabelsReturnType!
 }
-type PublisherLabelRelation {
-  publisher: Publisher!
-  label: Label!
-}
-input PublishersLabelsArgsOrderBy {
+input PublisherHasLabelsArgsOrderBy {
   name: OrderBy
 }
-type PublishersLabelsReturn {
+type PublisherHasLabelsReturnType {
   nodes: [PublisherLabelRelation!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-input PublishersPublicationsArgsOrderBy {
+type PublisherLabelRelation {
+  publisher: Publisher!
+  label: Label!
+}
+input PublisherPublishedBooksArgsOrderBy {
   title: OrderBy
 }
-type PublishersPublicationsReturn {
+type PublisherPublishedBooksReturnType {
   nodes: [Publication!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-type ReadingBookRecord {
-  reading: Boolean!
-  updatedAt: DateTime!
-  user: User!
-  book: Book!
-}
-type Record {
-  id: ID!
-  readAt: LocalDate
-  user: User!
-  book: Book!
-}
 type Series {
   id: ID!
   title: String!
-  head: SeriesPart!
-  parts(skip: Int = 0, limit: Int = 0, orderBy: OrderBy = ASC): SeriesPartsReturn!
-  subParts(skip: Int = 0, limit: Int = 0, orderBy: SeriesSubSubPartsArgsOrderBy = {order: ASC}): SeriesPartsReturn!
-  relatedAuthors(skip: Int = 0, limit: Int = 0, orderBy: SeriesRelatedAuthorsArgsOrderBy = {name: ASC}): SeriesRelatedAuthorsReturn!
+  headOf: SeriesPart!
+  seriesBooks(skip: Int = 0, limit: Int = 0, orderBy: OrderBy = ASC): SeriesSeriesBooksReturnType!
+  relatedBooks(skip: Int = 0, limit: Int = 0): SeriesRelatedBooksReturnType!
+  relatedAuthors(skip: Int = 0, limit: Int = 0, orderBy: SeriesRelatedAuthorsArgsOrderBy = {name: ASC}): SeriesRelatedAuthorsReturnType!
 }
 type SeriesPart {
   numberingAs: String
   book: Book!
   series: Series!
 }
-type SeriesPartsReturn {
-  nodes: [SeriesPart!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
 input SeriesRelatedAuthorsArgsOrderBy {
   name: OrderBy
 }
-type SeriesRelatedAuthorsReturn {
+type SeriesRelatedAuthorsReturnType {
   nodes: [AuthorSeriesRelation!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-input SeriesSubSubPartsArgsOrderBy {
-  order: OrderBy
-}
-type StackedBookRecord {
-  user: User!
-  book: Book!
-}
-input UsersHasBooksArgsOrderBy {
-  updatedAt: OrderBy
-}
-type UsersHasBooksReturn {
-  nodes: [HaveBookRecord!]!
+type SeriesRelatedBooksReturnType {
+  nodes: [SeriesPart!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-input UsersReadBooksArgsOrderBy {
-  title: OrderBy
-}
-type UsersReadBooksReturn {
-  nodes: [Book!]!
+type SeriesSeriesBooksReturnType {
+  nodes: [SeriesPart!]!
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
-}
-input UsersReadingBooksArgsOrderBy {
-  updatedAt: OrderBy
-}
-type UsersReadingBooksReturn {
-  nodes: [ReadingBookRecord!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-input UsersRecordsArgsOrderBy {
-  readAt: OrderBy
-}
-type UsersRecordsReturn {
-  nodes: [Record!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-input UsersStackedBooksArgsOrderBy {
-  updatedAt: OrderBy
-}
-type UsersStackedBooksReturn {
-  nodes: [StackedBookRecord!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-input UsersWishesReadBooksArgsOrderBy {
-  updatedAt: OrderBy
-}
-type UsersWishReadBooksReturn {
-  nodes: [WishReadBookRecord!]!
-  count: Int!
-  hasPrevious: Boolean!
-  hasNext: Boolean!
-}
-type WishReadBookRecord {
-  wish: Boolean!
-  updatedAt: DateTime!
-  user: User!
-  book: Book!
 }
 type Writing {
   roles: [AuthorRole!]!
   book: Book!
   author: Author!
 }
-input SearchAuthorsQuery {
-  name: String!
-}
-type SearchAuthorsResult {
-  aggregate: SearchAuthorsResultAggregate!
-  pageInfo: SearchAuthorsResultPageInfo!
-  edges: [SearchAuthorsResultEdgeType!]!
-}
-type SearchAuthorsResultAggregate {
-  count: Int!
-}
-type SearchAuthorsResultEdgeType {
-  node: Author!
-  cursor: String!
-}
-type SearchAuthorsResultPageInfo {
-  hasNextPage: Boolean
-  hasPreviousPage: Boolean
+"""A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
+scalar DateTime
+"""A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
+scalar LocalDate
+type PageInfo {
   startCursor: String
   endCursor: String
-  query: SearchAuthorsResultPageInfoQuery!
-}
-type SearchAuthorsResultPageInfoQuery {
-  name: String!
-}
-input SearchBooksQuery {
-  title: String!
-}
-type SearchBooksResult {
-  aggregate: SearchBooksResultAggregate!
-  pageInfo: SearchBooksResultPageInfo!
-  edges: [SearchBooksResultEdgeType!]!
-}
-type SearchBooksResultAggregate {
-  count: Int!
-}
-type SearchBooksResultEdgeType {
-  node: Book!
-  cursor: String!
-}
-type SearchBooksResultPageInfo {
-  hasNextPage: Boolean
   hasPreviousPage: Boolean
-  startCursor: String
-  endCursor: String
-  query: SearchBooksResultPageInfoQuery!
-}
-type SearchBooksResultPageInfoQuery {
-  title: String!
-}
-input SearchMixedQuery {
-  query: String
-}
-type SearchMixedResult {
-  aggregate: SearchMixedResultAggregate!
-  pageInfo: SearchMixedResultPageInfo!
-  edges: [SearchMixedResultEdgeType!]!
-}
-type SearchMixedResultAggregate {
-  count: Int!
-}
-type SearchMixedResultEdgeType {
-  node: SearchMixedUnion!
-  cursor: String!
-}
-type SearchMixedResultPageInfo {
   hasNextPage: Boolean
-  hasPreviousPage: Boolean
-  startCursor: String
-  endCursor: String
-  query: SearchMixedResultPageInfoQuery!
 }
-type SearchMixedResultPageInfoQuery {
-  query: String
+type UserHaveBook {
+  updatedAt: DateTime!
+  user: User!
+  book: Book!
 }
-union SearchMixedUnion = Book | Author | Series
-input SearchSeriesQuery {
-  title: String!
+type UserHaveBookConnection {
+  edges: [UserHaveBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
 }
-type SearchSeriesResult {
-  aggregate: SearchSeriesResultAggregate!
-  pageInfo: SearchSeriesResultPageInfo!
-  edges: [SearchSeriesResultEdgeType!]!
-}
-type SearchSeriesResultAggregate {
-  count: Int!
-}
-type SearchSeriesResultEdgeType {
-  node: Series!
+type UserHaveBookEdge {
   cursor: String!
+  node: UserHaveBook!
 }
-type SearchSeriesResultPageInfo {
-  hasNextPage: Boolean
-  hasPreviousPage: Boolean
-  startCursor: String
-  endCursor: String
-  query: SearchSeriesResultPageInfoQuery!
+input UserHaveBooksArgsOrderBy {
+  updatedAt: OrderBy
 }
-type SearchSeriesResultPageInfoQuery {
-  title: String!
+type UserReadBook {
+  user: User!
+  book: Book!
 }
-type User {
+type UserReadBookConnection {
+  edges: [UserReadBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserReadBookEdge {
+  cursor: String!
+  node: UserReadBook!
+}
+input UserReadBooksArgsOrderBy {
+  title: OrderBy
+}
+type UserReadingBook {
+  updatedAt: DateTime!
+  user: User!
+  book: Book!
+}
+type UserReadingBookConnection {
+  edges: [UserReadingBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserReadingBookEdge {
+  cursor: String!
+  node: UserReadingBook!
+}
+input UserReadingBooksArgsOrderBy {
+  updatedAt: OrderBy
+}
+type UserRecord {
   id: ID!
-  uniqueName: String!
-  displayName: String!
-  picture: String!
-  readingBooks(skip: Int = 0, limit: Int = 0, orderBy: UsersReadingBooksArgsOrderBy = {updatedAt: DESC}): UsersReadingBooksReturn!
-  hasBooks(skip: Int = 0, limit: Int = 0, orderBy: UsersHasBooksArgsOrderBy = {updatedAt: DESC}): UsersHasBooksReturn!
-  wishesReadBooks(skip: Int = 0, limit: Int = 0, orderBy: UsersWishesReadBooksArgsOrderBy = {updatedAt: DESC}): UsersWishReadBooksReturn!
-  stackedBooks(skip: Int = 0, limit: Int = 0, orderBy: UsersStackedBooksArgsOrderBy = {updatedAt: DESC}): UsersStackedBooksReturn!
-  records(skip: Int = 0, limit: Int = 0, orderBy: UsersRecordsArgsOrderBy = {readAt: DESC}): UsersRecordsReturn!
-  readBooks(skip: Int = 0, limit: Int = 0, orderBy: UsersReadBooksArgsOrderBy = {title: ASC}): UsersReadBooksReturn!
+  readAt: LocalDate
+  user: User!
+  book: Book!
+}
+type UserRecordConnection {
+  edges: [UserRecordEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserRecordEdge {
+  cursor: String!
+  node: UserRecord!
+}
+input UserRecordsArgsOrderBy {
+  readAt: OrderBy
+}
+type UserStackedBook {
+  user: User!
+  book: Book!
+}
+type UserStackedBookConnection {
+  edges: [UserStackedBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+type UserStackedBookEdge {
+  cursor: String!
+  node: UserStackedBook!
+}
+input UserStackedBooksArgsOrderBy {
+  updatedAt: OrderBy
+}
+type UserWishBook {
+  updatedAt: DateTime!
+  user: User!
+  book: Book!
+}
+type UserWishBookEdge {
+  cursor: String!
+  node: UserWishBook!
+}
+input UserWishBooksArgsOrderBy {
+  updatedAt: OrderBy
+}
+type UserWishBooksConnection {
+  edges: [UserWishBookEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
 }
 type Query {
+  user(uniqueName: String!): User!
+  allUsers: [User!]!
   book(id: ID!): Book!
   allBooks: [Book!]!
   author(id: ID!): Author!
@@ -379,27 +307,7 @@ type Query {
   allPublishers: [Publisher!]!
   label(id: ID!): Label!
   allLabels: [Label!]!
-  recordById(id: ID!): Record!
-  searchBooks(after: String, first: Int, before: String, last: Int, query: SearchBooksQuery!): SearchBooksResult!
-  searchAuthors(after: String, first: Int, before: String, last: Int, query: SearchAuthorsQuery!): SearchAuthorsResult!
-  searchSeries(after: String, first: Int, before: String, last: Int, query: SearchSeriesQuery!): SearchSeriesResult!
-  searchMixed(after: String, first: Int, before: String, last: Int, query: SearchMixedQuery!): SearchMixedResult!
-  user(id: String, uniqueName: String): User!
-  allUsers: [User!]!
+  record(id: ID!): UserRecord!
+  allRecords: [UserRecord!]!
   currentUser: User!
-}
-type Mutation {
-  createBook(title: String!, subtitle: String, isbn: String): Book!
-  createAuthor(name: String!): Author!
-  writedBook(bookId: ID!, authorId: ID!, roles: [AuthorRole!]): Writing!
-  connectNextBook(previousId: ID!, nextId: ID!): NextBookConnection!
-  createSeries(bookId: ID!, title: String!): SeriesPart!
-  createPublisher(name: String!): Publisher!
-  publishedBook(bookId: ID!, publisherId: ID!): Publication!
-  createLabel(publisherId: ID!, name: String!): Label!
-  labeledBook(bookId: ID!, labelId: ID!): Labeling!
-  setReadingBook(userId: ID!, bookId: ID!, reading: Boolean!): ReadingBookRecord!
-  setHaveBook(userId: ID!, bookId: ID!, have: Boolean!): HaveBookRecord!
-  setWishReadBook(userId: ID!, bookId: ID!, wish: Boolean!): WishReadBookRecord!
-  createUser(uniqueName: String!, displayName: String!, picture: String!): User!
 }
