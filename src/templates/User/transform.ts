@@ -1,4 +1,4 @@
-import {UserPageQuery} from '~/graphql/api-public/codegen/graphql-request';
+import {UserPageQuery} from '~/graphql/codegen/graphql-request';
 import {avoidUndefined} from '~/lib/utils';
 
 export type TransformedProps = {

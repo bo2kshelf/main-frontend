@@ -1,4 +1,4 @@
-import {RecordPageQuery} from '~/graphql/api-public/codegen/graphql-request';
+import {RecordPageQuery} from '~/graphql/codegen/graphql-request';
 import {AuthorRole} from '~/lib/AuthorRole';
 import {avoidUndefined} from '~/lib/utils';
 

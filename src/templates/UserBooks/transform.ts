@@ -4,7 +4,7 @@ import {
   UserReadingBooksPageQuery,
   UserStackedBooksPageQuery,
   UserWishBooksPageQuery,
-} from '~/graphql/api-public/codegen/graphql-request';
+} from '~/graphql/codegen/graphql-request';
 import {avoidUndefined} from '~/lib/utils';
 import {countPages} from './transform-pages';
 

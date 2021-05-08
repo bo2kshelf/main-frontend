@@ -1,4 +1,4 @@
-import {CurrentUserPageQuery} from '~/graphql/api-authenticated/codegen/apollo';
+import {CurrentUserPageQuery} from '~/graphql/codegen/apollo';
 import {avoidUndefined} from '~/lib/utils';
 import {TransformedProps as UserPageTransformedProps} from '~/templates/User';
 

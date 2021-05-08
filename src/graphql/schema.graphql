@@ -1,18 +1,6 @@
 schema {
   query: Query
 }
-type User {
-  id: ID!
-  uniqueName: String!
-  displayName: String!
-  picture: String!
-  records(after: String, first: Int, before: String, last: Int, orderBy: UserRecordsArgsOrderBy = {readAt: DESC}): UserRecordConnection!
-  haveBooks(after: String, first: Int, before: String, last: Int, orderBy: UserHaveBooksArgsOrderBy = {updatedAt: DESC}): UserHaveBookConnection!
-  readBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadBooksArgsOrderBy = {title: ASC}): UserReadBookConnection!
-  readingBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadingBooksArgsOrderBy = {updatedAt: DESC}): UserReadingBookConnection!
-  stackedBooks(after: String, first: Int, before: String, last: Int, orderBy: UserStackedBooksArgsOrderBy = {updatedAt: DESC}): UserStackedBookConnection!
-  wishBooks(after: String, first: Int, before: String, last: Int, orderBy: UserWishBooksArgsOrderBy = {updatedAt: DESC}): UserWishBooksConnection!
-}
 type Author {
   id: ID!
   name: String!
@@ -85,6 +73,8 @@ type BookPreviousBooksReturnType {
 input BookWrittenByArgsOrderBy {
   name: OrderBy
 }
+"""A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
+scalar DateTime
 type Label {
   id: ID!
   name: String!
@@ -104,6 +94,8 @@ type LabelLabeledBooksReturnType {
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
+"""A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
+scalar LocalDate
 type NextBookConnection {
   previous: Book!
   next: Book!
@@ -111,6 +103,12 @@ type NextBookConnection {
 enum OrderBy {
   ASC
   DESC
+}
+type PageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean
+  hasNextPage: Boolean
 }
 type Publication {
   book: Book!
@@ -143,6 +141,23 @@ type PublisherPublishedBooksReturnType {
   count: Int!
   hasPrevious: Boolean!
   hasNext: Boolean!
+}
+type Query {
+  user(uniqueName: String!): User!
+  allUsers: [User!]!
+  book(id: ID!): Book!
+  allBooks: [Book!]!
+  author(id: ID!): Author!
+  allAuthors: [Author!]!
+  series(id: ID!): Series!
+  allSeries: [Series!]!
+  publisher(id: ID!): Publisher!
+  allPublishers: [Publisher!]!
+  label(id: ID!): Label!
+  allLabels: [Label!]!
+  record(id: ID!): UserRecord!
+  allRecords: [UserRecord!]!
+  currentUser: User!
 }
 type Series {
   id: ID!
@@ -178,20 +193,17 @@ type SeriesSeriesBooksReturnType {
   hasPrevious: Boolean!
   hasNext: Boolean!
 }
-type Writing {
-  roles: [AuthorRole!]!
-  book: Book!
-  author: Author!
-}
-"""A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format."""
-scalar DateTime
-"""A local date string (i.e., with no associated timezone) in `YYYY-MM-DD` format, e.g. `2020-01-01`."""
-scalar LocalDate
-type PageInfo {
-  startCursor: String
-  endCursor: String
-  hasPreviousPage: Boolean
-  hasNextPage: Boolean
+type User {
+  id: ID!
+  uniqueName: String!
+  displayName: String!
+  picture: String!
+  records(after: String, first: Int, before: String, last: Int, orderBy: UserRecordsArgsOrderBy = {readAt: DESC}): UserRecordConnection!
+  haveBooks(after: String, first: Int, before: String, last: Int, orderBy: UserHaveBooksArgsOrderBy = {updatedAt: DESC}): UserHaveBookConnection!
+  readBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadBooksArgsOrderBy = {title: ASC}): UserReadBookConnection!
+  readingBooks(after: String, first: Int, before: String, last: Int, orderBy: UserReadingBooksArgsOrderBy = {updatedAt: DESC}): UserReadingBookConnection!
+  stackedBooks(after: String, first: Int, before: String, last: Int, orderBy: UserStackedBooksArgsOrderBy = {updatedAt: DESC}): UserStackedBookConnection!
+  wishBooks(after: String, first: Int, before: String, last: Int, orderBy: UserWishBooksArgsOrderBy = {updatedAt: DESC}): UserWishBooksConnection!
 }
 type UserHaveBook {
   updatedAt: DateTime!
@@ -294,19 +306,8 @@ type UserWishBooksConnection {
   pageInfo: PageInfo!
   totalCount: Int!
 }
-type Query {
-  user(uniqueName: String!): User!
-  allUsers: [User!]!
-  book(id: ID!): Book!
-  allBooks: [Book!]!
-  author(id: ID!): Author!
-  allAuthors: [Author!]!
-  series(id: ID!): Series!
-  allSeries: [Series!]!
-  publisher(id: ID!): Publisher!
-  allPublishers: [Publisher!]!
-  label(id: ID!): Label!
-  allLabels: [Label!]!
-  record(id: ID!): UserRecord!
-  allRecords: [UserRecord!]!
+type Writing {
+  roles: [AuthorRole!]!
+  book: Book!
+  author: Author!
 }
