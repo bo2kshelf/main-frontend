@@ -57,6 +57,8 @@
     "recoil": "^0.1.2",
     "request": "^2.88.2",
     "styled-components": "5.2.1",
+    "supertokens-auth-react": "^0.12.1",
+    "supertokens-node": "^5.0.1",
     "tailwindcss": "2.0.2",
     "type-fest": "0.20.2"
   },
