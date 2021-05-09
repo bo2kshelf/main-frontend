@@ -1,7 +1,7 @@
 import {NextPage} from 'next';
 import React from 'react';
 import {useCurrentUserPageQuery} from '~/graphql/codegen/apollo';
-import {withPageSignedIn} from '~/lib/withPageSignedIn';
+import {withPageAuthenticated} from '~/hoc/withPageAuthenticated';
 import {LoadingPage} from '~/templates/Loading';
 import {PersonalUserPage, transform} from '~/templates/PersonalUser';
 
@@ -16,4 +16,4 @@ export const Page: NextPage = () => {
   return <div />;
 };
 
-export default withPageSignedIn(Page);
+export default withPageAuthenticated(Page);

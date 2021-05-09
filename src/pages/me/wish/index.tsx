@@ -1,9 +1,9 @@
 import {NextPage} from 'next';
 import React from 'react';
-import {withPageSignedIn} from '~/lib/withPageSignedIn';
+import {withPageAuthenticated} from '~/hoc/withPageAuthenticated';
 
 export const Page: NextPage = (props) => {
   return <div />;
 };
 
-export default withPageSignedIn(Page);
+export default withPageAuthenticated(Page);

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 import {useCurrentUserPageQuery} from '~/graphql/codegen/apollo';
-import {withPageSignedIn} from '~/lib/withPageSignedIn';
+import {withPageAuthenticated} from '~/hoc/withPageAuthenticated';
 
 export function Page() {
   const {data} = useCurrentUserPageQuery();
@@ -13,4 +13,4 @@ export function Page() {
   );
 }
 
-export default withPageSignedIn(Page);
+export default withPageAuthenticated(Page);

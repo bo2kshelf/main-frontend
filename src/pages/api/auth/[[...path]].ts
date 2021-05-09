@@ -1,9 +1,9 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import supertokens from 'supertokens-node';
+import SuperTokensNode from 'supertokens-node';
 import {superTokensNextWrapper} from 'supertokens-node/nextjs';
-import {supertokensBackendConfig} from '~/lib/env';
+import {supertokensBackendConfig} from '~/configs/supertokens';
 
-supertokens.init(supertokensBackendConfig);
+SuperTokensNode.init(supertokensBackendConfig);
 
 export default async function superTokens(
   req: NextApiRequest,
@@ -11,7 +11,7 @@ export default async function superTokens(
 ) {
   await superTokensNextWrapper(
     async (next) => {
-      await supertokens.middleware()(req, res, next);
+      await SuperTokensNode.middleware()(req, res, next);
     },
     req,
     res,
