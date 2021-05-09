@@ -6,7 +6,7 @@ import {
 } from '@apollo/client';
 import {ApolloProvider} from '@apollo/react-hooks';
 import React from 'react';
-import {GRAPHQL_API_ENDPOINT} from '~/lib/env';
+import {GRAPHQL_API_ENDPOINT} from '~/configs/api';
 
 export const ConfiguredApolloProvider: React.FC = ({children}) => {
   const httpLink = createHttpLink({
