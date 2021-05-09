@@ -1,12 +1,13 @@
 import {NextPage} from 'next';
 import React from 'react';
-import {useCurrentUserPageQuery} from '~/graphql/api-authenticated/codegen/apollo';
-import {withPageLoggedIn} from '~/lib/withPageLoggedIn';
+import {useCurrentUserPageQuery} from '~/graphql/codegen/apollo';
+import {withPageSignedIn} from '~/lib/withPageSignedIn';
 import {LoadingPage} from '~/templates/Loading';
 import {PersonalUserPage, transform} from '~/templates/PersonalUser';
 
-export const Page: NextPage = (props) => {
+export const Page: NextPage = () => {
   const {data, loading, error} = useCurrentUserPageQuery();
+
   if (data)
     return (
       <PersonalUserPage {...transform(data, {recordLimit: 5, recordSkip: 0})} />
@@ -14,4 +15,5 @@ export const Page: NextPage = (props) => {
   if (loading) return <LoadingPage />;
   return <div />;
 };
-export default withPageLoggedIn(Page);
+
+export default withPageSignedIn(Page);

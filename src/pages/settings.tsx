@@ -1,6 +1,6 @@
 import {NextPage} from 'next';
 import React from 'react';
-import {withPageLoggedIn} from '~/lib/withPageLoggedIn';
+import {withPageSignedIn} from '~/lib/withPageSignedIn';
 
 export const Page: NextPage = (props) => <main {...props} />;
-export default withPageLoggedIn(Page);
+export default withPageSignedIn(Page);
