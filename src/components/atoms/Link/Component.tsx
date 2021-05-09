@@ -186,7 +186,7 @@ export const LinkSeriesBooksPage: React.FC<{
 
 export const LinkLoginPage: React.FC<{
   className?: string;
-}> = ({...props}) => <LinkBase href="/login" {...props} />;
+}> = ({...props}) => <LinkBase href="/auth" {...props} />;
 export const LinkLogoutPage: React.FC<{
   className?: string;
 }> = ({...props}) => <LinkBase href="/logout" {...props} />;
