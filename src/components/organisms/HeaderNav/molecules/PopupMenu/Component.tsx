@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {
   MenuItemHaveBooks,
   MenuItemLikedBooks,
-  MenuItemLogout,
   MenuItemReadBooks,
   MenuItemReadingBooks,
   MenuItemReadRecords,
@@ -13,6 +12,7 @@ import {
   MenuItemWishBooks,
 } from '../PopupMenuItem';
 import {PopupMenuProfile} from '../PopupMenuProfile';
+import {LogoutButton} from '../SignOut';
 
 export type ComponentProps = {
   className?: string;
@@ -48,7 +48,7 @@ const UnstyledComponent: React.VFC<ComponentProps> = ({
       <MenuItemWishBooks className={clsx('col-span-1', 'col-start-2')} />
 
       <MenuItemSettings className={clsx('col-span-1', 'col-start-1')} />
-      <MenuItemLogout className={clsx('col-span-1', 'col-start-2')} />
+      <LogoutButton className={clsx('col-span-1', 'col-start-2')} />
     </div>
   </div>
 );
