@@ -4,12 +4,13 @@ module.exports = {
     ignoreBuildErrors: true,
   },
   env: {
-    SUPERTOKENS_APP_NAME: process.env.SUPERTOKENS_APP_NAME,
     WEBSITE_DOMAIN: process.env.WEBSITE_DOMAIN,
-    API_DOMAIN: process.env.API_DOMAIN,
-    API_GRAPHQL_ENDPOINT: process.env.API_GRAPHQL_ENDPOINT,
+    GRAPHQL_API_ENDPOINT: process.env.API_GRAPHQL_ENDPOINT,
+
+    SUPERTOKENS_APP_NAME: process.env.SUPERTOKENS_APP_NAME,
+    SUPERTOKENS_CONNECTION_URI: process.env.SUPERTOKENS_CONNECTION_URI,
   },
   images: {
-    domains: [process.env.IMAGE_PROXY_HOST],
+    domains: [process.env.IMAGEPROXY_HOST],
   },
 };
