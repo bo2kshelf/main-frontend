@@ -6,11 +6,11 @@ import {
 } from '@apollo/client';
 import {ApolloProvider} from '@apollo/react-hooks';
 import React from 'react';
-import {GRAPHQL_API_ENDPOINT} from '~/configs/api';
+import {API_GRAPHQL_ENDPOINT} from '~/configs/api';
 
 export const ConfiguredApolloProvider: React.FC = ({children}) => {
   const httpLink = createHttpLink({
-    uri: GRAPHQL_API_ENDPOINT,
+    uri: API_GRAPHQL_ENDPOINT,
     credentials: 'include',
   });
 
