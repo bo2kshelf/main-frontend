@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import React from 'react';
-import {PageLayout} from '~/components/layout/PageLayout';
+import {PageLayout} from '~/layouts/PageLayout';
 
 export const TemplateDecolator: React.FC = ({children}) => (
   <>

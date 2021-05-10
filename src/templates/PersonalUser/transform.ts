@@ -1,59 +1,60 @@
-import {PersonalUserPageQuery} from '~/graphql/api-authenticated/codegen/apollo';
+import {CurrentUserPageQuery} from '~/graphql/codegen/apollo';
 import {avoidUndefined} from '~/lib/utils';
 import {TransformedProps as UserPageTransformedProps} from '~/templates/User';
 
 export type TransformedProps = UserPageTransformedProps;
-export const transform = ({
-  currentUser: {
-    userName,
-    displayName,
-    picture,
-    hasBooks,
-    readBooks,
-    readingBooks,
-    stackedBooks,
-  },
-}: PersonalUserPageQuery): TransformedProps =>
+
+export const transform: (
+  result: CurrentUserPageQuery,
+  variables: {recordSkip: number; recordLimit: number},
+) => TransformedProps = ({currentUser}, {recordLimit, recordSkip}) =>
   avoidUndefined({
-    userName,
-    displayName,
-    picture,
-    likedBooks: {count: 0, hasNext: false, books: []},
-    records: {count: 0, hasNext: false, limit: 0, skip: 0, nodes: []},
-    readBooks: {
-      count: 0,
-      hasNext: readBooks.hasNext,
-      books: readBooks.nodes.map(({id, title, cover}) => ({
-        id,
-        title,
-        cover: cover || undefined,
-      })),
+    userName: currentUser.userName,
+    displayName: currentUser.displayName,
+    picture: currentUser.picture,
+    records: {
+      count: currentUser.records.count,
+      hasNext: Boolean(currentUser.records.pageInfo.hasNextPage),
+      limit: recordLimit,
+      skip: recordSkip,
+      nodes: currentUser.records.edges.map(
+        ({node: {id, readAt, book: recordBook, user: recordUser}}) => ({
+          id,
+          readAt: readAt || undefined,
+          user: {
+            userName: recordUser.userName,
+            displayName: recordUser.displayName,
+            picture: recordUser.picture,
+          },
+          book: {
+            id: recordBook.id,
+            title: recordBook.title,
+            subtitle: recordBook.subtitle || undefined,
+            cover: recordBook.cover || undefined,
+          },
+        }),
+      ),
     },
     readingBooks: {
-      count: 0,
-      hasNext: readingBooks.hasNext,
-      books: readingBooks.nodes.map(({book}) => ({
-        ...book,
+      count: currentUser.readingBooks.count,
+      hasNext: Boolean(currentUser.readingBooks.pageInfo.hasNextPage),
+      books: currentUser.readingBooks.edges.map(({node: {book}}) => ({
+        id: book.id,
+        title: book.title,
         cover: book.cover || undefined,
       })),
     },
+    likedBooks: {count: 0, hasNext: false, books: []},
     haveBooks: {
-      count: 0,
-      hasNext: hasBooks.hasNext,
-      books: hasBooks.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
-      })),
+      count: currentUser.haveBooks.count,
     },
     stackedBooks: {
-      count: 0,
-      hasNext: stackedBooks.hasNext,
-      books: stackedBooks.nodes.map(({book}) => ({
-        ...book,
-        cover: book.cover || undefined,
-      })),
+      count: currentUser.stackedBooks.count,
+    },
+    readBooks: {
+      count: currentUser.readBooks.count,
     },
     wishBooks: {
-      count: 0,
+      count: currentUser.wishBooks.count,
     },
   });

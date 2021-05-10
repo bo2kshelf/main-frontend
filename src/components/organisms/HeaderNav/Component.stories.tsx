@@ -28,7 +28,7 @@ export const UnloggedIn: Story<ComponentProps> = (args) => (
 );
 UnloggedIn.args = {
   userLoading: false,
-  userLoggedIn: false,
+  signedIn: false,
 };
 UnloggedIn.storyName = '未ログイン';
 
@@ -37,7 +37,7 @@ export const LoggedIn: Story<ComponentProps> = (args) => (
 );
 LoggedIn.args = {
   userLoading: false,
-  userLoggedIn: true,
+  signedIn: true,
   currentUser: {
     userName: 'INTERNET_EXPLORER',
     displayName: 'IAMTHEKIDYOUKNOWWHATIMEAN',

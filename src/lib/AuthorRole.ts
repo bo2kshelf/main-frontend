@@ -1,6 +1,6 @@
-import {AuthorRole} from '~/graphql/api-public/codegen/graphql-request';
+import {AuthorRole} from '~/graphql/codegen/graphql-request';
 
-export {AuthorRole} from '~/graphql/api-public/codegen/graphql-request';
+export {AuthorRole} from '~/graphql/codegen/graphql-request';
 
 export const rolesPriorities: Record<AuthorRole, number> = {
   [AuthorRole.Author]: 0,

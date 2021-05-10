@@ -1,13 +1,17 @@
 import {AppProps} from 'next/dist/next-server/lib/router/router';
 import React from 'react';
 import {RecoilRoot} from 'recoil';
+import SuperTokensReact from 'supertokens-auth-react';
 import 'tailwindcss/tailwind.css';
-import {AppLayout} from '~/components/layout/AppLayout';
+import {supertokensFrontendConfig} from '~/configs/supertokens';
+import {ConfiguredApolloProvider} from '~/graphql/apollo';
 import {Configured18nextProvider} from '~/i18n';
-import {ConfiguredApolloProvider} from '~/lib/ApolloProvider';
-import {CurrentUser} from '~/lib/CurrentUser';
+import {AppLayout} from '~/layouts/AppLayout';
 import '~/styles/index.css';
 
+if (typeof window !== 'undefined') {
+  SuperTokensReact.init(supertokensFrontendConfig);
+}
 export const App: React.FC<AppProps> = ({
   Component: PageComponent,
   pageProps,
@@ -16,7 +20,6 @@ export const App: React.FC<AppProps> = ({
     <ConfiguredApolloProvider>
       <Configured18nextProvider>
         <RecoilRoot>
-          <CurrentUser />
           <AppLayout>
             <PageComponent {...pageProps} />
           </AppLayout>

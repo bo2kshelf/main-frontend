@@ -1,6 +1,12 @@
-import {NextPage} from 'next';
+import clsx from 'clsx';
 import React from 'react';
-import {IndexPage} from '~/templates/Index';
 
-export const Page: NextPage = (props) => <IndexPage {...props} />;
+export function Page() {
+  return (
+    <div className={clsx()}>
+      <p>Index</p>
+    </div>
+  );
+}
+
 export default Page;
