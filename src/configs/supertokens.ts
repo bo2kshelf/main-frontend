@@ -1,6 +1,6 @@
 /* eslint-disable no-process-env */
-import EmailPassword from 'supertokens-auth-react/recipe/emailpassword';
 import SessionReact from 'supertokens-auth-react/recipe/session';
+import ThirdParty, {Github} from 'supertokens-auth-react/recipe/thirdparty';
 
 export const supertokensFrontendConfig = {
   appInfo: {
@@ -10,8 +10,10 @@ export const supertokensFrontendConfig = {
   },
   recipeList: [
     SessionReact.init(),
-    EmailPassword.init({
-      emailVerificationFeature: {mode: 'REQUIRED'},
+    ThirdParty.init({
+      signInAndUpFeature: {
+        providers: [Github.init()],
+      },
     }),
   ],
 };

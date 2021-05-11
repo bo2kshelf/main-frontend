@@ -1,15 +1,15 @@
 import {NextPage} from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
-import {EmailPasswordAuth} from 'supertokens-auth-react/recipe/emailpassword';
+import {ThirdPartyAuth} from 'supertokens-auth-react/recipe/thirdparty';
 
 export function withPageAuthenticated<T>(Page: NextPage<T>) {
   return dynamic(
     async () => {
       const ProtectedPage = (props: T) => (
-        <EmailPasswordAuth requireAuth>
+        <ThirdPartyAuth requireAuth>
           <Page {...props} />
-        </EmailPasswordAuth>
+        </ThirdPartyAuth>
       );
       return ProtectedPage;
     },

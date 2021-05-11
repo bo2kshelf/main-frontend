@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import {useEffectOnce} from 'react-use';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
-import {EmailPasswordAuth} from 'supertokens-auth-react/recipe/emailpassword';
 import {useSessionContext} from 'supertokens-auth-react/recipe/session';
 import {useGetCurrentUserLazyQuery} from '~/graphql/apollo';
 import {CurrentUser, currentUserState} from '~/states/CurrentUser';
@@ -40,5 +39,3 @@ export const useAuth = (): AuthState => {
     loading: true,
   };
 };
-
-export const AuthProvider = EmailPasswordAuth;

@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import React from 'react';
-import {EmailPasswordAuth} from 'supertokens-auth-react/recipe/emailpassword';
+import {ThirdPartyAuth} from 'supertokens-auth-react/recipe/thirdparty';
 
 export function withAuth<T>(
   Component: React.VFC<T>,
@@ -9,9 +9,9 @@ export function withAuth<T>(
   return dynamic(
     async () => {
       const AuthProvidedComponent = (props: T) => (
-        <EmailPasswordAuth requireAuth={requiredAuth}>
+        <ThirdPartyAuth requireAuth={requiredAuth}>
           <Component {...props} />
-        </EmailPasswordAuth>
+        </ThirdPartyAuth>
       );
       return AuthProvidedComponent;
     },
