@@ -197,6 +197,7 @@ type User {
   id: ID!
   uniqueName: String!
   displayName: String!
+  initialized: Boolean!
   picture: String!
   records(after: String, first: Int, before: String, last: Int, orderBy: UserRecordsArgsOrderBy = {readAt: DESC}): UserRecordConnection!
   haveBooks(after: String, first: Int, before: String, last: Int, orderBy: UserHaveBooksArgsOrderBy = {updatedAt: DESC}): UserHaveBookConnection!

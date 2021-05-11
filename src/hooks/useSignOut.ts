@@ -1,11 +1,11 @@
 import {useRouter} from 'next/router';
 import {useSetRecoilState} from 'recoil';
 import {signOut} from 'supertokens-auth-react/recipe/thirdparty';
-import {currentUserState} from '~/states/CurrentUser';
+import {stateCurrentUser} from '~/states/CurrentUser';
 
 export const useSignOut = (): (() => Promise<void>) => {
   const router = useRouter();
-  const setCurrentUser = useSetRecoilState(currentUserState);
+  const setCurrentUser = useSetRecoilState(stateCurrentUser);
 
   return async () => {
     await signOut();

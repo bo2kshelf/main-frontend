@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
+import {withComponentAuthenticated} from '~/hoc/withComponentAuthenticated';
 import {useAuth} from '~/hooks/useAuth';
-import {withAuth} from '../../../../../hoc/withAuth';
 import {LoginButton} from '../LoginButton';
 import {UserPopup} from '../UserPopup';
 
@@ -17,4 +17,4 @@ export const UnwrappedContainer: React.VFC<ContainerProps> = ({className}) => {
   );
 };
 
-export const Container = withAuth(UnwrappedContainer, {});
+export const Container = withComponentAuthenticated(UnwrappedContainer);

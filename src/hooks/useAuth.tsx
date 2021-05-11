@@ -3,39 +3,78 @@ import {useEffectOnce} from 'react-use';
 import {useRecoilValue, useSetRecoilState} from 'recoil';
 import {useSessionContext} from 'supertokens-auth-react/recipe/session';
 import {useGetCurrentUserLazyQuery} from '~/graphql/apollo';
-import {CurrentUser, currentUserState} from '~/states/CurrentUser';
+import {
+  CurrentUser,
+  stateCurrentUser,
+  stateCurrentUserRegistered,
+} from '~/states/CurrentUser';
 
 export type AuthState =
-  | {signedIn: false}
-  | {signedIn: true; loading: true}
-  | {signedIn: true; loading: false; currentUser: CurrentUser};
+  | {
+      signedIn: false;
+    }
+  | {
+      signedIn: true;
+      loading: true;
+    }
+  | {
+      signedIn: true;
+      loading: false;
+      registered: false;
+    }
+  | {
+      signedIn: true;
+      loading: false;
+      registered: true;
+      currentUser: CurrentUser;
+    };
 
 export const useAuth = (): AuthState => {
   const {doesSessionExist: signedIn} = useSessionContext();
-  const [loadCurrentUser, {data}] = useGetCurrentUserLazyQuery();
+  const [loadCurrentUser, {data, loading}] = useGetCurrentUserLazyQuery();
 
-  const currentUser = useRecoilValue(currentUserState);
-  const setCurrentUser = useSetRecoilState(currentUserState);
+  const currentUser = useRecoilValue(stateCurrentUser);
+  const setCurrentUser = useSetRecoilState(stateCurrentUser);
+
+  const registered = useRecoilValue(stateCurrentUserRegistered);
+  const setRegistered = useSetRecoilState(stateCurrentUserRegistered);
 
   useEffectOnce(() => {
-    if (!currentUser && signedIn) {
-      loadCurrentUser();
-    }
+    if (!currentUser && signedIn) loadCurrentUser();
   });
 
   useEffect(() => {
-    if (data?.currentUser)
+    if (data?.currentUser && !data.currentUser.initialized) {
+      setRegistered(false);
+    } else if (data?.currentUser && data.currentUser.initialized) {
+      setRegistered(true);
       setCurrentUser({
         userName: data.currentUser.userName,
         displayName: data.currentUser.displayName,
         picture: data.currentUser.picture,
       });
-  }, [data, setCurrentUser]);
+    }
+  }, [data, setCurrentUser, setRegistered]);
 
-  if (!signedIn) return {signedIn: false};
-  if (currentUser) return {signedIn: true, loading: false, currentUser};
+  if (signedIn && !loading && registered && currentUser)
+    return {
+      signedIn: true,
+      loading: false,
+      registered,
+      currentUser,
+    };
+  if (signedIn && !loading && !registered)
+    return {
+      signedIn: true,
+      loading: false,
+      registered: false,
+    };
+  if (signedIn && loading)
+    return {
+      signedIn: true,
+      loading: true,
+    };
   return {
-    signedIn: true,
-    loading: true,
+    signedIn: false,
   };
 };

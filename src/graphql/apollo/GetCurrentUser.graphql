@@ -3,5 +3,6 @@ query GetCurrentUser {
     userName: uniqueName
     displayName
     picture
+    initialized
   }
 }

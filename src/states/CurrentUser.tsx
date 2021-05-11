@@ -6,7 +6,12 @@ export type CurrentUser = {
   picture: string;
 };
 
-export const currentUserState = atom<undefined | CurrentUser>({
+export const stateCurrentUser = atom<undefined | CurrentUser>({
   key: 'CurrentUser',
+  default: undefined,
+});
+
+export const stateCurrentUserRegistered = atom<undefined | boolean>({
+  key: 'CurrentUserRegistered',
   default: undefined,
 });
